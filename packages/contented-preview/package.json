@@ -1,0 +1,7 @@
+{
+  "name": "@birthdayresearch/contented-preview",
+  "version": "0.0.0",
+  "private": false,
+  "main": "index.js",
+  "dependencies": {}
+}

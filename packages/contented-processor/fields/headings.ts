@@ -1,5 +1,5 @@
 import { ComputedFields, LocalDocument } from "@contentlayer/source-files";
-import { Parent, Root } from "hast";
+import { Content, Parent, Root } from 'hast';
 import { toString } from "hast-util-to-string";
 import rehypeParse from "rehype-parse";
 import { unified } from "unified";
@@ -40,7 +40,7 @@ function remarkRehead(this: any) {
     node: Parent,
     headings: ContentHeading[] = []
   ): ContentHeading[] {
-    node?.children?.forEach((child) => {
+    node?.children?.forEach((child: Content) => {
       if (child.type === "element") {
         // eslint-disable-next-line default-case
         switch (child.tagName) {
@@ -51,7 +51,7 @@ function remarkRehead(this: any) {
           case "h5":
           case "h6":
             headings.push({
-              depth: Number.parseInt(child.tagName[1], 10) as any,
+              depth: Number.parseInt(child.tagName.substring(1), 10) as any,
               id: (child.properties?.id as string) ?? "",
               title: toString(child),
               children: [],

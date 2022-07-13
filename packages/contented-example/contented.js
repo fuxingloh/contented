@@ -1,6 +1,6 @@
 import { defineDocumentType } from 'contentlayer/source-files';
-import { computeContentHeadings } from './headings';
-import { computePath, computeSections } from './path';
+import { computeContentHeadings } from '../contented-processor/fields/headings';
+import { computePath, computeSections } from '../contented-processor/fields/path';
 
 export const Doc = defineDocumentType(() => ({
   name: 'Doc',

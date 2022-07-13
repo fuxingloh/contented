@@ -6,9 +6,9 @@ async function makeConfig() {
   return makeSource({
     contentDirPath: join(
       process.env.CONTENTED_CWD as string,
-      contented.processor.rootDir
+      contented.rootDir
     ),
-    documentTypes: contented.processor.types,
+    documentTypes: contented.types,
     onUnknownDocuments: "skip-ignore",
     disableImportAliasWarning: true,
   });

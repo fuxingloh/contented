@@ -12,5 +12,12 @@
   "dependencies": {
     "@birthdayresearch/contented-preview": "0.0.0",
     "@birthdayresearch/contented-processor": "0.0.0"
+  },
+  "contented-preview": {
+    "url": "https://contented.dev",
+    "name": "Contented Documentation",
+    "github": {
+      "url": "https://github.com/BirthdayResearch/contented"
+    }
   }
 }

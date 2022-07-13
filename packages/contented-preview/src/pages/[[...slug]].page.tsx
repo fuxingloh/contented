@@ -3,7 +3,7 @@ import { GetStaticPropsContext, InferGetServerSidePropsType } from 'next';
 import { DigitalDocument } from 'schema-dts';
 import { jsonLdScriptProps } from 'react-schemaorg';
 import truncate from 'lodash/truncate';
-import {allDocuments} from '../../../contented-example/.contentlayer/generated';
+import {allDocuments} from 'contentlayer/generated';
 import ContentProse from './_components/ContentProse';
 import ContentNavigation, { computeContentSections } from './_components/ContentNavigation';
 import ContentHeadings from './_components/ContentHeadings';

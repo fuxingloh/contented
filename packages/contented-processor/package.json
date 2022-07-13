@@ -2,9 +2,24 @@
   "name": "@birthdayresearch/contented-processor",
   "version": "0.0.0",
   "private": false,
-  "main": "index.js",
+  "bin": {
+    "contented-processor": "./cli.js"
+  },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "@contentlayer/source-files": "^0.2.6",
+    "@jsdevtools/rehype-toc": "^3.0.2",
+    "@leafac/rehype-shiki": "^2.1.2",
+    "@sindresorhus/slugify": "^2.1.0",
+    "contentlayer": "^0.2.6",
+    "hast": "^1.0.0",
+    "hast-util-to-string": "^2.0.0",
+    "lodash": "^4.17.21",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-parse": "^8.0.4",
+    "rehype-slug": "^5.0.1",
+    "remark-gfm": "^3.0.1",
+    "shiki": "^0.10.1",
+    "unified": "^10.1.2"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.182"

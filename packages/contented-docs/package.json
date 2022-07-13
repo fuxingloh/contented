@@ -1,9 +1,0 @@
-{
-  "name": "@birthdayresearch/contented-docs",
-  "version": "0.0.0",
-  "private": false,
-  "main": "index.js",
-  "dependencies": {
-    "@birthdayresearch/contented-processor": "0.0.0"
-  }
-}

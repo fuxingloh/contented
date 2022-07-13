@@ -1,6 +1,24 @@
 {
   "name": "@birthdayresearch/contented-example",
   "version": "0.0.0",
-  "private": true,
-  "dependencies": {}
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "write": "contented-preview write",
+    "generate": "contented-preview generate",
+    "build": "contented-processor build"
+  },
+  "dependencies": {
+    "@birthdayresearch/contented-preview": "0.0.0",
+    "@birthdayresearch/contented-processor": "0.0.0"
+  },
+  "contented": {
+    "url": "https://contented.dev",
+    "name": "Contented Documentation",
+    "github_url": "https://github.com/BirthdayResearch/contented",
+    "types": [
+      "./docs"
+    ]
+  }
 }

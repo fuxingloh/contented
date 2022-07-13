@@ -1,1 +1,1 @@
-packages/contented-docs/01:overview.md
+packages/contented-example/docs/01:overview.md

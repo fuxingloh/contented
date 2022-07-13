@@ -1,0 +1,6 @@
+!cli.js
+*.d.ts
+*.d.ts.map
+*.js
+*.js.map
+tsconfig.tsbuildinfo

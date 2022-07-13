@@ -1,19 +1,25 @@
-import { SourcePlugin } from '@contentlayer/core';
-import { defineDocumentType , makeSource } from 'contentlayer/source-files';
+import { SourcePlugin } from "@contentlayer/core";
+import {
+  defineDocumentType,
+  DocumentTypes,
+  makeSource,
+} from "contentlayer/source-files";
 
-import { getUnifiedBuilder } from './unified';
+import { getUnifiedBuilder } from "./unified";
 
-export { defineDocumentType };
+export interface ContentedProcessorConfig {
+  rootDir: string;
+  types: DocumentTypes;
+}
 
-async function makeConfig(): Promise<SourcePlugin> {
+async function defineConfig(
+  config: ContentedProcessorConfig
+): Promise<SourcePlugin> {
   return makeSource({
-    contentDirPath: './',
+    contentDirPath: config.rootDir,
     markdown: await getUnifiedBuilder(),
-    documentTypes: [
-      // require(...)
-    ],
+    documentTypes: config.types,
   });
 }
 
-
-export default makeConfig();
+export { defineConfig, defineDocumentType, getUnifiedBuilder, makeSource };

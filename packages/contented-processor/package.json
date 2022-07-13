@@ -5,6 +5,9 @@
   "bin": {
     "contented-processor": "./cli.js"
   },
+  "scripts": {
+    "build": "tsc"
+  },
   "dependencies": {
     "@contentlayer/source-files": "^0.2.6",
     "@jsdevtools/rehype-toc": "^3.0.2",

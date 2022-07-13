@@ -1,0 +1,19 @@
+{
+  "plugins": ["simple-import-sort"],
+  "extends": ["airbnb-base", "airbnb-typescript/base", "prettier"],
+  "ignorePatterns": ["**/*.config.ts", "**/*.config.js"],
+  "rules": {
+    "class-methods-use-this": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "no-console": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
+}

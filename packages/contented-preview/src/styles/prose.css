@@ -1,0 +1,3 @@
+.prose nav.toc {
+  @apply sr-only;
+}

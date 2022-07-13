@@ -1,6 +1,7 @@
-import { defineDocumentType } from '@birthdayresearch/contented-processor';
-import { computeContentHeadings } from '@birthdayresearch/contented-processor/fields/headings';
-import { computePath, computeSections, } from '@birthdayresearch/contented-processor/fields/path';
+/* eslint-disable */
+import { defineDocumentType } from '../contented-processor';
+import { computeContentHeadings } from '../contented-processor/fields/headings';
+import { computePath, computeSections } from '../contented-processor/fields/path';
 
 const Doc = defineDocumentType(() => ({
   name: 'Doc',

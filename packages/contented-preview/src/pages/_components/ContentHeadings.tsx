@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import clsx from 'clsx';
 import { ContentHeading } from '@birthdayresearch/contented-processor/fields/headings';
+import clsx from 'clsx';
+import Link from 'next/link';
 
 export default function ContentHeadings(props: { contentHeadings: ContentHeading[] }) {
   return (

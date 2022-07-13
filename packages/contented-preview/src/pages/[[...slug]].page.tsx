@@ -1,12 +1,13 @@
-import Head from 'next/head';
-import { GetStaticPropsContext, InferGetServerSidePropsType } from 'next';
-import { DigitalDocument } from 'schema-dts';
-import { jsonLdScriptProps } from 'react-schemaorg';
-import truncate from 'lodash/truncate';
 import {allDocuments} from 'contentlayer/generated';
-import ContentProse from './_components/ContentProse';
-import ContentNavigation, { computeContentSections } from './_components/ContentNavigation';
+import truncate from 'lodash/truncate';
+import { GetStaticPropsContext, InferGetServerSidePropsType } from 'next';
+import Head from 'next/head';
+import { jsonLdScriptProps } from 'react-schemaorg';
+import { DigitalDocument } from 'schema-dts';
+
 import ContentHeadings from './_components/ContentHeadings';
+import ContentNavigation, { computeContentSections } from './_components/ContentNavigation';
+import ContentProse from './_components/ContentProse';
 
 export async function getStaticPaths() {
   return {
@@ -55,7 +56,7 @@ export default function PostPage({ post, sections }: InferGetServerSidePropsType
         <meta key="og:title" name="og:title" content={siteTitle} />
         <link key="canonical" rel="canonical" href={canonicalUrl} />
         <meta key="og:url" name="og:url" content={canonicalUrl} />
-        {/*<SchemaOrgDigitalDocument post={post} />*/}
+        {/* <SchemaOrgDigitalDocument post={post} /> */}
 
         {description && (
           <>

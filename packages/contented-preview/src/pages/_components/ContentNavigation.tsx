@@ -1,8 +1,8 @@
+import clsx from 'clsx';
+import isEqual from 'lodash/isEqual';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import clsx from 'clsx';
 import { ComponentProps } from 'react';
-import isEqual from 'lodash/isEqual';
 
 export interface ContentSection {
   sections: string[];

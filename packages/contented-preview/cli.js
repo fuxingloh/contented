@@ -1,14 +1,23 @@
 #! /usr/bin/env node
-const { spawn } = require('node:child_process');
-const commandLineArgs = require('command-line-args');
+const { symlinkSync, existsSync, rmSync } = require("node:fs");
+const { spawn } = require("node:child_process");
+const commandLineArgs = require("command-line-args");
 
-const mainDefinitions = [{ name: 'command', defaultOption: true }];
-const mainOptions = commandLineArgs(mainDefinitions, {
+const mainDefinitions = [{ name: "command", defaultOption: true }];
+const { command } = commandLineArgs(mainDefinitions, {
   stopAtFirstUnknown: true,
 });
 
-spawn(`npm`, ['run', mainOptions.command, '--prefix', __dirname], {
-  stdio: 'inherit',
+const path = `${__dirname}/contented.js`;
+const target = `${process.cwd()}/contented.js`;
+if (existsSync(path)) {
+  rmSync(path);
+}
+symlinkSync(target, path, "file");
+
+spawn(`npm`, ["run", command, "--prefix", __dirname], {
+  stdio: "inherit",
+  cwd: __dirname,
   env: {
     ...process.env,
     CONTENTED_CWD: process.cwd(),

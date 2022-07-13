@@ -1,3 +1,5 @@
+import { DocumentTypes } from "contentlayer/source-files";
+
 export interface ContentedConfig {
   preview: {
     url?: string;
@@ -8,6 +10,8 @@ export interface ContentedConfig {
   };
   processor: {
     rootDir: string;
-    types: string[];
+    types: DocumentTypes;
   };
 }
+
+export default {} as ContentedConfig;

@@ -1,25 +1,28 @@
-import { defineDocumentType } from 'contentlayer/source-files';
-import { computeContentHeadings } from '../contented-processor/fields/headings';
-import { computePath, computeSections } from '../contented-processor/fields/path';
+import { defineDocumentType } from "@birthdayresearch/contented-processor";
+import { computeContentHeadings } from "@birthdayresearch/contented-processor/fields/headings";
+import {
+  computePath,
+  computeSections,
+} from "@birthdayresearch/contented-processor/fields/path";
 
-export const Doc = defineDocumentType(() => ({
-  name: 'Doc',
+const Doc = defineDocumentType(() => ({
+  name: "Doc",
   filePathPattern: `docs/**/*.md`,
   fields: {
     title: {
-      type: 'string',
-      description: 'The title of the documentation.',
+      type: "string",
+      description: "The title of the documentation.",
       required: true,
-      default: 'Contented Documentation',
+      default: "Contented Documentation",
     },
     description: {
-      type: 'string',
+      type: "string",
       required: false,
     },
   },
   computedFields: {
-    path: computePath('/', /\d+:/g, ''),
-    sections: computeSections(/docs\/?/g, /\d+:/g, ''),
+    path: computePath("/", /\d+:/g, ""),
+    sections: computeSections(/docs\/?/g, /\d+:/g, ""),
     contentHeadings: computeContentHeadings(),
   },
 }));
@@ -27,16 +30,14 @@ export const Doc = defineDocumentType(() => ({
 /** @type {ContentedConfig} */
 export default {
   preview: {
-    url: 'https://contented.dev',
-    name: 'Contented Documentation',
+    url: "https://contented.dev",
+    name: "Contented Documentation",
     github: {
-      url: 'https://github.com/BirthdayResearch/contented',
+      url: "https://github.com/BirthdayResearch/contented",
     },
   },
   processor: {
-    rootDir: './',
-    types: [
-      Doc,
-    ],
+    rootDir: "./",
+    types: [Doc],
   },
 };

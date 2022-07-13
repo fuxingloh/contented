@@ -5,6 +5,12 @@
   "bin": {
     "contented-processor": "./cli.js"
   },
+  "files": [
+    "**/*.d.ts",
+    "**/*.d.ts.map",
+    "**/*.js",
+    "**/*.js.map"
+  ],
   "scripts": {
     "build": "tsc"
   },

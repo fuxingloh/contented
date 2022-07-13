@@ -1,6 +1,5 @@
 ---
 title: Introduction
-description: A collection of TypeScript + JavaScript tools and libraries for DeFi Blockchain developers to build decentralized finance on Bitcoin."
 ---
 
 ## What is Jellyfish?
@@ -16,7 +15,7 @@ As with all modern JavaScript projects, jellyfish follows a monorepo structure w
 maintained in this repo are published with the same version tag and follows the `DeFiCh/ain` releases.
 
 | Package                                      | Description                                                                                                            |
-| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | `@defichain/jellyfish-address`               | Provide address builder, parser, validator utility library for DeFi Blockchain.                                        |
 | `@defichain/jellyfish-api-core`              | A protocol agnostic DeFi Blockchain client interfaces, with a "foreign function interface" design.                     |
 | `@defichain/jellyfish-api-jsonrpc`           | Implements the [JSON-RPC 1.0](https://www.jsonrpc.org/specification_v1) specification for api-core.                    |
@@ -34,5 +33,4 @@ maintained in this repo are published with the same version tag and follows the 
 | `@defichain/jellyfish-wallet-encrypted`      | Library to encrypt MnemonicHdNode as EncryptedMnemonicHdNode. Able to perform as MnemonicHdNode with passphrase known. |
 | `@defichain/jellyfish-wallet-mnemonic`       | MnemonicHdNode implements the WalletHdNode from jellyfish-wallet; a CoinType-agnostic HD Wallet for noncustodial DeFi. |
 | `@defichain/testcontainers`                  | Provides a lightweight, throw away instances for DeFiD node provisioned automatically in a Docker container.           |
-| ~~@defichain/testing~~                       | (deprecated) ~~Provides rich test fixture setup functions for effective                                                |
-| and effortless testing.~~                    |                                                                                                                        |
+| ~~@defichain/testing~~                       | (deprecated) ~~Provides rich test fixture setup functions for effective and effortless testing.~~                      |

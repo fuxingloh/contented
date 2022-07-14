@@ -12,7 +12,7 @@
     "generate": "contented generate",
     "build": "contented build"
   },
-  "dependencies": {
+  "devDependencies": {
     "@birthdayresearch/contented": "0.0.0"
   },
   "contented": {

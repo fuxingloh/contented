@@ -34,9 +34,8 @@ export default function ContentNavigation({ sections, className }) {
 
               <ul
                 role="list"
-                className={clsx({
-                  'mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200':
-                    path,
+                className={clsx('mt-2 space-y-2 lg:mt-4 lg:space-y-4', {
+                  'border-l-2 border-slate-100 dark:border-slate-800 lg:border-slate-200': path,
                 })}
               >
                 {section.items?.map((link) => (

@@ -7,7 +7,7 @@ const preview = require(join(process.env.CONTENTED_CWD, 'package.json'))?.['cont
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  pageExtensions: ['page.tsx', 'page.ts'],
+  pageExtensions: ['page.jsx'],
   swcMinify: true,
   env: {
     SITE_URL: preview?.url ?? 'https://contented.dev',

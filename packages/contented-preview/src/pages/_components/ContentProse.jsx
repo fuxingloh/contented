@@ -1,7 +1,6 @@
 import clsx from 'clsx';
-import { ComponentProps } from 'react';
 
-export default function ContentProse({ as: Component = 'div', className, ...props }: ComponentProps<any>) {
+export default function ContentProse({ as: Component = 'div', className, ...props }) {
   return (
     <Component
       className={clsx(

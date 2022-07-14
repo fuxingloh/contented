@@ -2,28 +2,11 @@ import clsx from 'clsx';
 import isEqual from 'lodash/isEqual';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ComponentProps } from 'react';
 
-export interface ContentSection {
-  sections: string[];
-  items: ContentItem[];
-}
-
-export interface ContentItem {
-  _id: string;
-  title: string;
-  path: string;
-  sections: string[];
-}
-
-interface ContentNavigationProps extends ComponentProps<any> {
-  sections: ContentSection[];
-}
-
-export function computeContentSections<T extends ContentItem>(items: T[]): ContentSection[] {
+export function computeContentSections(items) {
   // eslint-disable-next-line no-underscore-dangle
   items.sort((a, b) => a._id.localeCompare(b._id));
-  const sections: ContentSection[] = [];
+  const sections = [];
 
   items.forEach((item) => {
     const prev = sections[sections.length - 1];
@@ -37,7 +20,7 @@ export function computeContentSections<T extends ContentItem>(items: T[]): Conte
   return sections;
 }
 
-export default function ContentNavigation({ sections, className }: ContentNavigationProps) {
+export default function ContentNavigation({ sections, className }) {
   const router = useRouter();
 
   return (

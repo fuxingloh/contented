@@ -6,6 +6,7 @@
     "./",
     "./packages/*"
   ],
+  "files": [],
   "scripts": {
     "lint": "eslint --fix . && prettier --write .",
     "prepare": "husky install"
@@ -29,10 +30,10 @@
     "typescript": "4.7.4"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "*.{js,jsx,ts}": [
       "eslint --fix",
       "prettier --write"
     ],
-    "!*.{js,jsx,ts,tsx}": "prettier --write --ignore-unknown"
+    "!*.{js,jsx,ts}": "prettier --write --ignore-unknown"
   }
 }

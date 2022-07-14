@@ -1,6 +1,4 @@
 import { DocumentTextIcon } from '@heroicons/react/outline';
-import { ComponentProps } from 'react';
-
 import ThemeButton from './ThemeButton';
 
 export default function Header() {
@@ -27,7 +25,7 @@ export default function Header() {
   );
 }
 
-export function GitHubButton(props: ComponentProps<any>) {
+export function GitHubButton(props) {
   return (
     <div {...props}>
       <a className="flex items-center" href={process.env.GITHUB_URL} target="_blank">

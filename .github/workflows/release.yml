@@ -34,10 +34,9 @@ jobs:
       - run: npm ci
 
       - run: lerna version ${{ needs.Version.outputs.result }} --yes --no-push --no-git-tag-version --exact
-      - run: lerna version 0.1.0 --yes --no-push --no-git-tag-version --exact
-      - run: npm version ${{ needs.Version.outputs.result }} --workspaces
 
-      - run: npm run build --workspaces --if-present
+      - run: npm run build --workspace=@birthdayresearch/contented-processor
+      - run: npm run build --workspace=@birthdayresearch/contented-example
 
       - name: Publish
         run: |

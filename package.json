@@ -22,6 +22,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^8.0.1",
+    "lerna": "^5.1.8",
     "lint-staged": "^13.0.3",
     "prettier": "2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.12",

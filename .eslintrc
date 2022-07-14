@@ -6,7 +6,8 @@
     "**/*.config.js",
     "contented.js",
     "**/contented-processor/**/*.d.ts",
-    "**/contented-processor/**/*.js"
+    "**/contented-processor/**/*.js",
+    "**/out"
   ],
   "rules": {
     "class-methods-use-this": "off",

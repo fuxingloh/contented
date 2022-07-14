@@ -2,4 +2,10 @@
 .husky
 .idea
 .next
+out
+*.d.ts
+*.d.ts.map
+*.js
+*.js.map
+tsconfig.tsbuildinfo
 package-lock.json

@@ -10,6 +10,7 @@ async function makeConfig() {
     ),
     markdown: await contented.unified(),
     documentTypes: contented.types,
+    contentDirExclude: ["dist"],
     onUnknownDocuments: "skip-ignore",
     disableImportAliasWarning: true,
   });

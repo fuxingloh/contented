@@ -4,6 +4,8 @@
   "files": [
     "dist"
   ],
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
     "write": "contented write",
     "generate": "contented generate",

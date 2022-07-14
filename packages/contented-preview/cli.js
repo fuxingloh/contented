@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-const { symlinkSync, existsSync, rmSync } = require("node:fs");
+const { symlinkSync, existsSync, rmSync, cpSync } = require("node:fs");
 const { spawn } = require("node:child_process");
 const commandLineArgs = require("command-line-args");
 
@@ -23,3 +23,9 @@ spawn(`npm`, ["run", command, "--prefix", __dirname], {
     CONTENTED_CWD: process.cwd(),
   },
 });
+
+if (command === "build") {
+  cpSync(`${__dirname}/.contentlayer/generated`, `${process.cwd()}/dist`, {
+    recursive: true,
+  });
+}

@@ -1,17 +1,17 @@
-import { DocumentTypes } from "contentlayer/source-files";
+import { DocumentTypes } from 'contentlayer/source-files';
+
+export interface ContentedPreview {
+  url?: string;
+  name?: string;
+  github?: {
+    url?: string;
+  };
+}
 
 export interface ContentedConfig {
-  preview: {
-    url?: string;
-    name?: string;
-    github?: {
-      url?: string;
-    };
-  };
-  processor: {
-    rootDir: string;
-    types: DocumentTypes;
-  };
+  rootDir: string;
+  unified(): Promise<unified.Processor>;
+  types: DocumentTypes;
 }
 
 export default {} as ContentedConfig;

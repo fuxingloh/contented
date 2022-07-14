@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": false,
   "bin": {
-    "contented-preview": "./cli.js"
+    "contented": "./cli.js"
   },
   "scripts": {
     "write": "next dev",
-    "generate": "next build && next-sitemap"
+    "generate": "next build && next-sitemap",
+    "build": "contentlayer build"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.6",

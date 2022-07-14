@@ -1,12 +1,11 @@
-import Head from 'next/head';
-import { GetStaticPropsContext, InferGetServerSidePropsType } from 'next';
-import { DigitalDocument } from 'schema-dts';
-import { jsonLdScriptProps } from 'react-schemaorg';
+import { allDocuments } from 'contentlayer/generated';
 import truncate from 'lodash/truncate';
-import {allDocuments} from '../../../contented-example/.contentlayer/generated';
-import ContentProse from './_components/ContentProse';
-import ContentNavigation, { computeContentSections } from './_components/ContentNavigation';
+import { GetStaticPropsContext, InferGetServerSidePropsType } from 'next';
+import Head from 'next/head';
+
 import ContentHeadings from './_components/ContentHeadings';
+import ContentNavigation, { computeContentSections } from './_components/ContentNavigation';
+import ContentProse from './_components/ContentProse';
 
 export async function getStaticPaths() {
   return {
@@ -14,7 +13,6 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
-
 
 export async function getStaticProps({ params }: GetStaticPropsContext<{ slug: string[] }>) {
   const path = `/${params?.slug?.join('/') ?? ''}`;
@@ -26,22 +24,6 @@ export async function getStaticProps({ params }: GetStaticPropsContext<{ slug: s
     },
   };
 }
-
-// function SchemaOrgDigitalDocument({ post }): JSX.Element {
-//   return (
-//     <script
-//       key="DigitalDocument"
-//       {...jsonLdScriptProps<DigitalDocument>({
-//         '@context': 'https://schema.org',
-//         '@type': 'DigitalDocument',
-//         name: post.title,
-//         author: process.env.SITE_NAME,
-//         description: post.description,
-//         url: `${process.env.SITE_URL}${post.path}`,
-//       })}
-//     />
-//   );
-// }
 
 export default function PostPage({ post, sections }: InferGetServerSidePropsType<typeof getStaticProps>) {
   const siteTitle = `${post.title} | ${process.env.SITE_NAME}`;
@@ -55,7 +37,6 @@ export default function PostPage({ post, sections }: InferGetServerSidePropsType
         <meta key="og:title" name="og:title" content={siteTitle} />
         <link key="canonical" rel="canonical" href={canonicalUrl} />
         <meta key="og:url" name="og:url" content={canonicalUrl} />
-        {/*<SchemaOrgDigitalDocument post={post} />*/}
 
         {description && (
           <>
@@ -65,12 +46,11 @@ export default function PostPage({ post, sections }: InferGetServerSidePropsType
         )}
       </Head>
 
-      <div className="relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12">
+      <div className="max-w-8xl relative mx-auto flex justify-center sm:px-2 lg:px-8 xl:px-12">
         <div className="hidden lg:relative lg:block lg:flex-none">
+          <div className="absolute top-0 bottom-0 right-0 hidden w-px bg-slate-800 dark:block" />
           <div className="absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden" />
           <div className="sticky top-[4.5rem] -ml-0.5 h-[calc(100vh-4.5rem)] overflow-y-auto py-16 pl-0.5">
-            <div className="absolute top-16 bottom-0 right-0 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block" />
-            <div className="absolute top-28 bottom-0 right-0 hidden w-px bg-slate-800 dark:block" />
             <ContentNavigation sections={sections} className="w-64 pr-8 xl:w-72 xl:pr-16" />
           </div>
         </div>

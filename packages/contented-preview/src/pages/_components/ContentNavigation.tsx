@@ -1,8 +1,8 @@
+import clsx from 'clsx';
+import isEqual from 'lodash/isEqual';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import clsx from 'clsx';
 import { ComponentProps } from 'react';
-import isEqual from 'lodash/isEqual';
 
 export interface ContentSection {
   sections: string[];
@@ -51,18 +51,23 @@ export default function ContentNavigation({ sections, className }: ContentNaviga
 
               <ul
                 role="list"
-                className="mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200"
+                className={clsx({
+                  'mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200':
+                    path,
+                })}
               >
                 {section.items?.map((link) => (
                   <li key={link.path} className="relative">
                     <Link href={link.path}>
                       <a
-                        className={clsx(
-                          'block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full',
-                          link.path === router.asPath
-                            ? 'font-semibold text-primary-500 before:bg-primary-500'
-                            : 'text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300',
-                        )}
+                        className={clsx({
+                          'block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full':
+                            path,
+                          'font-medium': !path,
+                          'text-primary-500 before:bg-primary-500 font-semibold': link.path === router.asPath,
+                          'text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300':
+                            link.path !== router.asPath,
+                        })}
                       >
                         {link.title}
                       </a>

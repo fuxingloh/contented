@@ -1,8 +1,8 @@
 const { join } = require('node:path');
 const { createContentlayerPlugin } = require('next-contentlayer');
 
-/** @type {ContentedConfig} */
-// const contentedConfig = require(join(process.env.CONTENTED_CWD, 'contented.js'));
+/** @type {ContentedPreview} */
+const preview = require(join(process.env.CONTENTED_CWD, 'package.json'))?.['contented'];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -10,9 +10,9 @@ const nextConfig = {
   pageExtensions: ['page.tsx', 'page.ts'],
   swcMinify: true,
   env: {
-    // SITE_URL: contentedConfig.preview?.url ?? 'https://contented.dev',
-    // SITE_NAME: contentedConfig.preview?.name ?? 'Contented',
-    // GITHUB_URL: contentedConfig.preview?.github?.url ?? 'https://github.com/BirthdayResearch/contented',
+    SITE_URL: preview?.url ?? 'https://contented.dev',
+    SITE_NAME: preview?.name ?? 'Contented',
+    GITHUB_URL: preview?.github?.url ?? 'https://github.com/BirthdayResearch/contented',
   },
   eslint: {
     ignoreDuringBuilds: true,

@@ -1,8 +1,8 @@
-import { ComputedFields, LocalDocument } from "@contentlayer/source-files";
+import { ComputedFields, LocalDocument } from '@contentlayer/source-files';
 import { Content, Parent, Root } from 'hast';
-import { toString } from "hast-util-to-string";
-import rehypeParse from "rehype-parse";
-import { unified } from "unified";
+import { toString } from 'hast-util-to-string';
+import rehypeParse from 'rehype-parse';
+import { unified } from 'unified';
 
 export interface ContentHeading {
   id: string;
@@ -36,23 +36,20 @@ function mergeHeadings(headings: ContentHeading[]): ContentHeading[] {
 }
 
 function remarkRehead(this: any) {
-  function collectHeadings(
-    node: Parent,
-    headings: ContentHeading[] = []
-  ): ContentHeading[] {
+  function collectHeadings(node: Parent, headings: ContentHeading[] = []): ContentHeading[] {
     node?.children?.forEach((child: Content) => {
-      if (child.type === "element") {
+      if (child.type === 'element') {
         // eslint-disable-next-line default-case
         switch (child.tagName) {
-          case "h1":
-          case "h2":
-          case "h3":
-          case "h4":
-          case "h5":
-          case "h6":
+          case 'h1':
+          case 'h2':
+          case 'h3':
+          case 'h4':
+          case 'h5':
+          case 'h6':
             headings.push({
               depth: Number.parseInt(child.tagName.substring(1), 10) as any,
-              id: (child.properties?.id as string) ?? "",
+              id: (child.properties?.id as string) ?? '',
               title: toString(child),
               children: [],
             });
@@ -73,13 +70,10 @@ function remarkRehead(this: any) {
 
 export function computeContentHeadings(): ComputedFields[string] {
   return {
-    type: "json",
-    description: "The headings of the content.",
+    type: 'json',
+    description: 'The headings of the content.',
     async resolve(doc: LocalDocument): Promise<ContentHeading[]> {
-      const parsed = await unified()
-        .use(rehypeParse)
-        .use(remarkRehead)
-        .process(doc.body.html);
+      const parsed = await unified().use(rehypeParse).use(remarkRehead).process(doc.body.html);
       return parsed.result as ContentHeading[];
     },
   };

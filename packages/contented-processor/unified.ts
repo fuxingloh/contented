@@ -14,7 +14,7 @@ export interface UnifiedOptions {
   shiki?: HighlighterOptions;
 }
 
-export async function getUnifiedBuilder(
+export async function getUnifiedProcessor(
   options?: UnifiedOptions
 ): Promise<(builder: unified.Processor) => void> {
   const highlighter = await getHighlighter({

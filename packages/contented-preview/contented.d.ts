@@ -10,6 +10,7 @@ export interface ContentedPreview {
 
 export interface ContentedConfig {
   rootDir: string;
+  unified(): Promise<unified.Processor>;
   types: DocumentTypes;
 }
 

@@ -7,7 +7,8 @@
   },
   "scripts": {
     "write": "next dev",
-    "generate": "next build && next-sitemap"
+    "generate": "next build && next-sitemap",
+    "build": "contentlayer build"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.6",

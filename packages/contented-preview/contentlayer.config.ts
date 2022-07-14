@@ -8,6 +8,7 @@ async function makeConfig() {
       process.env.CONTENTED_CWD as string,
       contented.rootDir
     ),
+    markdown: await contented.unified(),
     documentTypes: contented.types,
     onUnknownDocuments: "skip-ignore",
     disableImportAliasWarning: true,

@@ -1,11 +1,10 @@
-/* eslint-disable */
 import {
   defineDocumentType,
   getUnifiedProcessor,
   computeContentHeadings,
   computePath,
   computeSections,
-} from '../contented-processor';
+} from '@birthdayresearch/contented-processor';
 
 const Doc = defineDocumentType(() => ({
   name: 'Doc',
@@ -29,7 +28,7 @@ const Doc = defineDocumentType(() => ({
   },
 }));
 
-/** @type {ContentedConfig} */
+/** @type {import('@birthdayresearch/contented').ContentedConfig} */
 export default {
   rootDir: './',
   unified: getUnifiedProcessor,

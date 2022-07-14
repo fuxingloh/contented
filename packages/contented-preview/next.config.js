@@ -1,8 +1,8 @@
-const { join } = require('node:path');
-const { createContentlayerPlugin } = require('next-contentlayer');
+const { withContentlayer } = require('next-contentlayer');
 
+// noinspection JSFileReferences
 /** @type {ContentedPreview} */
-const preview = require(join(process.env.CONTENTED_CWD, 'package.json'))?.['contented'];
+const preview = require('../package.json')?.['contented'];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -18,9 +18,5 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
 };
-
-const withContentlayer = createContentlayerPlugin({
-  configPath: join(__dirname, 'contentlayer.config.js'),
-});
 
 module.exports = withContentlayer(nextConfig);

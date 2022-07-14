@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-const { symlinkSync, existsSync, rmSync, cpSync } = require('node:fs');
+const { cpSync } = require('node:fs');
 const { spawnSync } = require('node:child_process');
 const commandLineArgs = require('command-line-args');
 
@@ -8,34 +8,19 @@ const { command } = commandLineArgs(mainDefinitions, {
   stopAtFirstUnknown: true,
 });
 
-const path = `${__dirname}/contented.js`;
-const target = `${process.cwd()}/contented.js`;
-if (existsSync(path)) {
-  rmSync(path);
-}
-symlinkSync(target, path, 'file');
+const contentedDir = `${process.cwd()}/.contented`;
 
-spawnSync(`npm`, ['run', command, '--prefix', __dirname], {
+cpSync(`${__dirname}`, contentedDir, {
+  recursive: true,
+});
+
+spawnSync(`npm`, ['run', command, '--prefix', contentedDir], {
   stdio: 'inherit',
-  cwd: __dirname,
-  env: {
-    ...process.env,
-    CONTENTED_CWD: process.cwd(),
-  },
+  cwd: contentedDir,
 });
 
 if (command === 'build') {
-  cpSync(`${__dirname}/.contentlayer/generated`, `${process.cwd()}/dist`, {
-    recursive: true,
-  });
-}
-
-if (command === 'generate') {
-  cpSync(`${__dirname}/.next`, `${process.cwd()}/.next`, {
-    recursive: true,
-  });
-
-  cpSync(`${__dirname}/out`, `${process.cwd()}/out`, {
+  cpSync(`${contentedDir}/.contentlayer/generated`, `${process.cwd()}/dist`, {
     recursive: true,
   });
 }

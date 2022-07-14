@@ -7,7 +7,8 @@
     "contented.js",
     "**/contented-processor/**/*.d.ts",
     "**/contented-processor/**/*.js",
-    "**/out"
+    "**/.contented",
+    "**/dist"
   ],
   "rules": {
     "class-methods-use-this": "off",

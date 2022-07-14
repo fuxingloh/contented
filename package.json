@@ -15,7 +15,6 @@
     "@birthdayresearch/contented-processor": "0.0.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.182",
     "@types/node": "16.11.43",
     "eslint": "8.19.0",
     "eslint-config-airbnb-base": "^15.0.0",

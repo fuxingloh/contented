@@ -19,7 +19,7 @@ easily `npm i @your-scope/your-npm-package` and use the processed content on any
 pulling up-to-date content and prose from individual domain-specific repositories and re-presented. Think microservices,
 but for your prose!
 
----
+### Motivation
 
 If you don’t make it easy to get something done (authoring), nobody will go out of their way to get it done perfectly
 every time. Turn it into a GitOps workflow and give people the necessary tools and power to get it done perfectly every

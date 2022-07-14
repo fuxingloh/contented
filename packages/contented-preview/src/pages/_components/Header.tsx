@@ -5,7 +5,7 @@ import ThemeButton from './ThemeButton';
 
 export default function Header() {
   return (
-    <header className="border-b border-slate-200/60 bg-slate-50 dark:border-slate-300/10 dark:bg-slate-800/60">
+    <header className="sticky top-0 z-10 border-b border-slate-200/60 bg-slate-50 dark:border-slate-300/10 dark:bg-slate-900">
       <nav className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex w-full items-center justify-between py-4">
           <a href="/" className="flex items-center">

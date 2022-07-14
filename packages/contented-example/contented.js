@@ -14,7 +14,7 @@ const Doc = defineDocumentType(() => ({
       type: 'string',
       description: 'The title of the documentation.',
       required: true,
-      default: 'Contented Documentation',
+      default: 'Contented',
     },
     description: {
       type: 'string',

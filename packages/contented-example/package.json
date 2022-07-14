@@ -12,12 +12,12 @@
     "generate": "contented generate",
     "build": "contented build"
   },
-  "dependencies": {
+  "devDependencies": {
     "@birthdayresearch/contented": "0.0.0"
   },
   "contented": {
     "url": "https://contented.dev",
-    "name": "Contented Documentation",
+    "name": "Contented",
     "github": {
       "url": "https://github.com/BirthdayResearch/contented"
     }

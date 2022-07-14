@@ -9,3 +9,5 @@ out
 *.js.map
 tsconfig.tsbuildinfo
 package-lock.json
+.contented
+dist

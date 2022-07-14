@@ -29,3 +29,9 @@ if (command === 'build') {
     recursive: true,
   });
 }
+
+if (command === 'generate') {
+  cpSync(`${__dirname}/.next`, `${process.cwd()}/.next`, {
+    recursive: true,
+  });
+}

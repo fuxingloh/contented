@@ -1,0 +1,4 @@
+[build]
+base = "packages/contented-example"
+publish = ".next/"
+command = "contented generate"

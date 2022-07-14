@@ -28,7 +28,6 @@ const Doc = defineDocumentType(() => ({
   },
 }));
 
-/** @type {import('@birthdayresearch/contented').ContentedConfig} */
 export default {
   rootDir: './',
   unified: getUnifiedProcessor,

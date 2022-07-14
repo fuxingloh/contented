@@ -5,15 +5,14 @@
     "dist"
   ],
   "scripts": {
-    "write": "contented-preview write",
-    "generate": "contented-preview generate",
-    "build": "contented-processor build"
+    "write": "contented write",
+    "generate": "contented generate",
+    "build": "contented build"
   },
   "dependencies": {
-    "@birthdayresearch/contented-preview": "0.0.0",
-    "@birthdayresearch/contented-processor": "0.0.0"
+    "@birthdayresearch/contented": "0.0.0"
   },
-  "contented-preview": {
+  "contented": {
     "url": "https://contented.dev",
     "name": "Contented Documentation",
     "github": {

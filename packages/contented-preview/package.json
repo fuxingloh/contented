@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": false,
   "bin": {
-    "contented-preview": "./cli.js"
+    "contented": "./cli.js"
   },
   "scripts": {
     "write": "next dev",

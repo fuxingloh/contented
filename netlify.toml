@@ -1,4 +1,4 @@
 [build]
 base = "packages/contented-example"
 publish = ".next/"
-command = "generate"
+command = "npm run generate"

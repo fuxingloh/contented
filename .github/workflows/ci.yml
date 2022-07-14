@@ -36,6 +36,7 @@ jobs:
           cache: 'npm'
 
       - run: npm ci
+      - run: npm run build --workspace=@birthdayresearch/contented-processor
       - run: npm run generate --workspace=@birthdayresearch/contented-example
 
   Lint:

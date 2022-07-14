@@ -1,8 +1,5 @@
 # Publish this into npm registry
 dist
 
-# Publish this into Vercel or Netlify (with https://www.npmjs.com/package/@netlify/plugin-nextjs)
-.next
-
-# Otherwise publish this into any static site capable website
-out
+# Preview website
+.contented

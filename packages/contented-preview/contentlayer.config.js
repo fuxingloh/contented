@@ -1,13 +1,15 @@
 import { join } from 'node:path';
 import { makeSource } from 'contentlayer/source-files';
-import contented from './contented';
+
+// noinspection JSFileReferences
+import contented from '../contented';
 
 async function makeConfig() {
   return makeSource({
-    contentDirPath: join(process.env.CONTENTED_CWD, contented.rootDir),
+    contentDirPath: join('../', contented.rootDir),
     markdown: await contented.unified(),
     documentTypes: contented.types,
-    contentDirExclude: ['dist', '.next', 'out'],
+    contentDirExclude: ['dist', '.next', 'out', '.contented'],
     onUnknownDocuments: 'skip-ignore',
     disableImportAliasWarning: true,
   });

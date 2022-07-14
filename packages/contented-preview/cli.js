@@ -34,4 +34,8 @@ if (command === 'generate') {
   cpSync(`${__dirname}/.next`, `${process.cwd()}/.next`, {
     recursive: true,
   });
+
+  cpSync(`${__dirname}/out`, `${process.cwd()}/out`, {
+    recursive: true,
+  });
 }

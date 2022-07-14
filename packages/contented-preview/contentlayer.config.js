@@ -4,10 +4,10 @@ import contented from './contented';
 
 async function makeConfig() {
   return makeSource({
-    contentDirPath: join(process.env.CONTENTED_CWD as string, contented.rootDir),
+    contentDirPath: join(process.env.CONTENTED_CWD, contented.rootDir),
     markdown: await contented.unified(),
     documentTypes: contented.types,
-    contentDirExclude: ['dist'],
+    contentDirExclude: ['dist', '.next', 'out'],
     onUnknownDocuments: 'skip-ignore',
     disableImportAliasWarning: true,
   });

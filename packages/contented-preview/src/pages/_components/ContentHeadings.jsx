@@ -1,7 +1,6 @@
-import { ContentHeading } from '@birthdayresearch/contented-processor/fields/headings';
 import Link from 'next/link';
 
-export default function ContentHeadings(props: { contentHeadings: ContentHeading[] }) {
+export default function ContentHeadings(props) {
   return (
     <>
       {props.contentHeadings.length > 0 && (
@@ -10,7 +9,7 @@ export default function ContentHeadings(props: { contentHeadings: ContentHeading
             On this page
           </h2>
           <ol role="list" className="mt-4 space-y-3 text-sm">
-            {props.contentHeadings.map((heading: ContentHeading) => (
+            {props.contentHeadings.map((heading) => (
               <li key={heading.id}>
                 <h3 className="font-normal text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">
                   <Link href={`#${heading.id}`}>{heading.title}</Link>

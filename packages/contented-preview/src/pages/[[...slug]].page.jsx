@@ -1,11 +1,13 @@
-import { allDocuments } from 'contentlayer/generated';
+// noinspection ES6PreferShortImport
+import { allDocuments } from '../../.contentlayer/generated';
 import truncate from 'lodash/truncate';
-import { GetStaticPropsContext, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 
 import ContentHeadings from './_components/ContentHeadings';
 import ContentNavigation, { computeContentSections } from './_components/ContentNavigation';
 import ContentProse from './_components/ContentProse';
+
+const sections = computeContentSections(allDocuments);
 
 export async function getStaticPaths() {
   return {
@@ -14,21 +16,21 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }: GetStaticPropsContext<{ slug: string[] }>) {
+export async function getStaticProps({ params }) {
   const path = `/${params?.slug?.join('/') ?? ''}`;
-  const post = allDocuments.find((p) => p.path === path)!;
+  const doc = allDocuments.find((p) => p.path === path);
   return {
     props: {
-      post: post ?? allDocuments[0], // post ??
-      sections: computeContentSections(allDocuments),
+      doc: doc ?? allDocuments[0],
+      sections: sections,
     },
   };
 }
 
-export default function PostPage({ post, sections }: InferGetServerSidePropsType<typeof getStaticProps>) {
-  const siteTitle = `${post.title} | ${process.env.SITE_NAME}`;
-  const canonicalUrl = `${process.env.SITE_URL}${post.path}`;
-  const description = truncate(post.description, { length: 220 });
+export default function PostPage({ doc, sections }) {
+  const siteTitle = `${doc.title} | ${process.env.SITE_NAME}`;
+  const canonicalUrl = `${process.env.SITE_URL}${doc.path}`;
+  const description = truncate(doc?.description, { length: 220 });
 
   return (
     <>
@@ -57,15 +59,15 @@ export default function PostPage({ post, sections }: InferGetServerSidePropsType
         <div className="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
           <article>
             <ContentProse>
-              <h1>{post.title}</h1>
-              <div dangerouslySetInnerHTML={{ __html: post.body.html }} />
+              <h1>{doc.title}</h1>
+              <div dangerouslySetInnerHTML={{ __html: doc.body.html }} />
             </ContentProse>
           </article>
         </div>
 
         <div className="hidden xl:sticky xl:top-[4.5rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6">
           <nav aria-labelledby="on-this-page-title" className="w-56">
-            <ContentHeadings contentHeadings={post.contentHeadings} />
+            <ContentHeadings contentHeadings={doc.contentHeadings} />
           </nav>
         </div>
       </div>

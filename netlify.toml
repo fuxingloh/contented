@@ -1,4 +1,3 @@
 [build]
-base = "packages/contented-example"
-publish = ".next/"
-command = "npm run generate"
+publish = "packages/contented-example/.next/"
+command = "npm run generate --workspace=@birthdayresearch/contented-example"

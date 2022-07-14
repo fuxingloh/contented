@@ -9,9 +9,9 @@ A `Promise<?>` based design is used as async/await implementation are very matur
 life to modern development.
 
 ```js
-import { JsonRpcClient } from "@defichain/jellyfish-api-jsonrpc";
+import { JsonRpcClient } from '@defichain/jellyfish-api-jsonrpc';
 
-const client = new JsonRpcClient("http://foo:bar@localhost:8554");
+const client = new JsonRpcClient('http://foo:bar@localhost:8554');
 const { blocks } = await client.mining.getMiningInfo();
 ```
 
@@ -21,10 +21,10 @@ Due to the dynamic nature of the JavaScript language, it forces all number to be
 cause precision to be lost. [JellyfishSDK/jellyfish/issues/18](https://github.com/JellyfishSDK/jellyfish/issues/18)
 
 ```js
-it("lost precision converting DFI 😥", () => {
+it('lost precision converting DFI 😥', () => {
   const n = 1200000000.00000001;
   const a = JSON.parse(JSON.stringify(n)) * 1.0e8;
-  expect(a.toString()).toStrictEqual("120000000000000001");
+  expect(a.toString()).toStrictEqual('120000000000000001');
 });
 ```
 
@@ -51,15 +51,8 @@ wallet or transaction related operations. While IEEE-754 number is used for all 
 
 ```ts {3}
 export class Wallet {
-  async getBalance(
-    minimumConfirmation: number = 0,
-    includeWatchOnly: boolean = false
-  ): Promise<BigNumber> {
-    return await this.client.call(
-      "getbalance",
-      ["*", minimumConfirmation, includeWatchOnly],
-      "bignumber"
-    );
+  async getBalance(minimumConfirmation: number = 0, includeWatchOnly: boolean = false): Promise<BigNumber> {
+    return await this.client.call('getbalance', ['*', minimumConfirmation, includeWatchOnly], 'bignumber');
   }
 }
 ```
@@ -72,19 +65,12 @@ export interface MiningInfo {
 }
 
 export class Mining {
-  async getNetworkHashPerSecond(
-    nblocks: number = 120,
-    height: number = -1
-  ): Promise<number> {
-    return await this.client.call(
-      "getnetworkhashps",
-      [nblocks, height],
-      "number"
-    );
+  async getNetworkHashPerSecond(nblocks: number = 120, height: number = -1): Promise<number> {
+    return await this.client.call('getnetworkhashps', [nblocks, height], 'number');
   }
 
   async getMiningInfo(): Promise<MiningInfo> {
-    return await this.client.call("getmininginfo", [], "number");
+    return await this.client.call('getmininginfo', [], 'number');
   }
 }
 ```
@@ -116,10 +102,6 @@ export abstract class ApiClient {
    * @throws RpcApiError
    * @throws ClientApiError
    */
-  abstract call<T>(
-    method: string,
-    params: any[],
-    precision: Precision
-  ): Promise<T>;
+  abstract call<T>(method: string, params: any[], precision: Precision): Promise<T>;
 }
 ```

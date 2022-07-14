@@ -1,9 +1,9 @@
-import { MoonIcon, SunIcon } from "@heroicons/react/outline";
-import { ComponentProps, useEffect, useState } from "react";
+import { MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { ComponentProps, useEffect, useState } from 'react';
 
 enum Theme {
-  Dark = "dark",
-  Light = "light",
+  Dark = 'dark',
+  Light = 'light',
 }
 
 export default function ThemeButton(props: ComponentProps<any>) {
@@ -11,9 +11,9 @@ export default function ThemeButton(props: ComponentProps<any>) {
 
   useEffect(() => {
     if (selectedTheme) {
-      document.documentElement.setAttribute("data-theme", selectedTheme);
+      document.documentElement.setAttribute('data-theme', selectedTheme);
     } else {
-      const theme = document.documentElement.getAttribute("data-theme");
+      const theme = document.documentElement.getAttribute('data-theme');
       setSelectedTheme(theme as Theme);
     }
   }, [selectedTheme]);
@@ -21,10 +21,7 @@ export default function ThemeButton(props: ComponentProps<any>) {
   return (
     <div {...props}>
       <button className="flex items-center">
-        <SunIcon
-          className="hidden h-6 w-6 [[data-theme=light]_&]:block"
-          onClick={() => setSelectedTheme(Theme.Dark)}
-        />
+        <SunIcon className="hidden h-6 w-6 [[data-theme=light]_&]:block" onClick={() => setSelectedTheme(Theme.Dark)} />
         <MoonIcon
           className="hidden h-6 w-6 [[data-theme=dark]_&]:block"
           onClick={() => setSelectedTheme(Theme.Light)}

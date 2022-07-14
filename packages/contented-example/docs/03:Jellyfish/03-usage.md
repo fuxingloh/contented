@@ -11,9 +11,9 @@ npm i defichain @defichain/jellyfish-api-jsonrpc
 ## JsonRpcClient
 
 ```ts
-import { JsonRpcClient } from "@defichain/jellyfish-api-jsonrpc";
+import { JsonRpcClient } from '@defichain/jellyfish-api-jsonrpc';
 
-const client = new JsonRpcClient("http://foo:bar@localhost:8554");
+const client = new JsonRpcClient('http://foo:bar@localhost:8554');
 ```
 
 ## ApiClient
@@ -21,15 +21,15 @@ const client = new JsonRpcClient("http://foo:bar@localhost:8554");
 You can extend `ApiClient` with the `@defichain/jellyfish-api-core` package to create your own transport exchange specification.
 
 ```ts
-import { ApiClient } from "@defichain/jellyfish-api-core";
+import { ApiClient } from '@defichain/jellyfish-api-core';
 
 class SpecClient extends ApiClient {
   async call<T>(method: string, payload: any[]): Promise<T> {
-    throw new ClientApiError("error from client");
+    throw new ClientApiError('error from client');
   }
 }
 
-const client = new SpecClient("http://localhost:8554");
+const client = new SpecClient('http://localhost:8554');
 ```
 
 ## `call` Method
@@ -41,5 +41,5 @@ You can use the `.call` method directly by specifying:
 3. number precision for parse
 
 ```ts
-const result = await client.call("methodname", ["p1", "p2"], "number");
+const result = await client.call('methodname', ['p1', 'p2'], 'number');
 ```

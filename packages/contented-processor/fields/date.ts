@@ -1,25 +1,19 @@
-import { ComputedFields, LocalDocument } from "@contentlayer/source-files";
-import fs from "node:fs/promises";
-import path from "node:path";
+import { ComputedFields, LocalDocument } from '@contentlayer/source-files';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
-export async function getLastEditedDate(
-  contentDirPath: string,
-  meta: LocalDocument
-): Promise<Date> {
+export async function getLastEditedDate(contentDirPath: string, meta: LocalDocument): Promise<Date> {
   const stats = await fs.stat(
     // eslint-disable-next-line no-underscore-dangle
-    path.join(contentDirPath, meta._raw.sourceFilePath)
+    path.join(contentDirPath, meta._raw.sourceFilePath),
   );
   return stats.mtime;
 }
 
-export function computeLastEditedDate(
-  contentDirPath: string
-): ComputedFields[string] {
+export function computeLastEditedDate(contentDirPath: string): ComputedFields[string] {
   return {
-    type: "date",
-    description:
-      "The last edited date of the file computed from fs.stat(meta._raw.sourceFilePath).",
+    type: 'date',
+    description: 'The last edited date of the file computed from fs.stat(meta._raw.sourceFilePath).',
     resolve(doc: LocalDocument): Promise<Date> {
       return getLastEditedDate(contentDirPath, doc);
     },

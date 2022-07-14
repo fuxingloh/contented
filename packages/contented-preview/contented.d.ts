@@ -1,4 +1,4 @@
-import { DocumentTypes } from "contentlayer/source-files";
+import { DocumentTypes } from 'contentlayer/source-files';
 
 export interface ContentedPreview {
   url?: string;

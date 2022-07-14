@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 const { symlinkSync, existsSync, rmSync, cpSync } = require('node:fs');
-const { spawn } = require('node:child_process');
+const { spawnSync } = require('node:child_process');
 const commandLineArgs = require('command-line-args');
 
 const mainDefinitions = [{ name: 'command', defaultOption: true }];
@@ -15,7 +15,7 @@ if (existsSync(path)) {
 }
 symlinkSync(target, path, 'file');
 
-spawn(`npm`, ['run', command, '--prefix', __dirname], {
+spawnSync(`npm`, ['run', command, '--prefix', __dirname], {
   stdio: 'inherit',
   cwd: __dirname,
   env: {
@@ -26,6 +26,16 @@ spawn(`npm`, ['run', command, '--prefix', __dirname], {
 
 if (command === 'build') {
   cpSync(`${__dirname}/.contentlayer/generated`, `${process.cwd()}/dist`, {
+    recursive: true,
+  });
+}
+
+if (command === 'generate') {
+  cpSync(`${__dirname}/.next`, `${process.cwd()}/.next`, {
+    recursive: true,
+  });
+
+  cpSync(`${__dirname}/out`, `${process.cwd()}/out`, {
     recursive: true,
   });
 }

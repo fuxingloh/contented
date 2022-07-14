@@ -7,7 +7,7 @@
   },
   "scripts": {
     "write": "next dev",
-    "generate": "next build && next-sitemap",
+    "generate": "next build && next-sitemap && next export",
     "build": "contentlayer build"
   },
   "dependencies": {

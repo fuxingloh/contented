@@ -1,5 +1,5 @@
 import { ComputedFields, LocalDocument } from "@contentlayer/source-files";
-import { Content, Parent, Root } from 'hast';
+import { Content, Parent, Root } from "hast";
 import { toString } from "hast-util-to-string";
 import rehypeParse from "rehype-parse";
 import { unified } from "unified";

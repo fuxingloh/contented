@@ -1,7 +1,13 @@
 {
   "plugins": ["simple-import-sort"],
   "extends": ["airbnb-base", "airbnb-typescript/base", "prettier"],
-  "ignorePatterns": ["**/*.config.ts", "**/*.config.js"],
+  "ignorePatterns": [
+    "**/*.config.ts",
+    "**/*.config.js",
+    "contented.js",
+    "**/contented-processor/**/*.d.ts",
+    "**/contented-processor/**/*.js"
+  ],
   "rules": {
     "class-methods-use-this": "off",
     "import/no-extraneous-dependencies": "off",

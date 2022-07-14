@@ -6,8 +6,8 @@ export async function getLastEditedDate(
   contentDirPath: string,
   meta: LocalDocument
 ): Promise<Date> {
-  // eslint-disable-next-line no-underscore-dangle
   const stats = await fs.stat(
+    // eslint-disable-next-line no-underscore-dangle
     path.join(contentDirPath, meta._raw.sourceFilePath)
   );
   return stats.mtime;

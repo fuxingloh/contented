@@ -15,7 +15,7 @@ As with all modern JavaScript projects, jellyfish follows a monorepo structure w
 maintained in this repo are published with the same version tag and follows the `DeFiCh/ain` releases.
 
 | Package                                      | Description                                                                                                            |
-|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | `@defichain/jellyfish-address`               | Provide address builder, parser, validator utility library for DeFi Blockchain.                                        |
 | `@defichain/jellyfish-api-core`              | A protocol agnostic DeFi Blockchain client interfaces, with a "foreign function interface" design.                     |
 | `@defichain/jellyfish-api-jsonrpc`           | Implements the [JSON-RPC 1.0](https://www.jsonrpc.org/specification_v1) specification for api-core.                    |

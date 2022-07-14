@@ -6,14 +6,14 @@ title: API Reference
 
 ### `contented write`
 
-To ease the authoring process, `content write` create a preview of your content on `localhost:3000`. The preview comes
-with basic content navigation tree (left), table of contents (right) and prose formatting (center).
+To ease the authoring process, `content write` creates a preview of your content on `localhost:3000`. The preview comes
+with a basic content navigation tree (left), table of contents (right), and prose formatting (center).
 
 This website, the current one **you're looking at right now** is the result of `contented write`.
 
 ### `contented generate`
 
-Generates the preview static website that can be published to GitHub Pages, Netlify or Vercel! Minimally, you need to
+Generates the static preview website that can be published to GitHub Pages, Netlify, or Vercel! Minimally, you need to
 configure your `package.json` with these fields:
 
 ```json
@@ -52,8 +52,8 @@ OUTPUT DIRECTORY    = .contented/.next
 
 ### `contented build`
 
-Generates the `./dist` output that can be published into NPM registry for creating derivative site. Minimally, you need
-to configure your `package.json` with these fields:
+Generates the `./dist` output that can be published into the NPM registry for creating a derivative site. Minimally, you
+need to configure your `package.json` with these fields:
 
 ```json
 {
@@ -77,7 +77,7 @@ import { allDocuments } from '@your-scope/your-npm-package';
 
 ## Contented Configuration
 
-The anatomy of a contented package, with just 2 configuration files, and you are good from the get go!
+The anatomy of a contented package, with just 2 configuration files, and you are good from the get-go!
 
 > You should also add a `.gitignore` too with `echo "dist\n.contented" > .gitignore`. (Okay fine! 3 files it is. Ughhhh)
 
@@ -110,7 +110,7 @@ import {
   getUnifiedProcessor,
   computeContentHeadings,
   computePath,
-  computeSections
+  computeSections,
 } from '@birthdayresearch/contented-processor';
 
 const Doc = defineDocumentType(() => ({
@@ -118,7 +118,7 @@ const Doc = defineDocumentType(() => ({
   filePathPattern: `docs/**/*.md`,
   fields: {
     title: { type: 'string', required: true },
-    description: { type: 'string', required: false }
+    description: { type: 'string', required: false },
   },
   computedFields: {
     path: computePath('/', /\d+:/g, ''),
@@ -128,11 +128,10 @@ const Doc = defineDocumentType(() => ({
 }));
 
 export default {
-  rootDir: './,
+  rootDir: './',
   unified: getUnifiedProcessor,
   types: [Doc],
 };
-
 ```
 
 ### `package.json`
@@ -162,3 +161,9 @@ You configure the preview website through `package.json`:
   }
 }
 ```
+
+## Powered By
+
+- [Next](https://nextjs.org/), [Tailwind](https://tailwindcss.com/) for `contented write` and `contented generate`
+- [Contentlayer](https://contentlayer.dev/) with a collection of Unified Plugin for MD processing for `contented build`
+- And hacking around by spawning `node:child_process` so you just need 2 configuration files.

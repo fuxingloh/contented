@@ -20,7 +20,7 @@ export function computeSections(ignorePrefix: RegExp, replace: RegExp, replaceWi
     resolve(doc: LocalDocument): string[] {
       // eslint-disable-next-line no-underscore-dangle
       const dir = doc._raw.sourceFileDir.replaceAll(ignorePrefix, '');
-      if (!dir) {
+      if (!dir || dir === '.') {
         return [];
       }
       return dir.replaceAll(replace, replaceWith).split('/');

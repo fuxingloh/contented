@@ -8,7 +8,7 @@ import {
 
 const Doc = defineDocumentType(() => ({
   name: 'Doc',
-  filePathPattern: `docs/**/*.md`,
+  filePathPattern: `**/*.md`,
   fields: {
     title: {
       type: 'string',
@@ -23,13 +23,13 @@ const Doc = defineDocumentType(() => ({
   },
   computedFields: {
     path: computePath('/', /\d+:/g, ''),
-    sections: computeSections(/docs\/?/g, /\d+:/g, ''),
+    sections: computeSections(undefined, /\d+:/g, ''),
     contentHeadings: computeContentHeadings(),
   },
 }));
 
 export default {
-  rootDir: './',
+  rootDir: 'docs',
   unified: getUnifiedProcessor,
   types: [Doc],
 };

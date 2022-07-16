@@ -1,3 +1,4 @@
+import rehypeMermaid from '@birthdayresearch/contented-processor/mermaid';
 import rehypeToc from '@jsdevtools/rehype-toc';
 import rehypeShiki from '@leafac/rehype-shiki';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -33,6 +34,7 @@ export async function getUnifiedProcessor(options?: UnifiedOptions): Promise<(bu
       .use(rehypeSlug)
       .use(rehypeAutolinkHeadings)
       .use(rehypeToc)
+      .use(rehypeMermaid)
       .use(rehypeShiki, { highlighter })
       .use(rehypeStringify);
   };

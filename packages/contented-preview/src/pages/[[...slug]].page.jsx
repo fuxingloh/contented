@@ -6,8 +6,10 @@ import Head from 'next/head';
 import ContentHeadings from './_components/ContentHeadings';
 import ContentNavigation, { computeContentSections } from './_components/ContentNavigation';
 import ContentProse from './_components/ContentProse';
-
-const sections = computeContentSections(allDocuments);
+import { useEffect, useState } from 'react';
+import { useTheme } from './_components/ThemeContext';
+import mermaid from 'mermaid';
+import { useRouter } from 'next/router';
 
 export async function getStaticPaths() {
   return {
@@ -22,15 +24,32 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       doc: doc ?? allDocuments[0],
-      sections: sections,
+      sections: computeContentSections(allDocuments),
     },
   };
 }
 
-export default function PostPage({ doc, sections }) {
+export default function SlugPage({ doc, sections }) {
   const siteTitle = `${doc.title} | ${process.env.SITE_NAME}`;
   const canonicalUrl = `${process.env.SITE_URL}${doc.path}`;
   const description = truncate(doc?.description, { length: 220 });
+
+  const [isMermaidInit, setIsMermaidInit] = useState(false);
+  const { theme } = useTheme();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!theme) {
+      return;
+    }
+
+    if (isMermaidInit) {
+      mermaid.init();
+    } else {
+      mermaid.initialize({ theme });
+    }
+    setIsMermaidInit(true);
+  }, [router.asPath, theme]);
 
   return (
     <>

@@ -1,3 +1,44 @@
-.prose nav.toc {
+.prose .toc {
   @apply sr-only;
+}
+
+.prose .admonitions {
+  @apply relative my-6 rounded-r py-0.5 px-6;
+  @apply before:absolute before:inset-0 before:h-full before:w-1;
+  @apply dark:text-slate-200;
+
+  @apply before:bg-slate-500 before:dark:bg-slate-600;
+  @apply bg-slate-100 dark:bg-slate-800;
+}
+
+.prose .admonitions.red {
+  @apply before:bg-red-500 before:dark:bg-red-600;
+  @apply bg-red-100 dark:bg-red-800;
+}
+
+.prose .admonitions.yellow {
+  @apply before:bg-amber-500 before:dark:bg-amber-600;
+  @apply bg-amber-100 dark:bg-amber-800;
+}
+
+.prose .admonitions.green {
+  @apply before:bg-green-500 before:dark:bg-green-600;
+  @apply bg-green-100 dark:bg-green-800;
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6) {
+  @apply -ml-6 pl-6;
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6):hover > a {
+  @apply block;
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6) > a {
+  @apply hidden;
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6) a:before {
+  content: '#';
+  @apply text-primary-500 absolute -ml-6;
 }

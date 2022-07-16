@@ -1,5 +1,7 @@
 ---
 title: Markdown Features
+description: The dialect of Markdown that is currently supported for contented
+tags: ['Markdown', 'Frontmatter', 'Admonitions', 'Mermaid']
 ---
 
 ```js

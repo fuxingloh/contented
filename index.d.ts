@@ -1,5 +1,3 @@
-import { DocumentTypes } from 'contentlayer/source-files';
-
 export interface ContentedPreview {
   url?: string;
   name?: string;
@@ -9,9 +7,20 @@ export interface ContentedPreview {
 }
 
 export interface ContentedConfig {
+  /**
+   * The root directory of your contented markdown. You can specify a sub-path.
+   */
   rootDir: string;
-  unified(): Promise<unified.Processor>;
-  types: DocumentTypes;
+
+  /**
+   * Customizing the unified processor.
+   */
+  unified?: () => Promise<unified.Processor>;
+
+  /**
+   * Defining Contentlayer DocumentTypes.
+   */
+  types: import('contentlayer/source-files').DocumentTypes;
 }
 
 export default {} as ContentedConfig;

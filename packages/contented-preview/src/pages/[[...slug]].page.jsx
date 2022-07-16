@@ -1,15 +1,15 @@
 // noinspection ES6PreferShortImport
-import { allDocuments } from '../../.contentlayer/generated';
 import truncate from 'lodash/truncate';
+import mermaid from 'mermaid';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
+import { allDocuments } from '../../.contentlayer/generated';
 import ContentHeadings from './_components/ContentHeadings';
 import ContentNavigation, { computeContentSections } from './_components/ContentNavigation';
 import ContentProse from './_components/ContentProse';
-import { useEffect, useState } from 'react';
 import { useTheme } from './_components/ThemeContext';
-import mermaid from 'mermaid';
-import { useRouter } from 'next/router';
 
 export async function getStaticPaths() {
   return {
@@ -86,7 +86,7 @@ export default function SlugPage({ doc, sections }) {
 
         <div className="hidden xl:sticky xl:top-[4.5rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6">
           <nav aria-labelledby="on-this-page-title" className="w-56">
-            <ContentHeadings contentHeadings={doc.contentHeadings} />
+            <ContentHeadings contentHeadings={doc.contentHeadings} tags={doc.tags} />
           </nav>
         </div>
       </div>

@@ -86,14 +86,14 @@ The anatomy of a contented package, with just 2 configuration files, and you are
 ```typescript
 export interface ContentedConfig {
   /**
-   * The root directory of your contented markdown. You can specifiy a subpath.
+   * The root directory of your contented markdown. You can specify a sub-path.
    */
   rootDir: string;
 
   /**
    * Customizing the unified processor.
    */
-  unified(): Promise<unified.Processor>;
+  unified?: () => Promise<unified.Processor>;
 
   /**
    * Defining Contentlayer DocumentTypes.
@@ -105,31 +105,31 @@ export interface ContentedConfig {
 #### Example
 
 ```js
-import {
-  defineDocumentType,
-  getUnifiedProcessor,
-  computeContentHeadings,
-  computePath,
-  computeSections,
-} from '@birthdayresearch/contented-processor';
-
-const Doc = defineDocumentType(() => ({
+const Doc = {
   name: 'Doc',
-  filePathPattern: `docs/**/*.md`,
+  filePathPattern: `**/*.md`,
   fields: {
-    title: { type: 'string', required: true },
-    description: { type: 'string', required: false },
+    title: {
+      type: 'string',
+      description: 'The title of the documentation.',
+      required: true,
+      default: 'Contented',
+    },
+    description: {
+      type: 'string',
+      required: false,
+    },
+    tags: {
+      type: 'list',
+      of: { type: 'string' },
+      default: [],
+      required: false,
+    },
   },
-  computedFields: {
-    path: computePath('/', /\d+:/g, ''),
-    sections: computeSections(/docs\/?/g, /\d+:/g, ''),
-    contentHeadings: computeContentHeadings(),
-  },
-}));
+};
 
 export default {
-  rootDir: './',
-  unified: getUnifiedProcessor,
+  rootDir: 'docs',
   types: [Doc],
 };
 ```

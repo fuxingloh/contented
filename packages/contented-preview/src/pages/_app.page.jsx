@@ -3,6 +3,7 @@ import '../styles/globals.css';
 import Head from 'next/head';
 
 import Header from './_components/Header';
+import { ThemeProvider } from './_components/ThemeContext';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -10,8 +11,10 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>{process.env.SITE_NAME}</title>
       </Head>
-      <Header />
-      <Component {...pageProps} />
+      <ThemeProvider>
+        <Header />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 }

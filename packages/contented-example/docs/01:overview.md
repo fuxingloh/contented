@@ -116,3 +116,9 @@ export default {
 
 - [BirthdayResearch/contented/packages/contented-example](https://github.com/BirthdayResearch/contented/tree/main/packages/contented-example)
 - [fuxingloh/jellyfishsdk-docs](https://github.com/fuxingloh/jellyfishsdk-docs)
+
+## Just Another SSG?
+
+This is not a static site generator. This is a markdown processor workflow with a built-in static site generator. The
+outcome we're trying to achieve is
+this [@birthdayresearch/contented-example/dist](https://www.jsdelivr.com/package/npm/@birthdayresearch/contented-example)

@@ -3,6 +3,8 @@ import rehypeShiki from '@leafac/rehype-shiki';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import rehypeStringify from 'rehype-stringify';
+import remarkDirective from 'remark-directive';
+import remarkDirectiveRehype from 'remark-directive-rehype';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
@@ -25,6 +27,8 @@ export async function getUnifiedProcessor(options?: UnifiedOptions): Promise<(bu
       .use(remarkGfm)
       .use(remarkFrontmatter)
       .use(remarkParse)
+      .use(remarkDirective)
+      .use(remarkDirectiveRehype)
       .use(remarkRehype)
       .use(rehypeSlug)
       .use(rehypeAutolinkHeadings)

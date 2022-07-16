@@ -32,6 +32,8 @@
     "rehype-autolink-headings": "^6.1.1",
     "rehype-parse": "^8.0.4",
     "rehype-slug": "^5.0.1",
+    "remark-directive": "^2.0.1",
+    "remark-directive-rehype": "^0.4.0",
     "remark-gfm": "^3.0.1",
     "shiki": "^0.10.1",
     "unified": "^10.1.2"

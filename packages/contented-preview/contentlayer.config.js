@@ -58,7 +58,7 @@ async function makeConfig() {
     contentDirPath: join('../', contented.rootDir),
     markdown: processor,
     documentTypes: types,
-    contentDirExclude: ['dist', '.next', 'out', '.contented'],
+    contentDirExclude: ['dist', '.next', 'out', '.contented', 'node_modules'],
     onUnknownDocuments: 'skip-ignore',
     disableImportAliasWarning: true,
   });

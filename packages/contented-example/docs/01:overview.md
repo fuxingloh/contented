@@ -1,20 +1,20 @@
 [Contented](https://contented.dev) is a Markdown-based authoring workflow that encourage developer authoring within
-its contextual Git repository. (`npm i @birthdayresearch/contented`)
+its contextual Git repository. `npm i @birthdayresearch/contented`
 
-With a headless design of 2 config files (`package.json` & `contented.js`), developers can start writing their markdown
-content and preview it on their localhost (`contented write`). Choosing convention over configuration reduces HTML/UI
+With a headless design of 2 config files `package.json` & `contented.js`, developers can start writing their markdown
+content and preview it on their localhost `contented write`. Choosing convention over configuration reduces HTML/UI
 clutter, allowing developers to focus on authoring.
 
 Authored content can be continuously delivered (CD) into a hosted static site (e.g., GitHub Pages/Netlify/Vercel) for
-preview (`contented generate`). As code drift, so does documentation; this allows each pull request to have an
+preview `contented generate`. As code drift, so does documentation; this allows each pull request to have an
 accompanying sharable preview of the documentation. With CD, it effectively shift-left your documentation workflow and
 checks it is compilable and presentable.
 
 By encouraging authoring next to the source (in the same git repo), developers can contextually document changes as they
 develop. All domain-specific changes will go into the `main` branch with one Git Pull Request.
 
-With (`contented build`), you can compile your markdown into sources (`index.js` & `*.json` with `*.d.ts`) that output
-into `./dist`. (`npm publish`) them into any registry of your choice, for you can
+With `contented build`, you can compile your markdown into sources `index.js` & `*.json` with `*.d.ts` that output
+into `./dist`. `npm publish` them into any registry of your choice, for you can
 easily `npm i @your-scope/your-npm-package` and use the processed content on any of your downstream sites. Easily
 pulling up-to-date content and prose from individual domain-specific repositories and re-presented. Think microservices,
 but for your prose!

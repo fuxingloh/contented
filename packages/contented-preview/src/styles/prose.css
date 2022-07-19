@@ -42,3 +42,11 @@
   content: '#';
   @apply text-primary-500 absolute -ml-6;
 }
+
+.prose code:not(pre code):not(:where([class~='not-prose'] *)) {
+  padding: 0.2em 0.4em;
+  border-radius: 6px;
+  @apply rounded border font-normal;
+  @apply border-slate-200/70 bg-slate-100/70;
+  @apply dark:border-slate-700/70 dark:bg-slate-800/70;
+}

@@ -15,6 +15,7 @@ builder
   .use(rehypeSlug)
   .use(rehypeAutolinkHeadings)
   .use(rehypeToc)
+  .use(rehypeMermaid)
   .use(rehypeShiki, { highlighter })
   .use(rehypeStringify);
 ```

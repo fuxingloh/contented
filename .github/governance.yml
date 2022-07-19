@@ -36,6 +36,9 @@ issue:
     - prefix: area
       list:
         - workflow
+        - contented-example
+        - contented-preview
+        - contented-processor
       multiple: true
       needs:
         comment: |

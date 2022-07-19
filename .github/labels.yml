@@ -52,6 +52,12 @@
 # Area
 - color: fbca04
   name: area/workflow
+- color: fbca04
+  name: area/contented-example
+- color: fbca04
+  name: area/contented-preview
+- color: fbca04
+  name: area/contented-processor
 
 # Priority
 - color: d93f0b

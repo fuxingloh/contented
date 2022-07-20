@@ -24,8 +24,8 @@ export default function ContentNavigation({ sections, className }) {
   const router = useRouter();
 
   return (
-    <nav className={clsx('text-base lg:text-sm', className)}>
-      <ul role="list" className="space-y-9">
+    <nav className={className}>
+      <ul role="list" className="space-y-9 lg:text-sm">
         {sections.map((section) => {
           const path = section.sections.join('/');
           return (
@@ -34,8 +34,8 @@ export default function ContentNavigation({ sections, className }) {
 
               <ul
                 role="list"
-                className={clsx('mt-2 space-y-2 lg:mt-4 lg:space-y-4', {
-                  'border-l-2 border-slate-100 dark:border-slate-800 lg:border-slate-200': path,
+                className={clsx('mt-2 mt-4 space-y-2 space-y-4', {
+                  'border-l-2 border-slate-100 border-slate-200 dark:border-slate-800': path,
                 })}
               >
                 {section.items?.map((link) => (

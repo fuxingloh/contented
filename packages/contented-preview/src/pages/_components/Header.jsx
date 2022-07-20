@@ -1,15 +1,33 @@
-import { DocumentTextIcon } from '@heroicons/react/outline';
+import { DocumentTextIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+
+import { useMenu } from './MenuContext';
 import ThemeButton from './ThemeButton';
 
 export default function Header() {
+  const { isOpen, setIsOpen } = useMenu();
+
   return (
     <header className="sticky top-0 z-10 border-b border-slate-200/60 bg-slate-50 dark:border-slate-300/10 dark:bg-slate-900">
       <nav className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex w-full items-center justify-between py-4">
-          <a href="/" className="flex items-center">
-            <DocumentTextIcon className="h-6 w-auto text-indigo-600 dark:text-indigo-500" />
-            <h1 className="ml-2 font-semibold">{process.env.SITE_NAME}</h1>
-          </a>
+          <div className="flex">
+            <div className="mr-4 flex lg:hidden">
+              {isOpen ? (
+                <button type="button" onClick={() => setIsOpen(false)} aria-label="Close navigation">
+                  <XIcon className="h-6 w-6" />
+                </button>
+              ) : (
+                <button type="button" onClick={() => setIsOpen(true)} aria-label="Open navigation">
+                  <MenuIcon className="h-6 w-6" />
+                </button>
+              )}
+            </div>
+
+            <a href="/" className="flex items-center">
+              <DocumentTextIcon className="h-6 w-auto text-indigo-600 dark:text-indigo-500" />
+              <h1 className="ml-2 font-semibold">{process.env.SITE_NAME}</h1>
+            </a>
+          </div>
 
           <div className="flex items-center space-x-4">
             <div>

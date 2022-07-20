@@ -17,6 +17,7 @@
     "import/prefer-default-export": "off",
     "import/extensions": "off",
     "no-use-before-define": "off",
+    "consistent-return": "off",
     "@typescript-eslint/no-use-before-define": "off",
     "no-console": "error",
     "simple-import-sort/imports": "error",

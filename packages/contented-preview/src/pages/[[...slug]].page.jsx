@@ -1,4 +1,5 @@
 // noinspection ES6PreferShortImport
+import clsx from 'clsx';
 import truncate from 'lodash/truncate';
 import mermaid from 'mermaid';
 import Head from 'next/head';
@@ -9,6 +10,7 @@ import { allDocuments } from '../../.contentlayer/generated';
 import ContentHeadings from './_components/ContentHeadings';
 import ContentNavigation, { computeContentSections } from './_components/ContentNavigation';
 import ContentProse from './_components/ContentProse';
+import { useMenu } from './_components/MenuContext';
 import { useTheme } from './_components/ThemeContext';
 
 export async function getStaticPaths() {
@@ -37,6 +39,7 @@ export default function SlugPage({ doc, sections }) {
   const [isMermaidInit, setIsMermaidInit] = useState(false);
   const { theme } = useTheme();
   const router = useRouter();
+  const { isOpen } = useMenu();
 
   useEffect(() => {
     if (!theme) {
@@ -67,15 +70,24 @@ export default function SlugPage({ doc, sections }) {
         )}
       </Head>
 
-      <div className="max-w-8xl relative mx-auto flex justify-center sm:px-2 lg:px-8 xl:px-12">
-        <div className="hidden lg:relative lg:block lg:flex-none">
-          <div className="absolute top-0 bottom-0 right-0 hidden w-px bg-slate-800 dark:block" />
-          <div className="absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden" />
+      <div className="max-w-8xl relative mx-auto flex justify-center px-8 xl:px-12">
+        <div
+          className={clsx('relative flex-none', {
+            block: isOpen,
+            'hidden lg:block': !isOpen,
+          })}
+        >
+          <div className="absolute top-0 bottom-0 right-0 hidden w-px dark:block lg:bg-slate-800" />
+          <div className="absolute inset-y-0 right-0 w-[50vw] dark:hidden lg:bg-slate-50" />
           <div className="sticky top-[4.5rem] -ml-0.5 h-[calc(100vh-4.5rem)] overflow-y-auto py-16 pl-0.5">
             <ContentNavigation sections={sections} className="w-64 pr-8 xl:w-72 xl:pr-16" />
           </div>
         </div>
-        <div className="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
+        <div
+          className={clsx('min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16', {
+            hidden: isOpen,
+          })}
+        >
           <article>
             <ContentProse>
               <h1>{doc.title}</h1>

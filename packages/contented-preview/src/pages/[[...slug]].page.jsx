@@ -22,10 +22,10 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const path = `/${params?.slug?.join('/') ?? ''}`;
-  const doc = allDocuments.find((p) => p.path === path);
+  const doc = allDocuments.find((p) => p.path === path) ?? allDocuments[0];
   return {
     props: {
-      doc: doc ?? allDocuments[0],
+      doc,
       sections: computeContentSections(allDocuments),
     },
   };

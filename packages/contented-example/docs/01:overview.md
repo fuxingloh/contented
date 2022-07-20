@@ -32,6 +32,12 @@ naturally satisfies.
 The outcome we're trying to achieve is
 this [@birthdayresearch/contented-example/dist](https://www.jsdelivr.com/package/npm/@birthdayresearch/contented-example)
 
+## Powered By
+
+- [Next](https://nextjs.org/), [Tailwind](https://tailwindcss.com/) for `contented write` and `contented generate`
+- [Contentlayer](https://contentlayer.dev/) with a collection of Unified Plugin for MD processing for `contented build`
+- And hacking around by spawning `node:child_process` so you just need 2 configuration files.
+
 ## Getting Started
 
 ```text

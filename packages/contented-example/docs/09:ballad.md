@@ -8,7 +8,7 @@ npm i
 
 ## While at SaaS Team
 
-### Engineering Write code
+### Engineer Write code
 
 ```shell
 echo "function foo()" > bar.js
@@ -47,6 +47,39 @@ contented build &&
 
 ## While at Product/Marketing Team
 
+### Engineer Implement Page
+
+```jsx
+import { allDocuments as aDocs } from '@company/your-product-a';
+import { allDocuments as bDocs } from '@company/your-product-b';
+
+export async function getStaticProps({ params }) {
+  const path = `/${params?.slug?.join('/') ?? ''}`;
+  if (path.startsWith('/docs/a')) {
+    return {
+      props: {
+        doc: aDocs.find((p) => p.path === path),
+      },
+    };
+  }
+
+  return {
+    props: {
+      doc: bDocs.find((p) => p.path === path),
+    },
+  };
+}
+
+export default function Page({ doc }) {
+  return (
+    <ContentProse>
+      <h1>{doc.title}</h1>
+      <div dangerouslySetInnerHTML={{ __html: doc.body.html }} />
+    </ContentProse>
+  );
+}
+```
+
 ### Dependabot
 
 ```shell
@@ -58,7 +91,7 @@ contented generate
   && netlify deploy preview
 ```
 
-### Engineer
+### Engineer Review Changes
 
 ```shell
 github open pr

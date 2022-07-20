@@ -4,6 +4,8 @@ description: The dialect of Markdown that is currently supported for contented
 tags: ['Markdown', 'Frontmatter', 'Admonitions', 'Mermaid']
 ---
 
+Contented [unified](https://www.npmjs.com/package/unified) processor pipeline.
+
 ```js
 builder
   .use(remarkGfm)

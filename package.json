@@ -6,7 +6,8 @@
     "./packages/contented-cli",
     "./packages/contented-processor",
     "./packages/contented-tests",
-    "./packages/eslint-config"
+    "./packages/eslint-config",
+    "./packages/jest-preset"
   ],
   "scripts": {
     "build": "turbo run build",
@@ -20,18 +21,11 @@
     "*": "prettier --write --ignore-unknown"
   },
   "devDependencies": {
-    "@types/node": "16.11.45",
-    "eslint": "8.20.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^8.0.1",
     "lerna": "^5.1.8",
     "lint-staged": "^13.0.3",
     "prettier": "2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.12",
-    "turbo": "^1.3.4",
-    "typescript": "4.7.4"
+    "turbo": "^1.3.4"
   }
 }

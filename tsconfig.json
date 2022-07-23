@@ -4,6 +4,7 @@
   "compilerOptions": {
     "lib": ["ES2021"],
     "module": "CommonJS",
+    "allowJs": true,
     "composite": false,
     "declaration": true,
     "declarationMap": true,
@@ -16,7 +17,8 @@
     "noUnusedParameters": false,
     "preserveWatchOutput": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules", "dist"]
 }

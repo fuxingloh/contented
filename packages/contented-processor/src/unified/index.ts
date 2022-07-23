@@ -10,22 +10,39 @@ import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { getHighlighter, HighlighterOptions } from 'shiki';
-import type * as unified from 'unified';
-
+import { Processor, unified, VFileWithOutput } from 'unified';
 import { rehypeMermaid } from './rehype/Mermaid';
+import fs from 'node:fs/promises';
+
+export type UnifiedProcessor = 'md'
+
+export type UnifiedProcessorRunner = (filePath: string) => Promise<VFileWithOutput<any>>
+
+export async function createUnifiedProcessorRunner(processor: UnifiedProcessor): Promise<UnifiedProcessorRunner | undefined> {
+  if (processor === 'md') {
+    const builder = await markdownBuilder();
+    const processor = unified();
+    builder(processor);
+
+    return async (filePath: string): Promise<VFileWithOutput<any>> => {
+      const file = await fs.readFile(filePath)
+      return processor.process(file);
+    };
+  }
+}
 
 export interface UnifiedOptions {
   shiki?: HighlighterOptions;
 }
 
-export async function createMarkdownProcessor(options?: UnifiedOptions): Promise<(builder: unified.Processor) => void> {
+async function markdownBuilder(options?: UnifiedOptions): Promise<(builder: Processor) => void> {
   const highlighter = await getHighlighter({
     theme: 'github-dark-dimmed',
     ...options?.shiki,
   });
 
-  return (builder) => {
-    builder
+  return (processor) => {
+    processor
       .use(remarkGfm)
       .use(remarkFrontmatter)
       .use(remarkParse)

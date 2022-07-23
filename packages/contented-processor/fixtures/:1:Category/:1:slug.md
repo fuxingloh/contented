@@ -1,0 +1,7 @@
+---
+title: 'Slug'
+---
+
+## Header
+
+Content

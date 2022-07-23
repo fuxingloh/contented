@@ -1,0 +1,9 @@
+{
+  "name": "@birthdayresearch/contented",
+  "version": "0.0.0",
+  "private": false,
+  "dependencies": {
+    "@birthdayresearch/contented-cli": "0.0.0",
+    "@birthdayresearch/contented-processor": "0.0.0"
+  }
+}

@@ -62,3 +62,10 @@ public/robots.txt
 
 # Contentlayer
 .contentlayer
+
+# turborepo
+*.tgz
+.turbo
+build
+dist
+.next

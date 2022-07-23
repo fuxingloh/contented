@@ -10,7 +10,7 @@ import {
   computeContentHeadings,
   computePath,
   computeSections,
-} from '@birthdayresearch/contented-processor';
+} from '@birthdayresearch/contented-processor/src';
 
 const defaultFields = {
   title: {

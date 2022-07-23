@@ -1,4 +1,3 @@
-import rehypeMermaid from '@birthdayresearch/contented-processor/mermaid';
 import rehypeToc from '@jsdevtools/rehype-toc';
 import rehypeShiki from '@leafac/rehype-shiki';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -13,11 +12,13 @@ import remarkRehype from 'remark-rehype';
 import { getHighlighter, HighlighterOptions } from 'shiki';
 import type * as unified from 'unified';
 
+import { rehypeMermaid } from './rehype/Mermaid';
+
 export interface UnifiedOptions {
   shiki?: HighlighterOptions;
 }
 
-export async function getUnifiedProcessor(options?: UnifiedOptions): Promise<(builder: unified.Processor) => void> {
+export async function createMarkdownProcessor(options?: UnifiedOptions): Promise<(builder: unified.Processor) => void> {
   const highlighter = await getHighlighter({
     theme: 'github-dark-dimmed',
     ...options?.shiki,

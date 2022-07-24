@@ -1,15 +1,11 @@
-import generate from '@babel/generator';
+import { CodeGenerator } from '@babel/generator';
 import fs from 'node:fs/promises';
 import { join } from 'node:path';
 import { Config } from './ContentedProcessor.js';
 import { FileContent, FileIndex } from './ContentedPipeline.js';
 
 export class ContentedCodegen {
-  constructor(
-    protected readonly config: Config,
-    protected readonly outPath: string,
-  ) {
-  }
+  constructor(protected readonly config: Config, protected readonly outPath: string) {}
 
   async generateIndex() {
     const types = this.config.pipelines.map((pipeline) => pipeline.type);
@@ -147,4 +143,9 @@ function generateIndexAST(types: string[]): any {
       ],
     },
   };
+}
+
+function generate(ast: any) {
+  const gen = new CodeGenerator(ast);
+  return gen.generate();
 }

@@ -8,6 +8,7 @@
   "main": "dist/index.js",
   "scripts": {
     "write": "contented write",
+    "watch": "contented watch",
     "generate": "contented generate",
     "build": "contented build"
   },

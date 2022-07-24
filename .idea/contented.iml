@@ -3,7 +3,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/packages/contented-example/.contented" />
+      <excludePattern pattern="*.contented*" />
       <excludePattern pattern="*.turbo*" />
       <excludePattern pattern="*dist*" />
     </content>

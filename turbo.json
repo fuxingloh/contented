@@ -10,6 +10,10 @@
       "outputs": ["dist/**"],
       "dependsOn": ["^build"]
     },
+    "watch": {
+      "inputs": ["**/.md"],
+      "dependsOn": ["build"]
+    },
     "test": {
       "inputs": ["src/**", "**/*.unit.ts"],
       "outputs": [],

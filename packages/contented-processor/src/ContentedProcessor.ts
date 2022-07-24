@@ -1,7 +1,7 @@
 import { join } from 'node:path';
 import minimatch from 'minimatch';
-import fs from 'node:fs/promises';
-import { ContentedPipeline, MarkdownContentedPipeline, Pipeline } from './pipeline';
+import { ContentedPipeline, FileContent, FileIndex, MarkdownContentedPipeline, Pipeline } from './pipeline';
+import { ContentedCodegen } from './ContentedCodegen';
 
 export interface Config {
   rootDir: string;
@@ -9,36 +9,61 @@ export interface Config {
   pipelines: Pipeline[];
 }
 
-export interface ContentedProcessorResult {}
+export interface ContentedProcessorResult {
+  pipelines: Record<string, FileIndex[]>;
+}
 
 export class ContentedProcessor {
   public readonly rootPath: string = join(process.cwd(), this.config.rootDir);
-  public readonly outPath: string = join(process.cwd(), this.config.rootDir, this.config.outDir);
+  private readonly codegen: ContentedCodegen = new ContentedCodegen(this.config);
   private pipelines: Record<string, ContentedPipeline | undefined> = {};
 
-  constructor(protected readonly config: Config) {}
-
-  async build(...files: string[]): Promise<ContentedProcessorResult> {
-    for (const file of files) {
-      const output = await this.process(file);
-      // TODO(fuxingloh): save output
-    }
-
-    return {};
+  constructor(protected readonly config: Config) {
+    config.pipelines.forEach((pipeline) => {
+      if (pipeline.type.match(/[^a-zA-Z]/g)) {
+        throw new Error(
+          'Due to codegen, pipeline.type must be a string with allowed characters within the range of [a-zA-Z]',
+        );
+      }
+    });
   }
 
-  async process(file: string) {
+  async build(...files: string[]): Promise<ContentedProcessorResult> {
+    const result: ContentedProcessorResult = {
+      pipelines: {},
+    };
+
+    for (const file of files) {
+      const output = await this.process(file);
+      if (output) {
+        await this.codegen.generateFile(output);
+
+        if (!result.pipelines[output.type]) {
+          result.pipelines[output.type] = [];
+        }
+
+        result.pipelines[output.type].push({
+          fields: output.fields,
+          id: output.id,
+          modifiedDate: output.modifiedDate,
+          path: output.path,
+          sections: output.sections,
+          type: output.type,
+        });
+      }
+    }
+
+    await this.codegen.generateIndex(result);
+    return result;
+  }
+
+  async process(file: string): Promise<FileContent | undefined> {
     const processor = await this.getCachedProcessor(file);
     if (processor === undefined) {
       return;
     }
 
-    const output = await processor.process(this.rootPath, file);
-    const outPath = join(this.outPath, output.category, `${output.id}.json`);
-
-    await fs.mkdir(join(this.outPath, output.category), { recursive: true });
-    await fs.writeFile(outPath, JSON.stringify(output));
-    return output;
+    return await processor.process(this.rootPath, file);
   }
 
   /**
@@ -51,7 +76,7 @@ export class ContentedProcessor {
       return undefined;
     }
 
-    const processor = this.pipelines[pipeline.category];
+    const processor = this.pipelines[pipeline.type];
     if (processor !== undefined) {
       return processor;
     }
@@ -59,11 +84,11 @@ export class ContentedProcessor {
     if (pipeline.processor === 'md') {
       const processor = new MarkdownContentedPipeline(pipeline);
       await processor.init();
-      this.pipelines[pipeline.category] = processor;
+      this.pipelines[pipeline.type] = processor;
       return processor;
     }
 
-    throw new Error(`pipeline.category: ${pipeline.category} processor not found.`);
+    throw new Error(`pipeline.category: ${pipeline.type} processor not found.`);
   }
 
   /**

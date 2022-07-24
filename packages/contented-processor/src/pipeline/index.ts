@@ -1,21 +1,19 @@
 import { createHash } from 'crypto';
 import { unified, VFileWithOutput, Processor } from 'unified';
 import { read } from 'to-vfile';
-import { VFile } from 'vfile';
 import { initProcessor } from '../unified';
-import { Config } from '../ContentedProcessor';
-import * as stream from 'stream';
 import fs from 'node:fs/promises';
 import { join, parse, ParsedPath } from 'node:path';
 import slugify from '@sindresorhus/slugify';
 import { ContentHeading } from '../unified/rehype/Heading';
 
 export interface Pipeline {
-  category: string;
+  type: string;
   pattern: string;
   processor: 'md';
   fields?: {
     [name: string]: string;
+    // TODO(fuxingloh): fields processing
   };
 }
 
@@ -25,7 +23,7 @@ export interface Pipeline {
 export interface FileIndex {
   id: string;
   path: string;
-  category: string;
+  type: string;
   sections: string[];
   modifiedDate: number;
   fields: Record<string, any>;
@@ -63,9 +61,9 @@ export class MarkdownContentedPipeline extends ContentedPipeline {
 
     return {
       id: computeFileId(filePath),
-      category: this.pipeline.category,
+      type: this.pipeline.type,
       modifiedDate: await computeModifiedDate(filePath),
-      path: `/${sections.map((s) => slugify(s)).join('/')}/${slugify(replacePrefix(parsedPath.name))}`,
+      path: computePath(sections, parsedPath),
       sections: sections,
       fields: contented.fields ?? {},
       html: output.value as string,
@@ -77,6 +75,16 @@ export class MarkdownContentedPipeline extends ContentedPipeline {
     const vFile = await read(filePath);
     return await this.processor.process(vFile);
   }
+}
+
+function computePath(sections: string[], parsedPath: ParsedPath) {
+  const dir = `/${sections.map((s) => slugify(s)).join('/')}`;
+  const file = `/${slugify(replacePrefix(parsedPath.name))}`;
+  if (file === '/index') {
+    return dir;
+  }
+
+  return `${dir}${file}`;
 }
 
 function computeFileId(filePath: string) {

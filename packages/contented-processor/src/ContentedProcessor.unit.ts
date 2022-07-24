@@ -5,7 +5,7 @@ const config: Config = {
   outDir: './.contented',
   pipelines: [
     {
-      category: 'Markdown',
+      type: 'Markdown',
       pattern: '**/*.md',
       processor: 'md',
     },
@@ -56,6 +56,7 @@ describe('process single files', function () {
     const processor = new ContentedProcessor(config);
     expect(await processor.process(':1:Category/Section/:2:path.md')).toStrictEqual({
       category: 'Markdown',
+      type: 'Markdown',
       fields: {
         title: 'Path',
       },
@@ -73,5 +74,13 @@ describe('process single files', function () {
       sections: ['Category', 'Section'],
       path: '/category/section/path',
     });
+  });
+});
+
+describe('build', function () {
+  const processor = new ContentedProcessor(config);
+
+  it('should build', async function () {
+    const result = await processor.build(':2:path-1.md', 'Foo.Bar.md');
   });
 });

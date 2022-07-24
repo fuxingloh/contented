@@ -6,22 +6,43 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-import { allDocuments } from '../../.contentlayer/generated';
+import { Pipelines } from '../../../.contented/index.js';
 import ContentHeadings from './_components/ContentHeadings';
 import ContentNavigation, { computeContentSections } from './_components/ContentNavigation';
 import ContentProse from './_components/ContentProse';
 import { useMenu } from './_components/MenuContext';
 import { useTheme } from './_components/ThemeContext';
 
+/**
+ * Collect all paths
+ */
 export async function getStaticPaths() {
+  const paths = [];
+  Object.values(Pipelines).map(({ collection }) => {
+    collection.forEach((item) => {
+      paths.push(item.path);
+    });
+  });
+
   return {
-    paths: ['/', ...allDocuments.map((doc) => doc.path)],
+    paths: paths,
     fallback: false,
   };
 }
 
+function findFileContent() {
+  Object.values(Pipelines).map(({ collection }) => {
+    collection.forEach((item) => {
+      paths.push(item.path);
+    });
+  });
+}
+
 export async function getStaticProps({ params }) {
   const path = `/${params?.slug?.join('/') ?? ''}`;
+
+  // /docs/09-others/02-limitations
+
   const doc = allDocuments.find((p) => p.path === path) ?? allDocuments[0];
   return {
     props: {

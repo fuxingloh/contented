@@ -2,11 +2,7 @@
   "name": "@birthdayresearch/contented-workspace",
   "private": true,
   "workspaces": [
-    "./packages/contented",
-    "./packages/contented-example",
-    "./packages/contented-processor",
-    "./packages/eslint-config",
-    "./packages/jest-preset"
+    "./packages/*"
   ],
   "scripts": {
     "build": "turbo run build",

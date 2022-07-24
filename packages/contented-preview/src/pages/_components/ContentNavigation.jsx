@@ -4,8 +4,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export function computeContentSections(items) {
-  // eslint-disable-next-line no-underscore-dangle
-  items.sort((a, b) => a._id.localeCompare(b._id));
   const sections = [];
 
   items.forEach((item) => {

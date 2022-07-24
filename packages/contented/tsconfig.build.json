@@ -1,4 +1,4 @@
 {
-  "extends": "./tsconfig.json",
-  "exclude": ["**/*.unit.ts"]
+  "exclude": ["**/*.unit.ts"],
+  "extends": "./tsconfig.json"
 }

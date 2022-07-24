@@ -1,8 +1,4 @@
-const { withContentlayer } = require('next-contentlayer');
-
-// noinspection JSFileReferences
-/** @type {ContentedPreview} */
-const preview = require('../package.json')?.['contented'];
+const { preview } = require('../.contented/contented.config.js');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -19,4 +15,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withContentlayer(nextConfig);
+module.exports = nextConfig

@@ -2,10 +2,10 @@
   "name": "@birthdayresearch/contented",
   "version": "0.0.0",
   "private": false,
+  "type": "module",
   "main": "./dist/index.js",
   "source": "./src/index.ts",
   "types": "./dist/index.d.ts",
-  "type": "module",
   "bin": {
     "contented": "./dist/cli.js"
   },
@@ -26,6 +26,7 @@
     ]
   },
   "dependencies": {
+    "@birthdayresearch/contented-preview": "0.0.0",
     "@birthdayresearch/contented-processor": "0.0.0",
     "chokidar": "^3.5.3",
     "clipanion": "3.2.0-rc.11",

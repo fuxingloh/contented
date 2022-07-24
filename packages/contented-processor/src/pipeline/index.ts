@@ -1,19 +1,20 @@
 import { createHash } from 'crypto';
 import { unified, VFileWithOutput, Processor } from 'unified';
 import { read } from 'to-vfile';
-import { initProcessor } from '../unified';
+import { initProcessor, UnifiedContented } from '../unified';
 import fs from 'node:fs/promises';
 import { join, parse, ParsedPath } from 'node:path';
 import slugify from '@sindresorhus/slugify';
+import { PipelineField } from '../unified/fields/Fields';
 import { ContentHeading } from '../unified/rehype/Heading';
+import * as console from 'console';
 
 export interface Pipeline {
   type: string;
   pattern: string;
   processor: 'md';
   fields?: {
-    [name: string]: string;
-    // TODO(fuxingloh): fields processing
+    [name: string]: PipelineField;
   };
 }
 
@@ -42,7 +43,7 @@ export abstract class ContentedPipeline {
 
   constructor(protected readonly pipeline: Pipeline) {}
 
-  abstract process(rootPath: string, file: string): Promise<FileContent>;
+  abstract process(rootPath: string, file: string): Promise<FileContent | undefined>;
 }
 
 export class MarkdownContentedPipeline extends ContentedPipeline {
@@ -50,14 +51,19 @@ export class MarkdownContentedPipeline extends ContentedPipeline {
     await initProcessor(this.processor);
   }
 
-  async process(rootPath: string, file: string): Promise<FileContent> {
+  async process(rootPath: string, file: string): Promise<FileContent | undefined> {
     const filePath = join(rootPath, file);
-    const output = await this.processOutput(filePath);
+    const output = await this.processUnified(filePath);
+
     const parsedPath = parse(file);
+    const sections = computeSections(parsedPath);
+    const contented = output.data.contented as UnifiedContented;
 
-    const sections = parsedPath.dir.split('/').map(replacePrefix);
-
-    const contented: any = output.data.contented;
+    if (contented.errors.length > 0) {
+      const message = contented.errors.map((value) => `${value.type}:${value.reason}`).join(',');
+      console.warn(`@birthdayresearch/contented-processor: ${file} - failed with errors: [${message}]`);
+      return undefined;
+    }
 
     return {
       id: computeFileId(filePath),
@@ -65,14 +71,21 @@ export class MarkdownContentedPipeline extends ContentedPipeline {
       modifiedDate: await computeModifiedDate(filePath),
       path: computePath(sections, parsedPath),
       sections: sections,
-      fields: contented.fields ?? {},
       html: output.value as string,
-      headings: contented.headings ?? [],
+      fields: contented.fields,
+      headings: contented.headings,
     };
   }
 
-  async processOutput(filePath: string): Promise<VFileWithOutput<any>> {
+  async processUnified(filePath: string): Promise<VFileWithOutput<any>> {
     const vFile = await read(filePath);
+    const contented: UnifiedContented = {
+      pipeline: this.pipeline,
+      headings: [],
+      fields: {},
+      errors: [],
+    };
+    vFile.data = { contented };
     return await this.processor.process(vFile);
   }
 }
@@ -84,11 +97,23 @@ function computePath(sections: string[], parsedPath: ParsedPath) {
     return dir;
   }
 
+  if (dir === '/') {
+    return file;
+  }
+
   return `${dir}${file}`;
 }
 
 function computeFileId(filePath: string) {
   return createHash('sha256').update(filePath).digest('hex');
+}
+
+function computeSections(parsedPath: ParsedPath) {
+  if (parsedPath.dir === '') {
+    return [];
+  }
+
+  return parsedPath.dir.split('/').map(replacePrefix);
 }
 
 async function computeModifiedDate(filePath: string): Promise<number> {

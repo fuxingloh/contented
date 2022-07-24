@@ -12,8 +12,9 @@ import remarkRehype from 'remark-rehype';
 import { getHighlighter, HighlighterOptions } from 'shiki';
 import { Processor, Plugin } from 'unified';
 import { rehypeMermaid } from './rehype/Mermaid';
-import { rehypeHeading } from './rehype/Heading';
-import { frontmatterFields } from './remark/Frontmatter';
+import { ContentHeading, rehypeHeading } from './rehype/Heading';
+import { collectFields, validateFields } from './fields/Fields';
+import { Pipeline } from '../pipeline';
 
 export interface UnifiedOptions {
   shiki?: HighlighterOptions;
@@ -21,6 +22,16 @@ export interface UnifiedOptions {
   remarks?: Plugin[];
   rehypes?: Plugin[];
   after?: Plugin[];
+}
+
+export interface UnifiedContented {
+  pipeline: Pipeline;
+  headings: ContentHeading[];
+  fields: { [key: string]: any };
+  errors: {
+    type: string;
+    reason: string;
+  }[];
 }
 
 export async function initProcessor(processor: Processor, options?: UnifiedOptions) {
@@ -33,13 +44,9 @@ export async function initProcessor(processor: Processor, options?: UnifiedOptio
     processor.use(plugin);
   });
 
-  processor
-    .use(remarkGfm)
-    .use(remarkFrontmatter)
-    .use(remarkParse)
-    .use(remarkDirective)
-    .use(remarkDirectiveRehype)
-    .use(frontmatterFields);
+  processor.use(remarkGfm).use(remarkFrontmatter).use(remarkParse).use(remarkDirective).use(remarkDirectiveRehype);
+
+  processor.use(collectFields).use(validateFields);
 
   processor.use(remarkRehype);
 
@@ -49,8 +56,9 @@ export async function initProcessor(processor: Processor, options?: UnifiedOptio
     .use(rehypeToc)
     .use(rehypeHeading)
     .use(rehypeMermaid)
-    .use(rehypeShiki, { highlighter })
-    .use(rehypeStringify);
+    .use(rehypeShiki, { highlighter });
+
+  processor.use(rehypeStringify);
 
   options?.after?.forEach((plugin) => {
     processor.use(plugin);

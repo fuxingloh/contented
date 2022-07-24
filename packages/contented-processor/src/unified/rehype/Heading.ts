@@ -1,28 +1,30 @@
 import { Content, Parent } from 'hast';
 import { Transformer } from 'unified';
 import { toString } from 'hast-util-to-string';
-
-export function rehypeHeading(): Transformer<Parent> {
-  return function transformer(tree, file) {
-    const headings = collectHeadings(tree, []);
-    file.data.contented = {
-      ...((file.data.contented as any) || {}),
-      headings: mergeHeadings(headings),
-    };
-  };
-}
+import { UnifiedContented } from '../index';
 
 export interface ContentHeading {
   id: string;
-  depth: 1 | 2 | 3;
+  depth: 1 | 2 | 3 | 4 | 5 | 6;
   title: string;
   children: ContentHeading[];
+}
+
+export function rehypeHeading(): Transformer<Parent> {
+  return function transformer(tree, file) {
+    const contented = file.data.contented as UnifiedContented;
+    contented.headings = computeHeadings(tree);
+  };
+}
+
+function computeHeadings(tree: Parent) {
+  const headings = collectHeadings(tree, []);
+  return mergeHeadings(headings);
 }
 
 function collectHeadings(node: Parent, headings: ContentHeading[] = []): ContentHeading[] {
   node?.children?.forEach((child: Content) => {
     if (child.type === 'element') {
-      // eslint-disable-next-line default-case
       switch (child.tagName) {
         case 'h1':
         case 'h2':
@@ -59,7 +61,6 @@ function mergeHeadings(headings: ContentHeading[]): ContentHeading[] {
   });
 
   root.forEach((contentHeading) => {
-    // eslint-disable-next-line no-param-reassign
     contentHeading.children = mergeHeadings(contentHeading.children);
   });
 

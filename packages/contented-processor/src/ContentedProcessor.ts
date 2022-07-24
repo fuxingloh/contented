@@ -53,7 +53,11 @@ export class ContentedProcessor {
       }
     }
 
-    await this.codegen.generateIndex(result);
+    for (const type in result.pipelines) {
+      await this.codegen.generatePipeline(type, result.pipelines[type]);
+    }
+
+    await this.codegen.generateIndex();
     return result;
   }
 

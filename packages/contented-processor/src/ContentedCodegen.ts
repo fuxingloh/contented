@@ -9,18 +9,15 @@ export class ContentedCodegen {
 
   constructor(protected readonly config: Config) {}
 
-  async generateIndex(result: ContentedProcessorResult) {
-    for (const type in result.pipelines) {
-      await this.generatePipeline(type, result.pipelines[type]);
-    }
-
-    const ast = generateIndexAST(Object.keys(result.pipelines));
+  async generateIndex() {
+    const types = this.config.pipelines.map((pipeline) => pipeline.type);
+    const ast = generateIndexAST(types);
     const outPath = join(this.outPath, `index.js`);
     await fs.mkdir(this.outPath, { recursive: true });
     await fs.writeFile(outPath, generate(ast).code);
   }
 
-  private async generatePipeline(type: string, contents: FileIndex[]) {
+  async generatePipeline(type: string, contents: FileIndex[]) {
     const ast = generatePipelineAST(type, contents);
 
     const outPath = join(this.outPath, type, `index.js`);

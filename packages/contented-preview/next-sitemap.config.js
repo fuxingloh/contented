@@ -1,4 +1,4 @@
-const { preview } = require('../.contented/contented.config.js');
+const { preview } = require('../../contented.config.js');
 
 module.exports = {
   siteUrl: preview?.url ?? process.env.SITE_URL,

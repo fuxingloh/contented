@@ -1,35 +1,18 @@
-import { Command } from 'clipanion';
+import { WatchCommand } from './WatchCommand.js';
+import { spawnSync } from 'node:child_process';
 
-export class WriteCommand extends Command {
+export class WriteCommand extends WatchCommand {
   static paths = [[`write`]];
 
   async execute() {
-    console.log('write');
+    await super.execute();
+
+    spawnSync(`contented-preview`, [], { stdio: 'inherit' });
+
+    const previewDir = `${process.cwd()}/.contented/.preview`;
+    spawnSync(`npm`, ['run', 'dev', '--prefix', previewDir], {
+      stdio: 'inherit',
+      cwd: previewDir,
+    });
   }
 }
-
-// const { cpSync } = require('node:fs');
-// const { spawnSync } = require('node:child_process');
-// const commandLineArgs = require('command-line-args');
-//
-// const mainDefinitions = [{ name: 'command', defaultOption: true }];
-// const { command } = commandLineArgs(mainDefinitions, {
-//   stopAtFirstUnknown: true,
-// });
-//
-// const contentedDir = `${process.cwd()}/.contented`;
-//
-// cpSync(`${__dirname}`, contentedDir, {
-//   recursive: true,
-// });
-//
-// spawnSync(`npm`, ['run', command, '--prefix', contentedDir], {
-//   stdio: 'inherit',
-//   cwd: contentedDir,
-// });
-//
-// if (command === 'build') {
-//   cpSync(`${contentedDir}/.contentlayer/generated`, `${process.cwd()}/dist`, {
-//     recursive: true,
-//   });
-// }

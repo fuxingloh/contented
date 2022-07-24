@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-import { Index } from '../../../.contented/index.js';
+import { Index } from '../../../index.js';
 import ContentHeadings from './_components/ContentHeadings';
 import ContentNavigation, { computeContentSections } from './_components/ContentNavigation';
 import ContentProse from './_components/ContentProse';
@@ -23,8 +23,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const path = `/${params?.slug?.join('/') ?? ''}`;
   const ContentIndex = Index.find((file) => file.path === path) ?? Index[0];
-  const Content = require(`../../../.contented/${ContentIndex.type}/${ContentIndex.id}.json`);
-  const TypeCollection = require(`../../../.contented/${ContentIndex.type}/index.json`);
+  const Content = require(`../../../${ContentIndex.type}/${ContentIndex.id}.json`);
+  const TypeCollection = require(`../../../${ContentIndex.type}/index.json`);
 
   return {
     props: {

@@ -1,7 +1,7 @@
 import { ContentedProcessor, ContentedProcessorResult } from '@birthdayresearch/contented-processor';
 import { Command } from 'clipanion';
 import { join } from 'node:path';
-import { ContentedConfig } from '../index';
+import { ContentedConfig } from '../index.js';
 import walk from 'ignore-walk';
 
 export class BuildCommand extends Command {
@@ -9,6 +9,7 @@ export class BuildCommand extends Command {
 
   async execute() {
     const config = await this.loadConfig();
+    config.processor.outDir = './dist';
     const processor = new ContentedProcessor(config.processor);
     await this.walk(processor);
   }

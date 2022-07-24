@@ -1,4 +1,4 @@
-const { preview } = require('../.contented/contented.config.js');
+const { preview } = require('../../contented.config.js');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

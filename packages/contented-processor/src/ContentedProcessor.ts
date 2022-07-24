@@ -49,8 +49,6 @@ export class ContentedProcessor {
     for (const file of files) {
       const output = await this.process(file);
       if (output) {
-        await this.codegen.generateFile(output);
-
         if (!result.pipelines[output.type]) {
           result.pipelines[output.type] = [];
         }
@@ -80,7 +78,11 @@ export class ContentedProcessor {
       return;
     }
 
-    return processor.process(this.rootPath, file);
+    const output = await processor.process(this.rootPath, file);
+    if (output) {
+      await this.codegen.generateFile(output);
+    }
+    return output;
   }
 
   /**

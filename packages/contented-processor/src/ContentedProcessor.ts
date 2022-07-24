@@ -15,6 +15,7 @@ export interface ContentedProcessorResult {
 
 export class ContentedProcessor {
   public readonly rootPath: string;
+  public readonly outPath: string;
 
   public readonly codegen: ContentedCodegen;
 
@@ -32,7 +33,8 @@ export class ContentedProcessor {
     });
 
     this.rootPath = join(process.cwd(), config.rootDir);
-    this.codegen = new ContentedCodegen(this.config, this.rootPath);
+    this.outPath = join(process.cwd(), config.outDir);
+    this.codegen = new ContentedCodegen(this.config, this.outPath);
   }
 
   async build(...files: string[]): Promise<ContentedProcessorResult> {

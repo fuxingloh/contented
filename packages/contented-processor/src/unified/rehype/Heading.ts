@@ -1,7 +1,8 @@
 import { Content, Parent } from 'hast';
-import { Transformer } from 'unified';
 import { toString } from 'hast-util-to-string';
-import { UnifiedContented } from '../index';
+import { Transformer } from 'unified';
+
+import { UnifiedContented } from "../../ContentedUnified.js";
 
 export interface ContentHeading {
   id: string;

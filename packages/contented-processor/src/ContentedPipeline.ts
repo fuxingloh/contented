@@ -1,13 +1,14 @@
+import slugify from '@sindresorhus/slugify';
+import * as console from 'console';
 import { createHash } from 'crypto';
-import { unified, VFileWithOutput, Processor } from 'unified';
-import { read } from 'to-vfile';
-import { initProcessor, UnifiedContented } from '../unified';
 import fs from 'node:fs/promises';
 import { join, parse, ParsedPath } from 'node:path';
-import slugify from '@sindresorhus/slugify';
-import { PipelineField } from '../unified/fields/Fields';
-import { ContentHeading } from '../unified/rehype/Heading';
-import * as console from 'console';
+import { read } from 'to-vfile';
+import { Processor,unified, VFileWithOutput } from 'unified';
+
+import { initProcessor, UnifiedContented } from './ContentedUnified.js';
+import { PipelineField } from './unified/fields/Fields.js';
+import { ContentHeading } from './unified/rehype/Heading.js';
 
 export interface Pipeline {
   type: string;
@@ -16,6 +17,8 @@ export interface Pipeline {
   fields?: {
     [name: string]: PipelineField;
   };
+
+  // TODO(fuxingloh): support, path rewrite
 }
 
 /**
@@ -70,7 +73,7 @@ export class MarkdownContentedPipeline extends ContentedPipeline {
       type: this.pipeline.type,
       modifiedDate: await computeModifiedDate(filePath),
       path: computePath(sections, parsedPath),
-      sections: sections,
+      sections,
       html: output.value as string,
       fields: contented.fields,
       headings: contented.headings,
@@ -86,7 +89,7 @@ export class MarkdownContentedPipeline extends ContentedPipeline {
       errors: [],
     };
     vFile.data = { contented };
-    return await this.processor.process(vFile);
+    return this.processor.process(vFile);
   }
 }
 

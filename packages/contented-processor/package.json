@@ -8,6 +8,7 @@
   "files": [
     "dist"
   ],
+  "type": "module",
   "scripts": {
     "build": "tsc -b ./tsconfig.build.json",
     "clean": "rm -rf dist",

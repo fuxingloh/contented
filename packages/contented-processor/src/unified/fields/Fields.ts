@@ -1,8 +1,9 @@
+import yaml from 'js-yaml';
 import { Parent } from 'mdast';
 import { Transformer } from 'unified';
-import yaml from 'js-yaml';
-import { UnifiedContented } from '../index';
 import { VFile } from 'vfile';
+
+import { UnifiedContented } from '../../ContentedUnified.js';
 
 export type PipelineField =
   | AbstractField<'string', string>

@@ -5,8 +5,7 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
   "scripts": {
     "write": "contented write",
     "generate": "contented generate",
@@ -14,12 +13,5 @@
   },
   "devDependencies": {
     "@birthdayresearch/contented": "0.0.0"
-  },
-  "contented": {
-    "url": "https://contented.dev",
-    "name": "Contented",
-    "github": {
-      "url": "https://github.com/BirthdayResearch/contented"
-    }
   }
 }

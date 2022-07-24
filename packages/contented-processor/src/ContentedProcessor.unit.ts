@@ -1,6 +1,6 @@
-import { ContentedProcessor, Config } from './ContentedProcessor';
+import { Config,ContentedProcessor } from './ContentedProcessor';
 
-describe('process single files', function () {
+describe('process single files', () => {
   const config: Config = {
     rootDir: './fixtures',
     outDir: './.contented',
@@ -15,7 +15,7 @@ describe('process single files', function () {
 
   const processor = new ContentedProcessor(config);
 
-  it('should process Foo.Bar.md', async function () {
+  it('should process Foo.Bar.md', async () => {
     expect(await processor.process('Foo.Bar.md')).toStrictEqual({
       type: 'Markdown',
       fields: {},
@@ -35,7 +35,7 @@ describe('process single files', function () {
     });
   });
 
-  it('should process :2:path-1.md', async function () {
+  it('should process :2:path-1.md', async () => {
     expect(await processor.process(':2:path-1.md')).toStrictEqual({
       type: 'Markdown',
       fields: {},
@@ -48,7 +48,7 @@ describe('process single files', function () {
     });
   });
 
-  it('should process :1:Category/:1:slug.md', async function () {
+  it('should process :1:Category/:1:slug.md', async () => {
     expect(await processor.process(':1:Category/:1:slug.md')).toStrictEqual({
       type: 'Markdown',
       fields: {},
@@ -68,7 +68,7 @@ describe('process single files', function () {
     });
   });
 
-  it('should process :1:Category/Section/:2:path.md', async function () {
+  it('should process :1:Category/Section/:2:path.md', async () => {
     expect(await processor.process(':1:Category/Section/:2:path.md')).toStrictEqual({
       type: 'Markdown',
       fields: {},
@@ -89,7 +89,7 @@ describe('process single files', function () {
   });
 });
 
-describe('build', function () {
+describe('build', () => {
   const config: Config = {
     rootDir: './fixtures',
     outDir: './.contented',
@@ -109,7 +109,7 @@ describe('build', function () {
   };
   const processor = new ContentedProcessor(config);
 
-  it('should build 2 files', async function () {
+  it('should build 2 files', async () => {
     const result = await processor.build(':2:path-1.md', ':1:Category/Section/:2:path.md');
     expect(result).toStrictEqual({
       pipelines: {
@@ -139,7 +139,7 @@ describe('build', function () {
     });
   });
 
-  it('should build 4 files', async function () {
+  it('should build 4 files', async () => {
     const result = await processor.build(
       ':2:path-1.md',
       'Foo.Bar.md',

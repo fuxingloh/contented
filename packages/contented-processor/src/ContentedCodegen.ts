@@ -1,13 +1,15 @@
-import { FileContent, FileIndex } from './pipeline';
-import { join } from 'node:path';
-import { Config, ContentedProcessorResult } from './ContentedProcessor';
-import fs from 'node:fs/promises';
 import generate from '@babel/generator';
+import fs from 'node:fs/promises';
+import { join } from 'node:path';
+import { Config } from './ContentedProcessor.js';
+import { FileContent, FileIndex } from './ContentedPipeline.js';
 
 export class ContentedCodegen {
-  public readonly outPath: string = join(process.cwd(), this.config.rootDir, this.config.outDir);
-
-  constructor(protected readonly config: Config) {}
+  constructor(
+    protected readonly config: Config,
+    protected readonly outPath: string,
+  ) {
+  }
 
   async generateIndex() {
     const types = this.config.pipelines.map((pipeline) => pipeline.type);
@@ -34,25 +36,21 @@ export class ContentedCodegen {
 }
 
 function generatePipelineAST(type: string, contents: FileIndex[]): any {
-  const importDeclaration = contents.map((content) => {
-    return {
-      type: 'ImportDeclaration',
-      specifiers: [
-        {
-          type: 'ImportDefaultSpecifier',
-          local: { type: 'Identifier', name: `_${content.id}` },
-        },
-      ],
-      source: { type: 'StringLiteral', value: `./${content.id}.json` },
-    };
-  });
+  const importDeclaration = contents.map((content) => ({
+    type: 'ImportDeclaration',
+    specifiers: [
+      {
+        type: 'ImportDefaultSpecifier',
+        local: { type: 'Identifier', name: `_${content.id}` },
+      },
+    ],
+    source: { type: 'StringLiteral', value: `./${content.id}.json` },
+  }));
 
-  const arrayElements = contents.map((content) => {
-    return {
-      type: 'Identifier',
-      name: `_${content.id}`,
-    };
-  });
+  const arrayElements = contents.map((content) => ({
+    type: 'Identifier',
+    name: `_${content.id}`,
+  }));
 
   return {
     type: 'File',
@@ -87,44 +85,38 @@ function generatePipelineAST(type: string, contents: FileIndex[]): any {
 }
 
 function generateIndexAST(types: string[]): any {
-  const importDeclaration = types.map((type) => {
-    return {
-      type: 'ImportDeclaration',
-      specifiers: [
+  const importDeclaration = types.map((type) => ({
+    type: 'ImportDeclaration',
+    specifiers: [
+      {
+        type: 'ImportSpecifier',
+        local: { type: 'Identifier', name: type },
+        imported: { type: 'Identifier', name: type },
+      },
+    ],
+    source: { type: 'StringLiteral', value: `./${type}/index.js` },
+  }));
+
+  const exportSpecifiers = types.map((type) => ({
+    type: 'ExportSpecifier',
+    local: { type: 'Identifier', name: type },
+    exported: { type: 'Identifier', name: type },
+  }));
+
+  const objectProperties = types.map((type) => ({
+    type: 'ObjectProperty',
+    key: { type: 'Identifier', name: type },
+    value: {
+      type: 'ObjectExpression',
+      properties: [
         {
-          type: 'ImportSpecifier',
-          local: { type: 'Identifier', name: type },
-          imported: { type: 'Identifier', name: type },
+          type: 'ObjectProperty',
+          key: { type: 'Identifier', name: 'collection' },
+          value: { type: 'Identifier', name: type },
         },
       ],
-      source: { type: 'StringLiteral', value: `./${type}/index.js` },
-    };
-  });
-
-  const exportSpecifiers = types.map((type) => {
-    return {
-      type: 'ExportSpecifier',
-      local: { type: 'Identifier', name: type },
-      exported: { type: 'Identifier', name: type },
-    };
-  });
-
-  const objectProperties = types.map((type) => {
-    return {
-      type: 'ObjectProperty',
-      key: { type: 'Identifier', name: type },
-      value: {
-        type: 'ObjectExpression',
-        properties: [
-          {
-            type: 'ObjectProperty',
-            key: { type: 'Identifier', name: 'collection' },
-            value: { type: 'Identifier', name: type },
-          },
-        ],
-      },
-    };
-  });
+    },
+  }));
 
   return {
     type: 'File',

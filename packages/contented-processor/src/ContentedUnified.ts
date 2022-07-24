@@ -10,11 +10,12 @@ import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { getHighlighter, HighlighterOptions } from 'shiki';
-import { Processor, Plugin } from 'unified';
-import { rehypeMermaid } from './rehype/Mermaid';
-import { ContentHeading, rehypeHeading } from './rehype/Heading';
-import { collectFields, validateFields } from './fields/Fields';
-import { Pipeline } from '../pipeline';
+import { Plugin,Processor } from 'unified';
+
+import { Pipeline } from './ContentedPipeline.js';
+import { collectFields, validateFields } from './unified/fields/Fields.js';
+import { ContentHeading, rehypeHeading } from './unified/rehype/Heading.js';
+import { rehypeMermaid } from './unified/rehype/Mermaid.js';
 
 export interface UnifiedOptions {
   shiki?: HighlighterOptions;

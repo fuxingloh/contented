@@ -1,3 +1,4 @@
+/** @type {import('@birthdayresearch/contented').ContentedConfig} */
 module.exports = {
   preview: {
     url: 'https://contented.dev',
@@ -7,23 +8,22 @@ module.exports = {
     },
   },
   processor: {
-    rootDir: './',
-    pipeline: {
-      Markdown: {
+    pipelines: [
+      {
+        type: 'Doc',
         pattern: '**/*.md',
         processor: 'md',
         fields: {
           title: {
             type: 'string',
             required: true,
-            resolve: (title) => 'Contented',
+            resolve: (s) => s ?? 'Contented',
           },
           description: {
             type: 'string',
-            required: false,
           },
         },
       },
-    },
+    ],
   },
 };

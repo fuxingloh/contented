@@ -4,6 +4,6 @@ export class WatchCommand extends Command {
   static paths = [[`watch`]];
 
   async execute() {
-
+    console.log('watch');
   }
 }

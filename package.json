@@ -3,9 +3,8 @@
   "private": true,
   "workspaces": [
     "./packages/contented",
-    "./packages/contented-cli",
+    "./packages/contented-example",
     "./packages/contented-processor",
-    "./packages/contented-tests",
     "./packages/eslint-config",
     "./packages/jest-preset"
   ],

@@ -1,11 +1,11 @@
-import { join } from 'node:path';
 import minimatch from 'minimatch';
-import { ContentedPipeline, FileContent, FileIndex, MarkdownContentedPipeline, Pipeline } from './pipeline';
-import { ContentedCodegen } from './ContentedCodegen';
+import { join } from 'node:path';
+import { ContentedCodegen } from './ContentedCodegen.js';
+import { ContentedPipeline, FileContent, FileIndex, MarkdownContentedPipeline, Pipeline } from './ContentedPipeline.js';
 
 export interface Config {
-  rootDir: string;
-  outDir: string;
+  rootDir?: string;
+  outDir?: string;
   pipelines: Pipeline[];
 }
 
@@ -14,11 +14,15 @@ export interface ContentedProcessorResult {
 }
 
 export class ContentedProcessor {
-  public readonly rootPath: string = join(process.cwd(), this.config.rootDir);
-  private readonly codegen: ContentedCodegen = new ContentedCodegen(this.config);
-  private pipelines: Record<string, ContentedPipeline | undefined> = {};
+  public readonly rootPath: string;
+
+  public readonly codegen: ContentedCodegen;
+
+  public pipelines: Record<string, ContentedPipeline | undefined> = {};
 
   constructor(protected readonly config: Config) {
+    config.rootDir = config.rootDir ?? './';
+    config.outDir = config.outDir ?? './.contented';
     config.pipelines.forEach((pipeline) => {
       if (pipeline.type.match(/[^a-zA-Z]/g)) {
         throw new Error(
@@ -26,6 +30,9 @@ export class ContentedProcessor {
         );
       }
     });
+
+    this.rootPath = join(process.cwd(), config.rootDir);
+    this.codegen = new ContentedCodegen(this.config, this.rootPath);
   }
 
   async build(...files: string[]): Promise<ContentedProcessorResult> {
@@ -67,7 +74,7 @@ export class ContentedProcessor {
       return;
     }
 
-    return await processor.process(this.rootPath, file);
+    return processor.process(this.rootPath, file);
   }
 
   /**

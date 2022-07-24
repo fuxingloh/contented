@@ -3,6 +3,9 @@ module.exports = {
   verbose: true,
   modulePathIgnorePatterns: ['<rootDir>/node_modules', '<rootDir>/dist'],
   moduleFileExtensions: ['ts', 'js', 'json', 'node'],
+  moduleNameMapper: {
+    "(.+)\\.js": "$1"
+  },
   testRegex: '.*\\.unit\\.ts$',
   transform: {
     '^.+\\.ts$': 'ts-jest',

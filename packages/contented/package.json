@@ -2,8 +2,36 @@
   "name": "@birthdayresearch/contented",
   "version": "0.0.0",
   "private": false,
+  "main": "./dist/index.js",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "bin": {
+    "contented": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b ./tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "lint": "eslint src"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": [
+      "@birthdayresearch"
+    ]
+  },
   "dependencies": {
-    "@birthdayresearch/contented-cli": "0.0.0",
-    "@birthdayresearch/contented-processor": "0.0.0"
+    "@birthdayresearch/contented-processor": "0.0.0",
+    "clipanion": "3.2.0-rc.11",
+    "typescript": "4.7.4"
+  },
+  "devDependencies": {
+    "@birthdayresearch/eslint-config": "0.0.0",
+    "@birthdayresearch/jest-preset": "0.0.0"
   }
 }

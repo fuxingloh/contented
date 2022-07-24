@@ -2,6 +2,9 @@ import { DocumentTextIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 
 import { useMenu } from './MenuContext';
 import ThemeButton from './ThemeButton';
+import { Pipelines } from '../../../../index.js';
+import clsx from 'clsx';
+import Link from 'next/link';
 
 export default function Header() {
   const { isOpen, setIsOpen } = useMenu();
@@ -27,6 +30,26 @@ export default function Header() {
               <DocumentTextIcon className="h-6 w-auto text-indigo-600 dark:text-indigo-500" />
               <h1 className="ml-2 font-semibold">{process.env.SITE_NAME}</h1>
             </a>
+          </div>
+
+          <div className="flex">
+            {Object.entries(Pipelines).map(([type, pipeline]) => {
+              return (
+                <Link href={pipeline.collection[0].path}>
+                  <button key={type} className="px-2">
+                    <span
+                      className={clsx(
+                        'rounded px-3 py-2 text-sm font-medium',
+                        'bg-slate-200/50 text-slate-800 hover:bg-slate-200 hover:text-slate-900',
+                        'dark:bg-slate-800 dark:text-slate-400 hover:dark:bg-slate-700 dark:hover:text-slate-300',
+                      )}
+                    >
+                      {type}
+                    </span>
+                  </button>
+                </Link>
+              );
+            })}
           </div>
 
           <div className="flex items-center space-x-4">

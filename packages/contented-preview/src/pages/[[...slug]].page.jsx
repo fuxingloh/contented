@@ -35,7 +35,7 @@ export async function getStaticProps({ params }) {
 }
 
 export default function SlugPage({ content, sections }) {
-  const siteTitle = `${content.fields.title} | ${process.env.SITE_NAME}`;
+  const siteTitle = content.fields.title ? `${content.fields.title} | ${process.env.SITE_NAME}` : process.env.SITE_NAME;
   const canonicalUrl = `${process.env.SITE_URL}${content.path}`;
   const description = truncate(content?.description, { length: 220 });
 

@@ -23,6 +23,11 @@ module.exports = {
             type: 'string',
           },
         },
+        transform: (file) => {
+          file.path = file.path.replaceAll(/^\/docs\/?/g, '/')
+          file.sections = file.sections.slice(1)
+          return file
+        }
       },
     ],
   },

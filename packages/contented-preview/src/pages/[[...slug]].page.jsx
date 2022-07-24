@@ -15,14 +15,14 @@ import { useTheme } from './_components/ThemeContext';
 
 export async function getStaticPaths() {
   return {
-    paths: Index.map((file) => file.path),
+    paths: ['/', ...Index.map((file) => file.path)],
     fallback: false,
   };
 }
 
 export async function getStaticProps({ params }) {
   const path = `/${params?.slug?.join('/') ?? ''}`;
-  const ContentIndex = Index.find((file) => file.path === path);
+  const ContentIndex = Index.find((file) => file.path === path) ?? Index[0];
   const Content = require(`../../../.contented/${ContentIndex.type}/${ContentIndex.id}.json`);
   const TypeCollection = require(`../../../.contented/${ContentIndex.type}/index.json`);
 

@@ -4,7 +4,7 @@ import { createHash } from 'crypto';
 import fs from 'node:fs/promises';
 import { join, parse, ParsedPath } from 'node:path';
 import { read } from 'to-vfile';
-import { Processor,unified, VFileWithOutput } from 'unified';
+import { Processor, unified, VFileWithOutput } from 'unified';
 
 import { initProcessor, UnifiedContented } from './ContentedUnified.js';
 import { PipelineField } from './unified/fields/Fields.js';
@@ -17,8 +17,7 @@ export interface Pipeline {
   fields?: {
     [name: string]: PipelineField;
   };
-
-  // TODO(fuxingloh): support, path rewrite
+  transform?: (file: FileContent) => Promise<FileContent>;
 }
 
 /**
@@ -68,16 +67,18 @@ export class MarkdownContentedPipeline extends ContentedPipeline {
       return undefined;
     }
 
-    return {
+    const content = {
       id: computeFileId(filePath),
       type: this.pipeline.type,
       modifiedDate: await computeModifiedDate(filePath),
       path: computePath(sections, parsedPath),
-      sections,
+      sections: sections,
       html: output.value as string,
       fields: contented.fields,
       headings: contented.headings,
     };
+
+    return (await this.pipeline.transform?.(content)) ?? content;
   }
 
   async processUnified(filePath: string): Promise<VFileWithOutput<any>> {

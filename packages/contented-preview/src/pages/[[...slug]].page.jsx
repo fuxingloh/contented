@@ -6,56 +6,38 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-import { Pipelines } from '../../../.contented/index.js';
+import { Index } from '../../../.contented/index.js';
 import ContentHeadings from './_components/ContentHeadings';
 import ContentNavigation, { computeContentSections } from './_components/ContentNavigation';
 import ContentProse from './_components/ContentProse';
 import { useMenu } from './_components/MenuContext';
 import { useTheme } from './_components/ThemeContext';
 
-/**
- * Collect all paths
- */
 export async function getStaticPaths() {
-  const paths = [];
-  Object.values(Pipelines).map(({ collection }) => {
-    collection.forEach((item) => {
-      paths.push(item.path);
-    });
-  });
-
   return {
-    paths: paths,
+    paths: Index.map((file) => file.path),
     fallback: false,
   };
 }
 
-function findFileContent() {
-  Object.values(Pipelines).map(({ collection }) => {
-    collection.forEach((item) => {
-      paths.push(item.path);
-    });
-  });
-}
-
 export async function getStaticProps({ params }) {
   const path = `/${params?.slug?.join('/') ?? ''}`;
+  const ContentIndex = Index.find((file) => file.path === path);
+  const Content = require(`../../../.contented/${ContentIndex.type}/${ContentIndex.id}.json`);
+  const TypeCollection = require(`../../../.contented/${ContentIndex.type}/index.json`);
 
-  // /docs/09-others/02-limitations
-
-  const doc = allDocuments.find((p) => p.path === path) ?? allDocuments[0];
   return {
     props: {
-      doc,
-      sections: computeContentSections(allDocuments),
+      content: Content,
+      sections: computeContentSections(TypeCollection),
     },
   };
 }
 
-export default function SlugPage({ doc, sections }) {
-  const siteTitle = `${doc.title} | ${process.env.SITE_NAME}`;
-  const canonicalUrl = `${process.env.SITE_URL}${doc.path}`;
-  const description = truncate(doc?.description, { length: 220 });
+export default function SlugPage({ content, sections }) {
+  const siteTitle = `${content.fields.title} | ${process.env.SITE_NAME}`;
+  const canonicalUrl = `${process.env.SITE_URL}${content.path}`;
+  const description = truncate(content?.description, { length: 220 });
 
   const [isMermaidInit, setIsMermaidInit] = useState(false);
   const { theme } = useTheme();
@@ -111,15 +93,15 @@ export default function SlugPage({ doc, sections }) {
         >
           <article>
             <ContentProse>
-              <h1>{doc.title}</h1>
-              <div dangerouslySetInnerHTML={{ __html: doc.body.html }} />
+              {content.fields.title && <h1>{content.fields.title}</h1>}
+              <div dangerouslySetInnerHTML={{ __html: content.html }} />
             </ContentProse>
           </article>
         </div>
 
         <div className="hidden xl:sticky xl:top-[4.5rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6">
           <nav aria-labelledby="on-this-page-title" className="w-56">
-            <ContentHeadings contentHeadings={doc.contentHeadings} tags={doc.tags} />
+            <ContentHeadings headings={content.headings} tags={content.fields.tags} />
           </nav>
         </div>
       </div>

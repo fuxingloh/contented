@@ -16,11 +16,14 @@ export class ContentedCodegen {
   }
 
   async generatePipeline(type: string, contents: FileIndex[]) {
-    const ast = generatePipelineAST(type, contents);
-
-    const outPath = join(this.outPath, type, `index.js`);
     await fs.mkdir(join(this.outPath, type), { recursive: true });
-    await fs.writeFile(outPath, generate(ast).code);
+
+    const ast = generatePipelineAST(type, contents);
+    const indexJs = join(this.outPath, type, `index.js`);
+    await fs.writeFile(indexJs, generate(ast).code);
+
+    const indexJson = join(this.outPath, type, `index.json`);
+    await fs.writeFile(indexJson, JSON.stringify(contents));
   }
 
   async generateFile(content: FileContent) {
@@ -81,7 +84,7 @@ function generatePipelineAST(type: string, contents: FileIndex[]): any {
 }
 
 function generateIndexAST(types: string[]): any {
-  const importDeclaration = types.map((type) => ({
+  const indexJsImports = types.map((type) => ({
     type: 'ImportDeclaration',
     specifiers: [
       {
@@ -93,10 +96,35 @@ function generateIndexAST(types: string[]): any {
     source: { type: 'StringLiteral', value: `./${type}/index.js` },
   }));
 
-  const exportSpecifiers = types.map((type) => ({
+  const indexJsonImports = types.map((type) => ({
+    type: 'ImportDeclaration',
+    specifiers: [
+      {
+        type: 'ImportDefaultSpecifier',
+        local: { type: 'Identifier', name: `${type}Index` },
+      },
+    ],
+    source: { type: 'StringLiteral', value: `./${type}/index.json` },
+  }));
+
+  const exportJsDeclaration = types.map((type) => ({
     type: 'ExportSpecifier',
     local: { type: 'Identifier', name: type },
     exported: { type: 'Identifier', name: type },
+  }));
+
+  const exportJsonDeclaration = types.map((type) => ({
+    type: 'ExportSpecifier',
+    local: { type: 'Identifier', name: `${type}Index` },
+    exported: { type: 'Identifier', name: `${type}Index` },
+  }));
+
+  const spreadElements = types.map((type) => ({
+    type: 'SpreadElement',
+    argument: {
+      type: 'Identifier',
+      name: `${type}Index`,
+    },
   }));
 
   const objectProperties = types.map((type) => ({
@@ -120,10 +148,35 @@ function generateIndexAST(types: string[]): any {
       type: 'Program',
       sourceType: 'module',
       body: [
-        ...importDeclaration,
+        ...indexJsImports,
+        ...indexJsonImports,
         {
           type: 'ExportNamedDeclaration',
-          specifiers: exportSpecifiers,
+          specifiers: exportJsDeclaration,
+        },
+        {
+          type: 'ExportNamedDeclaration',
+          specifiers: exportJsonDeclaration,
+        },
+        {
+          type: 'ExportNamedDeclaration',
+          declaration: {
+            type: 'VariableDeclaration',
+            kind: 'const',
+            declarations: [
+              {
+                type: 'VariableDeclarator',
+                id: {
+                  type: 'Identifier',
+                  name: 'Index',
+                },
+                init: {
+                  type: 'ArrayExpression',
+                  elements: spreadElements,
+                },
+              },
+            ],
+          },
         },
         {
           type: 'ExportNamedDeclaration',

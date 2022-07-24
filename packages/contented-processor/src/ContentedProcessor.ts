@@ -27,8 +27,12 @@ export class ContentedProcessor {
     config.pipelines.forEach((pipeline) => {
       if (pipeline.type.match(/[^a-zA-Z]/g)) {
         throw new Error(
-          'Due to codegen, pipeline.type must be a string with allowed characters within the range of [a-zA-Z]',
+          'Due to codegen, pipeline.type must be a string with allowed characters within the range of [a-zA-Z].',
         );
+      }
+
+      if (pipeline.type.endsWith('Index')) {
+        throw new Error('Due to codegen, pipeline.type cannot be Index or end with Index.');
       }
     });
 

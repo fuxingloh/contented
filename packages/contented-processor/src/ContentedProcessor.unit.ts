@@ -1,6 +1,6 @@
-import { Config,ContentedProcessor } from './ContentedProcessor';
+import { Config, ContentedProcessor } from './ContentedProcessor';
 
-describe('process single files', () => {
+describe('process', () => {
   const config: Config = {
     rootDir: './fixtures',
     outDir: './.contented',

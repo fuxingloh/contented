@@ -49,7 +49,7 @@ export default function ContentNavigation({ sections, className }) {
                             link.path !== router.asPath,
                         })}
                       >
-                        {link?.title ?? link.path}
+                        {link?.fields.title ?? link.path}
                       </a>
                     </Link>
                   </li>

@@ -1,3 +1,3 @@
 [build]
 publish = "packages/contented-example/.contented/.preview/out/"
-command = "turbo run generate --filter=contented-example"
+command = "turbo run generate --filter=contented-example --force"

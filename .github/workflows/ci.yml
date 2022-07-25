@@ -22,7 +22,7 @@ jobs:
           cache: 'npm'
 
       - run: npm ci
-      - run: npx turbo run build
+      - run: npm run build
 
   Test:
     runs-on: ubuntu-latest

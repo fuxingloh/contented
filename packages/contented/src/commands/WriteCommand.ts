@@ -1,5 +1,6 @@
+import { spawn, spawnSync } from 'node:child_process';
+
 import { WatchCommand } from './WatchCommand.js';
-import { spawnSync, spawn } from 'node:child_process';
 
 export class WriteCommand extends WatchCommand {
   static paths = [[`write`]];

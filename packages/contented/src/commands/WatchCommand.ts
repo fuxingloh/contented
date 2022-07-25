@@ -1,8 +1,9 @@
-import { BuildCommand } from './BuildCommand.js';
 import { ContentedProcessor } from '@birthdayresearch/contented-processor';
 import chokidar from 'chokidar';
-import { relative } from 'path';
 import debounce from 'debounce';
+import { relative } from 'path';
+
+import { BuildCommand } from './BuildCommand.js';
 
 export class WatchCommand extends BuildCommand {
   static paths = [[`watch`]];
@@ -35,6 +36,6 @@ function createWatcher(processor: ContentedProcessor) {
     persistent: true,
     awaitWriteFinish: true,
     ignoreInitial: true,
-    ignored: /(^|[\/\\])\../, // ignore dotfiles
+    ignored: /(^|[/\\])\../, // ignore dotfiles
   });
 }

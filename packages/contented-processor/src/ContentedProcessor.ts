@@ -1,5 +1,6 @@
 import minimatch from 'minimatch';
 import { join } from 'node:path';
+
 import { ContentedCodegen } from './ContentedCodegen.js';
 import { ContentedPipeline, FileContent, FileIndex, MarkdownContentedPipeline, Pipeline } from './ContentedPipeline.js';
 
@@ -15,6 +16,7 @@ export interface ContentedProcessorResult {
 
 export class ContentedProcessor {
   public readonly rootPath: string;
+
   public readonly outPath: string;
 
   public readonly codegen: ContentedCodegen;
@@ -64,6 +66,7 @@ export class ContentedProcessor {
       }
     }
 
+    // eslint-disable-next-line guard-for-in
     for (const type in result.pipelines) {
       await this.codegen.generatePipeline(type, result.pipelines[type]);
     }
@@ -79,7 +82,7 @@ export class ContentedProcessor {
     }
 
     const output = await processor.process(this.rootPath, file);
-    if (output) {
+    if (output !== undefined) {
       await this.codegen.generateFile(output);
     }
     return output;
@@ -101,10 +104,10 @@ export class ContentedProcessor {
     }
 
     if (pipeline.processor === 'md') {
-      const processor = new MarkdownContentedPipeline(pipeline);
-      await processor.init();
-      this.pipelines[pipeline.type] = processor;
-      return processor;
+      const mdProcessor = new MarkdownContentedPipeline(pipeline);
+      await mdProcessor.init();
+      this.pipelines[pipeline.type] = mdProcessor;
+      return mdProcessor;
     }
 
     throw new Error(`pipeline.category: ${pipeline.type} processor not found.`);

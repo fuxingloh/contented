@@ -10,10 +10,13 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 'off',
     'no-console': 'off',
     'max-classes-per-file': 'off',
+    'no-restricted-syntax': 'off',
+    'no-await-in-loop': 'off',
+    'consistent-return': 'off',
     'no-param-reassign': 'warn',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
-    'import/no-default-export': 'error',
+    'import/no-default-export': 'error'
   },
   env: {
     node: true,

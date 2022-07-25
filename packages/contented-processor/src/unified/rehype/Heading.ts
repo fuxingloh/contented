@@ -2,7 +2,7 @@ import { Content, Parent } from 'hast';
 import { toString } from 'hast-util-to-string';
 import { Transformer } from 'unified';
 
-import { UnifiedContented } from "../../ContentedUnified.js";
+import { UnifiedContented } from '../../ContentedUnified.js';
 
 export interface ContentHeading {
   id: string;
@@ -26,6 +26,7 @@ function computeHeadings(tree: Parent) {
 function collectHeadings(node: Parent, headings: ContentHeading[] = []): ContentHeading[] {
   node?.children?.forEach((child: Content) => {
     if (child.type === 'element') {
+      // eslint-disable-next-line default-case
       switch (child.tagName) {
         case 'h1':
         case 'h2':

@@ -72,7 +72,7 @@ export class MarkdownContentedPipeline extends ContentedPipeline {
       type: this.pipeline.type,
       modifiedDate: await computeModifiedDate(filePath),
       path: computePath(sections, parsedPath),
-      sections: sections,
+      sections,
       html: output.value as string,
       fields: contented.fields,
       headings: contented.headings,

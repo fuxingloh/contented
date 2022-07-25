@@ -1,8 +1,9 @@
 import { CodeGenerator } from '@babel/generator';
 import fs from 'node:fs/promises';
 import { join } from 'node:path';
-import { Config } from './ContentedProcessor.js';
+
 import { FileContent, FileIndex } from './ContentedPipeline.js';
+import { Config } from './ContentedProcessor.js';
 
 export class ContentedCodegen {
   constructor(protected readonly config: Config, protected readonly outPath: string) {}

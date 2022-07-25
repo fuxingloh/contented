@@ -10,7 +10,7 @@ import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { getHighlighter, HighlighterOptions } from 'shiki';
-import { Plugin,Processor } from 'unified';
+import { Plugin, Processor } from 'unified';
 
 import { Pipeline } from './ContentedPipeline.js';
 import { collectFields, validateFields } from './unified/fields/Fields.js';

@@ -1,6 +1,7 @@
-import { BuildCommand } from './BuildCommand.js';
-import { spawnSync } from 'node:child_process';
 import { ContentedProcessor } from '@birthdayresearch/contented-processor';
+import { spawnSync } from 'node:child_process';
+
+import { BuildCommand } from './BuildCommand.js';
 
 export class GenerateCommand extends BuildCommand {
   static paths = [[`generate`]];

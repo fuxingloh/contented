@@ -36,6 +36,11 @@ labels:
     matcher:
       files: '.github/**'
 
+  - label: area/contented
+    sync: true
+    matcher:
+      files: 'packages/contented/**'
+
   - label: area/contented-example
     sync: true
     matcher:
@@ -50,6 +55,16 @@ labels:
     sync: true
     matcher:
       files: 'packages/contented-processor/**'
+
+  - label: area/eslint-config
+    sync: true
+    matcher:
+      files: 'packages/eslint-config/**'
+
+  - label: area/jest-preset
+    sync: true
+    matcher:
+      files: 'packages/jest-preset/**'
 
 checks:
   - context: 'Semantic Pull Request'

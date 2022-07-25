@@ -7,10 +7,10 @@ export default function ThemeButton(props) {
   return (
     <div {...props}>
       <button className="flex items-center">
-        <SunIcon className="[[data-theme=light]_&]:block hidden h-6 w-6" onClick={() => setTheme('dark')} />
-        <MoonIcon className="[[data-theme=dark]_&]:block hidden h-6 w-6" onClick={() => setTheme('light')} />
-        <SunIcon className="[:not(.dark)[data-theme=system]_&]:block hidden h-6 w-6" onClick={() => setTheme('dark')} />
-        <MoonIcon className="[.dark[data-theme=system]_&]:block hidden h-6 w-6" onClick={() => setTheme('light')} />
+        <SunIcon className="hidden h-6 w-6 [[data-theme=light]_&]:block" onClick={() => setTheme('dark')} />
+        <MoonIcon className="hidden h-6 w-6 [[data-theme=dark]_&]:block" onClick={() => setTheme('light')} />
+        <SunIcon className="hidden h-6 w-6 [:not(.dark)[data-theme=system]_&]:block" onClick={() => setTheme('dark')} />
+        <MoonIcon className="hidden h-6 w-6 [.dark[data-theme=system]_&]:block" onClick={() => setTheme('light')} />
       </button>
     </div>
   );

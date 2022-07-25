@@ -1,8 +1,9 @@
 import { ContentedProcessor, ContentedProcessorResult } from '@birthdayresearch/contented-processor';
 import { Command } from 'clipanion';
-import { join } from 'node:path';
-import { ContentedConfig } from '../index.js';
 import walk from 'ignore-walk';
+import { join } from 'node:path';
+
+import { ContentedConfig } from '../index.js';
 
 export class BuildCommand extends Command {
   static paths = [[`build`]];

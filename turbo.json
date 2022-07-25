@@ -27,7 +27,7 @@
     "test": {
       "inputs": ["src/**", "**/*.unit.ts"],
       "outputs": [],
-      "dependsOn": ["build"]
+      "dependsOn": []
     },
     "lint": {
       "outputs": []

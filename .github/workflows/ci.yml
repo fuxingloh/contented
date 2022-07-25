@@ -24,6 +24,23 @@ jobs:
       - run: npm ci
       - run: npx turbo run build
 
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+
+      - uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93
+        with:
+          node-version: '16'
+          cache: 'npm'
+
+      - run: npm ci
+      - run: npm run test -- -- --maxWorkers=100% --coverage
+
+      - uses: codecov/codecov-action@81cd2dc8148241f03f5839d295e000b8f761e378
+        with:
+          fail_ci_if_error: true
+
   Generate:
     runs-on: ubuntu-latest
     steps:

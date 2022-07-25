@@ -35,8 +35,7 @@ jobs:
 
       - run: lerna version ${{ needs.Version.outputs.result }} --yes --no-push --no-git-tag-version --exact
 
-      - run: npm run build --workspace=@birthdayresearch/contented-processor
-      - run: npm run build --workspace=@birthdayresearch/contented-example
+      - run: npm run build
 
       - name: Publish
         run: |

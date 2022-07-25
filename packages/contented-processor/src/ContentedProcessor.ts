@@ -5,8 +5,17 @@ import { ContentedCodegen } from './ContentedCodegen.js';
 import { ContentedPipeline, FileContent, FileIndex, MarkdownContentedPipeline, Pipeline } from './ContentedPipeline.js';
 
 export interface Config {
+  /**
+   * The root directory of your contented markdown.
+   */
   rootDir?: string;
+  /**
+   * Customize the output path. Editing this will cause contented-preview to break.
+   */
   outDir?: string;
+  /**
+   * Contented processing pipeline
+   */
   pipelines: Pipeline[];
 }
 

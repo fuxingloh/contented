@@ -10,7 +10,7 @@ module.exports = {
   processor: {
     pipelines: [
       {
-        type: 'Doc',
+        type: 'Docs',
         pattern: 'docs/**/*.md',
         processor: 'md',
         fields: {

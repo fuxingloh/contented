@@ -1,0 +1,37 @@
+{
+  "name": "@birthdayresearch/jest-preset",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**",
+    "jest-preset.js"
+  ],
+  "scripts": {
+    "build": "tsc -b ./tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "lint": "eslint src"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": [
+      "@birthdayresearch"
+    ]
+  },
+  "dependencies": {
+    "@types/jest": "^28.1.6",
+    "esbuild": "^0.14.49",
+    "esbuild-jest": "^0.5.0",
+    "jest": "28.1.3",
+    "jest-extended": "3.0.1",
+    "ts-jest": "28.0.7",
+    "wait-for-expect": "^3.0.2"
+  },
+  "devDependencies": {
+    "typescript": "4.7.4"
+  }
+}

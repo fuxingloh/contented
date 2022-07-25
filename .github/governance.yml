@@ -36,9 +36,12 @@ issue:
     - prefix: area
       list:
         - workflow
+        - contented
         - contented-example
         - contented-preview
         - contented-processor
+        - eslint-config
+        - jest-preset
       multiple: true
       needs:
         comment: |

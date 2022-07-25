@@ -5,7 +5,7 @@ import { visit } from 'unist-util-visit';
 /**
  * Transform mermaid codeblock into div.mermaid
  */
-export default function mermaid(): Transformer {
+export function rehypeMermaid(): Transformer {
   return function transformer(tree) {
     function visitor(node: Element) {
       if (node.tagName !== 'pre') {

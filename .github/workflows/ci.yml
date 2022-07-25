@@ -22,8 +22,7 @@ jobs:
           cache: 'npm'
 
       - run: npm ci
-      - run: npm run build --workspace=@birthdayresearch/contented-processor
-      - run: npm run build --workspace=@birthdayresearch/contented-example
+      - run: npx turbo run build
 
   Generate:
     runs-on: ubuntu-latest
@@ -36,10 +35,10 @@ jobs:
           cache: 'npm'
 
       - run: npm ci
-      - run: npm run build --workspace=@birthdayresearch/contented-processor
-      - run: npm run generate --workspace=@birthdayresearch/contented-example
+      - run: npx turbo run generate
 
-  Lint:
+  lint_prettier:
+    name: Lint (prettier)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
@@ -50,5 +49,18 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npx --no-install eslint .
-      - run: npx --no-install prettier .
+      - run: npx --no-install prettier --check .
+
+  lint_eslint:
+    name: Lint (eslint)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+
+      - uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93
+        with:
+          node-version: 16
+          cache: npm
+
+      - run: npm ci
+      - run: npx --no-install turbo run lint

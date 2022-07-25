@@ -1,7 +1,7 @@
 [Contented](https://contented.dev) is a Markdown-based authoring workflow that encourage developer authoring within
 its contextual Git repository. `npm i @birthdayresearch/contented`
 
-With a headless design of 2 config files `package.json` & `contented.js`, developers can start writing their markdown
+With a headless design of 1 config file `contented.config.js`, developers can start writing their markdown
 content and preview it on their localhost `contented write`. Choosing convention over configuration reduces HTML/UI
 clutter, allowing developers to focus on authoring.
 
@@ -13,7 +13,7 @@ checks it is compilable and presentable.
 By encouraging authoring next to the source (in the same git repo), developers can contextually document changes as they
 develop. All domain-specific changes will go into the `main` branch with one Git Pull Request.
 
-With `contented build`, you can compile your markdown into sources `index.js` & `*.json` with `*.d.ts` that output
+With `contented build`, you can compile your markdown into sources `index.js` and `*.json`. That output
 into `./dist`. `npm publish` them into any registry of your choice, for you can
 easily `npm i @your-scope/your-npm-package` and use the processed content on any of your downstream sites. Easily
 pulling up-to-date content and prose from individual domain-specific repositories and re-presented. Think microservices,
@@ -34,24 +34,27 @@ this [@birthdayresearch/contented-example/dist](https://www.jsdelivr.com/package
 
 ## Powered By
 
-- [Next](https://nextjs.org/), [Tailwind](https://tailwindcss.com/) for `contented write` and `contented generate`
-- [Contentlayer](https://contentlayer.dev/) with a collection of Unified Plugin for MD processing for `contented build`
-- And hacking around by spawning `node:child_process` so you just need 2 configuration files.
+- [Next](https://nextjs.org/)
+- [Tailwind](https://tailwindcss.com/)
+- [@babel/generator](https://babeljs.io/docs/en/babel-generator)
+- [unified](https://www.npmjs.com/package/unified)
 
 ## Getting Started
 
+Your docs can be anywhere as long as contented is configured to pick them up.
+
 ```text
 repo/
-├─ packages/**          <- Project Tree
-├─ docs/                <- Documentation Tree (standalone)
+├─ packages/**
+├─ docs/
 │  ├─ 01:Title 1/*.md
 │  ├─ 02:Title 2/*.md
 │  ├─ 03:Title 3/
 │  │  ├─ 01:Subtitle 1/*.md
 │  │  ├─ 02:overview.md
 │  │  └─ 03:faq.md
-│  ├─ contented.js
 │  └─ package.json
+├─ contented.config.js
 ├─ package.json
 └─ README.md
 ```
@@ -64,8 +67,7 @@ repo/
   "version": "0.0.0",
   "private": false,
   "files": ["dist"],
-  "main": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
   "scripts": {
     "write": "contented write",
     "generate": "contented generate",
@@ -73,13 +75,6 @@ repo/
   },
   "devDependencies": {
     "@birthdayresearch/contented": "0.0.0"
-  },
-  "contented": {
-    "url": "https://contented.dev",
-    "name": "Contented",
-    "github": {
-      "url": "https://github.com/BirthdayResearch/contented"
-    }
   }
 }
 ```
@@ -87,32 +82,42 @@ repo/
 **contented.js**
 
 ```js
-const Doc = {
-  name: 'Doc',
-  filePathPattern: `**/*.md`,
-  fields: {
-    title: {
-      type: 'string',
-      description: 'The title of the documentation.',
-      required: true,
-      default: 'Contented',
-    },
-    description: {
-      type: 'string',
-      required: false,
-    },
-    tags: {
-      type: 'list',
-      of: { type: 'string' },
-      default: [],
-      required: false,
+/** @type {import('@birthdayresearch/contented').ContentedConfig} */
+module.exports = {
+  preview: {
+    url: 'https://contented.dev',
+    name: 'Contented',
+    github: {
+      url: 'https://github.com/BirthdayResearch/contented',
     },
   },
-};
-
-export default {
-  rootDir: 'docs',
-  types: [Doc],
+  processor: {
+    pipelines: [
+      {
+        type: 'Docs',
+        pattern: 'docs/**/*.md',
+        processor: 'md',
+        fields: {
+          title: {
+            type: 'string',
+            required: true,
+            resolve: (s) => s ?? 'Contented',
+          },
+          description: {
+            type: 'string',
+          },
+          tags: {
+            type: 'string[]',
+          },
+        },
+        transform: (file) => {
+          file.path = file.path.replaceAll(/^\/docs\/?/g, '/');
+          file.sections = file.sections.slice(1);
+          return file;
+        },
+      },
+    ],
+  },
 };
 ```
 

@@ -50,22 +50,26 @@ contented build &&
 ### Engineer Implement Page
 
 ```jsx
-import { allDocuments as aDocs } from '@company/your-product-a';
-import { allDocuments as bDocs } from '@company/your-product-b';
+import { Index as aDocs } from '@company/your-product-a';
+import { Index as bDocs } from '@company/your-product-b';
+
+async function findContent(path) {
+  let content = aDocs.find((file) => file.path === path);
+  if (content) {
+    return require(`@company/your-product-a/${content.type}/${content.id}.json`);
+  }
+
+  content = bDocs.find((file) => file.path === path);
+  if (content) {
+    return require(`@company/your-product-b/${content.type}/${content.id}.json`);
+  }
+}
 
 export async function getStaticProps({ params }) {
   const path = `/${params?.slug?.join('/') ?? ''}`;
-  if (path.startsWith('/docs/a')) {
-    return {
-      props: {
-        doc: aDocs.find((p) => p.path === path),
-      },
-    };
-  }
-
   return {
     props: {
-      doc: bDocs.find((p) => p.path === path),
+      doc: await findContent(path),
     },
   };
 }

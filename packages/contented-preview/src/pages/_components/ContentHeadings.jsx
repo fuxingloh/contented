@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function ContentHeadings(props) {
   return (
     <>
-      {props.tags.length > 0 && (
+      {props.tags?.length > 0 && (
         <>
           <h2 id="tags-title" className="font-display text-sm font-medium text-slate-900 dark:text-white">
             Tags
@@ -28,13 +28,13 @@ export default function ContentHeadings(props) {
           </div>
         </>
       )}
-      {props.contentHeadings.length > 0 && (
+      {props.headings.length > 0 && (
         <>
           <h2 id="on-this-page-title" className="font-display text-sm font-medium text-slate-900 dark:text-white">
             On this page
           </h2>
           <ol role="list" className="mt-4 space-y-3 text-sm">
-            {props.contentHeadings.map((heading) => (
+            {props.headings.map((heading) => (
               <li key={heading.id}>
                 <h3 className="font-normal text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">
                   <Link href={`#${heading.id}`}>{heading.title}</Link>

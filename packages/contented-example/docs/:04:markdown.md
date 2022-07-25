@@ -7,16 +7,19 @@ tags: ['Markdown', 'Frontmatter', 'Admonitions', 'Mermaid']
 Contented [unified](https://www.npmjs.com/package/unified) processor pipeline.
 
 ```js
-builder
+processor
   .use(remarkGfm)
   .use(remarkFrontmatter)
   .use(remarkParse)
   .use(remarkDirective)
   .use(remarkDirectiveRehype)
+  .use(collectFields)
+  .use(validateFields)
   .use(remarkRehype)
   .use(rehypeSlug)
   .use(rehypeAutolinkHeadings)
   .use(rehypeToc)
+  .use(rehypeHeading)
   .use(rehypeMermaid)
   .use(rehypeShiki, { highlighter })
   .use(rehypeStringify);

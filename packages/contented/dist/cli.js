@@ -1,0 +1,1 @@
+// This file is checked so that "npm ci" will link it before it's compiled.

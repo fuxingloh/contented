@@ -63,4 +63,4 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npm --no-install turbo run lint
+      - run: npx --no-install turbo run lint

@@ -11,10 +11,12 @@
       "dependsOn": ["^build"]
     },
     "watch": {
+      "cache": false,
       "inputs": ["**/.md"],
       "dependsOn": ["build"]
     },
     "write": {
+      "cache": false,
       "inputs": ["**/.md"],
       "dependsOn": ["build"]
     },

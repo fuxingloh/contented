@@ -28,11 +28,11 @@ export default function ContentNavigation({ sections, className }) {
           const path = section.sections.join('/');
           return (
             <li key={path}>
-              {path && <h2 className="font-display font-medium text-slate-900 dark:text-white">{path}</h2>}
+              {path && <h2 className="font-display mb-4 font-medium text-slate-900 dark:text-white">{path}</h2>}
 
               <ul
                 role="list"
-                className={clsx('mt-2 mt-4 space-y-2 space-y-4', {
+                className={clsx('mb-4 space-y-2 space-y-4', {
                   'border-l-2 border-slate-100 border-slate-200 dark:border-slate-800': path,
                 })}
               >

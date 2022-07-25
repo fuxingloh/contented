@@ -7,7 +7,7 @@
   "source": "./src/index.ts",
   "types": "./dist/index.d.ts",
   "bin": {
-    "contented": "./dist/cli.js"
+    "contented": "./cli.js"
   },
   "files": [
     "dist"

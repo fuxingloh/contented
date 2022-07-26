@@ -1,3 +1,5 @@
+import 'jest-extended';
+
 import { Config, ContentedProcessor } from './ContentedProcessor';
 
 describe('process', () => {
@@ -186,14 +188,14 @@ describe('build', () => {
   });
 });
 
-describe('should dedup', () => {
+it('should dedup 2 files', async () => {
   const config: Config = {
     rootDir: './fixtures',
     outDir: './.contented',
     pipelines: [
       {
         type: 'Markdown',
-        pattern: '**/*.md',
+        pattern: '**/:1:Category/*.md',
         processor: 'md',
       },
       {
@@ -204,8 +206,33 @@ describe('should dedup', () => {
     ],
   };
   const processor = new ContentedProcessor(config);
+  await processor.build(':2:path-1.md', ':1:Category/Section/:2:path.md');
+});
 
-  it('should build 2 files', async () => {
-    await processor.build(':2:path-1.md', ':1:Category/Section/:2:path.md');
+it('should sort 2 files', async () => {
+  const config: Config = {
+    rootDir: './fixtures',
+    outDir: './.contented',
+    pipelines: [
+      {
+        type: 'Markdown',
+        pattern: '**/*.md',
+        processor: 'md',
+        sort(a) {
+          if (a.path === '/category/section/path') {
+            return -1;
+          }
+          return 1;
+        },
+      },
+    ],
+  };
+  const processor = new ContentedProcessor(config);
+  const files = await processor.build(':2:path-1.md', ':1:Category/Section/:2:path.md');
+  expect(files.pipelines.Markdown[0]).toMatchObject({
+    path: '/category/section/path',
+  });
+  expect(files.pipelines.Markdown[1]).toMatchObject({
+    path: '/path-1',
   });
 });

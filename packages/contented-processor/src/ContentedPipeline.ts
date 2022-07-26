@@ -18,6 +18,7 @@ export interface Pipeline {
     [name: string]: PipelineField;
   };
   transform?: (file: FileContent) => Promise<FileContent>;
+  sort?: (a: FileIndex, b: FileIndex) => number;
 }
 
 /**
@@ -46,6 +47,17 @@ export abstract class ContentedPipeline {
   constructor(protected readonly pipeline: Pipeline) {}
 
   abstract process(rootPath: string, file: string): Promise<FileContent | undefined>;
+
+  get type() {
+    return this.pipeline.type;
+  }
+
+  sort(files: FileIndex[]): FileIndex[] {
+    if (!this.pipeline.sort) {
+      return files;
+    }
+    return files.sort(this.pipeline.sort);
+  }
 }
 
 export class MarkdownContentedPipeline extends ContentedPipeline {

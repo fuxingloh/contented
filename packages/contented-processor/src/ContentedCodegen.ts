@@ -10,7 +10,7 @@ export class ContentedCodegen {
 
   async generateIndex() {
     const types = this.config.pipelines.map((pipeline) => pipeline.type);
-    const ast = generateIndexAST(types);
+    const ast = generateIndexAST([...new Set(types)]);
     const outPath = join(this.outPath, `index.js`);
     await fs.mkdir(this.outPath, { recursive: true });
     await fs.writeFile(outPath, generate(ast).code);

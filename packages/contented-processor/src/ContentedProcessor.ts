@@ -30,7 +30,7 @@ export class ContentedProcessor {
 
   public readonly codegen: ContentedCodegen;
 
-  public pipelines: Record<string, ContentedPipeline | undefined> = {};
+  public pipelines: Record<string, ContentedPipeline> = {};
 
   constructor(protected readonly config: Config) {
     config.rootDir = config.rootDir ?? './';
@@ -77,7 +77,8 @@ export class ContentedProcessor {
 
     // eslint-disable-next-line guard-for-in
     for (const type in result.pipelines) {
-      await this.codegen.generatePipeline(type, result.pipelines[type]);
+      const sortedFiles = this.findPipelineByType(type)!.sort(result.pipelines[type]);
+      await this.codegen.generatePipeline(type, sortedFiles);
     }
 
     await this.codegen.generateIndex();
@@ -85,7 +86,7 @@ export class ContentedProcessor {
   }
 
   async process(file: string): Promise<FileContent | undefined> {
-    const processor = await this.getCachedProcessor(file);
+    const processor = await this.getCachedPipeline(file);
     if (processor === undefined) {
       return;
     }
@@ -98,11 +99,11 @@ export class ContentedProcessor {
   }
 
   /**
-   * Find the cached processor to use
+   * Find the cached pipeline to use
    */
-  async getCachedProcessor(file: string): Promise<ContentedPipeline | undefined> {
+  async getCachedPipeline(file: string): Promise<ContentedPipeline | undefined> {
     const filePath = join(this.rootPath, file);
-    const pipeline = this.getPipeline(filePath);
+    const pipeline = this.findPipelineByFile(filePath);
     if (!pipeline) {
       return undefined;
     }
@@ -126,7 +127,7 @@ export class ContentedProcessor {
   /**
    * First the first pipeline to use
    */
-  private getPipeline(filePath: string) {
+  private findPipelineByFile(filePath: string) {
     return this.config.pipelines.find((pipeline) => {
       if (typeof pipeline.pattern === 'string') {
         return minimatch(filePath, join(this.rootPath, pipeline.pattern));
@@ -141,6 +142,10 @@ export class ContentedProcessor {
 
       return false;
     });
+  }
+
+  private findPipelineByType(type: string) {
+    return Object.values(this.pipelines).find((pipeline) => pipeline.type === type);
   }
 }
 

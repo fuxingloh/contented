@@ -107,7 +107,8 @@ export class ContentedProcessor {
       return undefined;
     }
 
-    const processor = this.pipelines[pipeline.type];
+    const cacheKey = getPipelineUniqueKey(pipeline);
+    const processor = this.pipelines[cacheKey];
     if (processor !== undefined) {
       return processor;
     }
@@ -115,7 +116,7 @@ export class ContentedProcessor {
     if (pipeline.processor === 'md') {
       const mdProcessor = new MarkdownContentedPipeline(pipeline);
       await mdProcessor.init();
-      this.pipelines[pipeline.type] = mdProcessor;
+      this.pipelines[cacheKey] = mdProcessor;
       return mdProcessor;
     }
 
@@ -127,8 +128,26 @@ export class ContentedProcessor {
    */
   private getPipeline(filePath: string) {
     return this.config.pipelines.find((pipeline) => {
-      const pattern = join(this.rootPath, pipeline.pattern);
-      return minimatch(filePath, pattern);
+      if (typeof pipeline.pattern === 'string') {
+        return minimatch(filePath, join(this.rootPath, pipeline.pattern));
+      }
+
+      for (const pattern of pipeline.pattern) {
+        const matched = minimatch(filePath, join(this.rootPath, pattern));
+        if (matched) {
+          return true;
+        }
+      }
+
+      return false;
     });
   }
+}
+
+function getPipelineUniqueKey(pipeline: Pipeline) {
+  if (typeof pipeline.pattern === 'string') {
+    return `${pipeline.type}:${pipeline.pattern}`;
+  }
+
+  return `${pipeline.type}:${pipeline.pattern.join(',')}`;
 }

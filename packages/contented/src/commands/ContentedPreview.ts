@@ -1,7 +1,7 @@
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { cp } from 'node:fs/promises';
 import { spawn, spawnSync } from 'node:child_process';
+import { cp } from 'node:fs/promises';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 export class ContentedPreview {
   previewDir = `${process.cwd()}/.contented/.preview`;

@@ -1,5 +1,5 @@
-import { WatchCommand } from './WatchCommand.js';
 import { ContentedPreview } from './ContentedPreview.js';
+import { WatchCommand } from './WatchCommand.js';
 
 export class WriteCommand extends WatchCommand {
   static paths = [[`write`]];

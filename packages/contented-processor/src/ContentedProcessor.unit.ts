@@ -186,7 +186,7 @@ describe('build', () => {
   });
 });
 
-describe('should dedup', function () {
+describe('should dedup', () => {
   const config: Config = {
     rootDir: './fixtures',
     outDir: './.contented',

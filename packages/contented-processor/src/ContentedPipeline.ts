@@ -12,7 +12,7 @@ import { ContentHeading } from './unified/rehype/Heading.js';
 
 export interface Pipeline {
   type: string;
-  pattern: string;
+  pattern: string | string[];
   processor: 'md';
   fields?: {
     [name: string]: PipelineField;

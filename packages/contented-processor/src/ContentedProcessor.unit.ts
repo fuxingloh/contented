@@ -1,5 +1,6 @@
-import { Config, ContentedProcessor } from './ContentedProcessor';
 import 'jest-extended';
+
+import { Config, ContentedProcessor } from './ContentedProcessor';
 
 describe('process', () => {
   const config: Config = {
@@ -217,7 +218,7 @@ it('should sort 2 files', async () => {
         type: 'Markdown',
         pattern: '**/*.md',
         processor: 'md',
-        sort(a, b) {
+        sort(a) {
           if (a.path === '/category/section/path') {
             return -1;
           }

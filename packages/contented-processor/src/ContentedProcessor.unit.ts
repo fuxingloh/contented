@@ -185,3 +185,27 @@ describe('build', () => {
     });
   });
 });
+
+describe('should dedup', function () {
+  const config: Config = {
+    rootDir: './fixtures',
+    outDir: './.contented',
+    pipelines: [
+      {
+        type: 'Markdown',
+        pattern: '**/*.md',
+        processor: 'md',
+      },
+      {
+        type: 'Markdown',
+        pattern: '**/*.md',
+        processor: 'md',
+      },
+    ],
+  };
+  const processor = new ContentedProcessor(config);
+
+  it('should build 2 files', async () => {
+    await processor.build(':2:path-1.md', ':1:Category/Section/:2:path.md');
+  });
+});

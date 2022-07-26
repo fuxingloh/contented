@@ -11,10 +11,11 @@
   },
   "files": [
     "dist",
+    ".preview",
     "cli.js"
   ],
   "scripts": {
-    "build": "tsc -b ./tsconfig.build.json",
+    "build": "tsc -b ./tsconfig.build.json && node build-preview.js",
     "clean": "rm -rf dist",
     "lint": "eslint src"
   },
@@ -27,7 +28,6 @@
     ]
   },
   "dependencies": {
-    "@birthdayresearch/contented-preview": "0.0.0",
     "@birthdayresearch/contented-processor": "0.0.0",
     "chokidar": "^3.5.3",
     "clipanion": "3.2.0-rc.11",

@@ -1,5 +1,4 @@
-import { spawn, spawnSync } from 'node:child_process';
-
+import { ContentedPreview } from './ContentedPreview.js';
 import { WatchCommand } from './WatchCommand.js';
 
 export class WriteCommand extends WatchCommand {
@@ -8,12 +7,9 @@ export class WriteCommand extends WatchCommand {
   async execute() {
     await super.execute();
 
-    spawnSync(`contented-preview`);
-
-    const previewDir = `${process.cwd()}/.contented/.preview`;
-    spawn(`npm`, ['run', 'dev', '--prefix', previewDir], {
-      stdio: 'inherit',
-      cwd: previewDir,
-    });
+    const preview = new ContentedPreview();
+    await preview.init();
+    await preview.install();
+    await preview.write();
   }
 }

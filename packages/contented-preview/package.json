@@ -2,9 +2,6 @@
   "name": "@birthdayresearch/contented-preview",
   "version": "0.0.0",
   "private": false,
-  "bin": {
-    "contented-preview": "./cli.js"
-  },
   "scripts": {
     "dev": "next dev",
     "export": "next build && next-sitemap && next export"

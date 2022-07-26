@@ -1,7 +1,6 @@
 import { ContentedProcessor } from '@birthdayresearch/contented-processor';
-import { spawnSync } from 'node:child_process';
-
 import { BuildCommand } from './BuildCommand.js';
+import { ContentedPreview } from './ContentedPreview.js';
 
 export class GenerateCommand extends BuildCommand {
   static paths = [[`generate`]];
@@ -11,12 +10,9 @@ export class GenerateCommand extends BuildCommand {
     const processor = new ContentedProcessor(config.processor);
     await this.walk(processor);
 
-    spawnSync(`contented-preview`, [], { stdio: 'inherit' });
-
-    const previewDir = `${process.cwd()}/.contented/.preview`;
-    spawnSync(`npm`, ['run', 'export', '--prefix', previewDir], {
-      stdio: 'inherit',
-      cwd: previewDir,
-    });
+    const preview = new ContentedPreview();
+    await preview.init();
+    await preview.install();
+    await preview.generate();
   }
 }

@@ -27,7 +27,7 @@
     "preset": "@birthdayresearch/jest-preset"
   },
   "dependencies": {
-    "@babel/generator": "^7.18.10",
+    "@babel/generator": "^7.18.12",
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@leafac/rehype-shiki": "^2.1.2",
     "@sindresorhus/slugify": "^2.1.0",

@@ -1,5 +1,5 @@
 import { ContentedProcessor } from '@birthdayresearch/contented-processor';
-import chokidar from 'chokidar';
+import watcher, { Event } from '@parcel/watcher';
 import debounce from 'debounce';
 import { relative } from 'path';
 
@@ -11,13 +11,12 @@ export class WatchCommand extends BuildCommand {
   async execute() {
     const config = await this.loadConfig();
     const processor: ContentedProcessor = new ContentedProcessor(config.processor);
-    const watcher = createWatcher(processor);
 
     await this.walk(processor);
 
     const processWalk = debounce(() => {
       this.walk(processor);
-    }, 3000);
+    }, 1000);
 
     const processFile = (path: string) => {
       const file = relative(processor.rootPath, path);
@@ -27,15 +26,19 @@ export class WatchCommand extends BuildCommand {
       });
     };
 
-    watcher.on('change', processFile).on('add', processWalk).on('unlink', processWalk);
-  }
-}
+    const subscribe = (err: Error | null, events: Event[]) => {
+      const filtered = events.filter((value) => !value.path.endsWith('~'));
+      if (filtered.some((value) => value.type !== 'update')) {
+        processWalk();
+      } else {
+        for (const event of filtered) {
+          processFile(event.path);
+        }
+      }
+    };
 
-function createWatcher(processor: ContentedProcessor) {
-  return chokidar.watch(processor.rootPath, {
-    persistent: true,
-    awaitWriteFinish: true,
-    ignoreInitial: true,
-    ignored: /(^|[/\\])\../, // ignore dotfiles
-  });
+    await watcher.subscribe(processor.rootPath, subscribe, {
+      ignore: ['.contented', 'node_modules'],
+    });
+  }
 }

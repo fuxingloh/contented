@@ -18,7 +18,7 @@
     "write": {
       "cache": false,
       "inputs": ["**/.md"],
-      "dependsOn": ["build"]
+      "dependsOn": ["^build"]
     },
     "generate": {
       "inputs": ["**/.md"],

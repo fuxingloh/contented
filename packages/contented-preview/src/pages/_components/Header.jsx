@@ -11,9 +11,9 @@ export default function Header() {
   const pipelines = Object.entries(Pipelines);
 
   return (
-    <header className="sticky top-0 z-10 border-b border-slate-200/60 bg-slate-50 dark:border-slate-300/10 dark:bg-slate-900">
-      <nav className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
-        <div className="flex w-full items-center justify-between py-2">
+    <header className="sticky top-0 z-10 h-[3.25rem] border-b border-slate-200/60 bg-slate-50 dark:border-slate-300/10 dark:bg-slate-900">
+      <nav className="max-w-8xl mx-auto h-full px-4 sm:px-6 lg:px-8" aria-label="Top">
+        <div className="flex h-full w-full items-center justify-between">
           <div className="flex">
             <div className="mr-4 flex lg:hidden">
               {isOpen ? (

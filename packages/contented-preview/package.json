@@ -13,7 +13,7 @@
     "@tailwindcss/typography": "0.5.4",
     "autoprefixer": "10.4.8",
     "clsx": "1.2.1",
-    "mermaid": "9.1.4",
+    "mermaid": "9.1.5",
     "next": "12.2.5",
     "next-sitemap": "3.1.17",
     "postcss": "8.4.16",

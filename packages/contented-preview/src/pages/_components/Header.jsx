@@ -11,9 +11,9 @@ export default function Header() {
   const pipelines = Object.entries(Pipelines);
 
   return (
-    <header className="sticky top-0 z-10 border-b border-slate-200/60 bg-slate-50 dark:border-slate-300/10 dark:bg-slate-900">
-      <nav className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
-        <div className="flex w-full items-center justify-between py-4">
+    <header className="sticky top-0 z-10 h-[3.25rem] border-b border-slate-200/60 bg-slate-50 dark:border-slate-300/10 dark:bg-slate-900">
+      <nav className="max-w-8xl mx-auto h-full px-4 sm:px-6 lg:px-8" aria-label="Top">
+        <div className="flex h-full w-full items-center justify-between">
           <div className="flex">
             <div className="mr-4 flex lg:hidden">
               {isOpen ? (
@@ -37,17 +37,15 @@ export default function Header() {
                 {pipelines.map(([type, pipeline]) => {
                   return (
                     <Link href={pipeline.collection[0].path} key={type}>
-                      <button className="px-2">
-                        <span
-                          className={clsx(
-                            'rounded px-3 py-2 text-sm font-medium',
-                            'bg-slate-200/50 text-slate-800 hover:bg-slate-200 hover:text-slate-900',
-                            'dark:bg-slate-800 dark:text-slate-400 hover:dark:bg-slate-700 dark:hover:text-slate-300',
-                          )}
-                        >
-                          {type}
-                        </span>
-                      </button>
+                      <a
+                        className={clsx(
+                          'rounded px-3 py-2 text-sm font-medium',
+                          'text-slate-800 hover:bg-slate-200/50 hover:text-slate-900',
+                          'dark:text-slate-400 hover:dark:bg-slate-800 dark:hover:text-slate-300',
+                        )}
+                      >
+                        {type}
+                      </a>
                     </Link>
                   );
                 })}

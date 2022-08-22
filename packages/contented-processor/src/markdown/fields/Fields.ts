@@ -3,7 +3,7 @@ import { Parent } from 'mdast';
 import { Transformer } from 'unified';
 import { VFile } from 'vfile';
 
-import { UnifiedContented } from '../../ContentedUnified.js';
+import { UnifiedContented } from '../UnifiedProcessor.js';
 
 export type PipelineField =
   | AbstractField<'string', string>

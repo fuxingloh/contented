@@ -2,7 +2,8 @@ import minimatch from 'minimatch';
 import { join } from 'node:path';
 
 import { ContentedCodegen } from './ContentedCodegen.js';
-import { ContentedPipeline, FileContent, FileIndex, MarkdownContentedPipeline, Pipeline } from './ContentedPipeline.js';
+import { ContentedPipeline, FileContent, FileIndex, Pipeline } from './ContentedPipeline.js';
+import { MdContentedPipeline } from './markdown/MdContentedPipeline.js';
 
 export interface Config {
   /**
@@ -115,7 +116,7 @@ export class ContentedProcessor {
     }
 
     if (pipeline.processor === 'md') {
-      const mdProcessor = new MarkdownContentedPipeline(pipeline);
+      const mdProcessor = new MdContentedPipeline(pipeline);
       await mdProcessor.init();
       this.pipelines[cacheKey] = mdProcessor;
       return mdProcessor;

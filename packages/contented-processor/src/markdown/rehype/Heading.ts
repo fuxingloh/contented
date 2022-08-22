@@ -2,7 +2,7 @@ import { Content, Parent } from 'hast';
 import { toString } from 'hast-util-to-string';
 import { Transformer } from 'unified';
 
-import { UnifiedContented } from '../../ContentedUnified.js';
+import { UnifiedContented } from '../UnifiedProcessor.js';
 
 export interface ContentHeading {
   id: string;

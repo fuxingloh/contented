@@ -1,24 +1,11 @@
 import yaml from 'js-yaml';
 import { Parent } from 'mdast';
 import { Transformer } from 'unified';
-import { VFile } from 'vfile';
 
-import { UnifiedContented } from '../../ContentedUnified.js';
-
-export type PipelineField =
-  | AbstractField<'string', string>
-  | AbstractField<'number', number>
-  | AbstractField<'string[]', string[]>
-  | AbstractField<'number[]', number[]>;
-
-export interface AbstractField<NamedType, T> {
-  type: NamedType;
-  required?: boolean;
-  resolve?: (d: T | undefined, parent: Parent, file: VFile) => T | Promise<T>;
-}
+import { UnifiedContented } from './Plugin.js';
 
 export function collectFields(): Transformer<Parent> {
-  return function transformer(tree: Parent, file) {
+  return (tree: Parent, file) => {
     const node = tree.children?.[0];
     if (node?.type === 'yaml') {
       const contented = file.data.contented as UnifiedContented;
@@ -27,22 +14,35 @@ export function collectFields(): Transformer<Parent> {
   };
 }
 
-export function validateFields(): Transformer<Parent> {
-  return async function transformer(tree: Parent, file: VFile) {
+export function resolveFields(): Transformer<Parent> {
+  return async (tree: Parent, file) => {
     const contented = file.data.contented as UnifiedContented;
-    // If pipeline.fields isn't default, remove all fields
-    if (contented.pipeline.fields === undefined) {
-      contented.fields = {};
-      return;
-    }
+    const entries = Object.entries(contented.pipeline.fields ?? {});
+    const context = {
+      tree,
+      file,
+    };
 
     const fields: Record<string, any> = {};
-    for (const [key, field] of Object.entries(contented.pipeline.fields)) {
-      const resolved = (await field.resolve?.(contented.fields[key], tree, file)) ?? contented.fields[key];
-      if (isTypeValid(field.type, resolved)) {
-        fields[key] = resolved;
+    for (const [key, field] of entries) {
+      if (field.resolve) {
+        fields[key] = await field.resolve(contented.fields[key], context);
       } else {
-        fields[key] = undefined;
+        fields[key] = contented.fields[key];
+      }
+    }
+    contented.fields = fields;
+  };
+}
+
+export function validateFields(): Transformer<Parent> {
+  return async (tree: Parent, file) => {
+    const contented = file.data.contented as UnifiedContented;
+    const entries = Object.entries(contented.pipeline.fields ?? {});
+
+    for (const [key, field] of entries) {
+      if (!isTypeValid(field.type, contented.fields[key])) {
+        contented.fields[key] = undefined;
 
         if (field.required) {
           contented.errors.push({
@@ -52,7 +52,6 @@ export function validateFields(): Transformer<Parent> {
         }
       }
     }
-    contented.fields = fields;
   };
 }
 

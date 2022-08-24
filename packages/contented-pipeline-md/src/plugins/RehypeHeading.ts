@@ -1,29 +1,20 @@
+import { FileContentHeadings } from '@birthdayresearch/contented-pipeline';
 import { Content, Parent } from 'hast';
 import { toString } from 'hast-util-to-string';
 import { Transformer } from 'unified';
 
-import { UnifiedContented } from '../../ContentedUnified.js';
-
-export interface ContentHeading {
-  id: string;
-  depth: 1 | 2 | 3 | 4 | 5 | 6;
-  title: string;
-  children: ContentHeading[];
-}
+import { UnifiedContented } from './Plugin.js';
 
 export function rehypeHeading(): Transformer<Parent> {
-  return function transformer(tree, file) {
+  return (tree, file) => {
+    const headings = collectHeadings(tree, []);
+
     const contented = file.data.contented as UnifiedContented;
-    contented.headings = computeHeadings(tree);
+    contented.headings = mergeHeadings(headings);
   };
 }
 
-function computeHeadings(tree: Parent) {
-  const headings = collectHeadings(tree, []);
-  return mergeHeadings(headings);
-}
-
-function collectHeadings(node: Parent, headings: ContentHeading[] = []): ContentHeading[] {
+function collectHeadings(node: Parent, headings: FileContentHeadings[] = []): FileContentHeadings[] {
   node?.children?.forEach((child: Content) => {
     if (child.type === 'element') {
       // eslint-disable-next-line default-case
@@ -46,8 +37,8 @@ function collectHeadings(node: Parent, headings: ContentHeading[] = []): Content
   return headings;
 }
 
-function mergeHeadings(headings: ContentHeading[]): ContentHeading[] {
-  const root: ContentHeading[] = [];
+function mergeHeadings(headings: FileContentHeadings[]): FileContentHeadings[] {
+  const root: FileContentHeadings[] = [];
   headings.forEach((heading) => {
     const previous = root[root.length - 1];
     if (!previous) {

@@ -1,0 +1,60 @@
+{
+  "name": "@birthdayresearch/contented-pipeline-md",
+  "version": "0.0.0",
+  "private": false,
+  "type": "module",
+  "main": "./dist/index.js",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b ./tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "lint": "eslint src",
+    "test": "jest"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": [
+      "@birthdayresearch"
+    ]
+  },
+  "jest": {
+    "preset": "@birthdayresearch/jest-preset"
+  },
+  "dependencies": {
+    "@birthdayresearch/contented-pipeline": "0.0.0",
+    "@jsdevtools/rehype-toc": "^3.0.2",
+    "@leafac/rehype-shiki": "^2.1.2",
+    "@sindresorhus/slugify": "^2.1.0",
+    "hast-util-to-string": "^2.0.0",
+    "js-yaml": "^4.1.0",
+    "minimatch": "^5.1.0",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-parse": "^8.0.4",
+    "rehype-slug": "^5.0.1",
+    "rehype-stringify": "^9.0.3",
+    "remark-directive": "^2.0.1",
+    "remark-directive-rehype": "^0.4.0",
+    "remark-frontmatter": "^4.0.1",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "shiki": "^0.10.1",
+    "to-vfile": "^7.2.3",
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.1",
+    "vfile": "^5.3.4"
+  },
+  "devDependencies": {
+    "@birthdayresearch/eslint-config": "0.0.0",
+    "@birthdayresearch/jest-preset": "0.0.0",
+    "@types/js-yaml": "^4.0.5",
+    "@types/hast": "^2.3.4",
+    "typescript": "4.7.4"
+  }
+}

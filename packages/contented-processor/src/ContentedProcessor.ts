@@ -1,9 +1,9 @@
+import { ContentedPipeline, FileContent, FileIndex, Pipeline } from '@birthdayresearch/contented-pipeline';
+import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
 import minimatch from 'minimatch';
 import { join } from 'node:path';
 
 import { ContentedCodegen } from './ContentedCodegen.js';
-import { ContentedPipeline, FileContent, FileIndex, Pipeline } from './ContentedPipeline.js';
-import { MdContentedPipeline } from './markdown/MdContentedPipeline.js';
 
 export interface Config {
   /**
@@ -116,7 +116,7 @@ export class ContentedProcessor {
     }
 
     if (pipeline.processor === 'md') {
-      const mdProcessor = new MdContentedPipeline(pipeline);
+      const mdProcessor = new MarkdownPipeline(pipeline);
       await mdProcessor.init();
       this.pipelines[cacheKey] = mdProcessor;
       return mdProcessor;

@@ -31,6 +31,5 @@
     "lint": {
       "outputs": []
     }
-  },
-  "globalDependencies": [".eslintrc.js"]
+  }
 }

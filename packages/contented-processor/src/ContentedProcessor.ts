@@ -118,15 +118,19 @@ export class ContentedProcessor {
   }
 
   private async newProcessor(pipeline: Pipeline): Promise<ContentedPipeline> {
-    if (pipeline.processor === 'md') {
-      const md = new MarkdownPipeline(pipeline);
-      await md.init();
-      return md;
-    }
+    const newPipeline = async (): Promise<ContentedPipeline> => {
+      switch (pipeline.processor) {
+        case 'md':
+          return new MarkdownPipeline(pipeline);
+        default:
+          return import(pipeline.processor);
+      }
+    };
 
-    if (pipeline.processor instanceof ContentedPipeline) {
-      await pipeline.processor.init();
-      return pipeline.processor;
+    const processor = await newPipeline();
+    if (processor) {
+      await processor.init();
+      return processor;
     }
 
     throw new Error(`pipeline.category: ${pipeline.type} processor not found.`);

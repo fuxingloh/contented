@@ -45,7 +45,7 @@ export abstract class ContentedPipeline {
     return this.pipeline.type;
   }
 
-  protected sort(files: FileIndex[]): FileIndex[] {
+  sort(files: FileIndex[]): FileIndex[] {
     if (!this.pipeline.sort) {
       return files;
     }

@@ -9,7 +9,11 @@ import { FileContent, FileIndex } from './PipelineFile.js';
 export interface Pipeline {
   type: string;
   pattern: string | string[];
-  processor: 'md' | ContentedPipeline;
+  /**
+   * Built in processor: 'md'
+   * Otherwise it will `import(processor)` module with default exporting ContentedPipeline
+   */
+  processor: 'md' | string;
   fields?: {
     [name: string]: PipelineField;
   };

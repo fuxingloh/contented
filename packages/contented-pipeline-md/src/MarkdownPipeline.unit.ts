@@ -1,20 +1,21 @@
-import { MarkdownPipeline } from './MarkdownPipeline';
 import { join } from 'node:path';
+
+import { MarkdownPipeline } from './MarkdownPipeline';
 
 const rootPath = join(__dirname, '../fixtures');
 
-describe('Without Config', function () {
+describe('Without Config', () => {
   const pipeline = new MarkdownPipeline({
     type: 'Markdown',
     pattern: '**/*.md',
     processor: 'md',
   });
 
-  beforeAll(async function () {
+  beforeAll(async () => {
     await pipeline.init();
   });
 
-  it('should process See.Nothing.md', async function () {
+  it('should process See.Nothing.md', async () => {
     const content = await pipeline.process(rootPath, 'See.Nothing.md');
     console.log(content);
     expect(content).toStrictEqual({

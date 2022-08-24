@@ -9,7 +9,7 @@ import { FileContent, FileIndex } from './PipelineFile.js';
 export interface Pipeline {
   type: string;
   pattern: string | string[];
-  processor: 'md';
+  processor: 'md' | ContentedPipeline;
   fields?: {
     [name: string]: PipelineField;
   };
@@ -22,6 +22,11 @@ export interface Pipeline {
  */
 export abstract class ContentedPipeline {
   public constructor(protected readonly pipeline: Pipeline) {}
+
+  /**
+   * Optional init for Pipeline that require async setup.
+   */
+  async init(): Promise<void> {} // eslint-disable-line @typescript-eslint/no-empty-function
 
   async process(rootPath: string, file: string): Promise<FileContent | undefined> {
     const fileIndex = await this.newFileIndex(rootPath, file);

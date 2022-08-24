@@ -110,16 +110,23 @@ export class ContentedProcessor {
     }
 
     const cacheKey = getPipelineUniqueKey(pipeline);
-    const processor = this.pipelines[cacheKey];
-    if (processor !== undefined) {
-      return processor;
+    if (this.pipelines[cacheKey] === undefined) {
+      this.pipelines[cacheKey] = await this.newProcessor(pipeline);
     }
 
+    return this.pipelines[cacheKey];
+  }
+
+  private async newProcessor(pipeline: Pipeline): Promise<ContentedPipeline> {
     if (pipeline.processor === 'md') {
-      const mdProcessor = new MarkdownPipeline(pipeline);
-      await mdProcessor.init();
-      this.pipelines[cacheKey] = mdProcessor;
-      return mdProcessor;
+      const md = new MarkdownPipeline(pipeline);
+      await md.init();
+      return md;
+    }
+
+    if (pipeline.processor instanceof ContentedPipeline) {
+      await pipeline.processor.init();
+      return pipeline.processor;
     }
 
     throw new Error(`pipeline.category: ${pipeline.type} processor not found.`);

@@ -30,12 +30,16 @@ export abstract class ContentedPipeline {
       return undefined;
     }
     if (this.pipeline.transform === undefined) {
-      return undefined;
+      return content;
     }
     return this.pipeline.transform(content);
   }
 
-  abstract processFile(fileIndex: FileIndex, rootPath: string, file: string): Promise<FileContent | undefined>;
+  protected abstract processFile(
+    fileIndex: FileIndex,
+    rootPath: string,
+    file: string,
+  ): Promise<FileContent | undefined>;
 
   get type() {
     return this.pipeline.type;

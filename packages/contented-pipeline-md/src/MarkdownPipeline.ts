@@ -14,7 +14,11 @@ export class MarkdownPipeline extends ContentedPipeline {
     await initProcessor(this.processor);
   }
 
-  override async processFile(fileIndex: FileIndex, rootPath: string, file: string): Promise<FileContent | undefined> {
+  protected override async processFile(
+    fileIndex: FileIndex,
+    rootPath: string,
+    file: string,
+  ): Promise<FileContent | undefined> {
     const output = await this.processUnified(rootPath, file);
     const contented = output.data.contented as UnifiedContented;
 
@@ -32,13 +36,13 @@ export class MarkdownPipeline extends ContentedPipeline {
     };
   }
 
-  async processUnified(rootPath: string, file: string): Promise<VFileWithOutput<any>> {
+  protected async processUnified(rootPath: string, file: string): Promise<VFileWithOutput<any>> {
     const vFile = await read(join(rootPath, file));
     vFile.data = { contented: this.newUnifiedContented() };
     return this.processor.process(vFile);
   }
 
-  newUnifiedContented(): UnifiedContented {
+  protected newUnifiedContented(): UnifiedContented {
     return {
       pipeline: this.pipeline,
       headings: [],

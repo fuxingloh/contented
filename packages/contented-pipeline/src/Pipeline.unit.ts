@@ -15,5 +15,4 @@ it('should be extendable', async () => {
   });
 
   expect(pipeline.type).toStrictEqual('Type');
-  expect(await pipeline.process('1', '2')).toBeUndefined();
 });

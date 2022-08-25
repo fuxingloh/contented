@@ -118,12 +118,13 @@ export class ContentedProcessor {
   }
 
   private async newProcessor(pipeline: Pipeline): Promise<ContentedPipeline> {
-    const newPipeline = async (): Promise<ContentedPipeline> => {
+    const newPipeline = (): ContentedPipeline => {
       switch (pipeline.processor) {
         case 'md':
           return new MarkdownPipeline(pipeline);
         default:
-          return import(pipeline.processor);
+          // eslint-disable-next-line new-cap
+          return new pipeline.processor(pipeline);
       }
     };
 

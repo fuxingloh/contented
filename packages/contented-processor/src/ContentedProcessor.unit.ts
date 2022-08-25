@@ -1,5 +1,8 @@
 import 'jest-extended';
 
+import { FileContent, FileIndex } from '@birthdayresearch/contented-pipeline';
+import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
+
 import { Config, ContentedProcessor } from './ContentedProcessor';
 
 describe('process', () => {
@@ -184,6 +187,44 @@ describe('build', () => {
           },
         ],
       },
+    });
+  });
+});
+
+describe('custom', () => {
+  class CustomPipeline extends MarkdownPipeline {
+    override async processFile(fileIndex: FileIndex): Promise<FileContent | undefined> {
+      return {
+        ...fileIndex,
+        html: '<div>CUSTOM</div>',
+        headings: [],
+      };
+    }
+  }
+
+  const config: Config = {
+    rootDir: './fixtures',
+    outDir: './.contented',
+    pipelines: [
+      {
+        type: 'Custom',
+        pattern: '**/*.md',
+        processor: CustomPipeline,
+      },
+    ],
+  };
+  const processor = new ContentedProcessor(config);
+
+  it('should use custom pipeline', async () => {
+    expect(await processor.process(':2:path-1.md')).toStrictEqual({
+      id: expect.stringMatching(/[0-f]{64}/),
+      modifiedDate: expect.any(Number),
+      type: 'Custom',
+      path: '/path-1',
+      sections: [],
+      fields: {},
+      html: '<div>CUSTOM</div>',
+      headings: [],
     });
   });
 });

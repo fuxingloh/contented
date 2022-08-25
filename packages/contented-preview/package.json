@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@headlessui/react": "1.6.6",
-    "@heroicons/react": "2.0.4",
+    "@heroicons/react": "2.0.7",
     "@tailwindcss/line-clamp": "0.4.0",
     "@tailwindcss/typography": "0.5.4",
     "autoprefixer": "10.4.8",

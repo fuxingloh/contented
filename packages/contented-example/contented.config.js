@@ -10,7 +10,6 @@ const config = {
     },
   },
   processor: {
-    rootDir: '../',
     pipelines: [
       {
         type: 'Docs',

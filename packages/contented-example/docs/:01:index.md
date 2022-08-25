@@ -74,7 +74,7 @@ repo/
     "build": "contented build"
   },
   "devDependencies": {
-    "@birthdayresearch/contented": "0.0.0"
+    "@birthdayresearch/contented": "latest"
   }
 }
 ```

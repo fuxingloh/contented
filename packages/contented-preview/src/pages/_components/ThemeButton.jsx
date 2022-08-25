@@ -1,4 +1,4 @@
-import { MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
 import { useTheme } from './ThemeContext';
 
 export default function ThemeButton(props) {

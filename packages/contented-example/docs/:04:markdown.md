@@ -8,21 +8,26 @@ Contented [unified](https://www.npmjs.com/package/unified) processor pipeline.
 
 ```js
 processor
+  .use(options.before)
   .use(remarkGfm)
   .use(remarkFrontmatter)
   .use(remarkParse)
   .use(remarkDirective)
   .use(remarkDirectiveRehype)
   .use(collectFields)
+  .use(resolveFields)
   .use(validateFields)
+  .use(options.remarks)
   .use(remarkRehype)
+  .use(options.rehypes)
   .use(rehypeSlug)
   .use(rehypeAutolinkHeadings)
   .use(rehypeToc)
   .use(rehypeHeading)
   .use(rehypeMermaid)
   .use(rehypeShiki, { highlighter })
-  .use(rehypeStringify);
+  .use(rehypeStringify)
+  .use(options.after);
 ```
 
 ## GitHub Flavour Markdown

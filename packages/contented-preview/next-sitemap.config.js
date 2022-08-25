@@ -1,7 +1,6 @@
-const { preview } = require('../../contented.config.js');
-
+/** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: preview?.url ?? process.env.SITE_URL,
+  siteUrl: process.env.CONTENTED_PREVIEW_SITE_URL,
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [

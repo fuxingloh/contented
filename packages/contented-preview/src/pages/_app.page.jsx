@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>{process.env.SITE_NAME}</title>
+        <title>{process.env.CONTENTED_PREVIEW_SITE_NAME}</title>
       </Head>
       <ThemeProvider>
         <MenuProvider>

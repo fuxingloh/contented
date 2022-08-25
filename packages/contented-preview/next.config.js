@@ -1,18 +1,14 @@
-const { preview } = require('../../contented.config.js');
-
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
   pageExtensions: ['page.jsx'],
   swcMinify: true,
   env: {
-    SITE_URL: preview?.url ?? 'https://contented.dev',
-    SITE_NAME: preview?.name ?? 'Contented',
-    GITHUB_URL: preview?.github?.url ?? 'https://github.com/BirthdayResearch/contented',
+    CONTENTED_PREVIEW_SITE_URL: process.env.CONTENTED_PREVIEW_SITE_URL,
+    CONTENTED_PREVIEW_SITE_NAME: process.env.CONTENTED_PREVIEW_SITE_NAME,
+    CONTENTED_PREVIEW_GITHUB_URL: process.env.CONTENTED_PREVIEW_GITHUB_URL,
   },
   eslint: {
     ignoreDuringBuilds: true,
   },
 };
-
-module.exports = nextConfig

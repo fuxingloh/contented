@@ -1,7 +1,7 @@
 import { ContentedProcessor } from '@birthdayresearch/contented-processor';
 import watcher, { Event } from '@parcel/watcher';
 import debounce from 'debounce';
-import { relative, join } from 'node:path';
+import { join, relative } from 'node:path';
 
 import { BuildCommand } from './BuildCommand.js';
 

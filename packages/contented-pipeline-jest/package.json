@@ -1,0 +1,43 @@
+{
+  "name": "@birthdayresearch/contented-pipeline-jest",
+  "version": "0.0.0",
+  "private": false,
+  "type": "module",
+  "main": "./dist/index.js",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b ./tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "lint": "eslint src",
+    "test": "jest"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": [
+      "@birthdayresearch"
+    ]
+  },
+  "jest": {
+    "preset": "@birthdayresearch/jest-preset"
+  },
+  "dependencies": {
+    "@babel/generator": "^7.18.13",
+    "@babel/parser": "^7.18.13",
+    "@babel/traverse": "^7.18.13",
+    "@birthdayresearch/contented-pipeline-md": "0.0.0",
+    "strip-indent": "^4.0.0",
+    "unified": "^10.1.2",
+    "vfile": "^5.3.4"
+  },
+  "devDependencies": {
+    "@birthdayresearch/eslint-config": "0.0.0",
+    "@birthdayresearch/jest-preset": "0.0.0",
+    "typescript": "4.7.4"
+  }
+}

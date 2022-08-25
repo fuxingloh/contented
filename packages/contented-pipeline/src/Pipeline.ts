@@ -64,48 +64,48 @@ export abstract class ContentedPipeline {
   protected async newFileIndex(rootPath: string, file: string): Promise<FileIndex> {
     const filePath = join(rootPath, file);
     const parsedPath = parse(file);
-    const sections = computeSections(parsedPath);
+    const sections = this.computeSections(parsedPath);
 
     return {
-      id: computeFileId(filePath),
+      id: this.computeFileId(filePath),
       type: this.type,
-      path: computePath(sections, parsedPath),
-      modifiedDate: await computeModifiedDate(filePath),
+      path: this.computePath(sections, parsedPath),
+      modifiedDate: await this.computeModifiedDate(filePath),
       sections,
       fields: {},
     };
   }
-}
 
-function computePath(sections: string[], parsedPath: ParsedPath) {
-  const dir = `/${sections.map((s) => slugify(s)).join('/')}`;
-  const file = `/${slugify(replacePrefix(parsedPath.name))}`;
-  if (file === '/index') {
-    return dir;
+  protected computePath(sections: string[], parsedPath: ParsedPath) {
+    const dir = `/${sections.map((s) => slugify(s)).join('/')}`;
+    const file = `/${slugify(replacePrefix(parsedPath.name))}`;
+    if (file === '/index') {
+      return dir;
+    }
+
+    if (dir === '/') {
+      return file;
+    }
+
+    return `${dir}${file}`;
   }
 
-  if (dir === '/') {
-    return file;
+  protected computeFileId(filePath: string) {
+    return createHash('sha256').update(filePath).digest('hex');
   }
 
-  return `${dir}${file}`;
-}
+  protected computeSections(parsedPath: ParsedPath) {
+    if (parsedPath.dir === '') {
+      return [];
+    }
 
-function computeFileId(filePath: string) {
-  return createHash('sha256').update(filePath).digest('hex');
-}
-
-async function computeModifiedDate(filePath: string): Promise<number> {
-  const stats = await fs.stat(filePath);
-  return stats.mtime.getTime();
-}
-
-function computeSections(parsedPath: ParsedPath) {
-  if (parsedPath.dir === '') {
-    return [];
+    return parsedPath.dir.split('/').map(replacePrefix);
   }
 
-  return parsedPath.dir.split('/').map(replacePrefix);
+  protected async computeModifiedDate(filePath: string): Promise<number> {
+    const stats = await fs.stat(filePath);
+    return stats.mtime.getTime();
+  }
 }
 
 function replacePrefix(path: string) {

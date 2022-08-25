@@ -18,10 +18,10 @@ export class JestPipeline extends MarkdownPipeline {
     const path = join(rootPath, file);
     const contents = await readFile(path, { encoding: 'utf-8' });
     const ast = parse(contents, { sourceType: 'unambiguous' });
+    const lines = contents.split('\n');
 
-    const nodes = this.collectNodes(ast);
     const comments = this.collectComments(ast) ?? [];
-    const value = this.mergeCodeblock(nodes, comments).join('\n\n');
+    const value = this.mergeCodeblock(lines, comments).join('\n\n');
 
     await writeFile('jest-pipeline.md', value);
 
@@ -36,22 +36,10 @@ export class JestPipeline extends MarkdownPipeline {
       ?.map((comment) => {
         return {
           content: this.normalizeText(comment.value),
-          index: comment.end,
+          index: comment.loc?.start.line,
         };
       })
       .filter((value) => value.index !== undefined) as NormalizedComment[];
-  }
-
-  protected collectNodes(ast: File) {
-    const nodes: NodePath[] = [];
-    traverse(ast, {
-      enter(path) {
-        path.node.leadingComments = [];
-        path.node.trailingComments = [];
-        nodes.push(path);
-      },
-    });
-    return nodes;
   }
 
   /**
@@ -68,21 +56,25 @@ export class JestPipeline extends MarkdownPipeline {
     return stripIndent(content);
   }
 
-  protected mergeCodeblock(nodes: NodePath[], comments: NormalizedComment[]): string[] {
-    const lines: string[] = [];
+  protected mergeCodeblock(lines: string[], comments: NormalizedComment[]): string[] {
+    const collected: string[] = [];
+    let codeblockStart: number | undefined = undefined;
+
     for (const comment of comments) {
-      if (comment.content === '@contented codeblock') {
-        const node = nodes.find((value) => {
-          return !value.node.start ? false : value.node.start > comment.index;
-        });
-        if (node) {
-          lines.push('```ts\n' + generate(node.node, { retainLines: true }).code + '\n```');
+      if (comment.content === '@contented codeblock:start') {
+        codeblockStart = comment.index;
+      } else if (comment.content === '@contented codeblock:end') {
+        if (codeblockStart !== undefined) {
+          const codeblock = lines.slice(codeblockStart, comment.index - 1).join('\n');
+          collected.push('```ts\n' + stripIndent(codeblock) + '\n```');
         }
+        codeblockStart = undefined;
       } else {
-        lines.push(comment.content);
+        collected.push(comment.content);
       }
     }
-    return lines;
+
+    return collected;
   }
 }
 

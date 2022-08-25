@@ -24,16 +24,17 @@ describe('Without Config', () => {
   });
   // @contented codeblock:end
 
-  // @contented codeblock
   beforeAll(async () => {
+    // @contented codeblock:start
     await pipeline.init();
+    // @contented codeblock:end
   });
 
   /*## `@contented codeblock`*/
   // This works
 
-  // @contented codeblock
   it('should process JestPipeline.unit.ts', async () => {
+    // @contented codeblock:start
     const content = await pipeline.process(__dirname, 'JestPipeline.unit.ts');
     expect(content).toStrictEqual({
       type: 'Example',
@@ -52,10 +53,11 @@ describe('Without Config', () => {
       modifiedDate: expect.any(Number),
       html: '<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#nothing-to-see">Nothing To See</a></li></ol></nav><h1 id="nothing-to-see"><a aria-hidden="true" tabindex="-1" href="#nothing-to-see"><span class="icon icon-link"></span></a>Nothing To See</h1>\n<p>Markdown for testing <code>MarkdownPipeline.unit.ts</code>.</p>',
     });
+    // @contented codeblock:end
   });
 });
 
-// @contented codeblock
+// @contented codeblock:start
 describe('@contented codeblock', () => {
   const pipeline = new JestPipeline({
     type: 'Example',
@@ -69,3 +71,4 @@ describe('@contented codeblock', () => {
     expect(content?.html).toStrictEqual('');
   });
 });
+// @contented codeblock:end

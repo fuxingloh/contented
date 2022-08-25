@@ -35,8 +35,8 @@ export async function getStaticProps({ params }) {
 }
 
 export default function SlugPage({ content, sections }) {
-  const siteTitle = content.fields.title ? `${content.fields.title} | ${process.env.SITE_NAME}` : process.env.SITE_NAME;
-  const canonicalUrl = `${process.env.SITE_URL}${content.path}`;
+  const siteTitle = getSiteTitle(content);
+  const canonicalUrl = `${process.env.CONTENTED_PREVIEW_SITE_URL}${content.path}`;
   const description = truncate(content?.description, { length: 220 });
 
   const [isMermaidInit, setIsMermaidInit] = useState(false);
@@ -107,4 +107,16 @@ export default function SlugPage({ content, sections }) {
       </div>
     </>
   );
+}
+
+function getSiteTitle(content) {
+  if (!content.fields.title) {
+    return process.env.CONTENTED_PREVIEW_SITE_NAME;
+  }
+
+  if (content.fields.title === process.env.CONTENTED_PREVIEW_SITE_NAME) {
+    return content.fields.title;
+  }
+
+  return `${content.fields.title} | ${process.env.CONTENTED_PREVIEW_SITE_NAME}`;
 }

@@ -2,7 +2,8 @@ import { ContentedPipeline, FileContent, FileIndex } from '@birthdayresearch/con
 import console from 'console';
 import { join } from 'node:path';
 import { read } from 'to-vfile';
-import { Processor, unified, VFileWithOutput } from 'unified';
+import { Processor, unified } from 'unified';
+import { VFile } from 'vfile';
 
 import { UnifiedContented } from './plugins/Plugin.js';
 import { initProcessor } from './UnifiedProcessor.js';
@@ -19,7 +20,13 @@ export class MarkdownPipeline extends ContentedPipeline {
     rootPath: string,
     file: string,
   ): Promise<FileContent | undefined> {
-    const output = await this.processUnified(rootPath, file);
+    const vFile = await this.readVFile(rootPath, file);
+    if (vFile === undefined) {
+      return undefined;
+    }
+
+    vFile.data = { contented: this.newUnifiedContented() };
+    const output = await this.processor.process(vFile);
     const contented = output.data.contented as UnifiedContented;
 
     if (contented.errors.length > 0) {
@@ -28,18 +35,11 @@ export class MarkdownPipeline extends ContentedPipeline {
       return undefined;
     }
 
-    return {
-      ...fileIndex,
-      html: output.value as string,
-      headings: contented.headings,
-      fields: contented.fields,
-    };
+    return this.newFileContent(fileIndex, output.value as string, contented);
   }
 
-  protected async processUnified(rootPath: string, file: string): Promise<VFileWithOutput<any>> {
-    const vFile = await read(join(rootPath, file));
-    vFile.data = { contented: this.newUnifiedContented() };
-    return this.processor.process(vFile);
+  protected async readVFile(rootPath: string, file: string): Promise<VFile | undefined> {
+    return read(join(rootPath, file));
   }
 
   protected newUnifiedContented(): UnifiedContented {
@@ -48,6 +48,15 @@ export class MarkdownPipeline extends ContentedPipeline {
       headings: [],
       fields: {},
       errors: [],
+    };
+  }
+
+  protected newFileContent(fileIndex: FileIndex, html: string, contented: UnifiedContented) {
+    return {
+      ...fileIndex,
+      html,
+      headings: contented.headings,
+      fields: contented.fields,
     };
   }
 }

@@ -7,6 +7,9 @@
   "scripts": {
     "build": "turbo run build",
     "clean": "turbo run clean",
+    "write": "turbo run write",
+    "watch": "turbo run watch",
+    "generate": "turbo run generate",
     "format": "prettier --write .",
     "lint": "turbo run lint -- --fix",
     "prepare": "husky install",

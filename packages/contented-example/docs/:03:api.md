@@ -24,7 +24,7 @@ configure your `package.json` with these fields:
     "generate": "contented generate"
   },
   "devDependencies": {
-    "@birthdayresearch/contented": "0.0.0"
+    "@birthdayresearch/contented": "latest"
   }
 }
 ```

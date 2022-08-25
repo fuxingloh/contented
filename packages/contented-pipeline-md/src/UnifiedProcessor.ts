@@ -38,7 +38,15 @@ export async function initProcessor(processor: Processor, options?: UnifiedOptio
 
   processor.use(collectFields).use(resolveFields).use(validateFields);
 
+  options?.remarks?.forEach((plugin) => {
+    processor.use(plugin);
+  });
+
   processor.use(remarkRehype);
+
+  options?.rehypes?.forEach((plugin) => {
+    processor.use(plugin);
+  });
 
   processor
     .use(rehypeSlug)

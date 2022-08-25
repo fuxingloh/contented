@@ -2,6 +2,7 @@
   "name": "@birthdayresearch/contented-example",
   "version": "0.0.0",
   "private": false,
+  "type": "module",
   "main": "dist/index.js",
   "files": [
     "dist"

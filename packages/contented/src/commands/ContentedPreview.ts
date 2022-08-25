@@ -1,14 +1,18 @@
 import { spawn, spawnSync } from 'node:child_process';
-import { cp } from 'node:fs/promises';
+import { cp, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { PreviewConfig } from '../index.js';
 
 export class ContentedPreview {
   previewDir = `${process.cwd()}/.contented/.preview`;
 
+  constructor(protected readonly config: PreviewConfig) {}
+
   async init() {
     const source = join(this.getDirname(), '/../.preview');
     await cp(source, this.previewDir, { recursive: true });
+    await writeFile(join(this.previewDir, '.env'), generateEnvData(this.config));
   }
 
   async install() {
@@ -35,4 +39,12 @@ export class ContentedPreview {
   getDirname() {
     return dirname(fileURLToPath(import.meta.url));
   }
+}
+
+function generateEnvData(preview: PreviewConfig): string {
+  return [
+    `SITE_URL=${preview.url ?? 'https://contented.dev'}`,
+    `SITE_NAME=${preview?.name ?? 'Contented'}`,
+    `GITHUB_URL=${preview?.github?.url ?? 'https://github.com/BirthdayResearch/contented'}`,
+  ].join('\n');
 }

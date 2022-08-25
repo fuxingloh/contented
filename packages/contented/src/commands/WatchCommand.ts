@@ -10,10 +10,13 @@ export class WatchCommand extends BuildCommand {
 
   async execute() {
     const config = await this.loadConfig();
-    const processor: ContentedProcessor = new ContentedProcessor(config.processor);
+    const processor = new ContentedProcessor(config.processor);
 
     await this.walk(processor);
+    await this.subscribe(processor);
+  }
 
+  async subscribe(processor: ContentedProcessor) {
     const processWalk = debounce(() => {
       this.walk(processor);
     }, 1000);
@@ -38,7 +41,7 @@ export class WatchCommand extends BuildCommand {
     };
 
     await watcher.subscribe(processor.rootPath, subscribe, {
-      ignore: ['.contented', 'node_modules'],
+      ignore: ['.contented', 'node_modules', '.git'],
     });
   }
 }

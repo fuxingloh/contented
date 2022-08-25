@@ -11,7 +11,7 @@ export class GenerateCommand extends BuildCommand {
     const processor = new ContentedProcessor(config.processor);
     await this.walk(processor);
 
-    const preview = new ContentedPreview();
+    const preview = new ContentedPreview(config.preview);
     await preview.init();
     await preview.install();
     await preview.generate();

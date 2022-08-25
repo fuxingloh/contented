@@ -1,4 +1,4 @@
-import { DocumentTextIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+import { DocumentTextIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 
 import { useMenu } from './MenuContext';
 import ThemeButton from './ThemeButton';
@@ -18,17 +18,17 @@ export default function Header() {
             <div className="mr-4 flex lg:hidden">
               {isOpen ? (
                 <button type="button" onClick={() => setIsOpen(false)} aria-label="Close navigation">
-                  <XIcon className="h-6 w-6" />
+                  <XMarkIcon className="h-6 w-6" />
                 </button>
               ) : (
                 <button type="button" onClick={() => setIsOpen(true)} aria-label="Open navigation">
-                  <MenuIcon className="h-6 w-6" />
+                  <Bars3Icon className="h-6 w-6" />
                 </button>
               )}
             </div>
 
             <a href="/" className="flex items-center">
-              <DocumentTextIcon className="h-6 w-auto text-indigo-600 dark:text-indigo-500" />
+              <DocumentTextIcon className="text-primary-500 h-6 w-auto" />
               <h1 className="ml-2 font-semibold">{process.env.SITE_NAME}</h1>
             </a>
 

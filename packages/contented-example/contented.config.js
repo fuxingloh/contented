@@ -1,5 +1,5 @@
 /** @type {import('@birthdayresearch/contented').ContentedConfig} */
-module.exports = {
+const config = {
   preview: {
     url: 'https://contented.dev',
     name: 'Contented',
@@ -23,14 +23,14 @@ module.exports = {
             type: 'string',
           },
           tags: {
-            type: 'string[]'
-          }
+            type: 'string[]',
+          },
         },
         transform: (file) => {
-          file.path = file.path.replaceAll(/^\/docs\/?/g, '/')
-          file.sections = file.sections.slice(1)
-          return file
-        }
+          file.path = file.path.replaceAll(/^\/docs\/?/g, '/');
+          file.sections = file.sections.slice(1);
+          return file;
+        },
       },
       {
         type: 'Lorem',
@@ -42,10 +42,12 @@ module.exports = {
           },
         },
         transform: (file) => {
-          file.sections = file.sections.slice(1)
-          return file
-        }
+          file.sections = file.sections.slice(1);
+          return file;
+        },
       },
     ],
   },
 };
+
+export default config;

@@ -1,8 +1,9 @@
 import 'jest-extended';
 
-import { Config, ContentedProcessor } from './ContentedProcessor';
-import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
 import { FileContent, FileIndex } from '@birthdayresearch/contented-pipeline';
+import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
+
+import { Config, ContentedProcessor } from './ContentedProcessor';
 
 describe('process', () => {
   const config: Config = {
@@ -190,7 +191,7 @@ describe('build', () => {
   });
 });
 
-describe('custom', function () {
+describe('custom', () => {
   class CustomPipeline extends MarkdownPipeline {
     override async processFile(fileIndex: FileIndex): Promise<FileContent | undefined> {
       return {
@@ -214,7 +215,7 @@ describe('custom', function () {
   };
   const processor = new ContentedProcessor(config);
 
-  it('should use custom pipeline', async function () {
+  it('should use custom pipeline', async () => {
     expect(await processor.process(':2:path-1.md')).toStrictEqual({
       id: expect.stringMatching(/[0-f]{64}/),
       modifiedDate: expect.any(Number),

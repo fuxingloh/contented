@@ -123,6 +123,7 @@ export class ContentedProcessor {
         case 'md':
           return new MarkdownPipeline(pipeline);
         default:
+          // eslint-disable-next-line new-cap
           return new pipeline.processor(pipeline);
       }
     };

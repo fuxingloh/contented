@@ -1,3 +1,5 @@
+import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
+
 /** @type {import('@birthdayresearch/contented').ContentedConfig} */
 const config = {
   preview: {
@@ -35,7 +37,7 @@ const config = {
       {
         type: 'Lorem',
         pattern: 'lorem/**/*.md',
-        processor: 'md',
+        processor: MarkdownPipeline,
         fields: {
           title: {
             type: 'string',

@@ -1,6 +1,7 @@
+import { ContentedProcessor } from '@birthdayresearch/contented-processor';
+
 import { ContentedPreview } from './ContentedPreview.js';
 import { WatchCommand } from './WatchCommand.js';
-import { ContentedProcessor } from '@birthdayresearch/contented-processor';
 
 export class WriteCommand extends WatchCommand {
   static paths = [[`write`]];

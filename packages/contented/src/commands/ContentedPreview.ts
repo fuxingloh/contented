@@ -2,6 +2,7 @@ import { spawn, spawnSync } from 'node:child_process';
 import { cp, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+
 import { PreviewConfig } from '../index.js';
 
 export class ContentedPreview {

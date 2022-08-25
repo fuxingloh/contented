@@ -14,7 +14,6 @@
     "write": "contented write"
   },
   "devDependencies": {
-    "@birthdayresearch/contented": "0.0.0",
-    "@birthdayresearch/contented-pipeline-md": "0.0.0"
+    "@birthdayresearch/contented": "0.0.0"
   }
 }

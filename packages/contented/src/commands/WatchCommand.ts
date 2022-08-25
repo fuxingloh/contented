@@ -1,7 +1,7 @@
 import { ContentedProcessor } from '@birthdayresearch/contented-processor';
 import watcher, { Event } from '@parcel/watcher';
 import debounce from 'debounce';
-import { relative } from 'path';
+import { join, relative } from 'node:path';
 
 import { BuildCommand } from './BuildCommand.js';
 
@@ -40,8 +40,9 @@ export class WatchCommand extends BuildCommand {
       }
     };
 
+    const relativeDir = relative(processor.rootPath, process.cwd());
     await watcher.subscribe(processor.rootPath, subscribe, {
-      ignore: ['.contented', 'node_modules', '.git'],
+      ignore: ['.contented', join(relativeDir, '.contented'), 'node_modules', '.git', '.idea', '.vscode'],
     });
   }
 }

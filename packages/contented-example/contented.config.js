@@ -12,7 +12,7 @@ const config = {
   processor: {
     pipelines: [
       {
-        type: 'Docs',
+        type: 'Contented',
         pattern: 'docs/**/*.md',
         processor: 'md',
         fields: {
@@ -38,6 +38,20 @@ const config = {
         type: 'Lorem',
         pattern: 'lorem/**/*.md',
         processor: MarkdownPipeline,
+        fields: {
+          title: {
+            type: 'string',
+          },
+        },
+        transform: (file) => {
+          file.sections = file.sections.slice(1);
+          return file;
+        },
+      },
+      {
+        type: 'Contented',
+        pattern: 'jest/**/*.spec.ts',
+        processor: 'jest-md',
         fields: {
           title: {
             type: 'string',

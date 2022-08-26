@@ -1,4 +1,5 @@
 import { ContentedPipeline, FileContent, FileIndex, Pipeline } from '@birthdayresearch/contented-pipeline';
+import { JestMarkdownPipeline } from '@birthdayresearch/contented-pipeline-jest-md';
 import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
 import minimatch from 'minimatch';
 import { join } from 'node:path';
@@ -122,6 +123,8 @@ export class ContentedProcessor {
       switch (pipeline.processor) {
         case 'md':
           return new MarkdownPipeline(pipeline);
+        case 'jest-md':
+          return new JestMarkdownPipeline(pipeline);
         default:
           // eslint-disable-next-line new-cap
           return new pipeline.processor(pipeline);

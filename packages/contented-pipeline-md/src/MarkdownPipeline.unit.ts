@@ -17,7 +17,6 @@ describe('Without Config', () => {
 
   it('should process See.Nothing.md', async () => {
     const content = await pipeline.process(rootPath, 'See.Nothing.md');
-    console.log(content);
     expect(content).toStrictEqual({
       type: 'Markdown',
       fields: {},

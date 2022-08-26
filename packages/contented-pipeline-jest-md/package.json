@@ -1,5 +1,5 @@
 {
-  "name": "@birthdayresearch/contented-processor",
+  "name": "@birthdayresearch/contented-pipeline-jest-md",
   "version": "0.0.0",
   "private": false,
   "type": "module",
@@ -27,16 +27,16 @@
     "preset": "@birthdayresearch/jest-preset"
   },
   "dependencies": {
-    "@babel/generator": "^7.18.12",
-    "@birthdayresearch/contented-pipeline": "0.0.0",
-    "@birthdayresearch/contented-pipeline-jest-md": "0.0.0",
+    "@babel/parser": "^7.18.13",
+    "@babel/types": "^7.18.13",
     "@birthdayresearch/contented-pipeline-md": "0.0.0",
-    "minimatch": "^5.1.0"
+    "strip-indent": "^4.0.0",
+    "unified": "^10.1.2",
+    "vfile": "^5.3.4"
   },
   "devDependencies": {
     "@birthdayresearch/eslint-config": "0.0.0",
     "@birthdayresearch/jest-preset": "0.0.0",
-    "@types/node": "^16.11.52",
     "typescript": "4.7.4"
   }
 }

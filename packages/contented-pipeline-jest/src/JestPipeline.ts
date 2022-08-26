@@ -1,10 +1,10 @@
-import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
-import { join, ParsedPath } from 'node:path';
-import { VFile } from 'vfile';
-import { readFile, writeFile } from 'node:fs/promises';
-import { File } from '@babel/types';
 import { parse } from '@babel/parser';
+import { File } from '@babel/types';
+import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
+import { readFile, writeFile } from 'node:fs/promises';
+import { join, ParsedPath } from 'node:path';
 import stripIndent from 'strip-indent';
+import { VFile } from 'vfile';
 
 export class JestPipeline extends MarkdownPipeline {
   protected override computePath(sections: string[], parsedPath: ParsedPath): string {
@@ -24,19 +24,17 @@ export class JestPipeline extends MarkdownPipeline {
     await writeFile('jest-pipeline.md', value);
 
     return new VFile({
-      path: path,
-      value: value,
+      path,
+      value,
     });
   }
 
   protected collectComments(ast: File): NormalizedComment[] | undefined {
     return ast.comments
-      ?.map((comment) => {
-        return {
-          content: this.normalizeText(comment.value),
-          index: comment.loc?.start.line,
-        };
-      })
+      ?.map((comment) => ({
+        content: this.normalizeText(comment.value),
+        index: comment.loc?.start.line,
+      }))
       .filter((value) => value.index !== undefined) as NormalizedComment[];
   }
 
@@ -56,17 +54,16 @@ export class JestPipeline extends MarkdownPipeline {
 
   protected mergeCodeblock(lines: string[], comments: NormalizedComment[]): string[] {
     const collected: string[] = [];
-    let codeblockStart: number | undefined = undefined;
+    const starts: number[] = [];
 
     for (const comment of comments) {
       if (comment.content === '@contented codeblock:start') {
-        codeblockStart = comment.index;
+        starts.push(comment.index);
       } else if (comment.content === '@contented codeblock:end') {
-        if (codeblockStart !== undefined) {
-          const codeblock = lines.slice(codeblockStart, comment.index - 1).join('\n');
-          collected.push('```ts\n' + stripIndent(codeblock) + '\n```');
+        if (starts.length > 0) {
+          const codeblock = lines.slice(starts.pop(), comment.index - 1).join('\n');
+          collected.push(`\`\`\`ts\n${stripIndent(codeblock)}\n\`\`\``);
         }
-        codeblockStart = undefined;
       } else {
         collected.push(comment.content);
       }

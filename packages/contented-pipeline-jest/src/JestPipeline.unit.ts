@@ -30,7 +30,7 @@ describe('Without Config', () => {
     // @contented codeblock:end
   });
 
-  /*## `@contented codeblock`*/
+  /* ## `@contented codeblock` */
   // This works
 
   it('should process JestPipeline.unit.ts', async () => {
@@ -65,7 +65,7 @@ describe('@contented codeblock', () => {
     processor: JestPipeline,
   });
 
-  it('should pick up this codeblock', async function () {
+  it('should pick up this codeblock', async () => {
     await pipeline.init();
     const content = await pipeline.process(__dirname, 'JestPipeline.unit.ts');
     expect(content?.html).toStrictEqual('');

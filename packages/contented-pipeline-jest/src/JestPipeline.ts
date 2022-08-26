@@ -1,7 +1,7 @@
 import { parse } from '@babel/parser';
 import { File } from '@babel/types';
 import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import { join, ParsedPath } from 'node:path';
 import stripIndent from 'strip-indent';
 import { VFile } from 'vfile';
@@ -21,21 +21,19 @@ export class JestPipeline extends MarkdownPipeline {
     const comments = this.collectComments(ast) ?? [];
     const value = this.mergeCodeblock(lines, comments).join('\n\n');
 
-    await writeFile('jest-pipeline.md', value);
-
     return new VFile({
       path,
       value,
     });
   }
 
-  protected collectComments(ast: File): NormalizedComment[] | undefined {
+  protected collectComments(ast: File): IndexedComment[] | undefined {
     return ast.comments
       ?.map((comment) => ({
         content: this.normalizeText(comment.value),
         index: comment.loc?.start.line,
       }))
-      .filter((value) => value.index !== undefined) as NormalizedComment[];
+      .filter((value) => value.index !== undefined) as IndexedComment[];
   }
 
   /**
@@ -52,7 +50,7 @@ export class JestPipeline extends MarkdownPipeline {
     return stripIndent(content);
   }
 
-  protected mergeCodeblock(lines: string[], comments: NormalizedComment[]): string[] {
+  protected mergeCodeblock(lines: string[], comments: IndexedComment[]): string[] {
     const collected: string[] = [];
     const starts: number[] = [];
 
@@ -73,7 +71,7 @@ export class JestPipeline extends MarkdownPipeline {
   }
 }
 
-interface NormalizedComment {
+interface IndexedComment {
   content: string;
   index: number;
 }

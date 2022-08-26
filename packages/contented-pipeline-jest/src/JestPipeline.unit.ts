@@ -41,19 +41,78 @@ describe('Without Config', () => {
       fields: {},
       headings: [
         {
-          depth: 1,
-          id: 'nothing-to-see',
-          title: 'Nothing To See',
           children: [],
+          depth: 2,
+          id: 'comments',
+          title: 'Comments',
+        },
+        {
+          children: [],
+          depth: 2,
+          id: 'contented-codeblock',
+          title: '@contented codeblock',
         },
       ],
       path: '/jest-pipeline',
       sections: [],
       id: expect.stringMatching(/[0-f]{64}/),
       modifiedDate: expect.any(Number),
-      html: '<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#nothing-to-see">Nothing To See</a></li></ol></nav><h1 id="nothing-to-see"><a aria-hidden="true" tabindex="-1" href="#nothing-to-see"><span class="icon icon-link"></span></a>Nothing To See</h1>\n<p>Markdown for testing <code>MarkdownPipeline.unit.ts</code>.</p>',
+      html: expect.any(String),
     });
     // @contented codeblock:end
+
+    expect(content?.html).toStrictEqual(
+      '<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#comments">Comments</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#contented-codeblock">@contented codeblock</a></li></ol></nav><p>This is an example of how to write Example Documentation with embedded codeblock!</p>\n' +
+        '<h2 id="comments"><a aria-hidden="true" tabindex="-1" href="#comments"><span class="icon icon-link"></span></a>Comments</h2>\n' +
+        '<p>All comments are automatically picked up.</p>\n' +
+        '<pre class="shiki" style="background-color: #22272e"><code><span class="line"></span></code></pre>\n' +
+        '<p>Natural flow of content and tests.</p>\n' +
+        '<pre class="shiki" style="background-color: #22272e"><code><span class="line"><span style="color: #F47067">const</span><span style="color: #ADBAC7"> </span><span style="color: #6CB6FF">pipeline</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">=</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">new</span><span style="color: #ADBAC7"> </span><span style="color: #DCBDFB">JestPipeline</span><span style="color: #ADBAC7">({</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  type: </span><span style="color: #96D0FF">\'Example\'</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  pattern: </span><span style="color: #96D0FF">\'**/*.unit.ts\'</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  processor: JestPipeline,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">});</span></span></code></pre>\n' +
+        '<pre class="shiki" style="background-color: #22272e"><code><span class="line"><span style="color: #F47067">await</span><span style="color: #ADBAC7"> pipeline.</span><span style="color: #DCBDFB">init</span><span style="color: #ADBAC7">();</span></span></code></pre>\n' +
+        '<h2 id="contented-codeblock"><a aria-hidden="true" tabindex="-1" href="#contented-codeblock"><span class="icon icon-link"></span></a><code>@contented codeblock</code></h2>\n' +
+        '<p>This works</p>\n' +
+        '<pre class="shiki" style="background-color: #22272e"><code><span class="line"><span style="color: #F47067">const</span><span style="color: #ADBAC7"> </span><span style="color: #6CB6FF">content</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">=</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">await</span><span style="color: #ADBAC7"> pipeline.</span><span style="color: #DCBDFB">process</span><span style="color: #ADBAC7">(__dirname, </span><span style="color: #96D0FF">\'JestPipeline.unit.ts\'</span><span style="color: #ADBAC7">);</span></span>\n' +
+        '<span class="line"><span style="color: #DCBDFB">expect</span><span style="color: #ADBAC7">(content).</span><span style="color: #DCBDFB">toStrictEqual</span><span style="color: #ADBAC7">({</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  type: </span><span style="color: #96D0FF">\'Example\'</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  fields: {},</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  headings: [</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    {</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">      </span><span style="color: #96D0FF">"children"</span><span style="color: #ADBAC7">: [],</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">      </span><span style="color: #96D0FF">"depth"</span><span style="color: #ADBAC7">: </span><span style="color: #6CB6FF">2</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">      </span><span style="color: #96D0FF">"id"</span><span style="color: #ADBAC7">: </span><span style="color: #96D0FF">"comments"</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">      </span><span style="color: #96D0FF">"title"</span><span style="color: #ADBAC7">: </span><span style="color: #96D0FF">"Comments"</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    },</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    {</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">      </span><span style="color: #96D0FF">"children"</span><span style="color: #ADBAC7">: [],</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">      </span><span style="color: #96D0FF">"depth"</span><span style="color: #ADBAC7">: </span><span style="color: #6CB6FF">2</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">      </span><span style="color: #96D0FF">"id"</span><span style="color: #ADBAC7">: </span><span style="color: #96D0FF">"contented-codeblock"</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">      </span><span style="color: #96D0FF">"title"</span><span style="color: #ADBAC7">: </span><span style="color: #96D0FF">"@contented codeblock"</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    }</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  ],</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  path: </span><span style="color: #96D0FF">\'/jest-pipeline\'</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  sections: [],</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  id: expect.</span><span style="color: #DCBDFB">stringMatching</span><span style="color: #ADBAC7">(</span><span style="color: #96D0FF">/</span><span style="color: #6CB6FF">[0-f]</span><span style="color: #F47067">{64}</span><span style="color: #96D0FF">/</span><span style="color: #ADBAC7">),</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  modifiedDate: expect.</span><span style="color: #DCBDFB">any</span><span style="color: #ADBAC7">(</span><span style="color: #6CB6FF">Number</span><span style="color: #ADBAC7">),</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  html: expect.</span><span style="color: #DCBDFB">any</span><span style="color: #ADBAC7">(</span><span style="color: #6CB6FF">String</span><span style="color: #ADBAC7">),</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">});</span></span></code></pre>\n' +
+        '<pre class="shiki" style="background-color: #22272e"><code><span class="line"><span style="color: #DCBDFB">describe</span><span style="color: #ADBAC7">(</span><span style="color: #96D0FF">\'@contented codeblock\'</span><span style="color: #ADBAC7">, () </span><span style="color: #F47067">=></span><span style="color: #ADBAC7"> {</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  </span><span style="color: #F47067">const</span><span style="color: #ADBAC7"> </span><span style="color: #6CB6FF">pipeline</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">=</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">new</span><span style="color: #ADBAC7"> </span><span style="color: #DCBDFB">JestPipeline</span><span style="color: #ADBAC7">({</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    type: </span><span style="color: #96D0FF">\'Example\'</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    pattern: </span><span style="color: #96D0FF">\'**/*.unit.ts\'</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    processor: JestPipeline,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  });</span></span>\n' +
+        '<span class="line"></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  </span><span style="color: #DCBDFB">it</span><span style="color: #ADBAC7">(</span><span style="color: #96D0FF">\'should pick up this codeblock\'</span><span style="color: #ADBAC7">, </span><span style="color: #F47067">async</span><span style="color: #ADBAC7"> () </span><span style="color: #F47067">=></span><span style="color: #ADBAC7"> {</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    </span><span style="color: #F47067">await</span><span style="color: #ADBAC7"> pipeline.</span><span style="color: #DCBDFB">init</span><span style="color: #ADBAC7">();</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    </span><span style="color: #F47067">const</span><span style="color: #ADBAC7"> </span><span style="color: #6CB6FF">content</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">=</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">await</span><span style="color: #ADBAC7"> pipeline.</span><span style="color: #DCBDFB">process</span><span style="color: #ADBAC7">(__dirname, </span><span style="color: #96D0FF">\'JestPipeline.unit.ts\'</span><span style="color: #ADBAC7">);</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    </span><span style="color: #DCBDFB">expect</span><span style="color: #ADBAC7">(content?.html).</span><span style="color: #DCBDFB">toContain</span><span style="color: #ADBAC7">(</span><span style="color: #96D0FF">\'should pick up this codeblock\'</span><span style="color: #ADBAC7">);</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  });</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">});</span></span></code></pre>',
+    );
   });
 });
 
@@ -68,7 +127,7 @@ describe('@contented codeblock', () => {
   it('should pick up this codeblock', async () => {
     await pipeline.init();
     const content = await pipeline.process(__dirname, 'JestPipeline.unit.ts');
-    expect(content?.html).toStrictEqual('');
+    expect(content?.html).toContain('should pick up this codeblock');
   });
 });
 // @contented codeblock:end

@@ -1,10 +1,10 @@
 import { ContentedPipeline, FileContent, FileIndex, Pipeline } from '@birthdayresearch/contented-pipeline';
+import { JestMarkdownPipeline } from '@birthdayresearch/contented-pipeline-jest-md';
 import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
 import minimatch from 'minimatch';
 import { join } from 'node:path';
 
 import { ContentedCodegen } from './ContentedCodegen.js';
-import { JestMarkdownPipeline } from '@birthdayresearch/contented-pipeline-jest-md';
 
 export interface Config {
   /**

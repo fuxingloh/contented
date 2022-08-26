@@ -15,7 +15,7 @@ export class JestMarkdownPipeline extends MarkdownPipeline {
   protected override async readVFile(rootPath: string, file: string): Promise<VFile | undefined> {
     const path = join(rootPath, file);
     const contents = await readFile(path, { encoding: 'utf-8' });
-    const ast = parse(contents, { sourceType: 'unambiguous' });
+    const ast = await this.parseAST(contents);
     const lines = contents.split('\n');
 
     const comments = this.collectComments(ast) ?? [];
@@ -68,6 +68,10 @@ export class JestMarkdownPipeline extends MarkdownPipeline {
     }
 
     return collected;
+  }
+
+  protected parseAST(contents: string) {
+    return parse(contents, { sourceType: 'unambiguous', errorRecovery: true, plugins: ['typescript'] });
   }
 }
 

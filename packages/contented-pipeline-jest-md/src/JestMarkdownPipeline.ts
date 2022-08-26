@@ -6,7 +6,7 @@ import { join, ParsedPath } from 'node:path';
 import stripIndent from 'strip-indent';
 import { VFile } from 'vfile';
 
-export class JestPipeline extends MarkdownPipeline {
+export class JestMarkdownPipeline extends MarkdownPipeline {
   protected override computePath(sections: string[], parsedPath: ParsedPath): string {
     const path = super.computePath(sections, parsedPath);
     return path.replaceAll(/-(unit|i9n|e2e|integration|test|tests|spec)$/g, '');

@@ -4,6 +4,7 @@ import minimatch from 'minimatch';
 import { join } from 'node:path';
 
 import { ContentedCodegen } from './ContentedCodegen.js';
+import { JestMarkdownPipeline } from '@birthdayresearch/contented-pipeline-jest-md';
 
 export interface Config {
   /**
@@ -122,6 +123,8 @@ export class ContentedProcessor {
       switch (pipeline.processor) {
         case 'md':
           return new MarkdownPipeline(pipeline);
+        case 'jest-md':
+          return new JestMarkdownPipeline(pipeline);
         default:
           // eslint-disable-next-line new-cap
           return new pipeline.processor(pipeline);

@@ -29,6 +29,7 @@
   "dependencies": {
     "@babel/generator": "^7.18.12",
     "@birthdayresearch/contented-pipeline": "0.0.0",
+    "@birthdayresearch/contented-pipeline-jest-md": "0.0.0",
     "@birthdayresearch/contented-pipeline-md": "0.0.0",
     "minimatch": "^5.1.0"
   },

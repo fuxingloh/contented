@@ -2,10 +2,8 @@ import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
 import { join, ParsedPath } from 'node:path';
 import { VFile } from 'vfile';
 import { readFile, writeFile } from 'node:fs/promises';
-import { File, SourceLocation } from '@babel/types';
-import traverse, { NodePath } from '@babel/traverse';
+import { File } from '@babel/types';
 import { parse } from '@babel/parser';
-import generate from '@babel/generator';
 import stripIndent from 'strip-indent';
 
 export class JestPipeline extends MarkdownPipeline {

@@ -27,9 +27,8 @@
     "preset": "@birthdayresearch/jest-preset"
   },
   "dependencies": {
-    "@babel/generator": "^7.18.13",
     "@babel/parser": "^7.18.13",
-    "@babel/traverse": "^7.18.13",
+    "@babel/types": "^7.18.13",
     "@birthdayresearch/contented-pipeline-md": "0.0.0",
     "strip-indent": "^4.0.0",
     "unified": "^10.1.2",

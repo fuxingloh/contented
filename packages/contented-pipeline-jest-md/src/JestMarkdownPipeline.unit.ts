@@ -61,7 +61,7 @@ describe('JestMarkdownPipeline', () => {
     });
     // @contented codeblock:end
 
-    expect(content?.html).toStrictEqual(
+    expect(content[0]?.html).toStrictEqual(
       '<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#comments">Comments</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#contented-codeblock">@contented codeblock</a></li></ol></nav><p>This is an example of how to write Example Documentation with embedded codeblock!</p>\n' +
         '<h2 id="comments"><a aria-hidden="true" tabindex="-1" href="#comments"><span class="icon icon-link"></span></a>Comments</h2>\n' +
         '<p>All comments are automatically picked up.</p>\n' +
@@ -127,7 +127,7 @@ describe('@contented codeblock', () => {
   it('should pick up this codeblock', async () => {
     await pipeline.init();
     const content = await pipeline.process(__dirname, 'JestMarkdownPipeline.unit.ts');
-    expect(content?.html).toContain('should pick up this codeblock');
+    expect(content[0]?.html).toContain('should pick up this codeblock');
   });
 });
 // @contented codeblock:end

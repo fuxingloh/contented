@@ -2,8 +2,8 @@ import { ContentedPipeline } from './Pipeline';
 import { FileContent } from './PipelineFile';
 
 class TestPipeline extends ContentedPipeline {
-  processFile(): Promise<FileContent | undefined> {
-    return Promise.resolve(undefined);
+  processFileIndex(): Promise<FileContent[]> {
+    return Promise.resolve([]);
   }
 }
 

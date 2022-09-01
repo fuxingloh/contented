@@ -1,28 +1,58 @@
 import { FileContent } from '@birthdayresearch/contented-pipeline';
+import { ContentedProcessorResult } from '@birthdayresearch/contented-processor';
 import watcher, { Event } from '@parcel/watcher';
-import { relative } from 'node:path';
+import debounce from 'debounce';
+import { join, relative } from 'node:path';
 
 import { ContentedWalker } from './ContentedWalker.js';
 
 export class ContentedWatcher extends ContentedWalker {
-  async watch(): Promise<void> {
-    const listen = (err: Error | null, events: Event[]) => {
-      const filtered = events.filter((value) => !value.path.endsWith('~'));
-      if (filtered.some((value) => value.type !== 'update')) {
-        this.walk();
-      } else {
-        for (const event of filtered) {
-          // TODO(fuxingloh): when a file generate multi FileContent, it should automatically refresh index
-          this.processFile(event.path);
-        }
-      }
-    };
+  private result?: ContentedProcessorResult;
 
-    const dotContentedDir = relative(this.processor.rootPath, process.cwd());
-    await watcher.subscribe(this.processor.rootPath, listen, {
+  async watch(): Promise<void> {
+    await this.processWalk();
+
+    const dotContentedDir = join(relative(this.processor.rootPath, process.cwd()), '.contented');
+    const callback = (err: Error | null, events: Event[]) => this.listen(events);
+    await watcher.subscribe(this.processor.rootPath, callback, {
       ignore: [dotContentedDir, '.contented', 'node_modules', '.git', '.idea', '.vscode'],
     });
   }
+
+  /**
+   * Listen to directory changes:
+   *  - if a new file is added walk through all files and update index
+   *  - if a new file is edited and already indexed, update the single file
+   *  - if a new file is edited but not indexed, walk through all files
+   */
+  private async listen(events: Event[]) {
+    const filtered = events.filter((value) => !value.path.endsWith('~'));
+    if (filtered.some((value) => value.type !== 'update')) {
+      await this.processWalk();
+      return;
+    }
+
+    for (const event of filtered) {
+      for (const content of await this.processFile(event.path)) {
+        // TODO: currently this check if it's not indexed, but it doesn't check if it's removed
+        if (!this.isIndexed(content)) {
+          await this.processWalk();
+          return;
+        }
+      }
+    }
+  }
+
+  private isIndexed(content: FileContent): boolean {
+    if (this.result === undefined) {
+      return false;
+    }
+    return this.result.pipelines[content.type].some((i) => i.id === content.id);
+  }
+
+  private processWalk = debounce(async () => {
+    this.result = await this.walk();
+  }, 1000);
 
   private async processFile(path: string): Promise<FileContent[]> {
     const file = relative(this.processor.rootPath, path);

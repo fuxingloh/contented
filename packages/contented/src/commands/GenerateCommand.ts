@@ -12,8 +12,8 @@ export class GenerateCommand extends BaseCommand {
 
   async execute() {
     const config = await this.loadConfig();
-    const processor = new ContentedProcessor(config.processor);
 
+    const processor = new ContentedProcessor(config.processor);
     const walker = new ContentedWalker(processor);
     await walker.walk();
 

@@ -11,7 +11,7 @@ export class ContentedPreview {
   constructor(protected readonly config: PreviewConfig) {}
 
   async init() {
-    const source = join(this.getDirname(), '/../.preview');
+    const source = join(this.getDirname(), '/../../.preview');
     await cp(source, this.previewDir, { recursive: true });
     await writeFile(join(this.previewDir, '.env'), generateEnvData(this.config));
   }

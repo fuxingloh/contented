@@ -34,7 +34,6 @@
     "minimatch": "^5.1.0"
   },
   "devDependencies": {
-    "@birthdayresearch/eslint-config": "0.0.0",
     "@birthdayresearch/jest-preset": "0.0.0",
     "@types/node": "^16.11.52",
     "typescript": "4.7.4"

@@ -15,15 +15,14 @@
     "prepare": "husky install",
     "test": "turbo run test"
   },
+  "devDependencies": {
+    "@birthdayresearch/eslint-config": "0.2.0",
+    "@birthdayresearch/sticky-prettier": "0.2.0",
+    "lerna": "^5.4.3",
+    "turbo": "^1.4.3"
+  },
+  "prettier": "@birthdayresearch/sticky-prettier",
   "lint-staged": {
     "*": "prettier --write --ignore-unknown"
-  },
-  "devDependencies": {
-    "husky": "^8.0.1",
-    "lerna": "^5.4.3",
-    "lint-staged": "^13.0.3",
-    "prettier": "2.7.1",
-    "prettier-plugin-tailwindcss": "^0.1.13",
-    "turbo": "^1.4.3"
   }
 }

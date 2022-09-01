@@ -6,6 +6,7 @@ import { join, relative } from 'node:path';
 import { BuildCommand } from './BuildCommand.js';
 
 export class WatchCommand extends BuildCommand {
+  /* eslint-disable no-console */
   static paths = [[`watch`]];
 
   async execute() {
@@ -46,4 +47,5 @@ export class WatchCommand extends BuildCommand {
       ignore: ['.contented', join(relativeDir, '.contented'), 'node_modules', '.git', '.idea', '.vscode'],
     });
   }
+  /* eslint-enable no-console */
 }

@@ -41,9 +41,8 @@ export class JestMarkdownPipeline extends MarkdownPipeline {
    * Remove each  ` * ` that is part of  *
    */
   protected normalizeText(text: string) {
-    text = text.replaceAll(/^ *\* *\n/g, '');
-
-    const content = text
+    const cleaned = text.replaceAll(/^ *\* *\n/g, '');
+    const content = cleaned
       .split('\n')
       .map((value) => value.replaceAll(/^ *\* */g, ''))
       .join('\n');

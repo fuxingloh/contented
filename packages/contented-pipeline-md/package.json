@@ -51,7 +51,6 @@
     "vfile": "^5.3.4"
   },
   "devDependencies": {
-    "@birthdayresearch/eslint-config": "0.0.0",
     "@birthdayresearch/jest-preset": "0.0.0",
     "@types/js-yaml": "^4.0.5",
     "@types/hast": "^2.3.4",

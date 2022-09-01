@@ -6,6 +6,7 @@ import { join } from 'node:path';
 import { ContentedConfig } from '../index.js';
 
 export class BuildCommand extends Command {
+  /* eslint-disable no-console */
   static paths = [[`build`]];
 
   async execute() {
@@ -34,4 +35,5 @@ export class BuildCommand extends Command {
     const config = await import(configPath);
     return config.default;
   }
+  /* eslint-enable no-console */
 }

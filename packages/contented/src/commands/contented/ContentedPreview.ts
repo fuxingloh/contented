@@ -3,7 +3,7 @@ import { cp, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { PreviewConfig } from '../index.js';
+import { PreviewConfig } from '../../index.js';
 
 export class ContentedPreview {
   previewDir = `${process.cwd()}/.contented/.preview`;
@@ -11,7 +11,7 @@ export class ContentedPreview {
   constructor(protected readonly config: PreviewConfig) {}
 
   async init() {
-    const source = join(this.getDirname(), '/../.preview');
+    const source = join(this.getDirname(), '/../../.preview');
     await cp(source, this.previewDir, { recursive: true });
     await writeFile(join(this.previewDir, '.env'), generateEnvData(this.config));
   }

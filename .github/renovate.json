@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":semanticCommitTypeAll(bump)"],
+  "extends": ["config:base", "helpers:pinGitHubActionDigests", ":semanticCommitTypeAll(bump)"],
   "dependencyDashboard": true,
   "dependencyDashboardAutoclose": false,
   "major": {
@@ -13,12 +13,8 @@
       "enabled": false
     },
     {
-      "matchPackagePatterns": ["eslint"],
-      "groupName": "eslint"
-    },
-    {
-      "matchPackagePatterns": ["jest"],
-      "groupName": "jest"
+      "matchPackagePatterns": ["^@birthdayresearch/sticky", "^@birthdayresearch/eslint-config"],
+      "groupName": "@birthdayresearch/sticky"
     }
   ]
 }

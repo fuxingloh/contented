@@ -3,7 +3,7 @@ import { cp, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { PreviewConfig } from '../index.js';
+import { PreviewConfig } from '../../index.js';
 
 export class ContentedPreview {
   previewDir = `${process.cwd()}/.contented/.preview`;

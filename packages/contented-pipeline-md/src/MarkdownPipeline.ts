@@ -15,14 +15,14 @@ export class MarkdownPipeline extends ContentedPipeline {
     await initProcessor(this.processor);
   }
 
-  protected override async processFile(
+  protected override async processFileIndex(
     fileIndex: FileIndex,
     rootPath: string,
     file: string,
-  ): Promise<FileContent | undefined> {
+  ): Promise<FileContent[]> {
     const vFile = await this.readVFile(rootPath, file);
     if (vFile === undefined) {
-      return undefined;
+      return [];
     }
 
     vFile.data = { contented: this.newUnifiedContented() };
@@ -32,10 +32,11 @@ export class MarkdownPipeline extends ContentedPipeline {
     if (contented.errors.length > 0) {
       const message = contented.errors.map((value) => `${value.type}:${value.reason}`).join(',');
       console.warn(`@birthdayresearch/contented-pipeline-md: ${file} - failed with errors: [${message}]`);
-      return undefined;
+      return [];
     }
 
-    return this.newFileContent(fileIndex, output.value as string, contented);
+    const content = this.newFileContent(fileIndex, output.value as string, contented);
+    return [content];
   }
 
   protected async readVFile(rootPath: string, file: string): Promise<VFile | undefined> {

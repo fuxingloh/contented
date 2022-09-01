@@ -32,23 +32,24 @@ export abstract class ContentedPipeline {
    */
   async init(): Promise<void> {} // eslint-disable-line @typescript-eslint/no-empty-function
 
-  async process(rootPath: string, file: string): Promise<FileContent | undefined> {
+  /**
+   * @param {string} rootPath
+   * @param {string} file to process
+   * @return {FileContent[]} containing none, one or many FileContent
+   */
+  async process(rootPath: string, file: string): Promise<FileContent[]> {
     const fileIndex = await this.newFileIndex(rootPath, file);
-    const content = await this.processFile(fileIndex, rootPath, file);
-    if (content === undefined) {
-      return undefined;
+    const contents = await this.processFileIndex(fileIndex, rootPath, file);
+    if (contents === undefined) {
+      return [];
     }
     if (this.pipeline.transform === undefined) {
-      return content;
+      return contents;
     }
-    return this.pipeline.transform(content);
+    return Promise.all(contents.map(this.pipeline.transform));
   }
 
-  protected abstract processFile(
-    fileIndex: FileIndex,
-    rootPath: string,
-    file: string,
-  ): Promise<FileContent | undefined>;
+  protected abstract processFileIndex(fileIndex: FileIndex, rootPath: string, file: string): Promise<FileContent[]>;
 
   get type() {
     return this.pipeline.type;

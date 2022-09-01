@@ -13,18 +13,18 @@ export class WatchCommand extends BuildCommand {
     const processor = new ContentedProcessor(config.processor);
 
     await this.walk(processor);
-    await this.subscribe(processor);
+    await this.watch(processor);
   }
 
-  async subscribe(processor: ContentedProcessor) {
+  async watch(processor: ContentedProcessor) {
     const processWalk = debounce(() => {
       this.walk(processor);
     }, 1000);
 
-    const processFile = (path: string) => {
+    const processFile = async (path: string) => {
       const file = relative(processor.rootPath, path);
-      processor.process(file).then((content) => {
-        if (!content) return;
+      const contents = await processor.process(file);
+      contents.forEach((content) => {
         console.log(`Processed "${file}" as "${content?.path}"`);
       });
     };
@@ -35,6 +35,7 @@ export class WatchCommand extends BuildCommand {
         processWalk();
       } else {
         for (const event of filtered) {
+          // TODO(fuxingloh): when a file generate multi FileContent, it should automatically refresh index
           processFile(event.path);
         }
       }

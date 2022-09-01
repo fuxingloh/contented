@@ -11,7 +11,7 @@ export class WriteCommand extends WatchCommand {
     const processor = new ContentedProcessor(config.processor);
 
     await this.walk(processor);
-    await this.subscribe(processor);
+    await this.watch(processor);
 
     const preview = new ContentedPreview(config.preview);
     await preview.init();

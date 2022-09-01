@@ -56,24 +56,12 @@ export class ContentedProcessor {
 
   async build(...files: string[]): Promise<ContentedProcessorResult> {
     const result: ContentedProcessorResult = {
-      pipelines: {},
+      pipelines: Object.fromEntries(this.config.pipelines.map((p) => [p.type, []])),
     };
 
     for (const file of files) {
-      const output = await this.process(file);
-      if (output) {
-        if (!result.pipelines[output.type]) {
-          result.pipelines[output.type] = [];
-        }
-
-        result.pipelines[output.type].push({
-          fields: output.fields,
-          id: output.id,
-          modifiedDate: output.modifiedDate,
-          path: output.path,
-          sections: output.sections,
-          type: output.type,
-        });
+      for (const content of await this.process(file)) {
+        result.pipelines[content.type].push(cloneFileIndex(content));
       }
     }
 
@@ -87,17 +75,17 @@ export class ContentedProcessor {
     return result;
   }
 
-  async process(file: string): Promise<FileContent | undefined> {
+  async process(file: string): Promise<FileContent[]> {
     const processor = await this.getCachedPipeline(file);
     if (processor === undefined) {
-      return;
+      return [];
     }
 
-    const output = await processor.process(this.rootPath, file);
-    if (output !== undefined) {
-      await this.codegen.generateFile(output);
+    const contents = await processor.process(this.rootPath, file);
+    for (const content of contents) {
+      await this.codegen.generateFile(content);
     }
-    return output;
+    return contents;
   }
 
   /**
@@ -171,4 +159,15 @@ function getPipelineUniqueKey(pipeline: Pipeline) {
   }
 
   return `${pipeline.type}:${pipeline.pattern.join(',')}`;
+}
+
+function cloneFileIndex(index: FileIndex) {
+  return {
+    fields: index.fields,
+    id: index.id,
+    modifiedDate: index.modifiedDate,
+    path: index.path,
+    sections: index.sections,
+    type: index.type,
+  };
 }

@@ -112,12 +112,12 @@ export class ContentedProcessor {
     const newPipeline = (): ContentedPipeline => {
       switch (pipeline.processor) {
         case 'md':
-          return new MarkdownPipeline(pipeline);
+          return new MarkdownPipeline(this.rootPath, pipeline);
         case 'jest-md':
-          return new JestMarkdownPipeline(pipeline);
+          return new JestMarkdownPipeline(this.rootPath, pipeline);
         default:
           // eslint-disable-next-line new-cap
-          return new pipeline.processor(pipeline);
+          return new pipeline.processor(this.rootPath, pipeline);
       }
     };
 

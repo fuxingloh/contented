@@ -13,7 +13,7 @@ export interface Pipeline {
    * Built in processor: 'md'
    * Otherwise it will `import(processor)` module with default exporting ContentedPipeline
    */
-  processor: 'md' | 'jest-md' | (new (pipeline: Pipeline) => ContentedPipeline);
+  processor: 'md' | 'jest-md' | (new (rootPath: string, pipeline: Pipeline) => ContentedPipeline);
   fields?: {
     [name: string]: PipelineField;
   };
@@ -25,7 +25,7 @@ export interface Pipeline {
  * Contented Pipeline (Path-based)
  */
 export abstract class ContentedPipeline {
-  public constructor(protected readonly pipeline: Pipeline) {}
+  public constructor(protected readonly rootPath: string, protected readonly pipeline: Pipeline) {}
 
   /**
    * Optional init for Pipeline that require async setup.

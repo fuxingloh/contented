@@ -17,7 +17,7 @@ import { JestMarkdownPipeline } from './JestMarkdownPipeline.js';
  */
 describe('JestMarkdownPipeline', () => {
   // @contented codeblock:start
-  const pipeline = new JestMarkdownPipeline({
+  const pipeline = new JestMarkdownPipeline(__dirname, {
     type: 'Example',
     pattern: '**/*.unit.ts',
     processor: JestMarkdownPipeline,
@@ -69,7 +69,7 @@ describe('JestMarkdownPipeline', () => {
         '<p>All comments are automatically picked up.</p>\n' +
         '<pre class="shiki" style="background-color: #22272e"><code><span class="line"></span></code></pre>\n' +
         '<p>Natural flow of content and tests.</p>\n' +
-        '<pre class="shiki" style="background-color: #22272e"><code><span class="line"><span style="color: #F47067">const</span><span style="color: #ADBAC7"> </span><span style="color: #6CB6FF">pipeline</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">=</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">new</span><span style="color: #ADBAC7"> </span><span style="color: #DCBDFB">JestMarkdownPipeline</span><span style="color: #ADBAC7">({</span></span>\n' +
+        '<pre class="shiki" style="background-color: #22272e"><code><span class="line"><span style="color: #F47067">const</span><span style="color: #ADBAC7"> </span><span style="color: #6CB6FF">pipeline</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">=</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">new</span><span style="color: #ADBAC7"> </span><span style="color: #DCBDFB">JestMarkdownPipeline</span><span style="color: #ADBAC7">(__dirname, {</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">  type: </span><span style="color: #96D0FF">\'Example\'</span><span style="color: #ADBAC7">,</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">  pattern: </span><span style="color: #96D0FF">\'**/*.unit.ts\'</span><span style="color: #ADBAC7">,</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">  processor: JestMarkdownPipeline,</span></span>\n' +
@@ -104,7 +104,7 @@ describe('JestMarkdownPipeline', () => {
         '<span class="line"><span style="color: #ADBAC7">  },</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">]);</span></span></code></pre>\n' +
         '<pre class="shiki" style="background-color: #22272e"><code><span class="line"><span style="color: #DCBDFB">describe</span><span style="color: #ADBAC7">(</span><span style="color: #96D0FF">\'@contented codeblock\'</span><span style="color: #ADBAC7">, () </span><span style="color: #F47067">=></span><span style="color: #ADBAC7"> {</span></span>\n' +
-        '<span class="line"><span style="color: #ADBAC7">  </span><span style="color: #F47067">const</span><span style="color: #ADBAC7"> </span><span style="color: #6CB6FF">pipeline</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">=</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">new</span><span style="color: #ADBAC7"> </span><span style="color: #DCBDFB">JestMarkdownPipeline</span><span style="color: #ADBAC7">({</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">  </span><span style="color: #F47067">const</span><span style="color: #ADBAC7"> </span><span style="color: #6CB6FF">pipeline</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">=</span><span style="color: #ADBAC7"> </span><span style="color: #F47067">new</span><span style="color: #ADBAC7"> </span><span style="color: #DCBDFB">JestMarkdownPipeline</span><span style="color: #ADBAC7">(__dirname, {</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    type: </span><span style="color: #96D0FF">\'Example\'</span><span style="color: #ADBAC7">,</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    pattern: </span><span style="color: #96D0FF">\'**/*.unit.ts\'</span><span style="color: #ADBAC7">,</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    processor: JestMarkdownPipeline,</span></span>\n' +
@@ -122,7 +122,7 @@ describe('JestMarkdownPipeline', () => {
 
 // @contented codeblock:start
 describe('@contented codeblock', () => {
-  const pipeline = new JestMarkdownPipeline({
+  const pipeline = new JestMarkdownPipeline(__dirname, {
     type: 'Example',
     pattern: '**/*.unit.ts',
     processor: JestMarkdownPipeline,

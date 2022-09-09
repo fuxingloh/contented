@@ -8,7 +8,7 @@ class TestPipeline extends ContentedPipeline {
 }
 
 it('should be extendable', async () => {
-  const pipeline = new TestPipeline({
+  const pipeline = new TestPipeline(__dirname, {
     type: 'Type',
     pattern: '**/*.md',
     processor: 'md',

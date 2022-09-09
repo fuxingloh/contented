@@ -5,7 +5,7 @@ import { MarkdownPipeline } from './MarkdownPipeline';
 const rootPath = join(__dirname, '../fixtures');
 
 describe('Without Config', () => {
-  const pipeline = new MarkdownPipeline({
+  const pipeline = new MarkdownPipeline(__dirname, {
     type: 'Markdown',
     pattern: '**/*.md',
     processor: 'md',

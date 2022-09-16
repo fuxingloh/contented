@@ -7,7 +7,7 @@
     "export": "next build && next-sitemap && next export"
   },
   "dependencies": {
-    "@headlessui/react": "1.7.1",
+    "@headlessui/react": "1.7.2",
     "@heroicons/react": "2.0.11",
     "@tailwindcss/line-clamp": "0.4.2",
     "@tailwindcss/typography": "0.5.7",

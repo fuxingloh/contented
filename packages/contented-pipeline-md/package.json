@@ -29,7 +29,7 @@
   "dependencies": {
     "@birthdayresearch/contented-pipeline": "0.0.0",
     "@jsdevtools/rehype-toc": "^3.0.2",
-    "@leafac/rehype-shiki": "^2.1.2",
+    "@leafac/rehype-shiki": "^2.2.1",
     "@sindresorhus/slugify": "^2.1.0",
     "hast-util-to-string": "^2.0.0",
     "js-yaml": "^4.1.0",
@@ -44,7 +44,7 @@
     "remark-gfm": "^3.0.1",
     "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
-    "shiki": "^0.10.1",
+    "shiki": "^0.11.1",
     "to-vfile": "^7.2.3",
     "unified": "^10.1.2",
     "unist-util-visit": "^4.1.1",

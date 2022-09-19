@@ -99,8 +99,8 @@ describe('JestMarkdownPipeline', () => {
         '<span class="line"><span style="color: #ADBAC7">    path: </span><span style="color: #96D0FF">\'/jest-markdown-pipeline\'</span><span style="color: #ADBAC7">,</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    sections: [],</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    id: expect.</span><span style="color: #DCBDFB">stringMatching</span><span style="color: #ADBAC7">(</span><span style="color: #96D0FF">/</span><span style="color: #6CB6FF">[0-f]</span><span style="color: #F47067">{64}</span><span style="color: #96D0FF">/</span><span style="color: #ADBAC7">),</span></span>\n' +
-        '<span class="line"><span style="color: #ADBAC7">    modifiedDate: expect.</span><span style="color: #DCBDFB">any</span><span style="color: #ADBAC7">(</span><span style="color: #6CB6FF">Number</span><span style="color: #ADBAC7">),</span></span>\n' +
-        '<span class="line"><span style="color: #ADBAC7">    html: expect.</span><span style="color: #DCBDFB">any</span><span style="color: #ADBAC7">(</span><span style="color: #6CB6FF">String</span><span style="color: #ADBAC7">),</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    modifiedDate: expect.</span><span style="color: #DCBDFB">any</span><span style="color: #ADBAC7">(Number),</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    html: expect.</span><span style="color: #DCBDFB">any</span><span style="color: #ADBAC7">(String),</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">  },</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">]);</span></span></code></pre>\n' +
         '<pre class="shiki" style="background-color: #22272e"><code><span class="line"><span style="color: #DCBDFB">describe</span><span style="color: #ADBAC7">(</span><span style="color: #96D0FF">\'@contented codeblock\'</span><span style="color: #ADBAC7">, () </span><span style="color: #F47067">=></span><span style="color: #ADBAC7"> {</span></span>\n' +

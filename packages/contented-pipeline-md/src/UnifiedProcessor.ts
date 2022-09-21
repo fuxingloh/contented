@@ -1,6 +1,7 @@
 import rehypeToc from '@jsdevtools/rehype-toc';
 import rehypeShiki from '@leafac/rehype-shiki';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
 import rehypeStringify from 'rehype-stringify';
 import remarkDirective from 'remark-directive';
@@ -49,6 +50,7 @@ export async function initProcessor(processor: Processor, options?: UnifiedOptio
   });
 
   processor
+    .use(rehypeExternalLinks, { target: '_blank' })
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings)
     .use(rehypeToc)

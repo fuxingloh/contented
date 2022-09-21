@@ -20,6 +20,7 @@ processor
   .use(options.remarks)
   .use(remarkRehype)
   .use(options.rehypes)
+  .use(rehypeExternalLinks, { target: '_blank' })
   .use(rehypeSlug)
   .use(rehypeAutolinkHeadings)
   .use(rehypeToc)

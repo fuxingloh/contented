@@ -1,9 +1,9 @@
 [Contented](https://contented.dev) is a Markdown-based authoring workflow that encourage developer authoring within
 its contextual Git repository. `npm i @birthdayresearch/contented`
 
-With a headless design of 1 config file `contented.config.js`, developers can start writing their markdown
-content and preview it on their localhost `contented write`. Choosing convention over configuration reduces HTML/UI
-clutter, allowing developers to focus on authoring.
+With a headless design of 1 config file `contented.config.js`, developers can start writing
+their [markdown content](/markdown) and preview it on their localhost `contented write`. Choosing convention over
+configuration reduces HTML/UI clutter, allowing developers to focus on authoring.
 
 Authored content can be continuously delivered (CD) into a hosted static site (e.g., GitHub Pages/Netlify/Vercel) for
 preview `contented generate`. As code drift, so does documentation; this allows each pull request to have an
@@ -79,7 +79,7 @@ repo/
 }
 ```
 
-**contented.js**
+**contented.config.js**
 
 ```js
 /** @type {import('@birthdayresearch/contented').ContentedConfig} */

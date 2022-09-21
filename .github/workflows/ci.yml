@@ -37,7 +37,7 @@ jobs:
       - run: npm ci
       - run: npm run test -- -- --maxWorkers=100% --coverage
 
-      - uses: codecov/codecov-action@81cd2dc8148241f03f5839d295e000b8f761e378
+      - uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70
         with:
           fail_ci_if_error: true
 

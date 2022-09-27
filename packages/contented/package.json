@@ -33,7 +33,7 @@
     "clipanion": "3.2.0-rc.12",
     "debounce": "^1.2.1",
     "ignore-walk": "^5.0.1",
-    "typescript": "4.7.4"
+    "typescript": "4.8.4"
   },
   "devDependencies": {
     "@birthdayresearch/jest-preset": "0.0.0",

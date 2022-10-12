@@ -27,7 +27,7 @@
     "preset": "@birthdayresearch/jest-preset"
   },
   "dependencies": {
-    "@sindresorhus/slugify": "^2.1.0"
+    "@sindresorhus/slugify": "^2.1.1"
   },
   "devDependencies": {
     "@birthdayresearch/jest-preset": "0.0.0",

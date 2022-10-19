@@ -30,7 +30,7 @@
   "dependencies": {
     "@birthdayresearch/contented-processor": "0.0.0",
     "@parcel/watcher": "^2.0.5",
-    "clipanion": "3.2.0-rc.12",
+    "clipanion": "3.2.0-rc.13",
     "debounce": "^1.2.1",
     "ignore-walk": "^6.0.0",
     "typescript": "4.8.4"

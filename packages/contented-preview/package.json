@@ -11,7 +11,7 @@
     "@heroicons/react": "2.0.12",
     "@tailwindcss/line-clamp": "0.4.2",
     "@tailwindcss/typography": "0.5.7",
-    "autoprefixer": "10.4.12",
+    "autoprefixer": "10.4.13",
     "clsx": "1.2.1",
     "mermaid": "9.1.7",
     "next": "12.3.1",

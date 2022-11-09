@@ -18,7 +18,7 @@
   "devDependencies": {
     "@birthdayresearch/eslint-config": "0.2.0",
     "@birthdayresearch/sticky-prettier": "0.2.0",
-    "lerna": "^6.0.1",
+    "lerna": "^6.0.3",
     "turbo": "^1.6.3"
   },
   "prettier": "@birthdayresearch/sticky-prettier",

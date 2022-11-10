@@ -4,7 +4,7 @@ import truncate from 'lodash/truncate';
 import mermaid from 'mermaid';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { Index } from '../../../index.js';
 import ContentHeadings from './_components/ContentHeadings';
@@ -39,22 +39,14 @@ export default function SlugPage({ content, sections }) {
   const canonicalUrl = `${process.env.CONTENTED_PREVIEW_SITE_URL}${content.path}`;
   const description = truncate(content?.description, { length: 220 });
 
-  const [isMermaidInit, setIsMermaidInit] = useState(false);
   const { theme } = useTheme();
   const router = useRouter();
   const { isOpen } = useMenu();
 
-  useEffect(() => {
-    if (!theme) {
-      return;
-    }
+  mermaid.initialize({ theme, startOnLoad: false });
 
-    if (isMermaidInit) {
-      mermaid.init();
-    } else {
-      mermaid.initialize({ theme });
-    }
-    setIsMermaidInit(true);
+  useEffect(() => {
+    mermaid.init();
   }, [router.asPath, theme]);
 
   return (
@@ -94,7 +86,7 @@ export default function SlugPage({ content, sections }) {
           <article>
             <ContentProse>
               {content.fields.title && <h1>{content.fields.title}</h1>}
-              <div dangerouslySetInnerHTML={{ __html: content.html }} />
+              <div dangerouslySetInnerHTML={{ __html: content.html + `<!--${theme}-->` }} />
             </ContentProse>
           </article>
         </div>

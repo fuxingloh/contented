@@ -1,1 +1,1 @@
-packages/contented-example/docs/:01:index.md
+packages/contented-example/docs/(01)index.md

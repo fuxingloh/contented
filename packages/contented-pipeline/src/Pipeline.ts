@@ -110,5 +110,5 @@ export abstract class ContentedPipeline {
 }
 
 function replacePrefix(path: string) {
-  return path.replaceAll(/^(:\d+:|\(\d+\))/g, '');
+  return path.replaceAll(/^(:\d+:|\(\d+\)|\[\d+])/g, '');
 }

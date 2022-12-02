@@ -36,7 +36,7 @@ const config = {
       },
       {
         type: 'Lorem',
-        pattern: 'lorem/**/*.md',
+        pattern: ['contented-example-lorem/**/*.md'],
         processor: MarkdownPipeline,
         fields: {
           title: {

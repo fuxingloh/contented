@@ -6,9 +6,15 @@ import { fileURLToPath } from 'node:url';
 import { PreviewConfig } from '../../index.js';
 
 export class ContentedPreview {
+  protected readonly config: PreviewConfig;
   previewDir = `${process.cwd()}/.contented/.preview`;
 
-  constructor(protected readonly config: PreviewConfig) {}
+  constructor(config?: PreviewConfig) {
+    if (config === undefined) {
+      throw new Error('ContentedConfig.preview is required');
+    }
+    this.config = config;
+  }
 
   async init() {
     const source = join(this.getDirname(), '/../../.preview');

@@ -65,7 +65,7 @@ export default function SlugPage({ content, sections }) {
         )}
       </Head>
 
-      <div className="max-w-8xl relative mx-auto flex justify-center px-8 xl:px-12">
+      <div className="max-w-8xl relative mx-auto flex justify-center px-4 sm:px-6 lg:px-8">
         <div
           className={clsx('relative flex-none', {
             block: isOpen,
@@ -74,7 +74,7 @@ export default function SlugPage({ content, sections }) {
         >
           <div className="absolute top-0 bottom-0 right-0 hidden w-px dark:block lg:bg-slate-800" />
           <div className="absolute inset-y-0 right-0 w-[50vw] dark:hidden lg:bg-slate-50" />
-          <div className="sticky top-[3.25rem] -ml-0.5 h-[calc(100vh-3.25rem)] overflow-y-auto py-16 pl-0.5">
+          <div className="sticky top-[3.25rem] -ml-0.5 h-[calc(100vh-3.25rem)] overflow-y-auto py-12">
             <ContentNavigation sections={sections} className="w-64 pr-8 xl:w-72 xl:pr-16" />
           </div>
         </div>

@@ -23,7 +23,7 @@ export default function ContentNavigation({ sections, className }) {
 
   return (
     <nav className={className}>
-      <ul role="list" className="space-y-9 lg:text-sm">
+      <ul role="list" className="space-y-8">
         {sections.map((section) => {
           const path = section.sections.join('/');
           return (
@@ -32,7 +32,7 @@ export default function ContentNavigation({ sections, className }) {
 
               <ul
                 role="list"
-                className={clsx('mb-4 space-y-2 space-y-4', {
+                className={clsx('mb-4 space-y-3.5', {
                   'border-l-2 border-slate-100 border-slate-200 dark:border-slate-800': path,
                 })}
               >

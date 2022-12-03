@@ -25,7 +25,13 @@ export interface Pipeline {
  * Contented Pipeline (Path-based)
  */
 export abstract class ContentedPipeline {
-  public constructor(protected readonly rootPath: string, protected readonly pipeline: Pipeline) {}
+  public constructor(protected readonly rootPath: string, protected readonly pipeline: Pipeline) {
+    pipeline.fields = {
+      title: { type: 'string' },
+      description: { type: 'string' },
+      ...pipeline.fields,
+    };
+  }
 
   /**
    * Optional init for Pipeline that require async setup.

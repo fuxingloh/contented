@@ -38,11 +38,6 @@ const config = {
         type: 'Lorem',
         pattern: ['contented-example-lorem/**/*.md'],
         processor: MarkdownPipeline,
-        fields: {
-          title: {
-            type: 'string',
-          },
-        },
         transform: (file) => {
           file.sections = file.sections.slice(1);
           return file;
@@ -52,11 +47,6 @@ const config = {
         type: 'Contented',
         pattern: 'jest/**/*.spec.ts',
         processor: 'jest-md',
-        fields: {
-          title: {
-            type: 'string',
-          },
-        },
         transform: (file) => {
           file.sections = file.sections.slice(1);
           return file;

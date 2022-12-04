@@ -1,5 +1,4 @@
-/** @type {import('@birthdayresearch/contented').ContentedConfig} */
-const config = {
+export default {
   processor: {
     pipelines: [
       {
@@ -9,5 +8,3 @@ const config = {
     ],
   },
 };
-
-export default config;

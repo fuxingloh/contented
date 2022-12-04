@@ -14,6 +14,7 @@ describe('process', () => {
         type: 'Markdown',
         pattern: '**/*.md',
         processor: 'md',
+        fields: {},
       },
     ],
   };
@@ -24,7 +25,10 @@ describe('process', () => {
     expect(await processor.process('Foo.Bar.md')).toStrictEqual([
       {
         type: 'Markdown',
-        fields: {},
+        fields: {
+          description: undefined,
+          title: undefined,
+        },
         headings: [
           {
             children: [],
@@ -46,7 +50,10 @@ describe('process', () => {
     expect(await processor.process(':2:path-1.md')).toStrictEqual([
       {
         type: 'Markdown',
-        fields: {},
+        fields: {
+          description: undefined,
+          title: 'Hello',
+        },
         headings: [],
         path: '/path-1',
         sections: [],
@@ -61,7 +68,10 @@ describe('process', () => {
     expect(await processor.process(':1:Category/:1:slug.md')).toStrictEqual([
       {
         type: 'Markdown',
-        fields: {},
+        fields: {
+          description: undefined,
+          title: 'Slug',
+        },
         headings: [
           {
             children: [],
@@ -83,7 +93,10 @@ describe('process', () => {
     expect(await processor.process(':1:Category/Section/:2:path.md')).toStrictEqual([
       {
         type: 'Markdown',
-        fields: {},
+        fields: {
+          description: undefined,
+          title: 'Path',
+        },
         headings: [
           {
             children: [],
@@ -130,6 +143,7 @@ describe('build', () => {
           {
             fields: {
               title: 'Hello',
+              description: undefined,
             },
             id: expect.stringMatching(/[0-f]{64}/),
             modifiedDate: expect.any(Number),
@@ -140,6 +154,7 @@ describe('build', () => {
           {
             fields: {
               title: 'Path',
+              description: undefined,
             },
             id: expect.stringMatching(/[0-f]{64}/),
             modifiedDate: expect.any(Number),
@@ -166,6 +181,7 @@ describe('build', () => {
           {
             fields: {
               title: 'Hello',
+              description: undefined,
             },
             id: expect.stringMatching(/[0-f]{64}/),
             modifiedDate: expect.any(Number),
@@ -176,6 +192,7 @@ describe('build', () => {
           {
             fields: {
               title: 'Path',
+              description: undefined,
             },
             id: expect.stringMatching(/[0-f]{64}/),
             modifiedDate: expect.any(Number),
@@ -186,6 +203,7 @@ describe('build', () => {
           {
             fields: {
               title: 'Slug',
+              description: undefined,
             },
             id: expect.stringMatching(/[0-f]{64}/),
             modifiedDate: expect.any(Number),

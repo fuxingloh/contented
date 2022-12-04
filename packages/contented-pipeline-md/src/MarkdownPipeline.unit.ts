@@ -20,7 +20,10 @@ describe('Without Config', () => {
     expect(content).toStrictEqual([
       {
         type: 'Markdown',
-        fields: {},
+        fields: {
+          description: undefined,
+          title: undefined,
+        },
         headings: [
           {
             depth: 1,

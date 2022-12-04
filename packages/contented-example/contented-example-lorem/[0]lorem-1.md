@@ -1,3 +1,7 @@
+---
+title: Lorem 1
+---
+
 > This is an example to create another pipeline.
 
 # Audentes aurae pomis frangunt solitus tu rictus

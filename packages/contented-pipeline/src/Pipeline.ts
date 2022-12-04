@@ -7,7 +7,7 @@ import { PipelineField } from './PipelineField.js';
 import { FileContent, FileIndex } from './PipelineFile.js';
 
 export interface Pipeline {
-  type: string;
+  type?: string;
   pattern: string | string[];
   /**
    * Built in processor: 'md'
@@ -57,8 +57,8 @@ export abstract class ContentedPipeline {
 
   protected abstract processFileIndex(fileIndex: FileIndex, rootPath: string, file: string): Promise<FileContent[]>;
 
-  get type() {
-    return this.pipeline.type;
+  get type(): string {
+    return this.pipeline.type ?? 'Default';
   }
 
   sort(files: FileIndex[]): FileIndex[] {

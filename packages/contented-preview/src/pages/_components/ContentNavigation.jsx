@@ -25,7 +25,7 @@ export default function ContentNavigation({ sections, className }) {
     <nav className={className}>
       <ul role="list" className="space-y-8">
         {sections.map((section) => {
-          const path = section.sections.join('/');
+          const path = section.sections.join(' / ');
           return (
             <li key={path}>
               {path && <h2 className="font-display mb-4 font-medium text-slate-900 dark:text-white">{path}</h2>}

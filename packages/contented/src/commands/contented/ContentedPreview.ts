@@ -7,6 +7,7 @@ import { PreviewConfig } from '../../index.js';
 
 export class ContentedPreview {
   protected readonly config: PreviewConfig;
+
   previewDir = `${process.cwd()}/.contented/.preview`;
 
   constructor(config?: PreviewConfig) {

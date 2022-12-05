@@ -1,3 +1,7 @@
+---
+title: Lorem 2
+---
+
 # Lacrimas dextras inornatos clipeum regina
 
 ## Et inpia praeter fulva aper aras ingrato

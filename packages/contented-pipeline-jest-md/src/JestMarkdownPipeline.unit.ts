@@ -39,7 +39,10 @@ describe('JestMarkdownPipeline', () => {
     expect(content).toStrictEqual([
       {
         type: 'Example',
-        fields: {},
+        fields: {
+          description: undefined,
+          title: 'JestPipeline',
+        },
         headings: [
           {
             children: [],
@@ -81,7 +84,10 @@ describe('JestMarkdownPipeline', () => {
         '<span class="line"><span style="color: #DCBDFB">expect</span><span style="color: #ADBAC7">(content).</span><span style="color: #DCBDFB">toStrictEqual</span><span style="color: #ADBAC7">([</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">  {</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    type: </span><span style="color: #96D0FF">\'Example\'</span><span style="color: #ADBAC7">,</span></span>\n' +
-        '<span class="line"><span style="color: #ADBAC7">    fields: {},</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    fields: {</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">      description: </span><span style="color: #6CB6FF">undefined</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">      title: </span><span style="color: #96D0FF">\'JestPipeline\'</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    },</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    headings: [</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">      {</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">        children: [],</span></span>\n' +

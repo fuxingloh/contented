@@ -1,0 +1,16 @@
+{
+  "name": "@birthdayresearch/contented-example-lorem",
+  "version": "0.0.0",
+  "private": false,
+  "type": "module",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "contented build"
+  },
+  "devDependencies": {
+    "@birthdayresearch/contented": "0.0.0"
+  }
+}

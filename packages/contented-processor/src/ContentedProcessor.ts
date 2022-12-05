@@ -39,6 +39,7 @@ export class ContentedProcessor {
     config.rootDir = config.rootDir ?? './';
     config.outDir = config.outDir ?? './.contented';
     config.pipelines.forEach((pipeline) => {
+      pipeline.type = pipeline.type ?? 'Default';
       if (pipeline.type.match(/[^a-zA-Z]/g)) {
         throw new Error(
           'Due to codegen, pipeline.type must be a string with allowed characters within the range of [a-zA-Z].',

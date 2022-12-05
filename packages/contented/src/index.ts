@@ -11,6 +11,6 @@ export interface PreviewConfig {
 }
 
 export interface ContentedConfig {
-  preview: PreviewConfig;
+  preview?: PreviewConfig;
   processor: ProcessorConfig;
 }

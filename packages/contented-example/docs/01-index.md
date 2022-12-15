@@ -2,7 +2,7 @@
 its contextual Git repository. `npm i @birthdayresearch/contented`
 
 With a headless design of 1 config file `contented.config.js`, developers can start writing
-their [markdown content](/markdown) and preview it on their localhost `contented write`. Choosing convention over
+their [markdown content](04-markdown) and preview it on their localhost `contented write`. Choosing convention over
 configuration reduces HTML/UI clutter, allowing developers to focus on authoring.
 
 Authored content can be continuously delivered (CD) into a hosted static site (e.g., GitHub Pages/Netlify/Vercel) for
@@ -31,6 +31,8 @@ naturally satisfies.
 **This is not a static site generator.** This is a markdown processor workflow with a built-in static site generator.
 The outcome we're trying to achieve is
 this [@birthdayresearch/contented-example/dist](https://www.jsdelivr.com/package/npm/@birthdayresearch/contented-example)
+
+> [See Contented Limitations](09-Others/02-limitations.md)
 
 ## Powered By
 

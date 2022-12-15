@@ -12,6 +12,7 @@ processor
   .use(remarkGfm)
   .use(remarkFrontmatter)
   .use(remarkParse)
+  .use(remarkLink)
   .use(remarkDirective)
   .use(remarkDirectiveRehype)
   .use(collectFields)

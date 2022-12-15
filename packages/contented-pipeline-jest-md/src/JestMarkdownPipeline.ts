@@ -1,8 +1,9 @@
+import { readFile } from 'node:fs/promises';
+import { join, ParsedPath } from 'node:path';
+
 import { parse } from '@babel/parser';
 import { File } from '@babel/types';
 import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
-import { readFile } from 'node:fs/promises';
-import { join, ParsedPath } from 'node:path';
 import stripIndent from 'strip-indent';
 import { VFile } from 'vfile';
 

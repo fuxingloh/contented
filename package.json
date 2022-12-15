@@ -17,8 +17,8 @@
     "test": "turbo run test"
   },
   "devDependencies": {
-    "@birthdayresearch/eslint-config": "0.2.0",
-    "@birthdayresearch/sticky-prettier": "0.2.0",
+    "@birthdayresearch/eslint-config": "0.3.2",
+    "@birthdayresearch/sticky-prettier": "0.3.2",
     "lerna": "^6.1.0",
     "turbo": "^1.6.3"
   },

@@ -1,7 +1,8 @@
-import { CodeGenerator } from '@babel/generator';
-import { FileContent, FileIndex } from '@birthdayresearch/contented-pipeline';
 import fs from 'node:fs/promises';
 import { join } from 'node:path';
+
+import { CodeGenerator } from '@babel/generator';
+import { FileContent, FileIndex } from '@birthdayresearch/contented-pipeline';
 
 import { Config } from './ContentedProcessor.js';
 

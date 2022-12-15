@@ -1,8 +1,10 @@
+import { parse } from 'node:url';
+
 import { Link, Parent } from 'mdast';
 import { Transformer } from 'unified';
 import { visit } from 'unist-util-visit';
 import { VFile } from 'vfile';
-import { parse } from 'node:url';
+
 import { UnifiedContented } from './Plugin.js';
 
 export function remarkLink(): Transformer<Parent> {
@@ -18,6 +20,7 @@ function visitLink(file: VFile): (node: Link) => void {
     if (parse(node.url).hostname !== null) {
       return;
     }
+    // eslint-disable-next-line  no-param-reassign
     node.url = contented.contentedPipeline.getSanitizedPath(node.url);
   };
 }

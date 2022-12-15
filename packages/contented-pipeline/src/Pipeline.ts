@@ -1,7 +1,8 @@
-import slugify from '@sindresorhus/slugify';
 import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
 import { join, parse, ParsedPath } from 'node:path';
+
+import slugify from '@sindresorhus/slugify';
 
 import { PipelineField } from './PipelineField.js';
 import { FileContent, FileIndex } from './PipelineFile.js';

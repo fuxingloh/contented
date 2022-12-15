@@ -1,8 +1,9 @@
+import { join, relative } from 'node:path';
+
 import { FileContent } from '@birthdayresearch/contented-pipeline';
 import { ContentedProcessorResult } from '@birthdayresearch/contented-processor';
 import watcher, { Event } from '@parcel/watcher';
 import debounce from 'debounce';
-import { join, relative } from 'node:path';
 
 import { ContentedWalker } from './ContentedWalker.js';
 

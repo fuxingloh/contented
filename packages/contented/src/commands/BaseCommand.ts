@@ -1,5 +1,6 @@
-import { Command } from 'clipanion';
 import { join } from 'node:path';
+
+import { Command } from 'clipanion';
 
 import { ContentedConfig } from '../index.js';
 

@@ -1,6 +1,7 @@
+import { join } from 'node:path';
+
 import { ContentedPipeline, FileContent, FileIndex } from '@birthdayresearch/contented-pipeline';
 import console from 'console';
-import { join } from 'node:path';
 import { read } from 'to-vfile';
 import { Processor, unified } from 'unified';
 import { VFile } from 'vfile';

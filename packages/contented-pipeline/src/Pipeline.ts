@@ -96,11 +96,7 @@ export abstract class ContentedPipeline {
   }
 
   protected computePath(sections: string[], parsedPath: ParsedPath) {
-    const dir = `${sections
-      .map((s) => {
-        return s !== '..' ? slugify(s) : s;
-      })
-      .join('/')}`;
+    const dir = `${sections.map((s) => (s !== '..' ? slugify(s) : s)).join('/')}`;
     const file = `${slugify(this.replacePrefix(parsedPath.name))}`;
     if (file === 'index') {
       return dir;

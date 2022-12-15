@@ -46,6 +46,7 @@ export class MarkdownPipeline extends ContentedPipeline {
 
   protected newUnifiedContented(): UnifiedContented {
     return {
+      contentedPipeline: this,
       pipeline: this.pipeline,
       headings: [],
       fields: {},

@@ -16,6 +16,7 @@ import { Plugin, Processor } from 'unified';
 import { rehypeHeading } from './plugins/RehypeHeading.js';
 import { rehypeMermaid } from './plugins/RehypeMermaid.js';
 import { collectFields, resolveFields, validateFields } from './plugins/RemarkFrontmatter.js';
+import { remarkLink } from './plugins/RemarkLink.js';
 
 export interface UnifiedOptions {
   shiki?: HighlighterOptions;
@@ -35,7 +36,13 @@ export async function initProcessor(processor: Processor, options?: UnifiedOptio
     processor.use(plugin);
   });
 
-  processor.use(remarkGfm).use(remarkFrontmatter).use(remarkParse).use(remarkDirective).use(remarkDirectiveRehype);
+  processor
+    .use(remarkGfm)
+    .use(remarkFrontmatter)
+    .use(remarkParse)
+    .use(remarkLink)
+    .use(remarkDirective)
+    .use(remarkDirectiveRehype);
 
   processor.use(collectFields).use(resolveFields).use(validateFields);
 

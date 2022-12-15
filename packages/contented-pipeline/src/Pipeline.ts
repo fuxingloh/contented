@@ -78,29 +78,35 @@ export abstract class ContentedPipeline {
     return {
       id: this.computeFileId(filePath),
       type: this.type,
-      path: this.computePath(sections, parsedPath),
+      path: `/${this.computePath(sections, parsedPath)}`,
       modifiedDate: await this.computeModifiedDate(filePath),
       sections,
       fields: {},
     };
   }
 
+  /**
+   * @param {string} file
+   * @return {string} fully sanitized file path
+   */
+  public getSanitizedPath(file: string): string {
+    const parsedPath = parse(file);
+    const sections = this.computeSections(parsedPath);
+    return this.computePath(sections, parsedPath);
+  }
+
   protected computePath(sections: string[], parsedPath: ParsedPath) {
-    const dir = `/${sections.map((s) => slugify(s)).join('/')}`;
-    const file = `/${slugify(replacePrefix(parsedPath.name))}`;
-    if (file === '/index') {
+    const dir = `${sections.map((s) => (s !== '..' ? slugify(s) : s)).join('/')}`;
+    const file = `${slugify(this.replacePrefix(parsedPath.name))}`;
+    if (file === 'index') {
       return dir;
     }
 
-    if (dir === '/') {
+    if (dir === '') {
       return file;
     }
 
-    return `${dir}${file}`;
-  }
-
-  protected computeFileId(filePath: string) {
-    return createHash('sha256').update(filePath).digest('hex');
+    return `${dir}/${file}`;
   }
 
   protected computeSections(parsedPath: ParsedPath) {
@@ -108,15 +114,23 @@ export abstract class ContentedPipeline {
       return [];
     }
 
-    return parsedPath.dir.split('/').map(replacePrefix);
+    return parsedPath.dir.split('/').map(this.replacePrefix);
+  }
+
+  protected replacePrefix(path: string): string {
+    const matched = path.match(/^(:\d+:|\(\d+\)|\[\d+]|\d+-)(.+)$/);
+    if (matched !== null) {
+      return matched[2];
+    }
+    return path;
+  }
+
+  protected computeFileId(filePath: string) {
+    return createHash('sha256').update(filePath).digest('hex');
   }
 
   protected async computeModifiedDate(filePath: string): Promise<number> {
     const stats = await fs.stat(filePath);
     return stats.mtime.getTime();
   }
-}
-
-function replacePrefix(path: string) {
-  return path.replaceAll(/^(:\d+:|\(\d+\)|\[\d+])/g, '');
 }

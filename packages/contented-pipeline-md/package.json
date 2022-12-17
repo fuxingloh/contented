@@ -29,7 +29,7 @@
   "dependencies": {
     "@birthdayresearch/contented-pipeline": "0.0.0",
     "@jsdevtools/rehype-toc": "^3.0.2",
-    "@leafac/html": "3.0.2",
+    "@leafac/html": "3.0.3",
     "@leafac/rehype-shiki": "2.2.1",
     "@sindresorhus/slugify": "^2.1.1",
     "hast-util-to-string": "^2.0.0",

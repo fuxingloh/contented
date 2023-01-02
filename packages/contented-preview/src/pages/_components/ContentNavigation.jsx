@@ -39,9 +39,9 @@ export default function ContentNavigation({ sections, className }) {
                 {section.items?.map((link) => (
                   <li key={link.path} className="relative">
                     <Link href={link.path}>
-                      <a
+                      <div
                         className={clsx({
-                          'block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full':
+                          'block w-full cursor-pointer pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full':
                             path,
                           'font-medium': !path,
                           'text-primary-500 before:bg-primary-500 font-semibold': link.path === router.asPath,
@@ -50,7 +50,7 @@ export default function ContentNavigation({ sections, className }) {
                         })}
                       >
                         {link?.fields.title ?? link.path}
-                      </a>
+                      </div>
                     </Link>
                   </li>
                 ))}

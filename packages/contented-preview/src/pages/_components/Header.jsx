@@ -37,7 +37,7 @@ export default function Header() {
                 {pipelines.map(([type, pipeline]) => {
                   return (
                     <Link href={pipeline.collection[0].path} key={type}>
-                      <a
+                      <div
                         className={clsx(
                           'rounded px-3 py-2 text-sm font-medium',
                           'text-slate-800 hover:bg-slate-200/50 hover:text-slate-900',
@@ -45,7 +45,7 @@ export default function Header() {
                         )}
                       >
                         {type}
-                      </a>
+                      </div>
                     </Link>
                   );
                 })}

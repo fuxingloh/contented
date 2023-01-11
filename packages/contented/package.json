@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@birthdayresearch/contented-processor": "0.0.0",
-    "@parcel/watcher": "^2.0.7",
+    "@parcel/watcher": "^2.1.0",
     "clipanion": "3.2.0-rc.14",
     "debounce": "^1.2.1",
     "ignore-walk": "^6.0.0",

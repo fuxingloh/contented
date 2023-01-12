@@ -30,15 +30,15 @@
   @apply -ml-6 pl-6;
 }
 
-.prose :is(h1, h2, h3, h4, h5, h6):hover > a {
+.prose :is(h1, h2, h3, h4, h5, h6):hover > a:first-child {
   @apply block;
 }
 
-.prose :is(h1, h2, h3, h4, h5, h6) > a {
+.prose :is(h1, h2, h3, h4, h5, h6) > a:first-child {
   @apply hidden;
 }
 
-.prose :is(h1, h2, h3, h4, h5, h6) a:before {
+.prose :is(h1, h2, h3, h4, h5, h6) a:first-child:before {
   content: '#';
   @apply text-primary-500 absolute -ml-6;
 }

@@ -1,10 +1,11 @@
-import { DocumentTextIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
-
-import { useMenu } from './MenuContext';
-import ThemeButton from './ThemeButton';
-import { Pipelines } from '../../../../index.js';
+import { Bars3Icon, DocumentTextIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import Link from 'next/link';
+
+import { Pipelines } from '../../../../index.js';
+import { PipelineCollectionNotFoundException } from '../../errors/PipelineCollectionNotFoundException.js';
+import { useMenu } from './MenuContext';
+import ThemeButton from './ThemeButton';
 
 export default function Header() {
   const { isOpen, setIsOpen } = useMenu();
@@ -35,6 +36,9 @@ export default function Header() {
             {pipelines.length > 1 && (
               <div className="ml-6 flex border-l border-slate-300/60 pl-4 dark:border-slate-300/10">
                 {pipelines.map(([type, pipeline]) => {
+                  if (pipeline.collection[0] === undefined || pipeline.collection[0] === null) {
+                    throw new PipelineCollectionNotFoundException(type);
+                  }
                   return (
                     <Link href={pipeline.collection[0].path} key={type}>
                       <div

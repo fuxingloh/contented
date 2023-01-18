@@ -97,16 +97,17 @@ export abstract class ContentedPipeline {
 
   protected computePath(sections: string[], parsedPath: ParsedPath) {
     const dir = `${sections.map((s) => (s !== '..' ? slugify(s) : s)).join('/')}`;
-    const file = `${slugify(this.replacePrefix(parsedPath.name))}`;
+    const file = this.computeFileName(parsedPath.name);
+    const fileFragment = this.computeFileFragment(parsedPath);
     if (file === 'index') {
-      return dir;
+      return `${dir}${fileFragment}`;
     }
 
     if (dir === '') {
-      return file;
+      return `${file}${fileFragment}`;
     }
 
-    return `${dir}/${file}`;
+    return `${dir}/${file}${fileFragment}`;
   }
 
   protected computeSections(parsedPath: ParsedPath) {
@@ -123,6 +124,56 @@ export abstract class ContentedPipeline {
       return matched[2];
     }
     return path;
+  }
+
+  /**
+   * Compute the file name without any linking.
+   * Do use this instead of extracting manually.
+   * @param rawFileName The raw file name from ParsedPath
+   */
+  protected computeFileName(rawFileName: string): string {
+    if (rawFileName.includes('#')) {
+      const splitNames = rawFileName.split('#');
+
+      /**
+       * We only want it if its exactly length of 2.
+       * Title#subtile is valid, but Title#subtitle#whatisthis should not be valid.
+       * If its not valid just use the name as it is.
+       */
+      if (splitNames.length === 2) {
+        return `${slugify(this.replacePrefix(splitNames[0]))}`;
+      }
+    }
+    return `${slugify(this.replacePrefix(rawFileName))}`;
+  }
+
+  /**
+   * Extract the fragment identifier from the read file.
+   * Depending if extension of the files are provided,
+   * the fragment identifier will be in ext or the file name.
+   * @param parsedPath
+   */
+  protected computeFileFragment(parsedPath: ParsedPath): string {
+    if (parsedPath.ext !== '' && parsedPath.ext.includes('#')) {
+      const linkMatches = parsedPath.ext.match(/^(\.\w+)(#.+)*$/);
+      if (linkMatches !== null) {
+        return linkMatches[2] ?? '';
+      }
+    }
+
+    if (parsedPath.name !== '' && parsedPath.name.includes('#')) {
+      const splits = parsedPath.name.split('#');
+
+      /**
+       * We only want it if its exactly length of 2.
+       * Title#subtile is valid, but Title#subtitle#whatisthis should not be valid
+       */
+      if (splits.length === 2) {
+        return `#${splits[1]}`;
+      }
+    }
+
+    return '';
   }
 
   protected computeFileId(filePath: string) {

@@ -98,16 +98,16 @@ export abstract class ContentedPipeline {
   protected computePath(sections: string[], parsedPath: ParsedPath) {
     const dir = `${sections.map((s) => (s !== '..' ? slugify(s) : s)).join('/')}`;
     const file = this.computeFileName(parsedPath.name);
-    const internalLink = this.computeFileInternalLink(parsedPath);
+    const fileFragment = this.computeFileFragment(parsedPath);
     if (file === 'index') {
-      return `${dir}${internalLink}`;
+      return `${dir}${fileFragment}`;
     }
 
     if (dir === '') {
-      return `${file}${internalLink}`;
+      return `${file}${fileFragment}`;
     }
 
-    return `${dir}/${file}${internalLink}`;
+    return `${dir}/${file}${fileFragment}`;
   }
 
   protected computeSections(parsedPath: ParsedPath) {
@@ -148,12 +148,12 @@ export abstract class ContentedPipeline {
   }
 
   /**
-   * Extract the internal link from the read file.
+   * Extract the fragment identifier from the read file.
    * Depending if extension of the files are provided,
-   * the link will be in ext or the file name
+   * the fragment identifier will be in ext or the file name.
    * @param parsedPath
    */
-  protected computeFileInternalLink(parsedPath: ParsedPath): string {
+  protected computeFileFragment(parsedPath: ParsedPath): string {
     if (parsedPath.ext !== '' && parsedPath.ext.includes('#')) {
       const linkMatches = parsedPath.ext.match(/^(\.\w+)(#.+)*$/);
       if (linkMatches !== null) {

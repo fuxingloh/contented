@@ -48,7 +48,7 @@ it('should replace numeric prefix path', () => {
   expect(pipeline.getSanitizedPath(':01:Header/[01-Path.md')).toStrictEqual('header/01-path');
 });
 
-it('should preserve internal links for files', () => {
+it('should preserve fragment identifiers for files', () => {
   const pipeline = new TestPipeline(__dirname, {
     type: 'Type',
     pattern: '**/*.md',

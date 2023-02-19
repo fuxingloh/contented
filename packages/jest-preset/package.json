@@ -6,7 +6,7 @@
     "jest-preset.js"
   ],
   "dependencies": {
-    "@birthdayresearch/sticky-jest": "0.4.1",
+    "@birthdayresearch/sticky-jest": "0.5.0",
     "esbuild": "^0.17.8",
     "esbuild-jest": "^0.5.0"
   }

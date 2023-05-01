@@ -3,7 +3,7 @@
 }
 
 .prose .admonitions {
-  @apply relative my-6 rounded-r py-0.5 px-6;
+  @apply relative my-6 rounded-r px-6 py-0.5;
   @apply before:absolute before:inset-0 before:h-full before:w-1;
   @apply dark:text-slate-200;
 

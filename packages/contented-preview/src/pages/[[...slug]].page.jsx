@@ -72,14 +72,14 @@ export default function SlugPage({ content, sections }) {
             'hidden lg:block': !isOpen,
           })}
         >
-          <div className="absolute top-0 bottom-0 right-0 hidden w-px dark:block lg:bg-slate-800" />
+          <div className="absolute bottom-0 right-0 top-0 hidden w-px dark:block lg:bg-slate-800" />
           <div className="absolute inset-y-0 right-0 w-[50vw] dark:hidden lg:bg-slate-50" />
           <div className="sticky top-[3.25rem] -ml-0.5 h-[calc(100vh-3.25rem)] overflow-y-auto py-12">
             <ContentNavigation sections={sections} className="w-64 pr-8 xl:w-72 xl:pr-16" />
           </div>
         </div>
         <div
-          className={clsx('min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16', {
+          className={clsx('min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pl-8 lg:pr-0 xl:px-16', {
             hidden: isOpen,
           })}
         >

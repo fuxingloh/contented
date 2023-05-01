@@ -9,7 +9,7 @@ export default function ContentHeadings(props) {
           <h2 id="tags-title" className="font-display text-sm font-medium text-slate-900 dark:text-white">
             Tags
           </h2>
-          <div className="mt-4 mb-6">
+          <div className="mb-6 mt-4">
             <div className="-mx-1.5 -my-1 flex flex-wrap">
               {props.tags.map((tag) => (
                 <div key={tag} className="px-1.5 py-1">

@@ -27,7 +27,7 @@ describe('process', () => {
         type: 'Markdown',
         fields: {
           description: undefined,
-          title: undefined,
+          title: 'What is going on',
         },
         headings: [
           {
@@ -186,6 +186,17 @@ describe('build', () => {
             id: expect.stringMatching(/[0-f]{64}/),
             modifiedDate: expect.any(Number),
             path: '/path-1',
+            sections: [],
+            type: 'Markdown',
+          },
+          {
+            fields: {
+              title: 'What is going on',
+              description: undefined,
+            },
+            id: expect.stringMatching(/[0-f]{64}/),
+            modifiedDate: expect.any(Number),
+            path: '/foo-bar',
             sections: [],
             type: 'Markdown',
           },

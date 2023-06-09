@@ -22,7 +22,7 @@ describe('Without Config', () => {
         type: 'Markdown',
         fields: {
           description: undefined,
-          title: undefined,
+          title: 'Nothing To See',
         },
         headings: [
           {

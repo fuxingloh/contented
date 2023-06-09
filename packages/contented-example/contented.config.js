@@ -18,8 +18,6 @@ const config = {
         fields: {
           title: {
             type: 'string',
-            required: true,
-            resolve: (s) => s ?? 'Contented',
           },
           description: {
             type: 'string',

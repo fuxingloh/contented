@@ -1,9 +1,9 @@
-import { getInnerText } from '@jsdevtools/rehype-toc/lib/get-inner-text';
 import yaml from 'js-yaml';
 import { Parent } from 'mdast';
 import { Transformer } from 'unified';
 import { visit } from 'unist-util-visit';
 import { VFile } from 'vfile';
+import { toString } from 'mdast-util-to-string';
 
 import { UnifiedContented } from './Plugin.js';
 
@@ -27,7 +27,7 @@ function collectTitle(file: VFile): (node: { type: 'heading'; children: object[]
       return;
     }
 
-    contented.fields.title = getInnerText(node);
+    contented.fields.title = toString(node);
   };
 }
 

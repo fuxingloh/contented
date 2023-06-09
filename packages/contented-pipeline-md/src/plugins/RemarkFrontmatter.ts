@@ -1,9 +1,9 @@
 import yaml from 'js-yaml';
 import { Parent } from 'mdast';
+import { toString } from 'mdast-util-to-string';
 import { Transformer } from 'unified';
 import { visit } from 'unist-util-visit';
 import { VFile } from 'vfile';
-import { toString } from 'mdast-util-to-string';
 
 import { UnifiedContented } from './Plugin.js';
 

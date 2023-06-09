@@ -5,6 +5,11 @@
   "files": [
     "jest-preset.js"
   ],
+  "lint-staged": {
+    "*": [
+      "prettier --write --ignore-unknown"
+    ]
+  },
   "dependencies": {
     "@birthdayresearch/sticky-jest": "0.8.0",
     "esbuild": "^0.17.19",

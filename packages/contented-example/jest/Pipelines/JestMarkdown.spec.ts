@@ -1,9 +1,7 @@
 import { join } from 'node:path';
 
 /**
- * ---
- * title: Jest Markdown Pipeline
- * ---
+ * # Jest Markdown Pipeline
  *
  * "Nothing is better than documentation with examples. But nothing is worse than examples that
  * don't work because the code has changed since the documentation was written." - rustbook

@@ -1,8 +1,9 @@
 ---
-title: Markdown Features
 description: The dialect of Markdown that is currently supported for contented
 tags: ['Markdown', 'Frontmatter', 'Admonitions', 'Mermaid']
 ---
+
+# Markdown Features
 
 Contented [unified](https://www.npmjs.com/package/unified) processor pipeline.
 

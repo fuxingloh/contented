@@ -85,7 +85,6 @@ export default function SlugPage({ content, sections }) {
         >
           <article>
             <ContentProse>
-              {content.fields.title && <h1>{content.fields.title}</h1>}
               <div dangerouslySetInnerHTML={{ __html: content.html + `<!--${theme}-->` }} />
             </ContentProse>
           </article>

@@ -1,6 +1,4 @@
----
-title: Ballad of Engineering
----
+# Ballad of Engineering
 
 ```shell
 npm i

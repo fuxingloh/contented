@@ -36,12 +36,18 @@ describe('process', () => {
             id: 'what-is-going-on',
             title: 'What is going on',
           },
+          {
+            children: [],
+            depth: 1,
+            id: 'multiple-title-but-take-the-first-one',
+            title: 'Multiple title but take the first one',
+          },
         ],
         path: '/foo-bar',
         sections: [],
         id: expect.stringMatching(/[0-f]{64}/),
         modifiedDate: expect.any(Number),
-        html: '<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#what-is-going-on">What is going on</a></li></ol></nav><h1 id="what-is-going-on"><a aria-hidden="true" tabindex="-1" href="#what-is-going-on"><span class="icon icon-link"></span></a>What is going on</h1>\n<p>Markdown for testing <code>ContentedProcessor.unit.ts</code>.</p>',
+        html: '<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#what-is-going-on">What is going on</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#multiple-title-but-take-the-first-one">Multiple title but take the first one</a></li></ol></nav><h1 id="what-is-going-on"><a aria-hidden="true" tabindex="-1" href="#what-is-going-on"><span class="icon icon-link"></span></a>What is going on</h1>\n<h1 id="multiple-title-but-take-the-first-one"><a aria-hidden="true" tabindex="-1" href="#multiple-title-but-take-the-first-one"><span class="icon icon-link"></span></a>Multiple title but take the first one</h1>\n<p>Markdown for testing <code>ContentedProcessor.unit.ts</code>.</p>',
       },
     ]);
   });

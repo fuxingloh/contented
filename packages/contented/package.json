@@ -19,6 +19,15 @@
     "clean": "rm -rf dist",
     "lint": "eslint src"
   },
+  "lint-staged": {
+    "*": [
+      "prettier --write --ignore-unknown"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
   "eslintConfig": {
     "parserOptions": {
       "project": "./tsconfig.json"

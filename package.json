@@ -8,22 +8,22 @@
   "scripts": {
     "build": "turbo run build",
     "clean": "turbo run clean",
-    "write": "turbo run write",
-    "watch": "turbo run watch",
-    "generate": "turbo run generate",
     "format": "prettier --write .",
+    "generate": "turbo run generate",
     "lint": "turbo run lint -- --fix",
     "prepare": "husky install",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "watch": "turbo run watch",
+    "write": "turbo run write"
   },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown"
+  },
+  "prettier": "@birthdayresearch/sticky-prettier",
   "devDependencies": {
     "@birthdayresearch/eslint-config": "0.8.0",
     "@birthdayresearch/sticky-prettier": "0.8.0",
     "lerna": "^6.6.2",
     "turbo": "^1.10.2"
-  },
-  "prettier": "@birthdayresearch/sticky-prettier",
-  "lint-staged": {
-    "*": "prettier --write --ignore-unknown"
   }
 }

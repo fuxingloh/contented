@@ -1,3 +1,5 @@
+# Contented
+
 [Contented](https://contented.dev) is a Markdown-based authoring workflow that encourage developer authoring within
 its contextual Git repository. `npm i @birthdayresearch/contented`
 

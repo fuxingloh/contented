@@ -1,6 +1,4 @@
----
-title: Lorem 2
----
+# Lorem 2
 
 # Lacrimas dextras inornatos clipeum regina
 

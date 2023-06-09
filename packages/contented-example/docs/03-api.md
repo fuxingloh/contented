@@ -1,6 +1,4 @@
----
-title: API Reference
----
+# API Reference
 
 ## Contented CLI
 

@@ -1,6 +1,4 @@
----
-title: Lorem 1
----
+# Lorem 1
 
 > This is an example to create another pipeline.
 

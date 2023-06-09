@@ -1,6 +1,9 @@
 import yaml from 'js-yaml';
 import { Parent } from 'mdast';
+import { toString } from 'mdast-util-to-string';
 import { Transformer } from 'unified';
+import { visit } from 'unist-util-visit';
+import { VFile } from 'vfile';
 
 import { UnifiedContented } from './Plugin.js';
 
@@ -11,6 +14,20 @@ export function collectFields(): Transformer<Parent> {
       const contented = file.data.contented as UnifiedContented;
       contented.fields = yaml.load(node.value) as any;
     }
+
+    visit(tree, 'heading', collectTitle(file));
+  };
+}
+
+function collectTitle(file: VFile): (node: { type: 'heading'; children: object[] }) => void {
+  const contented = file.data?.contented as UnifiedContented;
+
+  return (node) => {
+    if (contented.fields.title) {
+      return;
+    }
+
+    contented.fields.title = toString(node);
   };
 }
 

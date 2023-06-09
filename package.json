@@ -20,7 +20,7 @@
     "@birthdayresearch/eslint-config": "0.5.11",
     "@birthdayresearch/sticky-prettier": "0.5.11",
     "lerna": "^6.6.1",
-    "turbo": "^1.9.4"
+    "turbo": "^1.10.2"
   },
   "prettier": "@birthdayresearch/sticky-prettier",
   "lint-staged": {

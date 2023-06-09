@@ -11,7 +11,7 @@
     ]
   },
   "dependencies": {
-    "@birthdayresearch/sticky-jest": "0.8.0",
+    "@birthdayresearch/sticky-jest": "0.8.5",
     "esbuild": "^0.17.19",
     "esbuild-jest": "^0.5.0"
   }

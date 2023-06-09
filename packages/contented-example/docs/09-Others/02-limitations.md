@@ -1,6 +1,4 @@
----
-title: Known Limitations
----
+# Known Limitations
 
 ## Customization
 

@@ -1,6 +1,4 @@
----
-title: Contributing Guidelines
----
+# Contributing Guidelines
 
 > Taken
 > from [BirthdayResearch/.github/CONTRIBUTING.md](https://github.com/BirthdayResearch/.github/edit/main/CONTRIBUTING.md)

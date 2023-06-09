@@ -7,7 +7,7 @@
     "export": "next build && next-sitemap && next export"
   },
   "dependencies": {
-    "@headlessui/react": "1.7.14",
+    "@headlessui/react": "1.7.15",
     "@heroicons/react": "2.0.18",
     "@tailwindcss/typography": "0.5.9",
     "autoprefixer": "10.4.14",

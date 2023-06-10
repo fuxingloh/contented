@@ -29,7 +29,7 @@ jobs:
       contents: read
       id-token: write
     steps:
-      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
 
       - uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
         with:

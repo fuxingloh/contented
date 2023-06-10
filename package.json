@@ -24,6 +24,6 @@
     "@birthdayresearch/eslint-config": "0.8.5",
     "@birthdayresearch/sticky-prettier": "0.8.5",
     "lerna": "^6.6.2",
-    "turbo": "^1.10.2"
+    "turbo": "^1.10.3"
   }
 }

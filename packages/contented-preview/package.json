@@ -2,6 +2,9 @@
   "name": "@birthdayresearch/contented-preview",
   "version": "0.0.0",
   "private": false,
+  "repository": {
+    "url": "git+https://github.com/BirthdayResearch/contented"
+  },
   "scripts": {
     "dev": "next dev",
     "export": "next build && next-sitemap && next export"

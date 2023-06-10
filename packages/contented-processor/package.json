@@ -43,7 +43,7 @@
     "@birthdayresearch/contented-pipeline": "0.0.0",
     "@birthdayresearch/contented-pipeline-jest-md": "0.0.0",
     "@birthdayresearch/contented-pipeline-md": "0.0.0",
-    "minimatch": "^5.1.6"
+    "minimatch": "^9.0.1"
   },
   "devDependencies": {
     "@birthdayresearch/jest-preset": "0.0.0",

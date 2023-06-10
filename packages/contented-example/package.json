@@ -2,6 +2,9 @@
   "name": "@birthdayresearch/contented-example",
   "version": "0.0.0",
   "private": false,
+  "repository": {
+    "url": "git+https://github.com/BirthdayResearch/contented"
+  },
   "type": "module",
   "main": "dist/index.js",
   "files": [

@@ -5,5 +5,5 @@ labels: kind/question
 ---
 
 <!--
-If the matter is security related, please disclose it privately via security@birthday.dev
+If the matter is security related, please disclose it privately via oss@levain.tech
 -->

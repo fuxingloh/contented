@@ -1,4 +1,4 @@
-import { FileContentHeadings } from '@birthdayresearch/contented-pipeline';
+import { FileContentHeadings } from '@contentedjs/contented-pipeline';
 import { Content, Parent } from 'hast';
 import { toString } from 'hast-util-to-string';
 import { Transformer } from 'unified';

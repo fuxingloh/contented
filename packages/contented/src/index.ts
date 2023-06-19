@@ -1,6 +1,6 @@
-import { Config as ProcessorConfig } from '@birthdayresearch/contented-processor';
+import { Config as ProcessorConfig } from '@contentedjs/contented-processor';
 
-export * from '@birthdayresearch/contented-processor';
+export * from '@contentedjs/contented-processor';
 
 export interface PreviewConfig {
   url?: string;

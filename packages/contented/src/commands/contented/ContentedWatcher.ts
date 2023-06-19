@@ -1,7 +1,7 @@
 import { join, relative } from 'node:path';
 
-import { FileContent } from '@birthdayresearch/contented-pipeline';
-import { ContentedProcessorResult } from '@birthdayresearch/contented-processor';
+import { FileContent } from '@contentedjs/contented-pipeline';
+import { ContentedProcessorResult } from '@contentedjs/contented-processor';
 import watcher, { Event } from '@parcel/watcher';
 import debounce from 'debounce';
 

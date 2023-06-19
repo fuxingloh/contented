@@ -1,9 +1,9 @@
 {
-  "name": "@birthdayresearch/contented-example-lorem",
+  "name": "@contentedjs/contented-example-lorem",
   "version": "0.0.0",
   "private": false,
   "repository": {
-    "url": "git+https://github.com/BirthdayResearch/contented"
+    "url": "git+https://github.com/levaintech/contented"
   },
   "type": "module",
   "main": "dist/index.js",
@@ -14,6 +14,6 @@
     "build": "contented build"
   },
   "devDependencies": {
-    "@birthdayresearch/contented": "0.0.0"
+    "@contentedjs/contented": "0.0.0"
   }
 }

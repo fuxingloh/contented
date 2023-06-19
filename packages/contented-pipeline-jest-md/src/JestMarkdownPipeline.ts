@@ -3,7 +3,7 @@ import { join, ParsedPath } from 'node:path';
 
 import { parse } from '@babel/parser';
 import { File } from '@babel/types';
-import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
+import { MarkdownPipeline } from '@contentedjs/contented-pipeline-md';
 import stripIndent from 'strip-indent';
 import { VFile } from 'vfile';
 

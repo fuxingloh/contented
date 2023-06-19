@@ -1,5 +1,5 @@
 {
-  "name": "@birthdayresearch/contented-workspace",
+  "name": "@contentedjs/workspace",
   "private": true,
   "workspaces": [
     "./packages/*",

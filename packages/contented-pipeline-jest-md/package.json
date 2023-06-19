@@ -1,9 +1,9 @@
 {
-  "name": "@birthdayresearch/contented-pipeline-jest-md",
+  "name": "@contentedjs/contented-pipeline-jest-md",
   "version": "0.0.0",
   "private": false,
   "repository": {
-    "url": "git+https://github.com/BirthdayResearch/contented"
+    "url": "git+https://github.com/levaintech/contented"
   },
   "type": "module",
   "main": "./dist/index.js",
@@ -41,7 +41,7 @@
   "dependencies": {
     "@babel/parser": "^7.22.5",
     "@babel/types": "^7.22.5",
-    "@birthdayresearch/contented-pipeline-md": "0.0.0",
+    "@contentedjs/contented-pipeline-md": "0.0.0",
     "strip-indent": "^4.0.0",
     "unified": "^10.1.2",
     "vfile": "^5.3.7"

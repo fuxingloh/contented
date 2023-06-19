@@ -1,7 +1,7 @@
 import 'jest-extended';
 
-import { FileContent, FileIndex } from '@birthdayresearch/contented-pipeline';
-import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
+import { FileContent, FileIndex } from '@contentedjs/contented-pipeline';
+import { MarkdownPipeline } from '@contentedjs/contented-pipeline-md';
 
 import { Config, ContentedProcessor } from './ContentedProcessor';
 

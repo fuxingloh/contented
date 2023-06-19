@@ -1,9 +1,9 @@
 {
-  "name": "@birthdayresearch/contented",
+  "name": "@contentedjs/contented",
   "version": "0.0.0",
   "private": false,
   "repository": {
-    "url": "git+https://github.com/BirthdayResearch/contented"
+    "url": "git+https://github.com/levaintech/contented"
   },
   "type": "module",
   "main": "./dist/index.js",
@@ -40,7 +40,7 @@
     ]
   },
   "dependencies": {
-    "@birthdayresearch/contented-processor": "0.0.0",
+    "@contentedjs/contented-processor": "0.0.0",
     "@parcel/watcher": "^2.1.0",
     "clipanion": "3.2.1",
     "debounce": "^1.2.1",

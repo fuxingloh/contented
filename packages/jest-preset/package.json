@@ -1,5 +1,5 @@
 {
-  "name": "@birthdayresearch/jest-preset",
+  "name": "@contentedjs/jest-preset",
   "version": "0.0.0",
   "private": true,
   "files": [
@@ -11,7 +11,7 @@
     ]
   },
   "dependencies": {
-    "@birthdayresearch/sticky-jest": "0.8.5",
+    "@stickyjs/jest": "1.0.0",
     "esbuild": "^0.18.2",
     "esbuild-jest": "^0.5.0"
   }

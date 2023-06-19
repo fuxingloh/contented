@@ -18,8 +18,8 @@
       "enabled": false
     },
     {
-      "matchPackagePatterns": ["^@birthdayresearch/sticky", "^@birthdayresearch/eslint-config"],
-      "groupName": "@birthdayresearch/sticky"
+      "matchPackagePatterns": ["^@stickyjs/"],
+      "groupName": "@stickyjs"
     }
   ]
 }

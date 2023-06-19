@@ -19,10 +19,10 @@
   "lint-staged": {
     "*": "prettier --write --ignore-unknown"
   },
-  "prettier": "@birthdayresearch/sticky-prettier",
+  "prettier": "@stickyjs/prettier",
   "devDependencies": {
-    "@birthdayresearch/eslint-config": "0.8.5",
-    "@birthdayresearch/sticky-prettier": "0.8.5",
+    "@stickyjs/eslint-config": "1.0.0",
+    "@stickyjs/prettier": "1.0.0",
     "lerna": "^6.6.2",
     "turbo": "^1.10.3"
   }

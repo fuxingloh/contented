@@ -32,7 +32,7 @@
       "project": "./tsconfig.json"
     },
     "extends": [
-      "@contentedjs"
+      "@stickyjs"
     ]
   },
   "jest": {

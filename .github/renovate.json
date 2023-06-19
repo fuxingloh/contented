@@ -19,7 +19,7 @@
     },
     {
       "matchPackagePatterns": ["^@stickyjs/"],
-      "groupName": "@stickyjs"
+      "groupName": "@levaintech/sticky"
     }
   ]
 }

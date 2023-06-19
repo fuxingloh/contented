@@ -1,4 +1,4 @@
-import { ContentedProcessor, ContentedProcessorResult } from '@birthdayresearch/contented-processor';
+import { ContentedProcessor, ContentedProcessorResult } from '@contentedjs/contented-processor';
 import walk from 'ignore-walk';
 
 export class ContentedWalker {

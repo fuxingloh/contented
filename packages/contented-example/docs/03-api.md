@@ -22,7 +22,7 @@ configure your `package.json` with these fields:
     "generate": "contented generate"
   },
   "devDependencies": {
-    "@birthdayresearch/contented": "latest"
+    "@contentedjs/contented": "latest"
   }
 }
 ```
@@ -30,13 +30,13 @@ configure your `package.json` with these fields:
 **`contented.config.js`:**
 
 ```js
-/** @type {import('@birthdayresearch/contented').ContentedConfig} */
+/** @type {import('@contentedjs/contented').ContentedConfig} */
 module.exports = {
   preview: {
     url: 'https://contented.dev',
     name: 'Contented',
     github: {
-      url: 'https://github.com/BirthdayResearch/contented',
+      url: 'https://github.com/levaintech/contented',
     },
   },
   processor: {
@@ -81,7 +81,7 @@ need to configure your `package.json` with these fields:
     "build": "contented build"
   },
   "devDependencies": {
-    "@birthdayresearch/contented": "latest"
+    "@contentedjs/contented": "latest"
   }
 }
 ```
@@ -142,13 +142,13 @@ export interface Pipeline {
 #### Example
 
 ```js
-/** @type {import('@birthdayresearch/contented').ContentedConfig} */
+/** @type {import('@contentedjs/contented').ContentedConfig} */
 module.exports = {
   preview: {
     url: 'https://contented.dev',
     name: 'Contented',
     github: {
-      url: 'https://github.com/BirthdayResearch/contented',
+      url: 'https://github.com/levaintech/contented',
     },
   },
   processor: {

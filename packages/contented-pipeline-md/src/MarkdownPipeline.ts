@@ -1,6 +1,6 @@
 import { join } from 'node:path';
 
-import { ContentedPipeline, FileContent, FileIndex } from '@birthdayresearch/contented-pipeline';
+import { ContentedPipeline, FileContent, FileIndex } from '@contentedjs/contented-pipeline';
 import console from 'console';
 import { read } from 'to-vfile';
 import { Processor, unified } from 'unified';
@@ -32,7 +32,7 @@ export class MarkdownPipeline extends ContentedPipeline {
 
     if (contented.errors.length > 0) {
       const message = contented.errors.map((value) => `${value.type}:${value.reason}`).join(',');
-      console.warn(`@birthdayresearch/contented-pipeline-md: ${file} - failed with errors: [${message}]`);
+      console.warn(`@contentedjs/contented-pipeline-md: ${file} - failed with errors: [${message}]`);
       return [];
     }
 

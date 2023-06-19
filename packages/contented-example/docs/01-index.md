@@ -1,7 +1,7 @@
 # Contented
 
 [Contented](https://contented.dev) is a Markdown-based authoring workflow that encourage developer authoring within
-its contextual Git repository. `npm i @birthdayresearch/contented`
+its contextual Git repository. `npm i @contentedjs/contented`
 
 With a headless design of 1 config file `contented.config.js`, developers can start writing
 their [markdown content](04-markdown) and preview it on their localhost `contented write`. Choosing convention over
@@ -32,7 +32,7 @@ naturally satisfies.
 
 **This is not a static site generator.** This is a markdown processor workflow with a built-in static site generator.
 The outcome we're trying to achieve is
-this [@birthdayresearch/contented-example/dist](https://www.jsdelivr.com/package/npm/@birthdayresearch/contented-example)
+this [@contentedjs/contented-example/dist](https://www.jsdelivr.com/package/npm/@contentedjs/contented-example)
 
 > [See Contented Limitations](09-Others/02-limitations.md)
 
@@ -67,7 +67,7 @@ repo/
 
 ```json
 {
-  "name": "@birthdayresearch/contented-example",
+  "name": "@contentedjs/contented-example",
   "version": "0.0.0",
   "private": false,
   "files": ["dist"],
@@ -78,7 +78,7 @@ repo/
     "build": "contented build"
   },
   "devDependencies": {
-    "@birthdayresearch/contented": "latest"
+    "@contentedjs/contented": "latest"
   }
 }
 ```
@@ -86,13 +86,13 @@ repo/
 **contented.config.js**
 
 ```js
-/** @type {import('@birthdayresearch/contented').ContentedConfig} */
+/** @type {import('@contentedjs/contented').ContentedConfig} */
 module.exports = {
   preview: {
     url: 'https://contented.dev',
     name: 'Contented',
     github: {
-      url: 'https://github.com/BirthdayResearch/contented',
+      url: 'https://github.com/levaintech/contented',
     },
   },
   processor: {
@@ -127,5 +127,5 @@ module.exports = {
 
 ### Examples
 
-- [BirthdayResearch/contented/packages/contented-example](https://github.com/BirthdayResearch/contented/tree/main/packages/contented-example)
+- [levaintech/contented/packages/contented-example](https://github.com/levaintech/contented/tree/main/packages/contented-example)
 - [fuxingloh/jellyfishsdk-docs](https://github.com/fuxingloh/jellyfishsdk-docs)

@@ -1,4 +1,4 @@
-import { ContentedProcessor } from '@birthdayresearch/contented-processor';
+import { ContentedProcessor } from '@contentedjs/contented-processor';
 
 import { BaseCommand } from './BaseCommand.js';
 import { ContentedPreview } from './contented/ContentedPreview.js';

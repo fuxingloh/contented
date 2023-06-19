@@ -1,4 +1,4 @@
-import { ContentedPipeline, FileContentHeadings, Pipeline } from '@birthdayresearch/contented-pipeline';
+import { ContentedPipeline, FileContentHeadings, Pipeline } from '@contentedjs/contented-pipeline';
 
 /**
  * UnifiedData passed to unified plugins.

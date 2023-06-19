@@ -1,9 +1,9 @@
 {
-  "name": "@birthdayresearch/contented-pipeline-md",
+  "name": "@contentedjs/contented-pipeline-md",
   "version": "0.0.0",
   "private": false,
   "repository": {
-    "url": "git+https://github.com/BirthdayResearch/contented"
+    "url": "git+https://github.com/levaintech/contented"
   },
   "type": "module",
   "main": "./dist/index.js",
@@ -39,7 +39,7 @@
     "preset": "@birthdayresearch/jest-preset"
   },
   "dependencies": {
-    "@birthdayresearch/contented-pipeline": "0.0.0",
+    "@contentedjs/contented-pipeline": "0.0.0",
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@leafac/html": "3.0.2",
     "@leafac/rehype-shiki": "2.2.1",

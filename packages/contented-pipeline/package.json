@@ -1,9 +1,9 @@
 {
-  "name": "@birthdayresearch/contented-pipeline",
+  "name": "@contentedjs/contented-pipeline",
   "version": "0.0.0",
   "private": false,
   "repository": {
-    "url": "git+https://github.com/BirthdayResearch/contented"
+    "url": "git+https://github.com/levaintech/contented"
   },
   "type": "module",
   "main": "./dist/index.js",

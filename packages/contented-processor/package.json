@@ -1,9 +1,9 @@
 {
-  "name": "@birthdayresearch/contented-processor",
+  "name": "@contentedjs/contented-processor",
   "version": "0.0.0",
   "private": false,
   "repository": {
-    "url": "git+https://github.com/BirthdayResearch/contented"
+    "url": "git+https://github.com/levaintech/contented"
   },
   "type": "module",
   "main": "./dist/index.js",
@@ -40,9 +40,9 @@
   },
   "dependencies": {
     "@babel/generator": "^7.22.5",
-    "@birthdayresearch/contented-pipeline": "0.0.0",
-    "@birthdayresearch/contented-pipeline-jest-md": "0.0.0",
-    "@birthdayresearch/contented-pipeline-md": "0.0.0",
+    "@contentedjs/contented-pipeline": "0.0.0",
+    "@contentedjs/contented-pipeline-jest-md": "0.0.0",
+    "@contentedjs/contented-pipeline-md": "0.0.0",
     "minimatch": "^5.1.6"
   },
   "devDependencies": {

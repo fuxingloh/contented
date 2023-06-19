@@ -1,12 +1,12 @@
-import { MarkdownPipeline } from '@birthdayresearch/contented-pipeline-md';
+import { MarkdownPipeline } from '@contentedjs/contented-pipeline-md';
 
-/** @type {import('@birthdayresearch/contented').ContentedConfig} */
+/** @type {import('@contentedjs/contented').ContentedConfig} */
 const config = {
   preview: {
     url: 'https://contented.dev',
     name: 'Contented',
     github: {
-      url: 'https://github.com/BirthdayResearch/contented',
+      url: 'https://github.com/levaintech/contented',
     },
   },
   processor: {

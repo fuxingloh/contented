@@ -1,9 +1,9 @@
 {
-  "name": "@birthdayresearch/contented-preview",
+  "name": "@contentedjs/contented-preview",
   "version": "0.0.0",
   "private": false,
   "repository": {
-    "url": "git+https://github.com/BirthdayResearch/contented"
+    "url": "git+https://github.com/levaintech/contented"
   },
   "scripts": {
     "dev": "next dev",

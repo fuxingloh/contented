@@ -32,17 +32,17 @@
       "project": "./tsconfig.json"
     },
     "extends": [
-      "@birthdayresearch"
+      "@contentedjs"
     ]
   },
   "jest": {
-    "preset": "@birthdayresearch/jest-preset"
+    "preset": "@contentedjs/jest-preset"
   },
   "dependencies": {
     "@sindresorhus/slugify": "^2.2.1"
   },
   "devDependencies": {
-    "@birthdayresearch/jest-preset": "0.0.0",
+    "@contentedjs/jest-preset": "0.0.0",
     "@types/unist": "^2.0.6",
     "typescript": "4.9.5"
   }

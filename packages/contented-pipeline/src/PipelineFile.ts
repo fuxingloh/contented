@@ -2,7 +2,7 @@
  * PipelineFile, AKA pre-processed file.
  */
 export interface PipelineFile {
-  id: string;
+  fileId: string;
   type: string;
 }
 
@@ -28,7 +28,7 @@ export interface FileContent extends FileIndex {
  * Included in FileContent, content 'headings'.
  */
 export interface FileContentHeadings {
-  id: string;
+  headingId: string;
   depth: 1 | 2 | 3 | 4 | 5 | 6;
   title: string;
   children: FileContentHeadings[];

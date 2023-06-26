@@ -48,7 +48,7 @@ export class ContentedWatcher extends ContentedWalker {
     if (this.result === undefined) {
       return false;
     }
-    return this.result.pipelines[content.type].some((i) => i.id === content.id);
+    return this.result.pipelines[content.type].some((i) => i.fileId === content.fileId);
   }
 
   private processWalk = debounce(async () => {

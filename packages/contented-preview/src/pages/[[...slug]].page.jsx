@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const path = `/${params?.slug?.join('/') ?? ''}`;
   const ContentIndex = Index.find((file) => file.path === path) ?? Index[0];
-  const Content = require(`../../../${ContentIndex.type}/${ContentIndex.id}.json`);
+  const Content = require(`../../../${ContentIndex.type}/${ContentIndex.fileId}.json`);
   const TypeCollection = require(`../../../${ContentIndex.type}/index.json`);
 
   return {

@@ -24,7 +24,8 @@ function collectHeadings(node: Parent, headings: FileContentHeadings[] = []): Fi
         case 'h3':
           headings.push({
             depth: Number.parseInt(child.tagName.substring(1), 10) as any,
-            id: (child.properties?.id as string) ?? '',
+            // eslint-disable-next-line no-restricted-properties
+            headingId: (child.properties?.id as string) ?? '',
             title: toString(child),
             children: [],
           });

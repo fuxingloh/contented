@@ -1,3 +1,5 @@
+import { join } from 'node:path';
+
 import { ContentedPipeline } from './Pipeline';
 import { FileContent } from './PipelineFile';
 
@@ -83,4 +85,15 @@ it('should preserve fragment identifiers for files', () => {
   expect(pipeline.getSanitizedPath('path01#content1')).toStrictEqual('path01#content1');
   expect(pipeline.getSanitizedPath('01-path#content1')).toStrictEqual('path#content1');
   expect(pipeline.getSanitizedPath('Header/01-Path#content1')).toStrictEqual('header/path#content1');
+});
+
+it('should process', async () => {
+  const rootPath = join(__dirname, '../fixtures');
+  const pipeline = new TestPipeline(rootPath, {
+    type: 'Type',
+    pattern: '**/*.md',
+    processor: 'md',
+  });
+
+  await pipeline.process(rootPath, 'Example.md');
 });

@@ -26,7 +26,7 @@ it('should process RemarkLink.md', async () => {
       headings: [],
       path: '/remark-link',
       sections: [],
-      id: expect.stringMatching(/[0-f]{64}/),
+      fileId: expect.stringMatching(/[0-f]{64}/),
       modifiedDate: expect.any(Number),
       html:
         '<nav class="toc"><ol class="toc-level toc-level-1"></ol></nav><ul>\n' +
@@ -51,7 +51,7 @@ it('should process 01-RemarkLinked.md', async () => {
       headings: [],
       path: '/remark-linked',
       sections: [],
-      id: expect.stringMatching(/[0-f]{64}/),
+      fileId: expect.stringMatching(/[0-f]{64}/),
       modifiedDate: expect.any(Number),
       html: '<nav class="toc"><ol class="toc-level toc-level-1"></ol></nav><ul>\n<li><a href="heading/remark-linked">20-Heading/100-RemarkLinked.md</a></li>\n<li><a href="remark-linked">01-RemarkLinked.md</a></li>\n<li><a href="remark-link">RemarkLink.md</a></li>\n</ul>',
     },
@@ -70,7 +70,7 @@ it('should process 20-Heading/100-RemarkLinked.md', async () => {
       headings: [],
       path: '/heading/remark-linked',
       sections: ['Heading'],
-      id: expect.stringMatching(/[0-f]{64}/),
+      fileId: expect.stringMatching(/[0-f]{64}/),
       modifiedDate: expect.any(Number),
       html:
         '<nav class="toc"><ol class="toc-level toc-level-1"></ol></nav>' +
@@ -95,7 +95,7 @@ it('should process 20-Heading/30-Section/100-DeepLink.md', async () => {
       headings: [],
       path: '/heading/section/deep-link',
       sections: ['Heading', 'Section'],
-      id: expect.stringMatching(/[0-f]{64}/),
+      fileId: expect.stringMatching(/[0-f]{64}/),
       modifiedDate: expect.any(Number),
       html:
         '<nav class="toc"><ol class="toc-level toc-level-1"></ol></nav><ul>\n' +

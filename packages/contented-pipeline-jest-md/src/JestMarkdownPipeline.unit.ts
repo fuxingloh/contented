@@ -47,19 +47,19 @@ describe('JestMarkdownPipeline', () => {
           {
             children: [],
             depth: 2,
-            id: 'comments',
+            headingId: 'comments',
             title: 'Comments',
           },
           {
             children: [],
             depth: 2,
-            id: 'contented-codeblock',
+            headingId: 'contented-codeblock',
             title: '@contented codeblock',
           },
         ],
         path: '/jest-markdown-pipeline',
         sections: [],
-        id: expect.stringMatching(/[0-f]{64}/),
+        fileId: expect.stringMatching(/[0-f]{64}/),
         modifiedDate: expect.any(Number),
         html: expect.any(String),
       },
@@ -92,19 +92,19 @@ describe('JestMarkdownPipeline', () => {
         '<span class="line"><span style="color: #ADBAC7">      {</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">        children: [],</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">        depth: </span><span style="color: #6CB6FF">2</span><span style="color: #ADBAC7">,</span></span>\n' +
-        '<span class="line"><span style="color: #ADBAC7">        id: </span><span style="color: #96D0FF">\'comments\'</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">        headingId: </span><span style="color: #96D0FF">\'comments\'</span><span style="color: #ADBAC7">,</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">        title: </span><span style="color: #96D0FF">\'Comments\'</span><span style="color: #ADBAC7">,</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">      },</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">      {</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">        children: [],</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">        depth: </span><span style="color: #6CB6FF">2</span><span style="color: #ADBAC7">,</span></span>\n' +
-        '<span class="line"><span style="color: #ADBAC7">        id: </span><span style="color: #96D0FF">\'contented-codeblock\'</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">        headingId: </span><span style="color: #96D0FF">\'contented-codeblock\'</span><span style="color: #ADBAC7">,</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">        title: </span><span style="color: #96D0FF">\'@contented codeblock\'</span><span style="color: #ADBAC7">,</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">      },</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    ],</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    path: </span><span style="color: #96D0FF">\'/jest-markdown-pipeline\'</span><span style="color: #ADBAC7">,</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    sections: [],</span></span>\n' +
-        '<span class="line"><span style="color: #ADBAC7">    id: expect.</span><span style="color: #DCBDFB">stringMatching</span><span style="color: #ADBAC7">(</span><span style="color: #96D0FF">/</span><span style="color: #6CB6FF">[0-f]</span><span style="color: #F47067">{64}</span><span style="color: #96D0FF">/</span><span style="color: #ADBAC7">),</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">    fileId: expect.</span><span style="color: #DCBDFB">stringMatching</span><span style="color: #ADBAC7">(</span><span style="color: #96D0FF">/</span><span style="color: #6CB6FF">[0-f]</span><span style="color: #F47067">{64}</span><span style="color: #96D0FF">/</span><span style="color: #ADBAC7">),</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    modifiedDate: expect.</span><span style="color: #DCBDFB">any</span><span style="color: #ADBAC7">(Number),</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    html: expect.</span><span style="color: #DCBDFB">any</span><span style="color: #ADBAC7">(String),</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">  },</span></span>\n' +

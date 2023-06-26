@@ -76,7 +76,7 @@ export abstract class ContentedPipeline {
     const sections = this.computeSections(parsedPath);
 
     return {
-      id: this.computeFileId(filePath),
+      fileId: this.computeFileId(filePath),
       type: this.type,
       path: `/${this.computePath(sections, parsedPath)}`,
       modifiedDate: await this.computeModifiedDate(filePath),

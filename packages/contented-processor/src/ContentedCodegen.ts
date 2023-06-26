@@ -29,7 +29,7 @@ export class ContentedCodegen {
   }
 
   async generateFile(content: FileContent) {
-    const outPath = join(this.outPath, content.type, `${content.id}.json`);
+    const outPath = join(this.outPath, content.type, `${content.fileId}.json`);
 
     await fs.mkdir(join(this.outPath, content.type), { recursive: true });
     await fs.writeFile(outPath, JSON.stringify(content));
@@ -42,15 +42,15 @@ function generatePipelineAST(type: string, contents: FileIndex[]): any {
     specifiers: [
       {
         type: 'ImportDefaultSpecifier',
-        local: { type: 'Identifier', name: `_${content.id}` },
+        local: { type: 'Identifier', name: `_${content.fileId}` },
       },
     ],
-    source: { type: 'StringLiteral', value: `./${content.id}.json` },
+    source: { type: 'StringLiteral', value: `./${content.fileId}.json` },
   }));
 
   const arrayElements = contents.map((content) => ({
     type: 'Identifier',
-    name: `_${content.id}`,
+    name: `_${content.fileId}`,
   }));
 
   return {

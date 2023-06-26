@@ -165,10 +165,10 @@ function getPipelineUniqueKey(pipeline: Pipeline) {
   return `${pipeline.type}:${pipeline.pattern.join(',')}`;
 }
 
-function cloneFileIndex(index: FileIndex) {
+function cloneFileIndex(index: FileIndex): FileIndex {
   return {
+    fileId: index.fileId,
     fields: index.fields,
-    id: index.id,
     modifiedDate: index.modifiedDate,
     path: index.path,
     sections: index.sections,

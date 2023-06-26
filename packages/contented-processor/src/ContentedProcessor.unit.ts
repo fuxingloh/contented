@@ -276,6 +276,42 @@ describe('custom', () => {
   });
 });
 
+describe('validation', () => {
+  it('should fail with type.name that end with Index', async () => {
+    const config: Config = {
+      rootDir: './fixtures',
+      outDir: './.contented',
+      pipelines: [
+        {
+          type: 'MarkdownIndex',
+          pattern: '**/*.md',
+          processor: 'md',
+        },
+      ],
+    };
+    expect(() => new ContentedProcessor(config)).toThrow(
+      'Due to codegen, pipeline.type cannot be Index or end with Index.',
+    );
+  });
+
+  it('should fail with type.name that is not a-zA-Z', async () => {
+    const config: Config = {
+      rootDir: './fixtures',
+      outDir: './.contented',
+      pipelines: [
+        {
+          type: 'No-A-Z',
+          pattern: '**/*.md',
+          processor: 'md',
+        },
+      ],
+    };
+    expect(() => new ContentedProcessor(config)).toThrow(
+      'Due to codegen, pipeline.type must be a string with allowed characters within the range of [a-zA-Z].',
+    );
+  });
+});
+
 it('should dedup 2 files', async () => {
   const config: Config = {
     rootDir: './fixtures',

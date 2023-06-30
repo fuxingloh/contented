@@ -62,7 +62,7 @@
     "to-vfile": "^7.2.4",
     "unified": "^10.1.2",
     "unist-util-visit": "^4.1.2",
-    "vfile": "^5.3.7"
+    "vfile": "^6.0.0"
   },
   "devDependencies": {
     "@contentedjs/jest-preset": "0.0.0",

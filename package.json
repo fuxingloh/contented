@@ -21,8 +21,8 @@
   },
   "prettier": "@stickyjs/prettier",
   "devDependencies": {
-    "@stickyjs/eslint-config": "1.1.2",
-    "@stickyjs/prettier": "1.1.2",
+    "@stickyjs/eslint-config": "1.2.1",
+    "@stickyjs/prettier": "1.2.1",
     "lerna": "^6.6.2",
     "turbo": "^1.10.6"
   },

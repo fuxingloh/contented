@@ -11,7 +11,7 @@
     ]
   },
   "dependencies": {
-    "@stickyjs/jest": "1.1.2",
+    "@stickyjs/jest": "1.2.1",
     "esbuild": "^0.18.10",
     "esbuild-jest": "^0.5.0"
   }

@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@contentedjs/contented-processor": "0.0.0",
-    "@parcel/watcher": "^2.1.0",
+    "@parcel/watcher": "^2.2.0",
     "clipanion": "3.2.1",
     "debounce": "^1.2.1",
     "ignore-walk": "^6.0.3",

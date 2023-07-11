@@ -23,34 +23,33 @@ export default function ContentNavigation({ sections, className }) {
 
   return (
     <nav className={className}>
-      <ul role="list" className="space-y-8">
+      <ul role="list" className="space-y-6 text-[15px]">
         {sections.map((section) => {
           const path = section.sections.join(' / ');
           return (
             <li key={path}>
-              {path && <h2 className="font-display mb-4 font-medium text-slate-900 dark:text-white">{path}</h2>}
+              {path && <h2 className="font-display mb-3 font-medium text-slate-900 dark:text-white">{path}</h2>}
 
               <ul
                 role="list"
-                className={clsx('mb-4 space-y-3.5', {
+                className={clsx('mb-3 space-y-3', {
                   'border-l-2 border-slate-100 border-slate-200 dark:border-slate-800': path,
                 })}
               >
                 {section.items?.map((link) => (
                   <li key={link.path} className="relative">
-                    <Link href={link.path}>
-                      <div
-                        className={clsx({
-                          'block w-full cursor-pointer pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full':
-                            path,
-                          'font-medium': !path,
-                          'text-primary-500 before:bg-primary-500 font-semibold': link.path === router.asPath,
-                          'text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300':
-                            link.path !== router.asPath,
-                        })}
-                      >
-                        {link?.fields.title ?? link.path}
-                      </div>
+                    <Link
+                      href={link.path}
+                      className={clsx({
+                        'block w-full cursor-pointer pl-3 before:pointer-events-none before:absolute before:inset-y-0 before:-left-1 before:w-1':
+                          path,
+                        'font-medium': !path,
+                        'text-primary-500 before:bg-primary-500 font-semibold': link.path === router.asPath,
+                        'text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300':
+                          link.path !== router.asPath,
+                      })}
+                    >
+                      {link?.fields.title ?? link.path}
                     </Link>
                   </li>
                 ))}

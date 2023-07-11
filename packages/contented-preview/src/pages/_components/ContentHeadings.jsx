@@ -34,16 +34,29 @@ export default function ContentHeadings(props) {
             On this page
           </h2>
           <ol role="list" className="mt-4 space-y-3 text-sm">
-            {props.headings.map((heading) => (
-              <li key={heading.headingId}>
-                <h3 className="font-normal text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">
-                  <Link href={`#${heading.headingId}`}>{heading.title}</Link>
-                </h3>
-                {heading.children.length > 0 && (
-                  <ol role="list" className="mt-2 space-y-3 pl-5 text-slate-500 dark:text-slate-400">
-                    {heading.children.map((innerHeading) => (
-                      <li key={innerHeading.headingId} className="hover:text-slate-600 dark:hover:text-slate-300">
-                        <Link href={`#${innerHeading.headingId}`}>{innerHeading.title}</Link>
+            {props.headings.map((heading1) => (
+              <li key={heading1.headingId} className="font-normal text-slate-500 dark:text-slate-400">
+                <div className="hover:text-slate-700 dark:hover:text-slate-300">
+                  <Link href={`#${heading1.headingId}`}>{heading1.title}</Link>
+                </div>
+                {heading1.children.length > 0 && (
+                  <ol role="list" className="mt-2 space-y-3 pl-4">
+                    {heading1.children.map((heading2) => (
+                      <li key={heading2.headingId}>
+                        <div className="hover:text-slate-700 dark:hover:text-slate-300">
+                          <Link href={`#${heading2.headingId}`}>{heading2.title}</Link>
+                        </div>
+                        {heading2.children.length > 0 && (
+                          <ol role="list" className="mt-2 space-y-3 pl-4">
+                            {heading2.children.map((heading3) => (
+                              <li key={heading3.headingId}>
+                                <div className="hover:text-slate-700 dark:hover:text-slate-300">
+                                  <Link href={`#${heading3.headingId}`}>{heading3.title}</Link>
+                                </div>
+                              </li>
+                            ))}
+                          </ol>
+                        )}
                       </li>
                     ))}
                   </ol>

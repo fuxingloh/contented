@@ -7,7 +7,7 @@ export default function ContentProse({ as: Component = 'div', className, ...prop
         className,
         'prose prose-slate dark:prose-invert max-w-none dark:text-slate-400',
         // headings
-        'prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem]',
+        'prose-headings:scroll-mt-28 lg:prose-headings:scroll-mt-[8.5rem]',
         // lead
         'prose-lead:text-slate-500 dark:prose-lead:text-slate-400',
         // links

@@ -28,6 +28,7 @@
 
 .prose :is(h1, h2, h3, h4, h5, h6) {
   @apply -ml-6 pl-6;
+  @apply font-bold;
 }
 
 .prose :is(h1, h2, h3, h4, h5, h6):hover > a:first-child {
@@ -46,7 +47,8 @@
 .prose code:not(pre code):not(:where([class~='not-prose'] *)) {
   padding: 0.2em 0.4em;
   border-radius: 6px;
-  @apply rounded border font-normal;
+  @apply font-semibold text-slate-800;
+  @apply rounded border;
   @apply border-slate-200/70 bg-slate-100/70;
   @apply dark:border-slate-700/70 dark:bg-slate-800/70;
 }

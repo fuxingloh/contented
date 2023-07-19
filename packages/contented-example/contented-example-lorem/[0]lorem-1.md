@@ -2,8 +2,6 @@
 
 > This is an example to create another pipeline.
 
-# Audentes aurae pomis frangunt solitus tu rictus
-
 ## Vivere publica
 
 Lorem **markdownum velamina** dedit levis? Humanaeve ait molli, o illo, sol

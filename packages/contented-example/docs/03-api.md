@@ -1,15 +1,13 @@
 # API Reference
 
-## Contented CLI
-
-### contented write
+## contented write
 
 To ease the authoring process, `content write` creates a preview of your content on `localhost:3000`. The preview comes
 with a basic content navigation tree (left), table of contents (right), and prose formatting (center).
 
 This website, the current one **you're looking at right now** is the result of `contented write`.
 
-### contented generate
+## contented generate
 
 Generates the static preview website that can be published to GitHub Pages, Netlify, or Vercel! Minimally, you need to
 configure your `package.json` with these fields:
@@ -67,7 +65,7 @@ BUILD COMMAND       = npm run generate
 OUTPUT DIRECTORY    = .contented/.preview/out
 ```
 
-### contented build
+## contented build
 
 Generates the `./dist` output that can be published into the NPM registry for creating a derivative site. Minimally, you
 need to configure your `package.json` with these fields:

@@ -24,7 +24,7 @@
     "@stickyjs/eslint-config": "1.2.2",
     "@stickyjs/prettier": "1.2.2",
     "lerna": "^6.6.2",
-    "turbo": "^1.10.8"
+    "turbo": "^1.10.9"
   },
   "packageManager": "npm@9.5.1",
   "engines": {

@@ -1,14 +1,8 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    fontFamily: {
-      sans: ['Inter', ...defaultTheme.fontFamily.sans],
-      display: ['Lexend', ...defaultTheme.fontFamily.sans],
-    },
     extend: {
       maxWidth: {
         '8xl': '100rem',

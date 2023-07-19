@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/packages/contented/.preview" />
       <excludePattern pattern="*.contented*" />
+      <excludePattern pattern="*coverage*" />
       <excludePattern pattern="*.turbo*" />
       <excludePattern pattern="*dist*" />
     </content>

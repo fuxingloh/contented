@@ -25,6 +25,12 @@ const config = {
           tags: {
             type: 'string[]',
           },
+          editOnGitHubLink: {
+            type: 'string',
+            resolve: (_, { file }) => {
+              return `https://github.com/levaintech/contented/edit/main/packages/contented-example/${file.data.contented.filePath}`;
+            },
+          },
         },
         transform: (file) => {
           file.path = file.path.replaceAll(/^\/docs\/?/g, '/');

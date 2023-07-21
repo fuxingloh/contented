@@ -12,4 +12,5 @@ export interface UnifiedContented {
     type: string;
     reason: string;
   }[];
+  filePath: string;
 }

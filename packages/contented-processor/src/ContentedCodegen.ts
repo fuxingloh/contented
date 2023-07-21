@@ -12,9 +12,9 @@ export class ContentedCodegen {
   async generateIndex() {
     const types = this.config.pipelines.map((pipeline) => pipeline.type);
     const ast = generateIndexAST([...new Set(types)]);
-    const outPath = join(this.outPath, `index.js`);
     await fs.mkdir(this.outPath, { recursive: true });
-    await fs.writeFile(outPath, generate(ast).code);
+    await fs.writeFile(join(this.outPath, `index.js`), generate(ast).code);
+    await fs.writeFile(join(this.outPath, `index.d.ts`), generateTypes(types));
   }
 
   async generatePipeline(type: string, contents: FileIndex[]) {
@@ -203,4 +203,8 @@ function generateIndexAST(types: string[]): any {
 function generate(ast: any) {
   const gen = new CodeGenerator(ast);
   return gen.generate();
+}
+
+function generateTypes(types: string[]): string {
+  return types.map((type) => `export declare const ${type}Index: FileIndex[];`).join('\n');
 }

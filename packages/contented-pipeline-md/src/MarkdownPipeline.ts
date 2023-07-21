@@ -26,7 +26,7 @@ export class MarkdownPipeline extends ContentedPipeline {
       return [];
     }
 
-    vFile.data = { contented: this.newUnifiedContented() };
+    vFile.data = { contented: this.newUnifiedContented(file) };
     const output = await this.processor.process(vFile);
     const contented = output.data.contented as UnifiedContented;
 
@@ -44,13 +44,14 @@ export class MarkdownPipeline extends ContentedPipeline {
     return read(join(rootPath, file));
   }
 
-  protected newUnifiedContented(): UnifiedContented {
+  protected newUnifiedContented(filePath: string): UnifiedContented {
     return {
       contentedPipeline: this,
       pipeline: this.pipeline,
       headings: [],
       fields: {},
       errors: [],
+      filePath,
     };
   }
 

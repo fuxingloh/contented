@@ -92,7 +92,7 @@ export default function SlugPage({ content, sections }) {
 
         <div className="hidden xl:sticky xl:top-[4.5rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6">
           <nav aria-labelledby="on-this-page-title" className="w-56">
-            <ContentHeadings headings={content.headings} tags={content.fields.tags} />
+            <ContentHeadings headings={content.headings} fields={content.fields} />
           </nav>
         </div>
       </div>

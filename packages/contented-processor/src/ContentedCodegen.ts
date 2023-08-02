@@ -7,7 +7,10 @@ import { FileContent, FileIndex } from '@contentedjs/contented-pipeline';
 import { Config } from './ContentedProcessor.js';
 
 export class ContentedCodegen {
-  constructor(protected readonly config: Config, protected readonly outPath: string) {}
+  constructor(
+    protected readonly config: Config,
+    protected readonly outPath: string,
+  ) {}
 
   async generateIndex() {
     const types = this.config.pipelines.map((pipeline) => pipeline.type);

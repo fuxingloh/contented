@@ -26,7 +26,10 @@ export interface Pipeline {
  * Contented Pipeline (Path-based)
  */
 export abstract class ContentedPipeline {
-  public constructor(protected readonly rootPath: string, protected readonly pipeline: Pipeline) {
+  public constructor(
+    protected readonly rootPath: string,
+    protected readonly pipeline: Pipeline,
+  ) {
     // eslint-disable-next-line  no-param-reassign
     pipeline.fields = {
       title: { type: 'string' },

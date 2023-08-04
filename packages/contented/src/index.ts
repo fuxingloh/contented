@@ -32,9 +32,9 @@ export default {
    */
   async build({ watch = process.env.NODE_ENV === 'development' } = {}): Promise<void> {
     if (watch) {
-      await new BuildCommand().execute();
-    } else {
       await new WatchCommand().execute();
+    } else {
+      await new BuildCommand().execute();
     }
   },
   /**

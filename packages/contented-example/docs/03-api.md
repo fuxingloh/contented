@@ -25,11 +25,11 @@ configure your `package.json` with these fields:
 }
 ```
 
-**`contented.config.js`:**
+**`contented.config.mjs`:**
 
 ```js
 /** @type {import('@contentedjs/contented').ContentedConfig} */
-module.exports = {
+const config = {
   preview: {
     url: 'https://contented.dev',
     name: 'Contented',
@@ -47,6 +47,8 @@ module.exports = {
     ],
   },
 };
+
+export default config;
 ```
 
 **Netlify TOML:**
@@ -99,7 +101,7 @@ automatically ignore files in your `.gitignore` and `.contentedignore`.
 
 > You should also add a `.gitignore` too with `echo "dist\n.contented" > .gitignore`. (Okay fine! 3 files it is. Ughhhh)
 
-### `contented.config.js`
+### `contented.config.mjs`
 
 ```typescript
 export interface ContentedConfig {

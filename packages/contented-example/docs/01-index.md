@@ -3,7 +3,7 @@
 [Contented](https://contented.dev) is a Markdown-based authoring workflow that encourage developer authoring within
 its contextual Git repository. `npm i @contentedjs/contented`
 
-With a headless design of 1 config file `contented.config.js`, developers can start writing
+With a headless design of 1 config file `contented.config.mjs`, developers can start writing
 their [markdown content](04-markdown) and preview it on their localhost `contented write`. Choosing convention over
 configuration reduces HTML/UI clutter, allowing developers to focus on authoring.
 
@@ -58,7 +58,7 @@ repo/
 │  │  ├─ 02:overview.md
 │  │  └─ 03:faq.md
 │  └─ package.json
-├─ contented.config.js
+├─ contented.config.mjs
 ├─ package.json
 └─ README.md
 ```
@@ -83,11 +83,11 @@ repo/
 }
 ```
 
-**contented.config.js**
+**contented.config.mjs**
 
 ```js
 /** @type {import('@contentedjs/contented').ContentedConfig} */
-module.exports = {
+export default {
   preview: {
     url: 'https://contented.dev',
     name: 'Contented',

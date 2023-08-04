@@ -5,7 +5,7 @@
       "cache": false
     },
     "build": {
-      "inputs": ["tsconfig.json", "contented.config.js", "src/**"],
+      "inputs": ["tsconfig.json", "contented.config.mjs", "src/**"],
       "outputs": ["dist/**"],
       "dependsOn": ["^build"]
     },

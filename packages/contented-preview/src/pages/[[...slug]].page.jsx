@@ -16,7 +16,6 @@ import { useTheme } from './_components/ThemeContext';
 export async function getStaticPaths() {
   return {
     paths: [
-      '/',
       ...Index.map((file) => {
         return `/${file.type.toLowerCase()}${file.path}`;
       }),

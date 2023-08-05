@@ -6,25 +6,29 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-import { Index } from '../../../index.js';
-import ContentHeadings from './_components/ContentHeadings';
-import ContentNavigation, { computeContentSections } from './_components/ContentNavigation';
-import ContentProse from './_components/ContentProse';
-import { useMenu } from './_components/MenuContext';
-import { useTheme } from './_components/ThemeContext';
+import { Index } from '../../../../index.js';
+import ContentHeadings from '../_components/ContentHeadings';
+import ContentNavigation, { computeContentSections } from '../_components/ContentNavigation';
+import ContentProse from '../_components/ContentProse';
+import { useMenu } from '../_components/MenuContext';
+import { useTheme } from '../_components/ThemeContext';
 
 export async function getStaticPaths() {
   return {
-    paths: ['/', ...Index.map((file) => file.path)],
+    paths: Index.map((file) => {
+      return `/${file.type.toLowerCase()}${file.path}`;
+    }),
     fallback: false,
   };
 }
 
 export async function getStaticProps({ params }) {
   const path = `/${params?.slug?.join('/') ?? ''}`;
-  const ContentIndex = Index.find((file) => file.path === path) ?? Index[0];
-  const Content = require(`../../../${ContentIndex.type}/${ContentIndex.fileId}.json`);
-  const TypeCollection = require(`../../../${ContentIndex.type}/index.json`);
+  const ContentIndex = Index.find((file) => {
+    return file.path === path && file.type.toLowerCase() === params?.type;
+  });
+  const Content = require(`../../../../${ContentIndex.type}/${ContentIndex.fileId}.json`);
+  const TypeCollection = require(`../../../../${ContentIndex.type}/index.json`);
 
   return {
     props: {
@@ -34,7 +38,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function SlugPage({ content, sections }) {
+export default function IndexPage({ content, sections }) {
   const siteTitle = getSiteTitle(content);
   const canonicalUrl = `${process.env.CONTENTED_PREVIEW_SITE_URL}${content.path}`;
   const description = truncate(content?.description, { length: 220 });

@@ -15,14 +15,30 @@ import { useTheme } from './_components/ThemeContext';
 
 export async function getStaticPaths() {
   return {
-    paths: ['/', ...Index.map((file) => file.path)],
+    paths: [
+      '/',
+      ...Index.map((file) => {
+        return `/${file.type.toLowerCase()}${file.path}`;
+      }),
+    ],
     fallback: false,
   };
 }
 
 export async function getStaticProps({ params }) {
-  const path = `/${params?.slug?.join('/') ?? ''}`;
-  const ContentIndex = Index.find((file) => file.path === path) ?? Index[0];
+  if (!params?.slug) {
+    return {
+      redirect: {
+        destination: `/${Index[0].type.toLowerCase()}${Index[0].path}`,
+      },
+    };
+  }
+
+  const type = params?.slug?.[0];
+  const path = `/${params?.slug?.slice(1).join('/') ?? ''}`;
+  const ContentIndex = Index.find((file) => {
+    return file.path === path && file.type.toLowerCase() === type;
+  });
   const Content = require(`../../../${ContentIndex.type}/${ContentIndex.fileId}.json`);
   const TypeCollection = require(`../../../${ContentIndex.type}/index.json`);
 

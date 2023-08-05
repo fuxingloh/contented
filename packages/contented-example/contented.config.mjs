@@ -42,6 +42,11 @@ const config = {
         type: 'Lorem',
         pattern: ['contented-example-lorem/**/*.md'],
         processor: MarkdownPipeline,
+        transform: (file) => {
+          file.path = file.path.replaceAll(/^\/contented-example-lorem\/?/g, '/');
+          file.sections = file.sections.slice(1);
+          return file;
+        },
       },
       {
         type: 'Contented',

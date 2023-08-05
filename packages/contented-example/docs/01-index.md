@@ -1,11 +1,11 @@
 # Contented
 
-[Contented](https://contented.dev) is a Markdown-based authoring workflow that encourage developer authoring within
-its contextual Git repository. `npm i @contentedjs/contented`
+[Contented](https://contented.dev) is a Markdown-based bundler for your documentation with pipeline driven
+authoring-oriented workflow to encourage developer authoring within its contextual Git repository.
 
 With a headless design of 1 config file `contented.config.mjs`, developers can start writing
-their [markdown content](04-markdown) and preview it on their localhost `contented write`. Choosing convention over
-configuration reduces HTML/UI clutter, allowing developers to focus on authoring.
+their [markdown content](04-markdown) and preview it on their localhost `contented generate --watch`.
+Choosing convention over configuration reduces HTML/UI clutter, allowing developers to focus on authoring.
 
 Authored content can be continuously delivered (CD) into a hosted static site (e.g., GitHub Pages/Netlify/Vercel) for
 preview `contented generate`. As code drift, so does documentation; this allows each pull request to have an
@@ -16,7 +16,7 @@ By encouraging authoring next to the source (in the same git repo), developers c
 develop. All domain-specific changes will go into the `main` branch with one Git Pull Request.
 
 With `contented build`, you can compile your markdown into sources `index.js` and `*.json`. That output
-into `./dist`. `npm publish` them into any registry of your choice, for you can
+into `./dist` to `npm publish` them into any registry of your choice, for you can
 easily `npm i @your-scope/your-npm-package` and use the processed content on any of your downstream sites. Easily
 pulling up-to-date content and prose from individual domain-specific repositories and re-presented. Think microservices,
 but for your prose!
@@ -73,7 +73,7 @@ repo/
   "files": ["dist"],
   "main": "dist/index.js",
   "scripts": {
-    "write": "contented write",
+    "write": "contented generate --watch",
     "generate": "contented generate",
     "build": "contented build"
   },

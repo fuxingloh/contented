@@ -27,8 +27,8 @@ export interface Pipeline {
  */
 export abstract class ContentedPipeline {
   public constructor(
-    protected readonly rootPath: string,
-    protected readonly pipeline: Pipeline,
+    public readonly rootPath: string,
+    public readonly pipeline: Pipeline,
   ) {
     // eslint-disable-next-line  no-param-reassign
     pipeline.fields = {
@@ -60,6 +60,11 @@ export abstract class ContentedPipeline {
     return Promise.all(contents.map(this.pipeline.transform));
   }
 
+  /**
+   * @param fileIndex is the pre-computed FileIndex of the file
+   * @param rootPath is the root path of the pipeline
+   * @param file is the file to process
+   */
   protected abstract processFileIndex(fileIndex: FileIndex, rootPath: string, file: string): Promise<FileContent[]>;
 
   get type(): string {

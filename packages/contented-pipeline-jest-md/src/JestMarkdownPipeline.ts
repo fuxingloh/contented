@@ -3,9 +3,8 @@ import { join, ParsedPath } from 'node:path';
 
 import { parse } from '@babel/parser';
 import { File } from '@babel/types';
-import { MarkdownPipeline } from '@contentedjs/contented-pipeline-md';
+import { MarkdownPipeline, MarkdownVFile } from '@contentedjs/contented-pipeline-md';
 import stripIndent from 'strip-indent';
-import { VFile } from 'vfile';
 
 export class JestMarkdownPipeline extends MarkdownPipeline {
   protected override computePath(sections: string[], parsedPath: ParsedPath): string {
@@ -13,7 +12,7 @@ export class JestMarkdownPipeline extends MarkdownPipeline {
     return path.replaceAll(/-(unit|i9n|e2e|integration|test|tests|spec)$/g, '');
   }
 
-  protected override async readVFile(rootPath: string, file: string): Promise<VFile | undefined> {
+  protected override async readVFile(rootPath: string, file: string): Promise<MarkdownVFile | undefined> {
     const path = join(rootPath, file);
     const contents = await readFile(path, { encoding: 'utf-8' });
     const ast = await this.parseAST(contents);
@@ -22,10 +21,14 @@ export class JestMarkdownPipeline extends MarkdownPipeline {
     const comments = this.collectComments(ast) ?? [];
     const value = this.mergeCodeblock(lines, comments).join('\n\n');
 
-    return new VFile({
-      path,
-      value,
-    });
+    return new MarkdownVFile(
+      {
+        path,
+        value,
+      },
+      this,
+      file,
+    );
   }
 
   protected collectComments(ast: File): IndexedComment[] | undefined {

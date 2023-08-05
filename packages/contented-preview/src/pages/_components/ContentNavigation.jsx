@@ -28,12 +28,12 @@ export default function ContentNavigation({ sections, className }) {
           const path = section.sections.join(' / ');
           return (
             <li key={path}>
-              {path && <h2 className="font-display mb-3 font-medium text-slate-900 dark:text-white">{path}</h2>}
+              {path && <h2 className="font-display mb-3 font-medium text-slate-900/40 dark:text-white/40">{path}</h2>}
 
               <ul
                 role="list"
                 className={clsx('mb-3 space-y-3', {
-                  'border-l-2 border-slate-100 border-slate-200 dark:border-slate-800': path,
+                  'border-l-2 border-slate-200 dark:border-slate-800': path,
                 })}
               >
                 {section.items?.map((link) => (
@@ -41,7 +41,7 @@ export default function ContentNavigation({ sections, className }) {
                     <Link
                       href={link.path}
                       className={clsx({
-                        'block w-full cursor-pointer pl-3 before:pointer-events-none before:absolute before:inset-y-0 before:-left-1 before:w-1':
+                        'block w-full cursor-pointer truncate pl-3 before:pointer-events-none before:absolute before:inset-y-0 before:-left-1 before:w-1':
                           path,
                         'font-medium': !path,
                         'text-primary-500 before:bg-primary-500 font-semibold': link.path === router.asPath,

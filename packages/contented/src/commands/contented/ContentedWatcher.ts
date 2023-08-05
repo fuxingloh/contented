@@ -16,7 +16,21 @@ export class ContentedWatcher extends ContentedWalker {
     const dotContentedDir = join(relative(this.processor.rootPath, process.cwd()), '.contented');
     const callback = (err: Error | null, events: Event[]) => this.listen(events);
     await watcher.subscribe(this.processor.rootPath, callback, {
-      ignore: [dotContentedDir, '**/.contented', '**/node_modules', '**/.turbo', '.git', '.idea', '.vscode'],
+      ignore: [
+        dotContentedDir,
+        '**/.contented',
+        '**/node_modules',
+        '**/jspm_packages',
+        '**/.turbo',
+        '**/.next',
+        '**/.nuxt',
+        '**/.yarn',
+        '**/.cache',
+        '**/.npm',
+        '.git',
+        '.idea',
+        '.vscode',
+      ],
     });
   }
 

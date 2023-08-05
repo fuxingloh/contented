@@ -1,4 +1,4 @@
-import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import { useTheme } from './ThemeContext';
 
 export default function ThemeButton(props) {
@@ -7,10 +7,10 @@ export default function ThemeButton(props) {
   return (
     <div {...props}>
       <button className="flex items-center">
-        <SunIcon className="hidden h-6 w-6 [[data-theme=light]_&]:block" onClick={() => setTheme('dark')} />
-        <MoonIcon className="hidden h-6 w-6 [[data-theme=dark]_&]:block" onClick={() => setTheme('light')} />
-        <SunIcon className="hidden h-6 w-6 [:not(.dark)[data-theme=system]_&]:block" onClick={() => setTheme('dark')} />
-        <MoonIcon className="hidden h-6 w-6 [.dark[data-theme=system]_&]:block" onClick={() => setTheme('light')} />
+        <SunIcon className="hidden h-4 w-4 [[data-theme=light]_&]:block" onClick={() => setTheme('dark')} />
+        <MoonIcon className="hidden h-4 w-4 [[data-theme=dark]_&]:block" onClick={() => setTheme('light')} />
+        <SunIcon className="hidden h-4 w-4 [:not(.dark)[data-theme=system]_&]:block" onClick={() => setTheme('dark')} />
+        <MoonIcon className="hidden h-4 w-4 [.dark[data-theme=system]_&]:block" onClick={() => setTheme('light')} />
       </button>
     </div>
   );

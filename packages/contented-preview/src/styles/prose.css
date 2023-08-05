@@ -47,8 +47,8 @@
 .prose code:not(pre code):not(:where([class~='not-prose'] *)) {
   padding: 0.2em 0.4em;
   border-radius: 6px;
-  @apply font-semibold text-slate-800;
+  @apply font-semibold;
   @apply rounded border;
-  @apply border-slate-200/70 bg-slate-100/70;
-  @apply dark:border-slate-700/70 dark:bg-slate-800/70;
+  @apply border-slate-200/70 bg-slate-100/70 text-slate-800;
+  @apply dark:border-slate-700/70 dark:bg-slate-800/70 dark:text-slate-200;
 }

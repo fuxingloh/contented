@@ -13,8 +13,8 @@
   "scripts": {
     "build": "contented build",
     "generate": "contented generate",
-    "watch": "contented watch",
-    "write": "contented write"
+    "watch": "contented build --watch",
+    "write": "contented generate --watch"
   },
   "lint-staged": {
     "*": [

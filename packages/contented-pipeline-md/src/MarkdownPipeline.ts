@@ -26,41 +26,58 @@ export class MarkdownPipeline extends ContentedPipeline {
       return [];
     }
 
-    vFile.data = { contented: this.newUnifiedContented(file) };
+    const fileContent = await this.processVFile(fileIndex, vFile);
+    if (fileContent === undefined) {
+      return [];
+    }
+
+    return [fileContent];
+  }
+
+  protected async readVFile(rootPath: string, filePath: string): Promise<MarkdownVFile | undefined> {
+    const vFile = await read(join(rootPath, filePath));
+    return new MarkdownVFile(vFile, this, filePath);
+  }
+
+  protected async processVFile(fileIndex: FileIndex, vFile: MarkdownVFile): Promise<FileContent | undefined> {
     const output = await this.processor.process(vFile);
     const contented = output.data.contented as UnifiedContented;
 
     if (contented.errors.length > 0) {
       const message = contented.errors.map((value) => `${value.type}:${value.reason}`).join(',');
-      console.warn(`@contentedjs/contented-pipeline-md: ${file} - failed with errors: [${message}]`);
-      return [];
+      console.warn(`@contentedjs/contented-pipeline-md: ${vFile.filePath} - failed with errors: [${message}]`);
+      return undefined;
     }
 
-    const content = this.newFileContent(fileIndex, output.value as string, contented);
-    return [content];
-  }
-
-  protected async readVFile(rootPath: string, file: string): Promise<VFile | undefined> {
-    return read(join(rootPath, file));
-  }
-
-  protected newUnifiedContented(filePath: string): UnifiedContented {
-    return {
-      contentedPipeline: this,
-      pipeline: this.pipeline,
-      headings: [],
-      fields: {},
-      errors: [],
-      filePath,
-    };
-  }
-
-  protected newFileContent(fileIndex: FileIndex, html: string, contented: UnifiedContented) {
     return {
       ...fileIndex,
-      html,
+      html: output.value as string,
       headings: contented.headings,
       fields: contented.fields,
+    };
+  }
+}
+
+export class MarkdownVFile extends VFile {
+  data: {
+    contented: UnifiedContented;
+  };
+
+  constructor(
+    value: ConstructorParameters<typeof VFile>[0],
+    contentedPipeline: MarkdownPipeline,
+    public readonly filePath: string,
+  ) {
+    super(value);
+    this.data = {
+      contented: {
+        contentedPipeline,
+        pipeline: contentedPipeline.pipeline,
+        headings: [],
+        fields: {},
+        errors: [],
+        filePath,
+      },
     };
   }
 }

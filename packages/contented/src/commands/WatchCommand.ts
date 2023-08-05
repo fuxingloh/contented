@@ -5,6 +5,7 @@ import { ContentedWatcher } from './contented/ContentedWatcher.js';
 
 /**
  * `contented watch` files and automatically rebuild when changed into output directory `.contented`
+ * @deprecated use `contented build --watch` instead
  */
 export class WatchCommand extends BaseCommand {
   static paths = [[`watch`]];

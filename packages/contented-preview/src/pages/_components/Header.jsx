@@ -1,4 +1,4 @@
-import { Bars3Icon, DocumentTextIcon, XMarkIcon } from '@heroicons/react/24/solid';
+import { Bars3Icon, DocumentTextIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Link from 'next/link';
 
@@ -59,7 +59,7 @@ export default function Header() {
 
           <div className="flex items-center space-x-4">
             <div>
-              <ThemeButton className="h-6 w-auto" />
+              <ThemeButton />
             </div>
             <div>
               <GitHubButton className="h-6 w-auto" />

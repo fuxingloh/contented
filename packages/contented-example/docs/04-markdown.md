@@ -51,11 +51,31 @@ title: Markdown Flavour
 ## Linking
 
 ```md
-[Heading](#linking)
+[Heading](#heading)
 [External](https://example.com)
+
+Relative Linking (manual):
 [Relative Example 1](relative)
 [Relative Example 2](to/folder/page-1)
 [Relative Example 3](../back/page-3)
+
+Relative Linking (automatic), give these 3 files:
+
+1. 01-about.md
+2. docs/01-introduction.md
+3. docs/01-others/02-usage.md
+
+[Automatic Relative Linking](./01-about.md):
+
+- When you reference this link in the root dir of the pipeline `about` will be resolved.
+- When you reference this link in the `docs` dir of the pipeline `../about` will be resolved.
+- When you reference this link in the `docs/01-others` dir of the pipeline `../../about` will be resolved.
+
+[Automatic Relative Linking](./docs/01-introduction.md):
+
+- When you reference this link in the root dir of the pipeline `docs/introduction` will be resolved.
+- When you reference this link in the `docs` dir of the pipeline `introduction` will be resolved.
+- When you reference this link in the `docs/01-others` dir of the pipeline `../introduction` will be resolved.
 ```
 
 It is highly recommended to use relative links for internal linking and avoid using absolute links.

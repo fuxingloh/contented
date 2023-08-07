@@ -4,7 +4,7 @@
 authoring-oriented workflow to encourage developer authoring within its contextual Git repository.
 
 With a headless design of 1 config file `contented.config.mjs`, developers can start writing
-their [markdown content](04-markdown) and preview it on their localhost `contented generate --watch`.
+their [markdown content](./04-markdown.md) and preview it on their localhost `contented generate --watch`.
 Choosing convention over configuration reduces HTML/UI clutter, allowing developers to focus on authoring.
 
 Authored content can be continuously delivered (CD) into a hosted static site (e.g., GitHub Pages/Netlify/Vercel) for
@@ -34,7 +34,7 @@ naturally satisfies.
 The outcome we're trying to achieve is
 this [@contentedjs/contented-example/dist](https://www.jsdelivr.com/package/npm/@contentedjs/contented-example)
 
-> [See Contented Limitations](09-Others/02-limitations.md)
+> [See Contented Limitations](./09-Others/02-limitations.md)
 
 ## Powered By
 

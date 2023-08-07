@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import fs from 'node:fs/promises';
+import { statSync } from 'node:fs';
 import { join, parse, ParsedPath } from 'node:path';
 
 import slugify from '@sindresorhus/slugify';
@@ -189,7 +189,7 @@ export abstract class ContentedPipeline {
   }
 
   protected async computeModifiedDate(filePath: string): Promise<number> {
-    const stats = await fs.stat(filePath);
+    const stats = statSync(filePath);
     return stats.mtime.getTime();
   }
 }

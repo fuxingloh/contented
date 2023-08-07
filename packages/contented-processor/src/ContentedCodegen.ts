@@ -1,4 +1,4 @@
-import fs from 'node:fs/promises';
+import fs from 'node:fs';
 import { join } from 'node:path';
 
 import { CodeGenerator } from '@babel/generator';
@@ -15,27 +15,27 @@ export class ContentedCodegen {
   async generateIndex() {
     const types = this.config.pipelines.map((pipeline) => pipeline.type);
     const ast = generateIndexAST([...new Set(types)]);
-    await fs.mkdir(this.outPath, { recursive: true });
-    await fs.writeFile(join(this.outPath, `index.js`), generate(ast).code);
-    await fs.writeFile(join(this.outPath, `index.d.ts`), generateTypes(types));
+    fs.mkdirSync(this.outPath, { recursive: true });
+    fs.writeFileSync(join(this.outPath, `index.js`), generate(ast).code);
+    fs.writeFileSync(join(this.outPath, `index.d.ts`), generateTypes(types));
   }
 
   async generatePipeline(type: string, contents: FileIndex[]) {
-    await fs.mkdir(join(this.outPath, type), { recursive: true });
+    fs.mkdirSync(join(this.outPath, type), { recursive: true });
 
     const ast = generatePipelineAST(type, contents);
     const indexJs = join(this.outPath, type, `index.js`);
-    await fs.writeFile(indexJs, generate(ast).code);
+    fs.writeFileSync(indexJs, generate(ast).code);
 
     const indexJson = join(this.outPath, type, `index.json`);
-    await fs.writeFile(indexJson, JSON.stringify(contents));
+    fs.writeFileSync(indexJson, JSON.stringify(contents));
   }
 
   async generateFile(content: FileContent) {
     const outPath = join(this.outPath, content.type, `${content.fileId}.json`);
 
-    await fs.mkdir(join(this.outPath, content.type), { recursive: true });
-    await fs.writeFile(outPath, JSON.stringify(content));
+    fs.mkdirSync(join(this.outPath, content.type), { recursive: true });
+    fs.writeFileSync(outPath, JSON.stringify(content));
   }
 }
 

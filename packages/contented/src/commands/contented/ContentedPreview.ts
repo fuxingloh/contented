@@ -1,5 +1,5 @@
 import { spawn, spawnSync } from 'node:child_process';
-import { cp, writeFile } from 'node:fs/promises';
+import { cpSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -19,8 +19,8 @@ export class ContentedPreview {
 
   async init() {
     const source = join(this.getDirname(), '/../../.preview');
-    await cp(source, this.previewDir, { recursive: true });
-    await writeFile(join(this.previewDir, '.env'), generateEnvData(this.config));
+    cpSync(source, this.previewDir, { recursive: true });
+    writeFileSync(join(this.previewDir, '.env'), generateEnvData(this.config));
   }
 
   async install() {

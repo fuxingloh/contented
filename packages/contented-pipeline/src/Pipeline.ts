@@ -9,6 +9,7 @@ import { FileContent, FileIndex } from './PipelineFile.js';
 
 export interface Pipeline {
   type: string;
+  dir?: string;
   pattern: string | string[];
   /**
    * Built in processor: 'md'
@@ -49,6 +50,15 @@ export abstract class ContentedPipeline {
    * @return {FileContent[]} containing none, one or many FileContent
    */
   async process(rootPath: string, file: string): Promise<FileContent[]> {
+    if (this.pipeline.dir) {
+      // When pipeline.dir is set, we need to recompute the file path
+      const filePath = join(rootPath, file);
+      /* eslint-disable no-param-reassign */
+      rootPath = join(rootPath, this.pipeline.dir, '/');
+      file = filePath.replace(rootPath, '');
+      /* eslint-enable no-param-reassign */
+    }
+
     const fileIndex = await this.newFileIndex(rootPath, file);
     const contents = await this.processFileIndex(fileIndex, rootPath, file);
     if (contents === undefined) {

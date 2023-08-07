@@ -13,7 +13,8 @@ const config = {
     pipelines: [
       {
         type: 'Contented',
-        pattern: 'docs/**/*.md',
+        dir: 'docs',
+        pattern: '**/*.md',
         processor: 'md',
         fields: {
           title: {
@@ -28,14 +29,9 @@ const config = {
           editOnGitHubLink: {
             type: 'string',
             resolve: (_, { file }) => {
-              return `https://github.com/levaintech/contented/edit/main/packages/contented-example/${file.data.contented.filePath}`;
+              return `https://github.com/levaintech/contented/edit/main/packages/contented-example/docs/${file.data.contented.filePath}`;
             },
           },
-        },
-        transform: (file) => {
-          file.path = file.path.replaceAll(/^\/docs\/?/g, '/');
-          file.sections = file.sections.slice(1);
-          return file;
         },
       },
       {

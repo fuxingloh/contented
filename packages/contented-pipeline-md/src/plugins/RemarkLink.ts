@@ -1,3 +1,4 @@
+import { join, parse as parsePath, relative } from 'node:path';
 import { parse } from 'node:url';
 
 import { Link, Parent } from 'mdast';
@@ -20,7 +21,21 @@ function visitLink(file: VFile): (node: Link) => void {
     if (parse(node.url).hostname !== null) {
       return;
     }
-    // eslint-disable-next-line  no-param-reassign
-    node.url = contented.contentedPipeline.getSanitizedPath(node.url);
+
+    /* eslint-disable  no-param-reassign */
+    const path = node.url;
+    if (path.startsWith('./')) {
+      const pipelineDir = join(
+        contented.contentedPipeline.rootPath,
+        contented.contentedPipeline.pipeline.dir ?? '',
+        '/',
+      );
+      const parsedPath = parsePath(join(pipelineDir, contented.filePath));
+      const linkedFilePath = join(pipelineDir, path);
+      const relativePath = relative(parsedPath.dir, linkedFilePath);
+      node.url = contented.contentedPipeline.getSanitizedPath(relativePath);
+    } else {
+      node.url = contented.contentedPipeline.getSanitizedPath(path);
+    }
   };
 }

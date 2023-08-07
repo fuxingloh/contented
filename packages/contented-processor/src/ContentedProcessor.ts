@@ -40,7 +40,7 @@ export class ContentedProcessor {
     config.rootDir = config.rootDir ?? './';
     config.outDir = config.outDir ?? './.contented';
     config.pipelines.forEach((pipeline) => {
-      pipeline.type = pipeline.type ?? 'Default';
+      pipeline.type = pipeline.type ?? 'Docs';
       if (pipeline.type.match(/[^a-zA-Z]/g)) {
         throw new Error(
           'Due to codegen, pipeline.type must be a string with allowed characters within the range of [a-zA-Z].',
@@ -137,13 +137,19 @@ export class ContentedProcessor {
    */
   private findPipelineByFile(filePath: string) {
     return this.config.pipelines.find((pipeline) => {
+      const isMatched = (pattern: string): boolean => {
+        if (pipeline.dir) {
+          return minimatch(filePath, join(this.rootPath, pipeline.dir, pattern));
+        }
+        return minimatch(filePath, join(this.rootPath, pattern));
+      };
+
       if (typeof pipeline.pattern === 'string') {
-        return minimatch(filePath, join(this.rootPath, pipeline.pattern));
+        return isMatched(pipeline.pattern);
       }
 
       for (const pattern of pipeline.pattern) {
-        const matched = minimatch(filePath, join(this.rootPath, pattern));
-        if (matched) {
+        if (isMatched(pattern)) {
           return true;
         }
       }

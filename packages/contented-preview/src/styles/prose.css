@@ -52,3 +52,13 @@
   @apply border-slate-200/70 bg-slate-100/70 text-slate-800;
   @apply dark:border-slate-700/70 dark:bg-slate-800/70 dark:text-slate-200;
 }
+
+.prose .table-auto table {
+  display: table;
+  table-layout: auto;
+}
+
+.prose .table-fixed table {
+  display: table;
+  table-layout: fixed;
+}

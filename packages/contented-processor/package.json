@@ -39,7 +39,7 @@
     "preset": "@contentedjs/jest-preset"
   },
   "dependencies": {
-    "@babel/generator": "^7.22.9",
+    "@babel/generator": "^7.22.10",
     "@contentedjs/contented-pipeline": "0.0.0",
     "@contentedjs/contented-pipeline-jest-md": "0.0.0",
     "@contentedjs/contented-pipeline-md": "0.0.0",

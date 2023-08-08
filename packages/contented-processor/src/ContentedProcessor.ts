@@ -165,10 +165,10 @@ export class ContentedProcessor {
 
 function getPipelineUniqueKey(pipeline: Pipeline) {
   if (typeof pipeline.pattern === 'string') {
-    return `${pipeline.type}:${pipeline.pattern}`;
+    return `${pipeline.type}:${pipeline.dir ?? ''}:${pipeline.pattern}`;
   }
 
-  return `${pipeline.type}:${pipeline.pattern.join(',')}`;
+  return `${pipeline.type}:${pipeline.dir ?? ''}:${pipeline.pattern.join(',')}`;
 }
 
 function cloneFileIndex(index: FileIndex): FileIndex {

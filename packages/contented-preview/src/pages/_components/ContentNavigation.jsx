@@ -43,7 +43,7 @@ export default function ContentNavigation({ sections, className }) {
                   const isCurrentPath = linkPath === router.asPath || router.asPath + '/' === linkPath;
 
                   return (
-                    <li key={linkPath} className="relative">
+                    <li key={link.fileId} className="relative">
                       <Link
                         href={linkPath}
                         className={clsx({

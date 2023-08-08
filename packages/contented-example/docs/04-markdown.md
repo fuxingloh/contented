@@ -138,6 +138,46 @@ custom prefix. If you used absolute links, the links would be broken.
 It is also highly advised against linking to another `"Type"` as you're assuming that the other site will be
 structured the same way as your site with the same prefix or even publishing that `"Type"` at all.
 
+## Table
+
+| Header 1 | Header 2 | Header 3 |
+| -------- | -------- | -------- |
+| Cell 1   | Cell 2   | Cell 3   |
+
+```markdown
+| Header 1 | Header 2 | Header 3 |
+| -------- | -------- | -------- |
+| Cell 1   | Cell 2   | Cell 3   |
+```
+
+:::div{class="table-fixed"}
+| Table Fixed | Header 2 | Header 3 |
+|----------|----------|----------|
+| Cell 1 | Cell 2 | Cell 3 |
+:::
+
+```markdown
+:::div{class="table-fixed"}
+| Table Fixed | Header 2 | Header 3 |
+|----------|----------|----------|
+| Cell 1 | Cell 2 | Cell 3 |
+:::
+```
+
+:::div{class="table-auto"}
+| Table Auto | Header 2 | Header 3 |
+|----------|----------|----------|
+| Cell 1 | Cell 2 | Cell 3 |
+:::
+
+```markdown
+:::div{class="table-auto"}
+| Table Auto | Header 2 | Header 3 |
+|----------|----------|----------|
+| Cell 1 | Cell 2 | Cell 3 |
+:::
+```
+
 ## Admonitions
 
 Admonitions with `remark-directive` and `remark-directive-rehype`.
@@ -211,9 +251,9 @@ graph LR
 ````
 
 ```mermaid
-  graph TD;
-A --> B;
-A --> C;
-B --> D;
-C --> D;
+  graph TD
+    A --> B;
+    A --> C;
+    B --> D;
+    C --> D;
 ```

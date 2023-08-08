@@ -27,9 +27,9 @@ export class ContentedWatcher extends ContentedWalker {
         '**/.yarn',
         '**/.cache',
         '**/.npm',
-        '.git',
-        '.idea',
-        '.vscode',
+        '**/.git',
+        '**/.idea',
+        '**/.vscode',
       ],
     });
   }

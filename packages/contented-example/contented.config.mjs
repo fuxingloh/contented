@@ -10,10 +10,28 @@ const config = {
     },
   },
   processor: {
+    rootDir: '../../',
     pipelines: [
       {
         type: 'Contented',
-        dir: 'docs',
+        pattern: 'README.md',
+        processor: 'md',
+        fields: {
+          editOnGitHubLink: {
+            type: 'string',
+            resolve: () => {
+              return `https://github.com/levaintech/contented/edit/main/README.md`;
+            },
+          },
+        },
+        transform: (file) => {
+          file.path = '/about';
+          return file;
+        },
+      },
+      {
+        type: 'Contented',
+        dir: 'packages/contented-example/docs',
         pattern: '**/*.md',
         processor: 'md',
         fields: {
@@ -33,9 +51,17 @@ const config = {
             },
           },
         },
+        sort: (a, b) => {
+          const sections = a.path.split('/').length - b.path.split('/').length;
+          if (sections === 0) {
+            return a.path.localeCompare(b.path);
+          }
+          return sections;
+        },
       },
       {
         type: 'Lorem',
+        dir: 'packages/contented-example',
         pattern: ['contented-example-lorem/**/*.md'],
         processor: MarkdownPipeline,
         transform: (file) => {
@@ -46,6 +72,7 @@ const config = {
       },
       {
         type: 'Contented',
+        dir: 'packages/contented-example',
         pattern: 'jest/**/*.spec.ts',
         processor: 'jest-md',
         transform: (file) => {

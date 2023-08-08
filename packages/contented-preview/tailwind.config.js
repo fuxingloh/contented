@@ -33,6 +33,27 @@ module.exports = {
           900: '#FFDFF5',
         },
       },
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            p: {
+              marginTop: theme('spacing.4'),
+              marginBottom: theme('spacing.4'),
+            },
+            h1: {
+              marginBottom: theme('spacing.4'),
+            },
+            h2: {
+              marginTop: theme('spacing.12'),
+              marginBottom: theme('spacing.2'),
+            },
+            h3: {
+              marginTop: theme('spacing.10'),
+              marginBottom: theme('spacing.2'),
+            },
+          }
+        }
+      })
     },
   },
   plugins: [require('@tailwindcss/typography')],

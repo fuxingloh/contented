@@ -11,9 +11,9 @@ export default function ContentProse({ as: Component = 'div', className, ...prop
         // lead
         'prose-lead:text-slate-500 dark:prose-lead:text-slate-400',
         // links
-        'prose-a:font-semibold dark:prose-a:text-primary-400',
+        'prose-a:font-semibold prose-a:text-primary-500 dark:prose-a:text-primary-400',
         // link underline
-        'prose-a:no-underline prose-a:shadow-[inset_0_-2px_0_0_var(--tw-prose-background,#fff),inset_0_calc(-1*(var(--tw-prose-underline-size,2px)+2px))_0_0_var(--tw-prose-underline,theme(colors.primary.300))] hover:prose-a:[--tw-prose-underline-size:4px] dark:prose-a:shadow-[inset_0_calc(-1*var(--tw-prose-underline-size,2px))_0_0_var(--tw-prose-underline,theme(colors.primary.800))] dark:hover:prose-a:[--tw-prose-underline-size:4px] dark:[--tw-prose-background:theme(colors.slate.900)]',
+        'prose-a:no-underline hover:prose-a:underline ',
         // code
         'prose-code:before:content-none prose-code:after:content-none',
         // pre

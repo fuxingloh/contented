@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import isEqual from 'lodash/isEqual';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { Pipelines } from '../../../../index.js';
 
 export function computeContentSections(items) {
   const sections = [];
@@ -20,6 +21,7 @@ export function computeContentSections(items) {
 
 export default function ContentNavigation({ sections, className }) {
   const router = useRouter();
+  const pipelines = Object.entries(Pipelines);
 
   return (
     <nav className={className}>
@@ -64,6 +66,34 @@ export default function ContentNavigation({ sections, className }) {
           );
         })}
       </ul>
+
+      {pipelines.length > 1 && (
+        <div className="mt-12 md:hidden">
+          <div className="border-t-2 border-slate-100 py-2 text-sm font-medium text-slate-900/60 dark:border-slate-800 dark:text-white/60">
+            Collections
+          </div>
+          <div className="mt-1 flex gap-4">
+            {pipelines.map(([type, pipeline]) => {
+              if (pipeline.collection[0] === undefined || pipeline.collection[0] === null) {
+                throw new PipelineCollectionNotFoundException(type);
+              }
+              return (
+                <Link href={`/${type.toLowerCase()}${pipeline.collection[0].path}`} key={type}>
+                  <div
+                    className={clsx(
+                      'rounded px-3 py-2 text-sm font-medium',
+                      'bg-slate-100 text-slate-700',
+                      'dark:bg-slate-800 dark:text-slate-400',
+                    )}
+                  >
+                    {type}
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

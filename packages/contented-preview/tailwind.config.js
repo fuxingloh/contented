@@ -36,6 +36,7 @@ module.exports = {
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
+            wordWrap: 'break-word',
             p: {
               marginTop: theme('spacing.4'),
               marginBottom: theme('spacing.4'),

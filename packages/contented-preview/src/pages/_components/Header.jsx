@@ -34,7 +34,7 @@ export default function Header() {
             </a>
 
             {pipelines.length > 1 && (
-              <div className="ml-6 flex border-l border-slate-300/60 pl-4 dark:border-slate-300/10">
+              <div className="ml-6 hidden border-l border-slate-300/60 pl-4 dark:border-slate-300/10 md:flex">
                 {pipelines.map(([type, pipeline]) => {
                   if (pipeline.collection[0] === undefined || pipeline.collection[0] === null) {
                     throw new PipelineCollectionNotFoundException(type);

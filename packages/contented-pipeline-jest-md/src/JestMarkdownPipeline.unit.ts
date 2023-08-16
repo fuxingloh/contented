@@ -86,7 +86,7 @@ describe('JestMarkdownPipeline', () => {
         '<span class="line"><span style="color: #ADBAC7">    type: </span><span style="color: #96D0FF">\'Example\'</span><span style="color: #ADBAC7">,</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    fields: {</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">      title: </span><span style="color: #96D0FF">\'JestPipeline\'</span><span style="color: #ADBAC7">,</span></span>\n' +
-        '<span class="line"><span style="color: #ADBAC7">      description: </span><span style="color: #96D0FF">"This is an example of how to write Example Documentation with embedded codeblock!"</span><span style="color: #ADBAC7">,</span></span>\n' +
+        '<span class="line"><span style="color: #ADBAC7">      description: </span><span style="color: #96D0FF">\'This is an example of how to write Example Documentation with embedded codeblock!\'</span><span style="color: #ADBAC7">,</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    },</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">    headings: [</span></span>\n' +
         '<span class="line"><span style="color: #ADBAC7">      {</span></span>\n' +

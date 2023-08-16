@@ -15,11 +15,12 @@ export function collectFields(): Transformer<Parent> {
       contented.fields = yaml.load(node.value) as any;
     }
 
-    visit(tree, 'heading', collectTitle(file));
+    visit(tree, 'heading', visitTitle(file));
+    visit(tree, 'paragraph', visitDescription(file));
   };
 }
 
-function collectTitle(file: VFile): (node: { type: 'heading'; children: object[] }) => void {
+function visitTitle(file: VFile): (node: { type: 'heading'; children: object[] }) => void {
   const contented = file.data?.contented as UnifiedContented;
 
   return (node) => {
@@ -28,6 +29,18 @@ function collectTitle(file: VFile): (node: { type: 'heading'; children: object[]
     }
 
     contented.fields.title = toString(node);
+  };
+}
+
+function visitDescription(file: VFile): (node: { type: 'paragraph'; children: object[] }) => void {
+  const contented = file.data?.contented as UnifiedContented;
+
+  return (node) => {
+    if (contented.fields.description) {
+      return;
+    }
+
+    contented.fields.description = toString(node).substring(0, 300);
   };
 }
 

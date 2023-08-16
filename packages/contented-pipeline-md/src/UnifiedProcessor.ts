@@ -1,5 +1,4 @@
 import rehypeToc from '@jsdevtools/rehype-toc';
-import rehypeShiki from '@leafac/rehype-shiki';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
@@ -15,6 +14,7 @@ import { Plugin, Processor } from 'unified';
 
 import { rehypeHeading } from './plugins/RehypeHeading.js';
 import { rehypeMermaid } from './plugins/RehypeMermaid.js';
+import { rehypeShiki } from './plugins/RehypeShiki.js';
 import { collectFields, resolveFields, validateFields } from './plugins/RemarkFrontmatter.js';
 import { remarkLink } from './plugins/RemarkLink.js';
 
@@ -60,14 +60,8 @@ export async function initProcessor(processor: Processor, options?: UnifiedOptio
     .use(rehypeMermaid)
     .use(rehypeShiki, {
       highlighter: {
-        dark: await getHighlighter({
-          theme: 'dark-plus',
-          ...options?.shiki,
-        }),
-        light: await getHighlighter({
-          theme: 'light-plus',
-          ...options?.shiki,
-        }),
+        light: await getHighlighter({ theme: 'github-light' }),
+        dark: await getHighlighter({ theme: 'github-dark' }),
       },
     });
 

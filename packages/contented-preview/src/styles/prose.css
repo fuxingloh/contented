@@ -53,20 +53,35 @@
   @apply dark:border-slate-700/70 dark:bg-slate-800/70 dark:text-slate-200;
 }
 
-.prose .light pre {
+.prose .table-auto table {
+  display: table;
+  table-layout: auto;
+}
+
+.prose .table-fixed table {
+  display: table;
+  table-layout: fixed;
+}
+
+.prose .mermaid {
+  border-radius: 6px;
+  @apply p-6;
+  @apply flex items-center justify-center;
+  @apply bg-slate-100/50 dark:bg-slate-800/50;
+}
+
+.prose .rehype-shiki pre.theme-light {
   border-radius: 6px;
   @apply border border-slate-200/70;
-  @apply dark:hidden;
+  @apply block !important;
+  @apply dark:hidden !important;
 }
 
-.prose .dark pre {
-  @apply hidden;
-}
-
-html.dark .prose .dark pre {
-  @apply block;
+.prose .rehype-shiki pre.theme-dark {
   border-radius: 6px;
+  display: none;
   @apply border border-slate-700/70;
+  @apply dark:block !important;
 }
 
 .prose pre code {
@@ -82,21 +97,4 @@ html.dark .prose .dark pre {
   display: inline-block;
   text-align: right;
   color: rgba(115, 138, 148, 0.4);
-}
-
-.prose .table-auto table {
-  display: table;
-  table-layout: auto;
-}
-
-.prose .table-fixed table {
-  display: table;
-  table-layout: fixed;
-}
-
-.prose .mermaid {
-  @apply p-6;
-  border-radius: 6px;
-  @apply flex items-center justify-center;
-  @apply bg-slate-100/50 dark:bg-slate-800/50;
 }

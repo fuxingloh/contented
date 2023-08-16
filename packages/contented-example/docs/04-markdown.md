@@ -5,6 +5,35 @@ tags: ['Markdown', 'Frontmatter', 'Admonitions', 'Mermaid']
 
 # Markdown Features
 
+## Codeblock Support
+
+```ts
+const a: number = 1;
+```
+
+````txt
+```ts
+const a: number = 1;
+```
+````
+
+### Codeblock with Header
+
+:::div{class="codeblock-header" data-filename="example.ts"}
+
+```ts file=example.ts
+const a: number = 1;
+const b: number = 2;
+```
+
+:::
+
+### Codeblock with Language Selector
+
+::::div{class="codeblock-selector"}
+
+::::
+
 Contented [unified](https://www.npmjs.com/package/unified) processor pipeline.
 
 ```js
@@ -228,7 +257,7 @@ This is `div{class="admonitions green"}`.
 
 ## Mermaid
 
-````
+````txt
 ```mermaid
 graph LR
     Start --> Stop
@@ -240,7 +269,7 @@ graph LR
     Start --> Stop
 ```
 
-````
+````txt
 ```mermaid
   graph TD;
       A-->B;

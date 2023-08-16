@@ -53,6 +53,35 @@
   @apply dark:border-slate-700/70 dark:bg-slate-800/70 dark:text-slate-200;
 }
 
+.prose .light pre {
+  border-radius: 6px;
+  @apply border border-slate-200/70;
+  @apply dark:hidden;
+}
+
+.prose .dark pre {
+  @apply hidden;
+}
+
+html.dark .prose .dark pre {
+  @apply block;
+}
+
+.prose pre code {
+  counter-reset: step;
+  counter-increment: step 0;
+}
+
+.prose pre code .line::before {
+  content: counter(step);
+  counter-increment: step;
+  width: 1rem;
+  margin-right: 1.25rem;
+  display: inline-block;
+  text-align: right;
+  color: rgba(115, 138, 148, 0.4);
+}
+
 .prose .table-auto table {
   display: table;
   table-layout: auto;
@@ -61,4 +90,11 @@
 .prose .table-fixed table {
   display: table;
   table-layout: fixed;
+}
+
+.prose .mermaid {
+  @apply p-6;
+  border-radius: 6px;
+  @apply flex items-center justify-center;
+  @apply bg-slate-100/50 dark:bg-slate-800/50;
 }

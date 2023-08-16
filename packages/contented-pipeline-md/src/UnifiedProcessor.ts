@@ -27,11 +27,6 @@ export interface UnifiedOptions {
 }
 
 export async function initProcessor(processor: Processor, options?: UnifiedOptions) {
-  const highlighter = await getHighlighter({
-    theme: 'github-dark-dimmed',
-    ...options?.shiki,
-  });
-
   options?.before?.forEach((plugin) => {
     processor.use(plugin);
   });
@@ -63,7 +58,18 @@ export async function initProcessor(processor: Processor, options?: UnifiedOptio
     .use(rehypeToc)
     .use(rehypeHeading)
     .use(rehypeMermaid)
-    .use(rehypeShiki, { highlighter });
+    .use(rehypeShiki, {
+      highlighter: {
+        dark: await getHighlighter({
+          theme: 'dark-plus',
+          ...options?.shiki,
+        }),
+        light: await getHighlighter({
+          theme: 'light-plus',
+          ...options?.shiki,
+        }),
+      },
+    });
 
   processor.use(rehypeStringify);
 

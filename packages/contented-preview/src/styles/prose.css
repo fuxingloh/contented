@@ -65,6 +65,8 @@
 
 html.dark .prose .dark pre {
   @apply block;
+  border-radius: 6px;
+  @apply border border-slate-700/70;
 }
 
 .prose pre code {

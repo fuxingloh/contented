@@ -20,7 +20,7 @@ it('should process RemarkLink.md', async () => {
     {
       type: 'Markdown',
       fields: {
-        description: undefined,
+        description: '20-Heading/100-RemarkLinked.md',
         title: undefined,
       },
       headings: [],
@@ -45,7 +45,7 @@ it('should process 01-RemarkLinked.md', async () => {
     {
       type: 'Markdown',
       fields: {
-        description: undefined,
+        description: '20-Heading/100-RemarkLinked.md',
         title: undefined,
       },
       headings: [],
@@ -64,7 +64,7 @@ it('should process 20-Heading/100-RemarkLinked.md', async () => {
     {
       type: 'Markdown',
       fields: {
-        description: undefined,
+        description: '/20-Heading/100-RemarkLinked.md',
         title: undefined,
       },
       headings: [],
@@ -89,7 +89,7 @@ it('should process 20-Heading/30-Section/100-DeepLink.md', async () => {
     {
       type: 'Markdown',
       fields: {
-        description: undefined,
+        description: '/20-Heading/30-Section/100-DeepLink.md',
         title: undefined,
       },
       headings: [],

@@ -26,7 +26,7 @@ describe('process', () => {
       {
         type: 'Markdown',
         fields: {
-          description: undefined,
+          description: 'Markdown for testing ContentedProcessor.unit.ts.',
           title: 'What is going on',
         },
         headings: [
@@ -57,7 +57,7 @@ describe('process', () => {
       {
         type: 'Markdown',
         fields: {
-          description: undefined,
+          description: 'Title',
           title: 'Hello',
         },
         headings: [],
@@ -75,7 +75,7 @@ describe('process', () => {
       {
         type: 'Markdown',
         fields: {
-          description: undefined,
+          description: 'Content',
           title: 'Slug',
         },
         headings: [
@@ -100,7 +100,7 @@ describe('process', () => {
       {
         type: 'Markdown',
         fields: {
-          description: undefined,
+          description: 'Content',
           title: 'Path',
         },
         headings: [
@@ -149,7 +149,7 @@ describe('build', () => {
           {
             fields: {
               title: 'Hello',
-              description: undefined,
+              description: 'Title',
             },
             fileId: expect.stringMatching(/[0-f]{64}/),
             modifiedDate: expect.any(Number),
@@ -160,7 +160,7 @@ describe('build', () => {
           {
             fields: {
               title: 'Path',
-              description: undefined,
+              description: 'Content',
             },
             fileId: expect.stringMatching(/[0-f]{64}/),
             modifiedDate: expect.any(Number),
@@ -187,7 +187,7 @@ describe('build', () => {
           {
             fields: {
               title: 'Hello',
-              description: undefined,
+              description: 'Title',
             },
             fileId: expect.stringMatching(/[0-f]{64}/),
             modifiedDate: expect.any(Number),
@@ -198,7 +198,7 @@ describe('build', () => {
           {
             fields: {
               title: 'What is going on',
-              description: undefined,
+              description: 'Markdown for testing ContentedProcessor.unit.ts.',
             },
             fileId: expect.stringMatching(/[0-f]{64}/),
             modifiedDate: expect.any(Number),
@@ -209,7 +209,7 @@ describe('build', () => {
           {
             fields: {
               title: 'Path',
-              description: undefined,
+              description: 'Content',
             },
             fileId: expect.stringMatching(/[0-f]{64}/),
             modifiedDate: expect.any(Number),
@@ -220,7 +220,7 @@ describe('build', () => {
           {
             fields: {
               title: 'Slug',
-              description: undefined,
+              description: 'Content',
             },
             fileId: expect.stringMatching(/[0-f]{64}/),
             modifiedDate: expect.any(Number),

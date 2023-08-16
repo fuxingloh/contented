@@ -21,7 +21,7 @@ describe('Without Config', () => {
       {
         type: 'Markdown',
         fields: {
-          description: undefined,
+          description: 'Markdown for testing MarkdownPipeline.unit.ts.',
           title: 'Nothing To See',
         },
         headings: [

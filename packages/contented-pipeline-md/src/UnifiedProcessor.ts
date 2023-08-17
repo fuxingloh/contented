@@ -9,7 +9,6 @@ import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
-import { getHighlighter, HighlighterOptions } from 'shiki';
 import { Plugin, Processor } from 'unified';
 
 import { rehypeHeading } from './plugins/RehypeHeading.js';
@@ -23,7 +22,6 @@ import { collectFields, resolveFields, validateFields } from './plugins/RemarkFr
 import { remarkLink } from './plugins/RemarkLink.js';
 
 export interface UnifiedOptions {
-  shiki?: HighlighterOptions;
   before?: Plugin[];
   remarks?: Plugin[];
   rehypes?: Plugin[];
@@ -64,12 +62,7 @@ export async function initProcessor(processor: Processor, options?: UnifiedOptio
     .use(rehypeToc)
     .use(rehypeHeading)
     .use(rehypeMermaid)
-    .use(rehypeShiki, {
-      highlighter: {
-        light: await getHighlighter({ theme: 'github-light' }),
-        dark: await getHighlighter({ theme: 'github-dark' }),
-      },
-    });
+    .use(rehypeShiki);
 
   processor.use(rehypeStringify);
 

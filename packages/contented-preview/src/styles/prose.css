@@ -68,14 +68,38 @@
   @apply bg-slate-100/50 dark:bg-slate-800/50;
 }
 
-.prose .rehype-shiki pre.theme-light {
-  @apply rounded-[6px] border border-slate-200/70;
-  @apply block dark:hidden !important;
+.prose .rehype-shiki pre.css-variable {
+  @apply rounded-[6px] border;
+  @apply border-slate-200/70 dark:border-slate-700/70;
+  color: #24292f;
+
+  --shiki-color-text: #24292f;
+  --shiki-color-background: #ffffff;
+  --shiki-token-constant: #0550ae;
+  --shiki-token-string: #0550ae;
+  --shiki-token-comment: #6e7781;
+  --shiki-token-keyword: #cf222e;
+  --shiki-token-parameter: #24292e;
+  --shiki-token-function: #8250df;
+  --shiki-token-string-expression: #0a3069;
+  --shiki-token-punctuation: #24292f;
+  --shiki-token-link: #24292f;
 }
 
-.prose .rehype-shiki pre.theme-dark {
-  @apply rounded-[6px] border border-slate-700/70;
-  @apply hidden dark:block !important;
+.dark .prose .rehype-shiki pre.css-variable {
+  color: #c9d1d9;
+
+  --shiki-color-text: #c9d1d9;
+  --shiki-color-background: #0d1117;
+  --shiki-token-constant: #79c0ff;
+  --shiki-token-string: #79c0ff;
+  --shiki-token-comment: #8b949e;
+  --shiki-token-keyword: #ff7b72;
+  --shiki-token-parameter: #e1e4e8;
+  --shiki-token-function: #d2a8ff;
+  --shiki-token-string-expression: #a5d6ff;
+  --shiki-token-punctuation: #c9d1d9;
+  --shiki-token-link: #c9d1d9;
 }
 
 .prose pre code {
@@ -86,9 +110,6 @@
 .prose pre code .line::before {
   content: counter(step);
   counter-increment: step;
-  width: 1rem;
-  margin-right: 1.25rem;
-  display: inline-block;
-  text-align: right;
+  @apply mr-5 inline-block w-4 text-right;
   color: rgba(115, 138, 148, 0.4);
 }

@@ -4,26 +4,26 @@
 
 .prose .admonitions {
   @apply relative my-6 rounded-r px-6 py-0.5;
-  @apply before:absolute before:inset-0 before:h-full before:w-1;
+  @apply before:absolute before:inset-0 before:h-full before:w-[3px];
   @apply dark:text-slate-200;
 
-  @apply before:bg-slate-500 before:dark:bg-slate-600;
-  @apply bg-slate-100 dark:bg-slate-800;
+  @apply before:bg-slate-400/50 before:dark:bg-slate-700/50;
+  @apply bg-slate-100/50 dark:bg-slate-800/50;
 }
 
 .prose .admonitions.red {
-  @apply before:bg-red-500 before:dark:bg-red-600;
-  @apply bg-red-100 dark:bg-red-800;
+  @apply before:bg-red-400/50 before:dark:bg-red-700/50;
+  @apply bg-red-100/50 dark:bg-red-800/50;
 }
 
 .prose .admonitions.yellow {
-  @apply before:bg-amber-500 before:dark:bg-amber-600;
-  @apply bg-amber-100 dark:bg-amber-800;
+  @apply before:bg-amber-400/50 before:dark:bg-amber-700/50;
+  @apply bg-amber-100/50 dark:bg-amber-800/50;
 }
 
 .prose .admonitions.green {
-  @apply before:bg-green-500 before:dark:bg-green-600;
-  @apply bg-green-100 dark:bg-green-800;
+  @apply before:bg-green-400/50 before:dark:bg-green-700/50;
+  @apply bg-green-100/50 dark:bg-green-800/50;
 }
 
 .prose :is(h1, h2, h3, h4, h5, h6) {

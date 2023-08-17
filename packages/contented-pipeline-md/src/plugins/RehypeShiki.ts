@@ -29,16 +29,6 @@ export function rehypeShiki(options: {
     const language = className[0].slice('language-'.length);
     const code = toString(child).slice(0, -1);
 
-    // The dark theme is the default, light theme will always be hidden to allow theming opt-in
-    // const parsed = html`
-    //   <div class='dark'>
-    //       $${options.highlighter.dark.codeToHtml(code, { lang: language })}
-    //   </div>
-    //   <div class='light' style='display: none'>
-    //       $${options.highlighter.light.codeToHtml(code, { lang: language })}
-    //   </div>
-    // `;
-
     /* eslint-disable  no-param-reassign */
     node.properties = {
       ...node.properties,

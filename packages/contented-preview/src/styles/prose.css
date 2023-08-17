@@ -46,10 +46,9 @@
 
 .prose code:not(pre code):not(:where([class~='not-prose'] *)) {
   padding: 0.2em 0.4em;
-  border-radius: 6px;
   @apply font-medium;
   @apply rounded border;
-  @apply border-slate-200/70 bg-slate-100/70 text-slate-800;
+  @apply rounded-[6px] border-slate-200/70 bg-slate-100/70 text-slate-800;
   @apply dark:border-slate-700/70 dark:bg-slate-800/70 dark:text-slate-200;
 }
 
@@ -64,24 +63,19 @@
 }
 
 .prose .mermaid {
-  border-radius: 6px;
-  @apply p-6;
+  @apply rounded-[6px] p-6;
   @apply flex items-center justify-center;
   @apply bg-slate-100/50 dark:bg-slate-800/50;
 }
 
 .prose .rehype-shiki pre.theme-light {
-  border-radius: 6px;
-  @apply border border-slate-200/70;
-  @apply block !important;
-  @apply dark:hidden !important;
+  @apply rounded-[6px] border border-slate-200/70;
+  @apply block dark:hidden !important;
 }
 
 .prose .rehype-shiki pre.theme-dark {
-  border-radius: 6px;
-  display: none;
-  @apply border border-slate-700/70;
-  @apply dark:block !important;
+  @apply rounded-[6px] border border-slate-700/70;
+  @apply hidden dark:block !important;
 }
 
 .prose pre code {

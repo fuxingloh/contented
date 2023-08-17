@@ -1,5 +1,5 @@
 import yaml from 'js-yaml';
-import { Parent } from 'mdast';
+import { Heading, Paragraph, Parent } from 'mdast';
 import { toString } from 'mdast-util-to-string';
 import { Transformer } from 'unified';
 import { visit } from 'unist-util-visit';
@@ -20,10 +20,10 @@ export function collectFields(): Transformer<Parent> {
   };
 }
 
-function visitTitle(file: VFile): (node: { type: 'heading'; children: object[] }) => void {
+function visitTitle(file: VFile): (node: Heading) => void {
   const contented = file.data?.contented as UnifiedContented;
 
-  return (node) => {
+  return (node: Heading) => {
     if (contented.fields.title) {
       return;
     }
@@ -32,10 +32,10 @@ function visitTitle(file: VFile): (node: { type: 'heading'; children: object[] }
   };
 }
 
-function visitDescription(file: VFile): (node: { type: 'paragraph'; children: object[] }) => void {
+function visitDescription(file: VFile): (node: Paragraph) => void {
   const contented = file.data?.contented as UnifiedContented;
 
-  return (node) => {
+  return (node: Paragraph) => {
     if (contented.fields.description) {
       return;
     }

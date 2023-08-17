@@ -85,6 +85,8 @@ When using relative links, contented will automatically resolve the links to the
 
 For example:
 
+:::codeblock-header{filename="contented.config.mjs" language="JavaScript"}
+
 ```js
 /** @type {import('@contentedjs/contented').ContentedConfig} */
 const config = {
@@ -115,6 +117,8 @@ const config = {
 export default config;
 ```
 
+:::
+
 ```txt
 Pipeline Processed:                 -> /[path] (note docs/example-docs/ is removed)
 /docs/example-docs/page-1           -> /page-1
@@ -138,97 +142,9 @@ custom prefix. If you used absolute links, the links would be broken.
 It is also highly advised against linking to another `"Type"` as you're assuming that the other site will be
 structured the same way as your site with the same prefix or even publishing that `"Type"` at all.
 
-## Table
-
-| Header 1 | Header 2 | Header 3 |
-| -------- | -------- | -------- |
-| Cell 1   | Cell 2   | Cell 3   |
-
-```markdown
-| Header 1 | Header 2 | Header 3 |
-| -------- | -------- | -------- |
-| Cell 1   | Cell 2   | Cell 3   |
-```
-
-:::div{class="table-fixed"}
-| Table Fixed | Header 2 | Header 3 |
-|----------|----------|----------|
-| Cell 1 | Cell 2 | Cell 3 |
-:::
-
-```markdown
-:::div{class="table-fixed"}
-| Table Fixed | Header 2 | Header 3 |
-|----------|----------|----------|
-| Cell 1 | Cell 2 | Cell 3 |
-:::
-```
-
-:::div{class="table-auto"}
-| Table Auto | Header 2 | Header 3 |
-|----------|----------|----------|
-| Cell 1 | Cell 2 | Cell 3 |
-:::
-
-```markdown
-:::div{class="table-auto"}
-| Table Auto | Header 2 | Header 3 |
-|----------|----------|----------|
-| Cell 1 | Cell 2 | Cell 3 |
-:::
-```
-
-## Admonitions
-
-Admonitions with `remark-directive` and `remark-directive-rehype`.
-
-::::div{class="admonitions"}
-This is `div{class="admonitions"}`.
-
-```markdown
-:::div{class="admonitions"}
-This is `div{class="admonitions"}`.
-:::
-```
-
-::::
-
-::::div{class="admonitions red"}
-This is `div{class="admonitions red"}`.
-
-```markdown
-:::div{class="admonitions red"}
-This is `div{class="admonitions red"}`.
-:::
-```
-
-::::
-
-::::div{class="admonitions yellow"}
-This is `div{class="admonitions yellow"}`.
-
-```markdown
-:::div{class="admonitions yellow"}
-This is `div{class="admonitions yellow"}`.
-:::
-```
-
-::::
-
-::::div{class="admonitions green"}
-This is `div{class="admonitions green"}`.
-
-```markdown
-:::div{class="admonitions green"}
-This is `div{class="admonitions green"}`.
-:::
-```
-
-::::
-
 ## Mermaid
 
-````
+````txt
 ```mermaid
 graph LR
     Start --> Stop
@@ -240,7 +156,7 @@ graph LR
     Start --> Stop
 ```
 
-````
+````txt
 ```mermaid
   graph TD;
       A-->B;
@@ -257,3 +173,123 @@ graph LR
     B --> D;
     C --> D;
 ```
+
+## Directives
+
+They can be declared via long-form `:::div{class="table-fixed"}` or short-form `:::div{.table-fixed}`
+
+### Table Directive
+
+| Header 1 | Header 2 | Header 3 |
+| -------- | -------- | -------- |
+| Cell 1   | Cell 2   | Cell 3   |
+
+```markdown
+| Header 1 | Header 2 | Header 3 |
+| -------- | -------- | -------- |
+| Cell 1   | Cell 2   | Cell 3   |
+```
+
+:::div{class="table-fixed"}
+| Table Fixed | Header 2 | Header 3 |
+|----------|----------|----------|
+| Cell 1 | Cell 2 | Cell 3 |
+:::
+
+```markdown
+:::div{class="table-fixed"}
+| Table Fixed | Header 2 | Header 3 |
+|----------|----------|----------|
+| Cell 1 | Cell 2 | Cell 3 |
+:::
+```
+
+:::div{class="table-auto"}
+| Table Auto | Header 2 | Header 3 |
+|----------|----------|----------|
+| Cell 1 | Cell 2 | Cell 3 |
+:::
+
+```markdown
+:::div{class="table-auto"}
+| Table Auto | Header 2 | Header 3 |
+|----------|----------|----------|
+| Cell 1 | Cell 2 | Cell 3 |
+:::
+```
+
+### Admonitions Directive
+
+Admonitions with `remark-directive` and `remark-directive-rehype`.
+
+::::div{.admonitions}
+This is `div{.admonitions}`.
+
+```markdown
+:::div{.admonitions}
+This is `div{.admonitions}`.
+:::
+```
+
+::::
+
+::::div{.admonitions.red}
+This is `div{.admonitions.red}`.
+
+```markdown
+:::div{.admonitions.red}
+This is `div{.admonitions.red}`.
+:::
+```
+
+::::
+
+::::div{.admonitions.yellow}
+This is `div{.admonitions.yellow}`.
+
+```markdown
+:::div{.admonitions.yellow}
+This is `div{.admonitions.yellow}`.
+:::
+```
+
+::::
+
+::::div{.admonitions.green}
+This is `div{.admonitions.green}`.
+
+```markdown
+:::div{.admonitions.green}
+This is `div{.admonitions.green}`.
+:::
+```
+
+::::
+
+### Codeblock Directive
+
+#### Codeblock with Header
+
+:::codeblock-header{filename="example.ts" language="TypeScript"}
+
+```ts
+const a: number = 1;
+const b: number = 2;
+```
+
+:::
+
+````txt
+:::codeblock-header{filename="example.ts" language="TypeScript"}
+```ts
+const a: number = 1;
+const b: number = 2;
+```
+:::
+````
+
+#### Codeblock with Language Selector
+
+:::codeblock-group
+
+:::

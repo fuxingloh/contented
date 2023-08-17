@@ -1,5 +1,4 @@
 import rehypeToc from '@jsdevtools/rehype-toc';
-import rehypeShiki from '@leafac/rehype-shiki';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
@@ -10,16 +9,19 @@ import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
-import { getHighlighter, HighlighterOptions } from 'shiki';
 import { Plugin, Processor } from 'unified';
 
 import { rehypeHeading } from './plugins/RehypeHeading.js';
 import { rehypeMermaid } from './plugins/RehypeMermaid.js';
+import { rehypeShiki } from './plugins/RehypeShiki.js';
+import {
+  remarkDirectiveRehypeCodeblockGroup,
+  remarkDirectiveRehypeCodeblockHeader,
+} from './plugins/RemarkCodeblock.js';
 import { collectFields, resolveFields, validateFields } from './plugins/RemarkFrontmatter.js';
 import { remarkLink } from './plugins/RemarkLink.js';
 
 export interface UnifiedOptions {
-  shiki?: HighlighterOptions;
   before?: Plugin[];
   remarks?: Plugin[];
   rehypes?: Plugin[];
@@ -27,11 +29,6 @@ export interface UnifiedOptions {
 }
 
 export async function initProcessor(processor: Processor, options?: UnifiedOptions) {
-  const highlighter = await getHighlighter({
-    theme: 'github-dark-dimmed',
-    ...options?.shiki,
-  });
-
   options?.before?.forEach((plugin) => {
     processor.use(plugin);
   });
@@ -42,6 +39,8 @@ export async function initProcessor(processor: Processor, options?: UnifiedOptio
     .use(remarkParse)
     .use(remarkLink)
     .use(remarkDirective)
+    .use(remarkDirectiveRehypeCodeblockHeader)
+    .use(remarkDirectiveRehypeCodeblockGroup)
     .use(remarkDirectiveRehype);
 
   processor.use(collectFields).use(resolveFields).use(validateFields);
@@ -63,7 +62,7 @@ export async function initProcessor(processor: Processor, options?: UnifiedOptio
     .use(rehypeToc)
     .use(rehypeHeading)
     .use(rehypeMermaid)
-    .use(rehypeShiki, { highlighter });
+    .use(rehypeShiki);
 
   processor.use(rehypeStringify);
 

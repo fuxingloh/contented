@@ -26,12 +26,10 @@ function visitLanguageMermaid(node: Element) {
     return;
   }
 
-  /* eslint-disable  no-param-reassign */
   node.properties = {
     ...node.properties,
     className: ['mermaid'],
   };
   node.tagName = 'div';
   node.children = child.children;
-  /* eslint-enable  no-param-reassign */
 }

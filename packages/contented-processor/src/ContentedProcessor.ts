@@ -36,7 +36,6 @@ export class ContentedProcessor {
   public pipelines: Record<string, ContentedPipeline> = {};
 
   constructor(protected readonly config: Config) {
-    /* eslint-disable  no-param-reassign */
     config.rootDir = config.rootDir ?? './';
     config.outDir = config.outDir ?? './.contented';
     config.pipelines.forEach((pipeline) => {
@@ -51,7 +50,6 @@ export class ContentedProcessor {
         throw new Error('Due to codegen, pipeline.type cannot be Index or end with Index.');
       }
     });
-    /* eslint-enable  no-param-reassign */
 
     this.rootPath = join(process.cwd(), config.rootDir);
     this.outPath = join(process.cwd(), config.outDir);

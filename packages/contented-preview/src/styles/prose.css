@@ -46,10 +46,9 @@
 
 .prose code:not(pre code):not(:where([class~='not-prose'] *)) {
   padding: 0.2em 0.4em;
-  border-radius: 6px;
   @apply font-medium;
   @apply rounded border;
-  @apply border-slate-200/70 bg-slate-100/70 text-slate-800;
+  @apply rounded-[6px] border-slate-200/70 bg-slate-100/70 text-slate-800;
   @apply dark:border-slate-700/70 dark:bg-slate-800/70 dark:text-slate-200;
 }
 
@@ -61,4 +60,68 @@
 .prose .table-fixed table {
   display: table;
   table-layout: fixed;
+}
+
+.prose .mermaid {
+  @apply rounded-[6px] p-6;
+  @apply flex items-center justify-center;
+  @apply bg-slate-100/50 dark:bg-slate-800/50;
+}
+
+.prose .rehype-shiki pre.css-variable {
+  @apply rounded-[6px] border;
+  @apply border-slate-200/70 dark:border-slate-700/70;
+  color: #24292f;
+
+  --shiki-color-text: #24292f;
+  --shiki-color-background: #ffffff;
+  --shiki-token-constant: #0550ae;
+  --shiki-token-string: #0550ae;
+  --shiki-token-comment: #6e7781;
+  --shiki-token-keyword: #cf222e;
+  --shiki-token-parameter: #24292e;
+  --shiki-token-function: #8250df;
+  --shiki-token-string-expression: #0a3069;
+  --shiki-token-punctuation: #24292f;
+  --shiki-token-link: #24292f;
+}
+
+.dark .prose .rehype-shiki pre.css-variable {
+  color: #c9d1d9;
+
+  --shiki-color-text: #c9d1d9;
+  --shiki-color-background: #0d1117;
+  --shiki-token-constant: #79c0ff;
+  --shiki-token-string: #79c0ff;
+  --shiki-token-comment: #8b949e;
+  --shiki-token-keyword: #ff7b72;
+  --shiki-token-parameter: #e1e4e8;
+  --shiki-token-function: #d2a8ff;
+  --shiki-token-string-expression: #a5d6ff;
+  --shiki-token-punctuation: #c9d1d9;
+  --shiki-token-link: #c9d1d9;
+}
+
+.prose .codeblock-header header {
+  @apply rounded-t-[6px] border;
+  @apply border-slate-200/70 dark:border-slate-700/70;
+  @apply bg-slate-100/50 px-4 py-2.5 dark:bg-[#0d1117];
+  @apply flex items-center justify-between;
+  @apply text-sm text-slate-500 dark:text-slate-400;
+}
+
+.prose .codeblock-header .rehype-shiki pre.css-variable {
+  @apply mt-0 rounded-t-none border-t-0;
+}
+
+.prose pre code {
+  counter-reset: step;
+  counter-increment: step 0;
+}
+
+.prose pre code .line::before {
+  content: counter(step);
+  counter-increment: step;
+  @apply mr-5 inline-block w-4 text-right;
+  color: rgba(115, 138, 148, 0.4);
 }

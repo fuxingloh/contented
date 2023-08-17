@@ -55,7 +55,6 @@ function mergeHeadings(headings: FileContentHeadings[]): FileContentHeadings[] {
   });
 
   root.forEach((contentHeading) => {
-    // eslint-disable-next-line  no-param-reassign
     contentHeading.children = mergeHeadings(contentHeading.children);
   });
 

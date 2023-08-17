@@ -33,7 +33,10 @@
     },
     "extends": [
       "@stickyjs"
-    ]
+    ],
+    "rules": {
+      "no-param-reassign": "off"
+    }
   },
   "jest": {
     "preset": "@contentedjs/jest-preset"

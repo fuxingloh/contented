@@ -15,6 +15,10 @@ import { Plugin, Processor } from 'unified';
 import { rehypeHeading } from './plugins/RehypeHeading.js';
 import { rehypeMermaid } from './plugins/RehypeMermaid.js';
 import { rehypeShiki } from './plugins/RehypeShiki.js';
+import {
+  remarkDirectiveRehypeCodeblockGroup,
+  remarkDirectiveRehypeCodeblockHeader,
+} from './plugins/RemarkCodeblock.js';
 import { collectFields, resolveFields, validateFields } from './plugins/RemarkFrontmatter.js';
 import { remarkLink } from './plugins/RemarkLink.js';
 
@@ -37,6 +41,8 @@ export async function initProcessor(processor: Processor, options?: UnifiedOptio
     .use(remarkParse)
     .use(remarkLink)
     .use(remarkDirective)
+    .use(remarkDirectiveRehypeCodeblockHeader)
+    .use(remarkDirectiveRehypeCodeblockGroup)
     .use(remarkDirectiveRehype);
 
   processor.use(collectFields).use(resolveFields).use(validateFields);

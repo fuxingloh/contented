@@ -52,7 +52,7 @@
     "rehype-external-links": "^2.1.0",
     "rehype-parse": "^8.0.5",
     "rehype-slug": "^5.1.0",
-    "rehype-stringify": "^9.0.3",
+    "rehype-stringify": "^9.0.4",
     "remark-directive": "^2.0.1",
     "remark-directive-rehype": "^0.4.2",
     "remark-frontmatter": "^4.0.1",

@@ -12,7 +12,7 @@ export function rehypeShiki(options: {
     dark: Shiki.Highlighter;
   };
 }): Transformer {
-  function visitCodeBlock(node: Element) {
+  function visitCodeblock(node: Element) {
     if (node.tagName !== 'pre') {
       return;
     }
@@ -29,7 +29,6 @@ export function rehypeShiki(options: {
     const language = className[0].slice('language-'.length);
     const code = toString(child).slice(0, -1);
 
-    /* eslint-disable  no-param-reassign */
     node.properties = {
       ...node.properties,
       className: ['rehype-shiki'],
@@ -49,11 +48,10 @@ export function rehypeShiki(options: {
         language,
       }),
     ];
-    /* eslint-enable  no-param-reassign */
   }
 
-  return (tree) => {
-    visit(tree, 'element', visitCodeBlock);
+  return async (tree) => {
+    visit(tree, 'element', visitCodeblock);
   };
 }
 

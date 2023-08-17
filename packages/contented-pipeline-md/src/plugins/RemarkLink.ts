@@ -22,7 +22,6 @@ function visitLink(file: VFile): (node: Link) => void {
       return;
     }
 
-    /* eslint-disable  no-param-reassign */
     const path = node.url;
     if (path.startsWith('./')) {
       const pipelineDir = join(

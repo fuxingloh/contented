@@ -31,7 +31,6 @@ export abstract class ContentedPipeline {
     public readonly rootPath: string,
     public readonly pipeline: Pipeline,
   ) {
-    // eslint-disable-next-line  no-param-reassign
     pipeline.fields = {
       title: { type: 'string' },
       description: { type: 'string' },
@@ -53,10 +52,8 @@ export abstract class ContentedPipeline {
     if (this.pipeline.dir) {
       // When pipeline.dir is set, we need to recompute the file path
       const filePath = join(rootPath, file);
-      /* eslint-disable no-param-reassign */
       rootPath = join(rootPath, this.pipeline.dir, '/');
       file = filePath.replace(rootPath, '');
-      /* eslint-enable no-param-reassign */
     }
 
     const fileIndex = await this.newFileIndex(rootPath, file);

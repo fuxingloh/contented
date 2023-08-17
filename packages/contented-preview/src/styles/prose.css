@@ -102,6 +102,18 @@
   --shiki-token-link: #c9d1d9;
 }
 
+.prose .codeblock-header header {
+  @apply rounded-t-[6px] border;
+  @apply border-slate-200/70 dark:border-slate-700/70;
+  @apply bg-slate-100/50 px-4 py-2.5 dark:bg-[#0d1117];
+  @apply flex items-center justify-between;
+  @apply text-sm text-slate-500 dark:text-slate-400;
+}
+
+.prose .codeblock-header .rehype-shiki pre.css-variable {
+  @apply mt-0 rounded-t-none border-t-0;
+}
+
 .prose pre code {
   counter-reset: step;
   counter-increment: step 0;

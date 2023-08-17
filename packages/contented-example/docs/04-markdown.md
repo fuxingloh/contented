@@ -5,35 +5,6 @@ tags: ['Markdown', 'Frontmatter', 'Admonitions', 'Mermaid']
 
 # Markdown Features
 
-## Codeblock Support
-
-```ts
-const a: number = 1;
-```
-
-````txt
-```ts
-const a: number = 1;
-```
-````
-
-### Codeblock with Header
-
-:::codeblock-header{filename="example.ts" language="TypeScript"}
-
-```ts
-const a: number = 1;
-const b: number = 2;
-```
-
-:::
-
-### Codeblock with Language Selector
-
-:::codeblock-group
-
-:::
-
 Contented [unified](https://www.npmjs.com/package/unified) processor pipeline.
 
 ```js
@@ -114,6 +85,8 @@ When using relative links, contented will automatically resolve the links to the
 
 For example:
 
+:::codeblock-header{filename="contented.config.mjs" language="JavaScript"}
+
 ```js
 /** @type {import('@contentedjs/contented').ContentedConfig} */
 const config = {
@@ -143,6 +116,8 @@ const config = {
 
 export default config;
 ```
+
+:::
 
 ```txt
 Pipeline Processed:                 -> /[path] (note docs/example-docs/ is removed)
@@ -203,7 +178,7 @@ graph LR
 
 They can be declared via long-form `:::div{class="table-fixed"}` or short-form `:::div{.table-fixed}`
 
-### Table
+### Table Directive
 
 | Header 1 | Header 2 | Header 3 |
 | -------- | -------- | -------- |
@@ -243,7 +218,7 @@ They can be declared via long-form `:::div{class="table-fixed"}` or short-form `
 :::
 ```
 
-### Admonitions
+### Admonitions Directive
 
 Admonitions with `remark-directive` and `remark-directive-rehype`.
 
@@ -290,3 +265,31 @@ This is `div{.admonitions.green}`.
 ```
 
 ::::
+
+### Codeblock Directive
+
+#### Codeblock with Header
+
+:::codeblock-header{filename="example.ts" language="TypeScript"}
+
+```ts
+const a: number = 1;
+const b: number = 2;
+```
+
+:::
+
+````txt
+:::codeblock-header{filename="example.ts" language="TypeScript"}
+```ts
+const a: number = 1;
+const b: number = 2;
+```
+:::
+````
+
+#### Codeblock with Language Selector
+
+:::codeblock-group
+
+:::

@@ -149,6 +149,7 @@
 .codeblock-language-options div > button {
   @apply cursor-pointer;
   @apply rounded px-3 py-1;
+  @apply text-left;
   @apply hover:text-slate-700 dark:hover:text-slate-300;
   @apply hover:bg-slate-200/50 dark:hover:bg-slate-900/50;
 }

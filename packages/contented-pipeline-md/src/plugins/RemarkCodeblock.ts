@@ -1,17 +1,9 @@
 import { Parent } from 'mdast';
-import type { Directive as DirectiveNode } from 'mdast-util-directive';
 import { ContainerDirective } from 'mdast-util-directive';
 import { Transformer } from 'unified';
-import { Node } from 'unist';
-import { map, MapFunction } from 'unist-util-map';
 import { visit } from 'unist-util-visit';
-import { VFile } from 'vfile';
 
-function isDirectiveNode(node: Node): node is DirectiveNode {
-  return node.type === 'textDirective' || node.type === 'leafDirective' || node.type === 'containerDirective';
-}
-
-function mapCodeblockHeader(node: ContainerDirective): void {
+function visitCodeblockHeader(node: ContainerDirective): void {
   if (node.name !== 'codeblock-header') return;
 
   // @ts-ignore
@@ -63,35 +55,130 @@ function mapCodeblockHeader(node: ContainerDirective): void {
     hName: 'div',
     hProperties: {
       className: 'codeblock-header',
+      dataLanguage: node.attributes?.language ?? '',
     },
   };
 }
 
 export function remarkDirectiveRehypeCodeblockHeader(): Transformer<Parent> {
-  return (nodeTree: any) => visit(nodeTree, 'containerDirective', mapCodeblockHeader);
+  return (nodeTree: any) => visit(nodeTree, 'containerDirective', visitCodeblockHeader);
 }
 
-function mapCodeblockGroup(file: VFile): MapFunction {
-  return (node: Node) => {
-    if (!isDirectiveNode(node)) {
-      return node;
-    }
+function visitCodeblockGroup(node: ContainerDirective): void {
+  if (node.name !== 'codeblock-group') return;
 
-    if (node.name !== 'codeblock-group') return node;
-    if (node.type === 'textDirective') file.fail('Text directives for `codeblock-group` not supported', node);
-    return {
+  const types: Record<string, string>[] = node.children
+    .filter((child: any) => child.name === 'codeblock-header')
+    .map((child: any) => child.attributes);
+
+  if (types.length === 0) return;
+
+  // @ts-ignore
+  node.type = 'element';
+  node.children = [
+    {
+      // @ts-ignore
       type: 'element',
-      children: [...node.children],
+      children: [
+        {
+          type: 'paragraph',
+          children: [
+            {
+              type: 'text',
+              value: types[0].filename ?? '',
+            },
+          ],
+          data: {
+            hName: 'span',
+            hProperties: {
+              className: 'codeblock-filename',
+            },
+          },
+        },
+        {
+          // @ts-ignore
+          type: 'element',
+          children: [
+            {
+              type: 'paragraph',
+              children: [
+                {
+                  type: 'text',
+                  value: types[0].language ?? '',
+                },
+              ],
+              data: {
+                hName: 'button',
+                hProperties: {
+                  className: 'codeblock-language-selected',
+                },
+              },
+            },
+            {
+              type: 'paragraph',
+              children: [
+                {
+                  // @ts-ignore
+                  type: 'element',
+                  // @ts-ignore
+                  children: types.map((type) => ({
+                    type: 'paragraph',
+                    children: [
+                      {
+                        type: 'text',
+                        value: type.language ?? '',
+                      },
+                    ],
+                    data: {
+                      hName: 'button',
+                    },
+                  })),
+                },
+              ],
+              data: {
+                hName: 'div',
+                hProperties: {
+                  className: 'codeblock-language-options',
+                },
+              },
+            },
+          ],
+          data: {
+            hName: 'span',
+            hProperties: {
+              className: 'codeblock-language',
+            },
+          },
+        },
+      ],
       data: {
-        hName: 'div',
+        hName: 'nav',
         hProperties: {
-          className: 'codeblock-group',
+          dataGroups: JSON.stringify(types),
         },
       },
-    };
+    },
+    ...node.children.map((child: any, index: number) => {
+      if (child.name === 'codeblock-header') {
+        child.data = {
+          ...child.data,
+          hProperties: {
+            ...child.data.hProperties,
+            style: index === 0 ? '' : 'display: none;',
+          },
+        };
+      }
+      return child;
+    }),
+  ];
+  node.data = {
+    hName: 'div',
+    hProperties: {
+      className: 'codeblock-group',
+    },
   };
 }
 
 export function remarkDirectiveRehypeCodeblockGroup(): Transformer<Parent> {
-  return (nodeTree: any, file: VFile) => map(nodeTree, mapCodeblockGroup(file));
+  return (nodeTree: any) => visit(nodeTree, 'containerDirective', visitCodeblockGroup);
 }

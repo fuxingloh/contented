@@ -290,6 +290,41 @@ const b: number = 2;
 
 #### Codeblock with Language Selector
 
-:::codeblock-group
+::::codeblock-group
+:::codeblock-header{filename="example.ts" language="TypeScript"}
+
+```ts
+const a: number = 1;
+const b: number = 2;
+```
 
 :::
+:::codeblock-header{filename="example.js" language="JavaScript"}
+
+```js
+const a = 1;
+const b = 2;
+```
+
+:::
+::::
+
+````txt
+::::codeblock-group
+
+:::codeblock-header{filename="example.ts" language="TypeScript"}
+```ts
+const a: number = 1;
+const b: number = 2;
+```
+:::
+
+:::codeblock-header{filename="example.js" language="JavaScript"}
+```js
+const a = 1;
+const b = 2;
+```
+:::
+
+::::
+````

@@ -45,10 +45,10 @@ export default function ContentNavigation({ sections, className }) {
                   const isCurrentPath = linkPath === router.asPath || router.asPath + '/' === linkPath;
 
                   return (
-                    <li key={link.fileId} className="relative">
+                    <li key={link.fileId} className="relative flex h-6 items-center">
                       <Link
                         href={linkPath}
-                        className={clsx({
+                        className={clsx('truncate', {
                           'block w-full cursor-pointer truncate pl-3.5 before:pointer-events-none before:absolute before:inset-y-0 before:-left-1 before:w-1':
                             folderName,
                           'text-primary-500 before:bg-primary-500 font-semibold': isCurrentPath,

@@ -49,8 +49,36 @@ export default function IndexPage({ content, sections }) {
 
   mermaid.initialize({ theme, startOnLoad: false });
 
+  function setCodeblockGroupLanguage(language) {
+    function getLanguageMetadata(element) {
+      const dataGroups = element.querySelectorAll('nav')[0]?.getAttribute('data-groups');
+      if (!dataGroups) {
+        return;
+      }
+      const parsed = JSON.parse(dataGroups);
+      return parsed.find((group) => group.language === language) ?? parsed[0];
+    }
+
+    document.querySelectorAll('.prose div.codeblock-group').forEach((codeblockGroup) => {
+      const group = getLanguageMetadata(codeblockGroup);
+      if (!group) {
+        return;
+      }
+
+      codeblockGroup.querySelectorAll('.codeblock-language-selected')[0].innerHTML = group.language;
+      codeblockGroup.querySelectorAll('.codeblock-filename')[0].innerHTML = group.filename;
+      codeblockGroup.querySelectorAll('.codeblock-header').forEach((header) => {
+        header.style.display = header.getAttribute('data-language') !== language ? 'none' : 'block';
+      });
+    });
+  }
+
   useEffect(() => {
     mermaid.init();
+
+    document.querySelectorAll('.codeblock-language-options button').forEach((button) => {
+      button.onclick = () => setCodeblockGroupLanguage(button.innerHTML);
+    });
   }, [router.asPath, theme]);
 
   return (

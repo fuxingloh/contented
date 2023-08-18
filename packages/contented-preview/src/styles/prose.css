@@ -126,6 +126,12 @@
   @apply hover:bg-slate-200/50 dark:hover:bg-slate-700/50;
 }
 
+.prose .codeblock-group nav button.codeblock-language-selected::after {
+  content: '▾';
+  font-size: 18px;
+  @apply ml-1;
+}
+
 .prose .codeblock-group nav span.codeblock-language {
   @apply relative;
 }

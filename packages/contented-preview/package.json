@@ -10,12 +10,10 @@
     "export": "next build && next-sitemap && next export"
   },
   "dependencies": {
-    "@headlessui/react": "1.7.17",
     "@heroicons/react": "2.0.18",
     "@tailwindcss/typography": "0.5.9",
     "autoprefixer": "10.4.15",
     "clsx": "1.2.1",
-    "lodash": "4.17.21",
     "mermaid": "10.3.1",
     "next": "13.4.19",
     "next-sitemap": "4.2.2",

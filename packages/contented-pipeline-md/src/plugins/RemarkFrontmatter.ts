@@ -1,4 +1,6 @@
 import yaml from 'js-yaml';
+// eslint-disable-next-line import/extensions
+import truncate from 'lodash/truncate.js';
 import { Heading, Paragraph, Parent } from 'mdast';
 import { toString } from 'mdast-util-to-string';
 import { Transformer } from 'unified';
@@ -40,7 +42,10 @@ function visitDescription(file: VFile): (node: Paragraph) => void {
       return;
     }
 
-    contented.fields.description = toString(node).replaceAll('\n', ' ').substring(0, 300);
+    const description = toString(node).replaceAll('\n', ' ');
+    contented.fields.description = truncate(description, {
+      length: 250,
+    });
   };
 }
 

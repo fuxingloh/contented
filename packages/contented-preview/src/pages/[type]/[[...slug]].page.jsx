@@ -1,6 +1,5 @@
 // noinspection ES6PreferShortImport
 import clsx from 'clsx';
-import truncate from 'lodash/truncate';
 import mermaid from 'mermaid';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -41,7 +40,7 @@ export async function getStaticProps({ params }) {
 export default function IndexPage({ content, sections }) {
   const siteTitle = getSiteTitle(content);
   const canonicalUrl = `${process.env.CONTENTED_PREVIEW_SITE_URL}${content.path}`;
-  const description = truncate(content?.description, { length: 220 });
+  const description = content?.description;
 
   const { theme } = useTheme();
   const router = useRouter();

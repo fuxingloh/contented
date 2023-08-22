@@ -40,7 +40,7 @@ function visitDescription(file: VFile): (node: Paragraph) => void {
       return;
     }
 
-    contented.fields.description = toString(node).substring(0, 300);
+    contented.fields.description = toString(node).replaceAll('\n', ' ').substring(0, 300);
   };
 }
 

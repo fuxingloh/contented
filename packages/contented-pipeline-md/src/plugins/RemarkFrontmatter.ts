@@ -1,5 +1,6 @@
 import yaml from 'js-yaml';
-import { truncate } from 'lodash';
+// eslint-disable-next-line import/extensions
+import truncate from 'lodash/truncate.js';
 import { Heading, Paragraph, Parent } from 'mdast';
 import { toString } from 'mdast-util-to-string';
 import { Transformer } from 'unified';

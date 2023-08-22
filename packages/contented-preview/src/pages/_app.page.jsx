@@ -15,7 +15,9 @@ export default function App({ Component, pageProps }) {
       <ThemeProvider>
         <MenuProvider>
           <Header />
-          <Component {...pageProps} />
+          <main className="bg-white text-gray-900 dark:bg-slate-900 dark:text-slate-300">
+            <Component {...pageProps} />
+          </main>
         </MenuProvider>
       </ThemeProvider>
     </>

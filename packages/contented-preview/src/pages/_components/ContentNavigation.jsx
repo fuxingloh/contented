@@ -75,7 +75,9 @@ export default function ContentNavigation({ sections, className }) {
           <div className="mt-1 flex gap-4">
             {pipelines.map(([type, pipeline]) => {
               if (pipeline.collection[0] === undefined || pipeline.collection[0] === null) {
-                throw new PipelineCollectionNotFoundException(type);
+                throw new Error(
+                  `Pipeline type '${type}' cannot resolve its collection. Please check if contented.config.mjs is properly configured.`,
+                );
               }
               return (
                 <Link href={`/${type.toLowerCase()}${pipeline.collection[0].path}`} key={type}>

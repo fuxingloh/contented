@@ -37,7 +37,9 @@ export default function Header() {
               <div className="ml-6 hidden border-l border-slate-300/60 pl-4 dark:border-slate-300/10 md:flex">
                 {pipelines.map(([type, pipeline]) => {
                   if (pipeline.collection[0] === undefined || pipeline.collection[0] === null) {
-                    throw new PipelineCollectionNotFoundException(type);
+                    throw new Error(
+                      `Pipeline type '${type}' cannot resolve its collection. Please check if contented.config.mjs is properly configured.`,
+                    );
                   }
                   return (
                     <Link href={`/${type.toLowerCase()}${pipeline.collection[0].path}`} key={type}>

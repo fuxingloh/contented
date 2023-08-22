@@ -58,12 +58,6 @@ window.addEventListener('storage', updateThemeWithoutTransitions)
 export default function Document() {
   return (
     <Html lang="en">
-      <Head>
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" href="/favicon/favicon-16x16.png" sizes="16x16" />
-        <link rel="icon" type="image/png" href="/favicon/favicon-32x32.png" sizes="32x32" />
-      </Head>
-
       <body className="bg-white text-gray-900 dark:bg-slate-900 dark:text-slate-300">
         <Main />
         <NextScript />

@@ -57,7 +57,7 @@ describe('JestMarkdownPipeline', () => {
             title: '@contented codeblock',
           },
         ],
-        path: '/jest-markdown-pipeline',
+        path: '/jest-markdown-pipeline-unit',
         sections: [],
         fileId: expect.stringMatching(/[0-f]{64}/),
         modifiedDate: expect.any(Number),
@@ -102,7 +102,7 @@ describe('JestMarkdownPipeline', () => {
         '<span class="line"><span style="color: var(--shiki-color-text)">        title</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-string-expression)">\'@contented codeblock\'</span><span style="color: var(--shiki-token-punctuation)">,</span></span>\n' +
         '<span class="line"><span style="color: var(--shiki-color-text)">      }</span><span style="color: var(--shiki-token-punctuation)">,</span></span>\n' +
         '<span class="line"><span style="color: var(--shiki-color-text)">    ]</span><span style="color: var(--shiki-token-punctuation)">,</span></span>\n' +
-        '<span class="line"><span style="color: var(--shiki-color-text)">    path</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-string-expression)">\'/jest-markdown-pipeline\'</span><span style="color: var(--shiki-token-punctuation)">,</span></span>\n' +
+        '<span class="line"><span style="color: var(--shiki-color-text)">    path</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-string-expression)">\'/jest-markdown-pipeline-unit\'</span><span style="color: var(--shiki-token-punctuation)">,</span></span>\n' +
         '<span class="line"><span style="color: var(--shiki-color-text)">    sections</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> []</span><span style="color: var(--shiki-token-punctuation)">,</span></span>\n' +
         '<span class="line"><span style="color: var(--shiki-color-text)">    fileId</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">expect</span><span style="color: var(--shiki-token-function)">.stringMatching</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">/[0-f]</span><span style="color: var(--shiki-token-keyword)">{64}</span><span style="color: var(--shiki-token-string-expression)">/</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>\n' +
         '<span class="line"><span style="color: var(--shiki-color-text)">    modifiedDate</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">expect</span><span style="color: var(--shiki-token-function)">.any</span><span style="color: var(--shiki-color-text)">(Number)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>\n' +

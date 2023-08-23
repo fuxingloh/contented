@@ -73,7 +73,7 @@ const config = {
       {
         type: 'Contented',
         dir: 'packages/contented-example',
-        pattern: 'jest/**/*.spec.ts',
+        pattern: 'jest/**/*.md.unit.[tj]s',
         processor: 'jest-md',
         transform: (file) => {
           file.sections = file.sections.slice(1);

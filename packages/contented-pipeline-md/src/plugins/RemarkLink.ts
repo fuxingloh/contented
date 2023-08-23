@@ -31,7 +31,7 @@ function visitLink(file: VFile): (node: Link) => void {
       );
       const parsedPath = parsePath(join(pipelineDir, contented.filePath));
       const linkedFilePath = join(pipelineDir, path);
-      const relativePath = relative(parsedPath.dir, linkedFilePath);
+      const relativePath = relative(parsedPath.dir, linkedFilePath).replaceAll('%20', ' ');
       node.url = contented.contentedPipeline.getSanitizedPath(relativePath);
     } else {
       node.url = contented.contentedPipeline.getSanitizedPath(path);

@@ -7,19 +7,23 @@ import { MarkdownPipeline, MarkdownVFile } from '@contentedjs/contented-pipeline
 import stripIndent from 'strip-indent';
 
 export class JestMarkdownPipeline extends MarkdownPipeline {
+  /**
+   * The file should be named as `file.md.[jt]sx?` the `.md.` middle part to determine the file type.
+   * The content should be a valid typescript or javascript file.
+   */
   protected override computePath(sections: string[], parsedPath: ParsedPath): string {
     const path = super.computePath(sections, parsedPath);
-    return path.replaceAll(/-(unit|i9n|e2e|integration|test|tests|spec)$/g, '');
+    return path.replaceAll(/-md$/g, '');
   }
 
-  protected override async readVFile(rootPath: string, file: string): Promise<MarkdownVFile | undefined> {
-    const path = join(rootPath, file);
+  protected override async readVFile(rootPath: string, filename: string): Promise<MarkdownVFile | undefined> {
+    const path = join(rootPath, filename);
     const contents = await readFile(path, { encoding: 'utf-8' });
     const ast = await this.parseAST(contents);
     const lines = contents.split('\n');
 
     const comments = this.collectComments(ast) ?? [];
-    const value = this.mergeCodeblock(lines, comments).join('\n\n');
+    const value = this.mergeCodeblock(lines, comments, filename).join('\n\n');
 
     return new MarkdownVFile(
       {
@@ -27,7 +31,7 @@ export class JestMarkdownPipeline extends MarkdownPipeline {
         value,
       },
       this,
-      file,
+      filename,
     );
   }
 
@@ -53,7 +57,8 @@ export class JestMarkdownPipeline extends MarkdownPipeline {
     return stripIndent(content);
   }
 
-  protected mergeCodeblock(lines: string[], comments: IndexedComment[]): string[] {
+  protected mergeCodeblock(lines: string[], comments: IndexedComment[], filename: string): string[] {
+    const extension = filename.split('.').pop();
     const collected: string[] = [];
     const starts: number[] = [];
 
@@ -63,7 +68,7 @@ export class JestMarkdownPipeline extends MarkdownPipeline {
       } else if (comment.content === '@contented codeblock:end') {
         if (starts.length > 0) {
           const codeblock = lines.slice(starts.pop(), comment.index - 1).join('\n');
-          collected.push(`\`\`\`ts\n${stripIndent(codeblock)}\n\`\`\``);
+          collected.push(`\`\`\`${extension}\n${stripIndent(codeblock)}\n\`\`\``);
         }
       } else {
         collected.push(comment.content);

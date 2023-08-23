@@ -1,0 +1,34 @@
+{
+  "name": "@contentedjs/contented-example-jest",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write --ignore-unknown"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": [
+      "@stickyjs"
+    ]
+  },
+  "jest": {
+    "preset": "@contentedjs/jest-preset",
+    "testRegex": ".*\\.md\\.[jt]s$"
+  },
+  "devDependencies": {
+    "@contentedjs/jest-preset": "0.0.0"
+  }
+}

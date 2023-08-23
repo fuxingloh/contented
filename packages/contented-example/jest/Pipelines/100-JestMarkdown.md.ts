@@ -64,7 +64,7 @@ describe('JestMarkdownPipeline', () => {
         // @contented codeblock:start
         '@contented codeblock:start',
         // @contented codeblock:end
-        'everything in between will be included as a TypeScript codeblock ```ts\n${codes}\n```',
+        'everything in between will be included as a TypeScript codeblock ```ts\n```',
         // @contented codeblock:start
         '@contented codeblock:end',
         // @contented codeblock:end
@@ -73,79 +73,4 @@ describe('JestMarkdownPipeline', () => {
     });
     // @contented codeblock:end
   });
-
-  /**
-   * ## Beta Pipeline
-   *
-   * :::div{class="admonitions yellow"}
-   * This Pipeline is currently in Beta!
-   * :::
-   *
-   * This pipeline is considered Beta, while the idea and the intent will stay intact. We want to optimize this
-   * pipeline for better integration with Jest. Better integration with Jest Semantic `describe`, `it`, `before`, and
-   * `after`; to achieve a more natural authoring process.
-   *
-   * Imagine the below:
-   */
-  // @contented codeblock:start
-  describe('MyAPI: Javascript Client', () => {
-    const api = new MyApi('https://my-api.com');
-
-    describe('GetRecords', () => {
-      it('Example', function () {
-        const records = api.GetRecords(10);
-      });
-    });
-
-    describe('PutRecord', () => {
-      it('Example', async function () {
-        await api.PutRecord({
-          text: 'MyText',
-        });
-      });
-    });
-  });
-  // @contented codeblock:end
-
-  /*
-  Should generate this Markdown:
-
-  ### MyAPI: Javascript Client
-
-  ```ts
-  const api = new MyApi('https://my-api.com');
-  ```
-
-  #### GetRecords
-
-  ##### Example
-
-  ```ts
-  const records = api.GetRecords(10);
-  ```
-
-  #### PutRecord
-
-  ##### Example
-
-  ```ts
-  await api.PutRecord({
-    text: 'MyText',
-  });
-  ```
-   */
 });
-
-class MyApi {
-  constructor(url: string) {}
-
-  GetRecords(size: number): MyData[] {
-    return [];
-  }
-
-  async PutRecord(data: MyData): Promise<void> {}
-}
-
-interface MyData {
-  text: string;
-}

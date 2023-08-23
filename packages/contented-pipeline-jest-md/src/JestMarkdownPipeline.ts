@@ -8,12 +8,12 @@ import stripIndent from 'strip-indent';
 
 export class JestMarkdownPipeline extends MarkdownPipeline {
   /**
-   * The file should be named as `file.md.[jt]sx?` the `.md.` middle part to determine the file type.
-   * The content should be a valid typescript or javascript file.
+   * The file should be named as `file.md.unit.[jt]sx?` the `.md.unit.` middle part to determine
+   * it's a markdown file that is also a unit test file.
    */
   protected override computePath(sections: string[], parsedPath: ParsedPath): string {
     const path = super.computePath(sections, parsedPath);
-    return path.replaceAll(/-md$/g, '');
+    return path.replaceAll(/md-(unit|i9n|e2e|integration|test|tests|spec)$/g, '');
   }
 
   protected override async readVFile(rootPath: string, filename: string): Promise<MarkdownVFile | undefined> {

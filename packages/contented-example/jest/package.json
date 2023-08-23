@@ -26,7 +26,7 @@
   },
   "jest": {
     "preset": "@contentedjs/jest-preset",
-    "testRegex": ".*\\.md\\.[jt]s$"
+    "testRegex": ".*\\.md\\.unit.[jt]s$"
   },
   "devDependencies": {
     "@contentedjs/jest-preset": "0.0.0"

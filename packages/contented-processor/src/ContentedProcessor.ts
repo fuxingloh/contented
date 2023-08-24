@@ -63,7 +63,7 @@ export class ContentedProcessor {
 
     for (const file of files) {
       for (const content of await this.process(file)) {
-        result.pipelines[content.type].push(cloneFileIndex(content));
+        result.pipelines[content.type].push(toFileIndex(content));
       }
     }
 
@@ -169,7 +169,7 @@ function getPipelineUniqueKey(pipeline: Pipeline) {
   return `${pipeline.type}:${pipeline.dir ?? ''}:${pipeline.pattern.join(',')}`;
 }
 
-function cloneFileIndex(index: FileIndex): FileIndex {
+function toFileIndex(index: FileContent): FileIndex {
   return {
     fileId: index.fileId,
     fields: index.fields,
@@ -177,5 +177,6 @@ function cloneFileIndex(index: FileIndex): FileIndex {
     path: index.path,
     sections: index.sections,
     type: index.type,
+    headings: index.headings,
   };
 }

@@ -14,6 +14,7 @@ export interface FileIndex extends PipelineFile {
   sections: string[];
   modifiedDate: number;
   fields: Record<string, any>;
+  headings: FileContentHeadings[];
 }
 
 /**
@@ -21,7 +22,6 @@ export interface FileIndex extends PipelineFile {
  */
 export interface FileContent extends FileIndex {
   html: string;
-  headings: FileContentHeadings[];
 }
 
 /**

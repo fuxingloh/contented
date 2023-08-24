@@ -97,6 +97,7 @@ export abstract class ContentedPipeline {
       modifiedDate: await this.computeModifiedDate(filePath),
       sections,
       fields: {},
+      headings: [],
     };
   }
 

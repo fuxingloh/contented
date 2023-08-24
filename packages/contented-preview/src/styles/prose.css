@@ -62,6 +62,14 @@
   table-layout: fixed;
 }
 
+.prose table tr :is(th, td) :first-child {
+  @apply mt-0;
+}
+
+.prose table tr :is(th, td) :last-child {
+  @apply mb-0;
+}
+
 .prose .mermaid {
   @apply rounded-[6px] p-6;
   @apply flex items-center justify-center;

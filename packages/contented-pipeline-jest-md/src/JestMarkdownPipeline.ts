@@ -1,5 +1,5 @@
 import { readFile } from 'node:fs/promises';
-import { join, ParsedPath } from 'node:path';
+import { join } from 'node:path';
 
 import { parse } from '@babel/parser';
 import { File } from '@babel/types';
@@ -7,13 +7,9 @@ import { MarkdownPipeline, MarkdownVFile } from '@contentedjs/contented-pipeline
 import stripIndent from 'strip-indent';
 
 export class JestMarkdownPipeline extends MarkdownPipeline {
-  /**
-   * The file should be named as `file.md.unit.[jt]sx?` the `.md.unit.` middle part to determine
-   * it's a markdown file that is also a unit test file.
-   */
-  protected override computePath(sections: string[], parsedPath: ParsedPath): string {
-    const path = super.computePath(sections, parsedPath);
-    return path.replaceAll(/md-(unit|i9n|e2e|integration|test|tests|spec)$/g, '');
+  protected computeFileName(rawFileName: string): string {
+    const rawFile = rawFileName.replaceAll(/\.md$/g, '');
+    return super.computeFileName(rawFile);
   }
 
   protected override async readVFile(rootPath: string, filename: string): Promise<MarkdownVFile | undefined> {

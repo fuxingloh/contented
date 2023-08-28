@@ -19,7 +19,7 @@ export interface Pipeline {
   fields?: {
     [name: string]: PipelineField;
   };
-  transform?: (file: FileContent) => Promise<FileContent>;
+  transform?: (file: FileContent, filePath: string) => Promise<FileContent>;
   sort?: (a: FileIndex, b: FileIndex) => number;
 }
 
@@ -64,7 +64,7 @@ export abstract class ContentedPipeline {
     if (this.pipeline.transform === undefined) {
       return contents;
     }
-    return Promise.all(contents.map(this.pipeline.transform));
+    return Promise.all(contents.map((content) => this.pipeline.transform!(content, file)));
   }
 
   /**

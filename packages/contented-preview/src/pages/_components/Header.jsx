@@ -1,4 +1,5 @@
-import { Bars3Icon, DocumentTextIcon, MoonIcon, SunIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, MoonIcon, SunIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Square3Stack3DIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import Link from 'next/link';
 
@@ -11,7 +12,7 @@ export default function Header() {
   const pipelines = Object.entries(Pipelines);
 
   return (
-    <header className="sticky top-0 z-10 h-[3.25rem] border-b border-slate-200/60 bg-slate-50 dark:border-slate-300/10 dark:bg-slate-900 print:hidden">
+    <header className="sticky top-0 z-10 h-[3.25rem] border-b border-slate-200/60 bg-slate-50 dark:border-slate-300/10 dark:bg-slate-950 print:hidden">
       <nav className="max-w-8xl mx-auto h-full px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex h-full w-full items-center justify-between">
           <div className="flex">
@@ -28,7 +29,7 @@ export default function Header() {
             </div>
 
             <a href="/" className="flex items-center">
-              <DocumentTextIcon className="text-primary-500 h-6 w-auto" />
+              <Square3Stack3DIcon className="text-primary-500 h-6 w-6" />
               <h1 className="ml-2 font-semibold">{process.env.CONTENTED_PREVIEW_SITE_NAME}</h1>
             </a>
 

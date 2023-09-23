@@ -174,6 +174,31 @@ graph LR
     C --> D;
 ```
 
+## Alerts
+
+This is a spec that is similar to [Admonitions](#admonitions-directive)
+but [supported on GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts).
+
+> [!NOTE]
+> Highlights information that users should take into account, even when skimming.
+
+> [!IMPORTANT]
+> Crucial information necessary for users to succeed.
+
+> [!WARNING]
+> Critical content demanding immediate user attention due to potential risks.
+
+```markdown
+> [!NOTE]
+> Highlights information that users should take into account, even when skimming.
+
+> [!IMPORTANT]
+> Crucial information necessary for users to succeed.
+
+> [!WARNING]
+> Critical content demanding immediate user attention due to potential risks.
+```
+
 ## Directives
 
 They can be declared via long-form `:::div{class="table-fixed"}` or short-form `:::div{.table-fixed}`
@@ -219,6 +244,8 @@ They can be declared via long-form `:::div{class="table-fixed"}` or short-form `
 ```
 
 ### Admonitions Directive
+
+> [!WARNING] > **Deprecated** in favor of GitHub Alerts. See [Alerts](#alerts).
 
 Admonitions with `remark-directive` and `remark-directive-rehype`.
 

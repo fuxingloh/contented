@@ -1,4 +1,4 @@
 @import 'tailwindcss/base';
-@import './prose.css';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import './prose.css';

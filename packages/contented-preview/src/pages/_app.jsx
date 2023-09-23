@@ -2,9 +2,9 @@ import '../styles/globals.css';
 
 import Head from 'next/head';
 
-import Header from './_components/Header';
-import { MenuProvider } from './_components/MenuContext';
-import { ThemeProvider } from './_components/ThemeContext';
+import Header from '../components/Header';
+import { MenuProvider } from '../components/MenuContext';
+import { ThemeProvider } from '../components/ThemeContext';
 
 export default function App({ Component, pageProps }) {
   return (

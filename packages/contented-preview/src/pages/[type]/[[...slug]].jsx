@@ -6,11 +6,11 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 import { Index } from '../../../../index.js';
-import ContentHeadings from '../_components/ContentHeadings';
-import ContentNavigation, { computeContentSections } from '../_components/ContentNavigation';
-import ContentProse from '../_components/ContentProse';
-import { useMenu } from '../_components/MenuContext';
-import { useTheme } from '../_components/ThemeContext';
+import ContentHeadings from '../../components/ContentHeadings';
+import ContentNavigation, { computeContentSections } from '../../components/ContentNavigation';
+import ContentProse from '../../components/ContentProse';
+import { useMenu } from '../../components/MenuContext';
+import { useTheme } from '../../components/ThemeContext';
 
 export async function getStaticPaths() {
   return {

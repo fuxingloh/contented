@@ -2,7 +2,8 @@ export type PipelineField =
   | AbstractField<'string', string>
   | AbstractField<'number', number>
   | AbstractField<'string[]', string[]>
-  | AbstractField<'number[]', number[]>;
+  | AbstractField<'number[]', number[]>
+  | AbstractField<'object', object>;
 
 export interface AbstractField<NamedType, T> {
   type: NamedType;

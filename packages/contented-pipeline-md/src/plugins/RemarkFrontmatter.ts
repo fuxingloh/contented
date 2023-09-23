@@ -96,6 +96,8 @@ function isTypeValid(type: string, value: any) {
       return typeof value === 'string';
     case 'number':
       return typeof value === 'number';
+    case 'object':
+      return typeof value === 'object';
     case 'string[]':
       return Array.isArray(value) && value.every((s) => typeof s === 'string');
     case 'number[]':

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import isEqual from 'lodash/isEqual';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Pipelines } from '../../../../index.js';
+import { Pipelines } from '../../../index.js';
 
 export function computeContentSections(items) {
   const sections = [];

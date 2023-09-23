@@ -2,9 +2,9 @@ import '../styles/globals.css';
 
 import Head from 'next/head';
 
-import Header from './_components/Header';
-import { MenuProvider } from './_components/MenuContext';
-import { ThemeProvider } from './_components/ThemeContext';
+import Header from '../components/Header';
+import { MenuProvider } from '../components/MenuContext';
+import { ThemeProvider } from '../components/ThemeContext';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }) {
       <ThemeProvider>
         <MenuProvider>
           <Header />
-          <main className="bg-white text-gray-900 dark:bg-slate-900 dark:text-slate-300">
+          <main>
             <Component {...pageProps} />
           </main>
         </MenuProvider>

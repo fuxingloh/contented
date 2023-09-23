@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  output: 'export',
   reactStrictMode: true,
-  pageExtensions: ['page.jsx'],
   swcMinify: true,
   env: {
     CONTENTED_PREVIEW_SITE_URL: process.env.CONTENTED_PREVIEW_SITE_URL,

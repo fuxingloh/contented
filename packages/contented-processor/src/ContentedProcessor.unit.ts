@@ -121,6 +121,78 @@ describe('process', () => {
   });
 });
 
+describe('frontmatter', () => {
+  const processor = new ContentedProcessor({
+    rootDir: './fixtures',
+    outDir: './.contented',
+    pipelines: [
+      {
+        type: 'Markdown',
+        pattern: '**/*.md',
+        processor: 'md',
+        fields: {
+          metadata: {
+            type: 'object',
+            resolve: (value: any): object => {
+              if (typeof value === 'string') {
+                return {
+                  title: value,
+                  keywords: value.split(' '),
+                };
+              }
+              return value;
+            },
+          },
+        },
+      },
+    ],
+  });
+
+  it('should process frontmatter.md', async () => {
+    expect(await processor.process('frontmatter.md')).toStrictEqual([
+      {
+        type: 'Markdown',
+        fields: {
+          description: 'Frontmatter testing',
+          title: 'Frontmatter',
+          metadata: {
+            title: 'Frontmatter in Metadata',
+            keywords: ['frontmatter', 'testing'],
+          },
+        },
+        headings: expect.any(Array),
+        html: expect.any(String),
+        fileId: expect.any(String),
+        modifiedDate: expect.any(Number),
+        sections: [],
+        path: '/frontmatter',
+      },
+    ]);
+  });
+
+  it('should process frontmatter-remap.md', async () => {
+    expect(await processor.process('frontmatter-remap.md')).toStrictEqual([
+      {
+        type: 'Markdown',
+        fields: {
+          description: 'Frontmatter testing',
+          title: 'Frontmatter',
+          metadata: {
+            title: 'Frontmatter in Metadata',
+            keywords: ['Frontmatter', 'in', 'Metadata'],
+          },
+        },
+        headings: expect.any(Array),
+        html: expect.any(String),
+        fileId: expect.any(String),
+        modifiedDate: expect.any(Number),
+        sections: [],
+        path: '/frontmatter-remap',
+      },
+    ]);
+  });
+});
+
 describe('build', () => {
   const config: Config = {
     rootDir: './fixtures',

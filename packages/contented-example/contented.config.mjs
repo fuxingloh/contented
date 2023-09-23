@@ -1,4 +1,5 @@
 import { MarkdownPipeline } from '@contentedjs/contented-pipeline-md';
+import { JestMarkdownPipeline } from '@contentedjs/contented-pipeline-jest-md';
 
 /** @type {import('@contentedjs/contented').ContentedConfig} */
 const config = {
@@ -74,7 +75,7 @@ const config = {
         type: 'Contented',
         dir: 'packages/contented-example',
         pattern: 'jest/**/*.md.[tj]s',
-        processor: 'jest-md',
+        processor: JestMarkdownPipeline,
         transform: (file) => {
           file.sections = file.sections.slice(1);
           return file;

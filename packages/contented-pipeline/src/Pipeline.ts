@@ -15,7 +15,7 @@ export interface Pipeline {
    * Built in processor: 'md'
    * Otherwise it will `import(processor)` module with default exporting ContentedPipeline
    */
-  processor: 'md' | 'jest-md' | (new (rootPath: string, pipeline: Pipeline) => ContentedPipeline);
+  processor: 'md' | (new (rootPath: string, pipeline: Pipeline) => ContentedPipeline);
   fields?: {
     [name: string]: PipelineField;
   };

@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "export": "next build && next export"
+    "export": "next build --no-lint"
   },
   "dependencies": {
     "@heroicons/react": "2.0.18",

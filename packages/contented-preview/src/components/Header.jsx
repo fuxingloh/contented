@@ -3,7 +3,7 @@ import { Square3Stack3DIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import Link from 'next/link';
 
-import { Pipelines } from '../../../../index.js';
+import { Pipelines } from '../../../index.js';
 import { useMenu } from './MenuContext';
 import { useTheme } from './ThemeContext';
 

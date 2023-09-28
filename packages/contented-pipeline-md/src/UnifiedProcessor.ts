@@ -4,7 +4,6 @@ import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
 import rehypeStringify from 'rehype-stringify';
 import remarkDirective from 'remark-directive';
-import remarkDirectiveRehype from 'remark-directive-rehype';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
@@ -18,6 +17,7 @@ import {
   remarkDirectiveRehypeCodeblockGroup,
   remarkDirectiveRehypeCodeblockHeader,
 } from './plugins/RemarkCodeblock.js';
+import { remarkDirectiveRehype } from './plugins/RemarkDirectiveRehype.js';
 import { collectFields, resolveFields, validateFields } from './plugins/RemarkFrontmatter.js';
 import { remarkLink } from './plugins/RemarkLink.js';
 

@@ -39,8 +39,8 @@
     "preset": "@contentedjs/jest-preset"
   },
   "dependencies": {
-    "@babel/parser": "^7.22.14",
-    "@babel/types": "^7.22.11",
+    "@babel/parser": "^7.23.0",
+    "@babel/types": "^7.23.0",
     "@contentedjs/contented-pipeline-md": "0.0.0",
     "strip-indent": "^4.0.0",
     "unified": "^10.1.2",

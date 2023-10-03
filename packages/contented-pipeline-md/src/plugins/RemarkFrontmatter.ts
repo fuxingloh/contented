@@ -92,6 +92,8 @@ export function remarkFrontmatterValidate(): Transformer<Parent> {
 
 function isTypeValid(type: string, value: any) {
   switch (type.replaceAll(' ', '')) {
+    case 'boolean':
+      return typeof value === 'boolean';
     case 'string':
       return typeof value === 'string';
     case 'number':

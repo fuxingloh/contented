@@ -1,4 +1,5 @@
 export type PipelineField =
+  | AbstractField<'boolean', boolean>
   | AbstractField<'string', string>
   | AbstractField<'number', number>
   | AbstractField<'string[]', string[]>

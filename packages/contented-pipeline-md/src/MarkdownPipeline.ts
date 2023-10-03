@@ -1,7 +1,7 @@
 import console from 'node:console';
 import { join } from 'node:path';
 
-import { ContentedPipeline, FileContent, FileIndex } from '@contentedjs/contented-pipeline';
+import { ContentedPipeline, FileContent, FileIndex, Pipeline } from '@contentedjs/contented-pipeline';
 import { read } from 'to-vfile';
 import { Processor, unified } from 'unified';
 import { VFile } from 'vfile';
@@ -13,7 +13,7 @@ export class MarkdownPipeline extends ContentedPipeline {
   protected readonly processor: Processor = unified();
 
   async init() {
-    await initProcessor(this.processor);
+    initProcessor(this.processor);
   }
 
   protected override async processFileIndex(
@@ -55,6 +55,23 @@ export class MarkdownPipeline extends ContentedPipeline {
       headings: contented.headings,
       fields: contented.fields,
     };
+  }
+
+  /**
+   * Create a new MarkdownPipeline with a custom processor.
+   * This is useful for only using a subset of the plugins that you need.
+   * @param processor is a function that takes a Processor and adds plugins to it.
+   */
+  static withProcessor(
+    processor: (processor: Processor) => void,
+  ): new (rootPath: string, pipeline: Pipeline) => ContentedPipeline {
+    class WithProcessor extends MarkdownPipeline {
+      async init(): Promise<void> {
+        processor(this.processor);
+      }
+    }
+
+    return WithProcessor;
   }
 }
 

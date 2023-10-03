@@ -9,7 +9,7 @@ import { VFile } from 'vfile';
 
 import { UnifiedContented } from './Plugin.js';
 
-export function collectFields(): Transformer<Parent> {
+export function remarkFrontmatterCollect(): Transformer<Parent> {
   return (tree: Parent, file) => {
     const node = tree.children?.[0];
     if (node?.type === 'yaml') {
@@ -49,7 +49,7 @@ function visitDescription(file: VFile): (node: Paragraph) => void {
   };
 }
 
-export function resolveFields(): Transformer<Parent> {
+export function remarkFrontmatterResolve(): Transformer<Parent> {
   return async (tree: Parent, file) => {
     const contented = file.data.contented as UnifiedContented;
     const entries = Object.entries(contented.pipeline.fields ?? {});
@@ -70,7 +70,7 @@ export function resolveFields(): Transformer<Parent> {
   };
 }
 
-export function validateFields(): Transformer<Parent> {
+export function remarkFrontmatterValidate(): Transformer<Parent> {
   return async (tree: Parent, file) => {
     const contented = file.data.contented as UnifiedContented;
     const entries = Object.entries(contented.pipeline.fields ?? {});

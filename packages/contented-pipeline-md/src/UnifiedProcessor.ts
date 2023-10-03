@@ -18,7 +18,11 @@ import {
   remarkDirectiveRehypeCodeblockHeader,
 } from './plugins/RemarkCodeblock.js';
 import { remarkDirectiveRehype } from './plugins/RemarkDirectiveRehype.js';
-import { collectFields, resolveFields, validateFields } from './plugins/RemarkFrontmatter.js';
+import {
+  remarkFrontmatterCollect,
+  remarkFrontmatterResolve,
+  remarkFrontmatterValidate,
+} from './plugins/RemarkFrontmatter.js';
 import { remarkLink } from './plugins/RemarkLink.js';
 
 export interface UnifiedOptions {
@@ -28,7 +32,7 @@ export interface UnifiedOptions {
   after?: Plugin[];
 }
 
-export async function initProcessor(processor: Processor, options?: UnifiedOptions) {
+export function initProcessor(processor: Processor, options?: UnifiedOptions): Processor {
   options?.before?.forEach((plugin) => {
     processor.use(plugin);
   });
@@ -43,7 +47,7 @@ export async function initProcessor(processor: Processor, options?: UnifiedOptio
     .use(remarkDirectiveRehypeCodeblockGroup)
     .use(remarkDirectiveRehype);
 
-  processor.use(collectFields).use(resolveFields).use(validateFields);
+  processor.use(remarkFrontmatterCollect).use(remarkFrontmatterResolve).use(remarkFrontmatterValidate);
 
   options?.remarks?.forEach((plugin) => {
     processor.use(plugin);
@@ -69,4 +73,29 @@ export async function initProcessor(processor: Processor, options?: UnifiedOptio
   options?.after?.forEach((plugin) => {
     processor.use(plugin);
   });
+
+  return processor;
 }
+
+export {
+  rehypeAutolinkHeadings,
+  rehypeExternalLinks,
+  rehypeHeading,
+  rehypeMermaid,
+  rehypeShiki,
+  rehypeSlug,
+  rehypeStringify,
+  rehypeToc,
+  remarkDirective,
+  remarkDirectiveRehype,
+  remarkDirectiveRehypeCodeblockGroup,
+  remarkDirectiveRehypeCodeblockHeader,
+  remarkFrontmatter,
+  remarkFrontmatterCollect,
+  remarkFrontmatterResolve,
+  remarkFrontmatterValidate,
+  remarkGfm,
+  remarkLink,
+  remarkParse,
+  remarkRehype,
+};

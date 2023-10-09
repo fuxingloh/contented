@@ -51,7 +51,7 @@ export default function ContentNavigation({ sections, className }) {
                         className={clsx('truncate', {
                           'block w-full cursor-pointer truncate pl-3.5 before:pointer-events-none before:absolute before:inset-y-0 before:-left-1 before:w-1':
                             folderName,
-                          'text-primary-500 before:bg-primary-500 font-semibold': isCurrentPath,
+                          'font-semibold text-rose-500 before:bg-rose-500': isCurrentPath,
                           'text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300':
                             !isCurrentPath,
                         })}

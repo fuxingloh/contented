@@ -41,7 +41,7 @@
 
 .prose :is(h1, h2, h3, h4, h5, h6) a:first-child:before {
   content: '#';
-  @apply text-primary-500 absolute -ml-6;
+  @apply absolute -ml-6 text-rose-500;
 }
 
 .prose code:not(pre code):not(:where([class~='not-prose'] *)) {

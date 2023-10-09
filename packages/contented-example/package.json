@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "build": "contented build",
+    "clean": "rm -rf .contented dist",
     "generate": "contented generate",
     "watch": "contented build --watch",
     "write": "contented generate --watch"

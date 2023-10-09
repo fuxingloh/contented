@@ -29,7 +29,7 @@ export default function Header() {
             </div>
 
             <a href="/" className="flex items-center">
-              <Square3Stack3DIcon className="text-primary-500 h-6 w-6" />
+              <Square3Stack3DIcon className="h-6 w-6 text-rose-500" />
               <h1 className="ml-2 font-semibold">{process.env.CONTENTED_PREVIEW_SITE_NAME}</h1>
             </a>
 

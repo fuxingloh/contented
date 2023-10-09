@@ -182,14 +182,14 @@ They can be declared via long-form `:::div{class="table-fixed"}` or short-form `
 
 ### Table Directive
 
-| Header 1 | Header 2 | Header 3 |
-| -------- | -------- | -------- |
-| Cell 1   | Cell 2   | Cell 3   |
+| Header 1 | Header 2 | Header 3                            |
+| -------- | -------- | ----------------------------------- |
+| Cell 1   | Cell 2   | Cell 3 `LongTextThatCannotTruncate` |
 
 ```markdown
-| Header 1 | Header 2 | Header 3 |
-| -------- | -------- | -------- |
-| Cell 1   | Cell 2   | Cell 3   |
+| Header 1 | Header 2 | Header 3                            |
+| -------- | -------- | ----------------------------------- |
+| Cell 1   | Cell 2   | Cell 3 `LongTextThatCannotTruncate` |
 ```
 
 :::div{class="table-fixed"}

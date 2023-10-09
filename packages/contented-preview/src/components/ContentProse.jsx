@@ -11,7 +11,7 @@ export default function ContentProse({ as: Component = 'div', className, ...prop
         // lead
         'prose-lead:text-slate-500 dark:prose-lead:text-slate-400',
         // links
-        'prose-a:font-semibold prose-a:text-primary-500 dark:prose-a:text-primary-400',
+        'prose-a:font-semibold prose-a:text-rose-500 dark:prose-a:text-rose-400',
         // link underline
         'prose-a:no-underline hover:prose-a:underline ',
         // code

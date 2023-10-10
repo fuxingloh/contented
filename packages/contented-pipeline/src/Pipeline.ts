@@ -135,7 +135,8 @@ export abstract class ContentedPipeline {
   }
 
   protected replacePrefix(path: string): string {
-    const matched = path.match(/^(:\d+:|\(\d+\)|\[\d+]|\d+-)(.+)$/);
+    // Remove the numbered prefix if it exists: For example, from 00-file.md to file.md
+    const matched = path.match(/^(\d+-)(.+)$/);
     if (matched !== null) {
       return matched[2];
     }

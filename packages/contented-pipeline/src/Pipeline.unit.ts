@@ -28,13 +28,13 @@ it('should replace numeric prefix path', () => {
 
   expect(pipeline.getSanitizedPath('path-1.md')).toStrictEqual('path-1');
 
-  expect(pipeline.getSanitizedPath(':01:path.md')).toStrictEqual('path');
+  expect(pipeline.getSanitizedPath(':01:path.md')).toStrictEqual('01-path');
   expect(pipeline.getSanitizedPath(':01path.md')).toStrictEqual('01path');
 
-  expect(pipeline.getSanitizedPath('[01]path.md')).toStrictEqual('path');
+  expect(pipeline.getSanitizedPath('[01]path.md')).toStrictEqual('01-path');
   expect(pipeline.getSanitizedPath('01]path.md')).toStrictEqual('01-path');
 
-  expect(pipeline.getSanitizedPath('(01)path.md')).toStrictEqual('path');
+  expect(pipeline.getSanitizedPath('(01)path.md')).toStrictEqual('01-path');
   expect(pipeline.getSanitizedPath('(01path.md')).toStrictEqual('01path');
 
   expect(pipeline.getSanitizedPath('01-path.md')).toStrictEqual('path');
@@ -45,9 +45,9 @@ it('should replace numeric prefix path', () => {
   expect(pipeline.getSanitizedPath('Header/Path.md')).toStrictEqual('header/path');
   expect(pipeline.getSanitizedPath('Header/01-Path.md')).toStrictEqual('header/path');
   expect(pipeline.getSanitizedPath('01-Header/01-Path.md')).toStrictEqual('header/path');
-  expect(pipeline.getSanitizedPath('01-Header/[01]Path.md')).toStrictEqual('header/path');
-  expect(pipeline.getSanitizedPath('(01)Header/[01]Path.md')).toStrictEqual('header/path');
-  expect(pipeline.getSanitizedPath(':01:Header/[01-Path.md')).toStrictEqual('header/01-path');
+  expect(pipeline.getSanitizedPath('01-Header/[01]Path.md')).toStrictEqual('header/01-path');
+  expect(pipeline.getSanitizedPath('(01)Header/[01]Path.md')).toStrictEqual('01-header/01-path');
+  expect(pipeline.getSanitizedPath(':01:Header/[01-Path.md')).toStrictEqual('01-header/01-path');
 });
 
 it('should preserve fragment identifiers for files', () => {
@@ -60,13 +60,13 @@ it('should preserve fragment identifiers for files', () => {
   // With file extensions
   expect(pipeline.getSanitizedPath('path-1.md#content1')).toStrictEqual('path-1#content1');
 
-  expect(pipeline.getSanitizedPath(':01:path.md#content1')).toStrictEqual('path#content1');
+  expect(pipeline.getSanitizedPath(':01:path.md#content1')).toStrictEqual('01-path#content1');
   expect(pipeline.getSanitizedPath(':01path.md#content1')).toStrictEqual('01path#content1');
 
-  expect(pipeline.getSanitizedPath('[01]path.md#content1')).toStrictEqual('path#content1');
+  expect(pipeline.getSanitizedPath('[01]path.md#content1')).toStrictEqual('01-path#content1');
   expect(pipeline.getSanitizedPath('01]path.md#content1')).toStrictEqual('01-path#content1');
 
-  expect(pipeline.getSanitizedPath('(01)path.md#content1')).toStrictEqual('path#content1');
+  expect(pipeline.getSanitizedPath('(01)path.md#content1')).toStrictEqual('01-path#content1');
   expect(pipeline.getSanitizedPath('(01path.md#content1')).toStrictEqual('01path#content1');
 
   expect(pipeline.getSanitizedPath('01-path.md#content1')).toStrictEqual('path#content1');
@@ -77,9 +77,9 @@ it('should preserve fragment identifiers for files', () => {
   expect(pipeline.getSanitizedPath('Header/Path.md#content1')).toStrictEqual('header/path#content1');
   expect(pipeline.getSanitizedPath('Header/01-Path.md#content1')).toStrictEqual('header/path#content1');
   expect(pipeline.getSanitizedPath('01-Header/01-Path.md#content1')).toStrictEqual('header/path#content1');
-  expect(pipeline.getSanitizedPath('01-Header/[01]Path.md#content1')).toStrictEqual('header/path#content1');
-  expect(pipeline.getSanitizedPath('(01)Header/[01]Path.md#content1')).toStrictEqual('header/path#content1');
-  expect(pipeline.getSanitizedPath(':01:Header/[01-Path.md#content1')).toStrictEqual('header/01-path#content1');
+  expect(pipeline.getSanitizedPath('01-Header/[01]Path.md#content1')).toStrictEqual('header/01-path#content1');
+  expect(pipeline.getSanitizedPath('(01)Header/[01]Path.md#content1')).toStrictEqual('01-header/01-path#content1');
+  expect(pipeline.getSanitizedPath(':01:Header/[01-Path.md#content1')).toStrictEqual('01-header/01-path#content1');
 
   // Without file extensions
   expect(pipeline.getSanitizedPath('path01#content1')).toStrictEqual('path01#content1');

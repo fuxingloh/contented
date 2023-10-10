@@ -1,7 +1,7 @@
 # Contented
 
-[Contented](https://contented.dev) is a Markdown-based bundler for your documentation with pipeline driven
-authoring-oriented workflow to encourage developer authoring within its contextual Git repository.
+[Contented](https://contented.dev) is a prose bundler for your documentation with pipeline driven
+authoring-oriented workflow to encourage developers authoring within its contextual Git repository.
 
 With a headless design of 1 config file `contented.config.mjs`, developers can start writing
 their [markdown content](./04-markdown.md) and preview it on their localhost `contented generate --watch`.
@@ -15,7 +15,7 @@ checks it is compilable and presentable.
 By encouraging authoring next to the source (in the same git repo), developers can contextually document changes as they
 develop. All domain-specific changes will go into the `main` branch with one Git Pull Request.
 
-With `contented build`, you can compile your markdown into sources `index.js` and `*.json`. That output
+With `contented build`, you can compile your prose into sources `index.js` and `*.json`. That output
 into `./dist` to `npm publish` them into any registry of your choice, for you can
 easily `npm i @your-scope/your-npm-package` and use the processed content on any of your downstream sites. Easily
 pulling up-to-date content and prose from individual domain-specific repositories and re-presented. Think microservices,
@@ -30,7 +30,7 @@ naturally satisfies.
 
 ### Just Another SSG?
 
-**This is not a static site generator.** This is a markdown processor workflow with a built-in static site generator.
+**This is not a static site generator.** This is a prose processor workflow with a built-in static site generator.
 The outcome we're trying to achieve is
 this [@contentedjs/contented-example/dist](https://www.jsdelivr.com/package/npm/@contentedjs/contented-example)
 
@@ -51,12 +51,12 @@ Your docs can be anywhere as long as contented is configured to pick them up.
 repo/
 ├─ packages/**
 ├─ docs/
-│  ├─ 01:Title 1/*.md
-│  ├─ 02:Title 2/*.md
-│  ├─ 03:Title 3/
-│  │  ├─ 01:Subtitle 1/*.md
-│  │  ├─ 02:overview.md
-│  │  └─ 03:faq.md
+│  ├─ 01-Title 1/*.md
+│  ├─ 02-Title 2/*.md
+│  ├─ 03-Title 3/
+│  │  ├─ 01-Subtitle 1/*.md
+│  │  ├─ 02-overview.md
+│  │  └─ 03-faq.md
 │  └─ package.json
 ├─ contented.config.mjs
 ├─ package.json

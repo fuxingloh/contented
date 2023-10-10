@@ -330,3 +330,34 @@ const b = 2;
 
 ::::
 ````
+
+## Images
+
+Image commonly used in Markdown is supported but with some caveats.
+Contented being a prose-bundler is designed to bundle prose such that it is portable and can be deployed to different
+sites or domains.
+This makes it difficult to support images that are not bundled together with the prose.
+To get around this, all local images are embedded into the Markdown file as base64 encoded strings.
+Remote images are left as is.
+
+> You can inspect this HTML page to see how the images are embedded.
+
+:::div{.admonitions.yellow}
+
+Always be careful with user input. For example, it’s possible to hide JavaScript inside images (such as GIFs, WebPs, and
+SVGs). User provided images open you up to a cross-site scripting (XSS) attack.
+
+If you’re using Contented to render user-provided Markdown, you should disable images by default and only enable them
+when you trust the source. Contented designed to be used for developer authoring where the source is trusted and XSS
+being the least of your worries since the developer (having control of source code) can already inject arbitrary
+JavaScript into the page without needing to go through this lengthy process.
+
+:::
+
+![local-embedded-image.png](local-embedded-image.png)
+![placehold.co](https://placehold.co/1500x300.png?text=Remote%20Loaded%20Image)
+
+```markdown
+![local-embedded-image.png](local-embedded-image.png)
+![placehold.co](https://placehold.co/1500x300.png?text=Remote%20Loaded%20Image)
+```

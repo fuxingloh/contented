@@ -330,3 +330,22 @@ const b = 2;
 
 ::::
 ````
+
+## Images
+
+Image commonly used in Markdown is supported but with some caveats.
+Contented being a prose-bundler is designed to bundle prose such that it is portable and can be deployed to different
+sites or domains.
+This makes it difficult to support images that are not bundled together with the prose.
+To get around this, all local images are embedded into the Markdown file as base64 encoded strings.
+Remote images are left as is.
+
+> You can inspect this HTML page to see how the images are embedded.
+
+![local-embedded-image.png](local-embedded-image.png)
+![placehold.co](https://placehold.co/1500x300.png?text=Remote%20Loaded%20Image)
+
+```markdown
+![local-embedded-image.png](local-embedded-image.png)
+![placehold.co](https://placehold.co/1500x300.png?text=Remote%20Loaded%20Image)
+```

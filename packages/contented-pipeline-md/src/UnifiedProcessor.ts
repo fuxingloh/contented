@@ -4,6 +4,7 @@ import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
 import rehypeStringify from 'rehype-stringify';
 import remarkDirective from 'remark-directive';
+import remarkEmbedImages from 'remark-embed-images';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
@@ -41,6 +42,7 @@ export function initProcessor(processor: Processor, options?: UnifiedOptions): P
     .use(remarkGfm)
     .use(remarkFrontmatter)
     .use(remarkParse)
+    .use(remarkEmbedImages)
     .use(remarkLink)
     .use(remarkDirective)
     .use(remarkDirectiveRehypeCodeblockHeader)
@@ -90,6 +92,7 @@ export {
   remarkDirectiveRehype,
   remarkDirectiveRehypeCodeblockGroup,
   remarkDirectiveRehypeCodeblockHeader,
+  remarkEmbedImages,
   remarkFrontmatter,
   remarkFrontmatterCollect,
   remarkFrontmatterResolve,

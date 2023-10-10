@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 
-export default function ContentHeadings(props) {
+export default function ContentedHeadings(props) {
   return (
     <>
       {props.fields.editOnGitHubLink && (

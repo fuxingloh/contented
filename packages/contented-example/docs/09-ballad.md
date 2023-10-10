@@ -74,10 +74,10 @@ export async function getStaticProps({ params }) {
 
 export default function Page({ doc }) {
   return (
-    <ContentProse>
+    <ContentedProse>
       <h1>{doc.title}</h1>
       <div dangerouslySetInnerHTML={{ __html: doc.body.html }} />
-    </ContentProse>
+    </ContentedProse>
   );
 }
 ```

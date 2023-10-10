@@ -19,7 +19,7 @@ export function computeContentSections(items) {
   return sections;
 }
 
-export default function ContentNavigation({ sections, className }) {
+export default function ContentedNavigation({ sections, className }) {
   const router = useRouter();
   const pipelines = Object.entries(Pipelines);
 

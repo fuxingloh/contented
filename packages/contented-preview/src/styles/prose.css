@@ -76,6 +76,10 @@
   @apply bg-slate-100/50 dark:bg-slate-800/50;
 }
 
+.prose .mermaid svg {
+  @apply invert dark:invert-0;
+}
+
 .prose pre,
 .prose .rehype-shiki pre.css-variable {
   @apply rounded-md border;

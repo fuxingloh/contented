@@ -52,8 +52,8 @@ describe('process', () => {
     ]);
   });
 
-  it('should process :2:path-1.md', async () => {
-    expect(await processor.process(':2:path-1.md')).toStrictEqual([
+  it('should process 2-path-1.md', async () => {
+    expect(await processor.process('2-path-1.md')).toStrictEqual([
       {
         type: 'Markdown',
         fields: {
@@ -70,8 +70,8 @@ describe('process', () => {
     ]);
   });
 
-  it('should process :1:Category/:1:slug.md', async () => {
-    expect(await processor.process(':1:Category/:1:slug.md')).toStrictEqual([
+  it('should process 1-Category/2-slug.md', async () => {
+    expect(await processor.process('1-Category/2-slug.md')).toStrictEqual([
       {
         type: 'Markdown',
         fields: {
@@ -95,8 +95,8 @@ describe('process', () => {
     ]);
   });
 
-  it('should process :1:Category/Section/:2:path.md', async () => {
-    expect(await processor.process(':1:Category/Section/:2:path.md')).toStrictEqual([
+  it('should process 1-Category/Section/2-path.md', async () => {
+    expect(await processor.process('1-Category/Section/2-path.md')).toStrictEqual([
       {
         type: 'Markdown',
         fields: {
@@ -214,7 +214,7 @@ describe('build', () => {
   const processor = new ContentedProcessor(config);
 
   it('should build 2 files', async () => {
-    const result = await processor.build(':2:path-1.md', ':1:Category/Section/:2:path.md');
+    const result = await processor.build('2-path-1.md', '1-Category/Section/2-path.md');
     expect(result).toStrictEqual({
       pipelines: {
         Markdown: [
@@ -256,10 +256,10 @@ describe('build', () => {
 
   it('should build 4 files', async () => {
     const result = await processor.build(
-      ':2:path-1.md',
+      '2-path-1.md',
       'Foo.Bar.md',
-      ':1:Category/Section/:2:path.md',
-      ':1:Category/:1:slug.md',
+      '1-Category/Section/2-path.md',
+      '1-Category/2-slug.md',
     );
 
     expect(result).toStrictEqual({
@@ -373,7 +373,7 @@ describe('custom', () => {
   const processor = new ContentedProcessor(config);
 
   it('should use custom pipeline', async () => {
-    expect(await processor.process(':2:path-1.md')).toStrictEqual([
+    expect(await processor.process('2-path-1.md')).toStrictEqual([
       {
         fileId: expect.stringMatching(/[0-f]{64}/),
         modifiedDate: expect.any(Number),
@@ -431,7 +431,7 @@ it('should dedup 2 files', async () => {
     pipelines: [
       {
         type: 'Markdown',
-        pattern: '**/:1:Category/*.md',
+        pattern: '**/1-Category/*.md',
         processor: 'md',
       },
       {
@@ -442,7 +442,7 @@ it('should dedup 2 files', async () => {
     ],
   };
   const processor = new ContentedProcessor(config);
-  await processor.build(':2:path-1.md', ':1:Category/Section/:2:path.md');
+  await processor.build('2-path-1.md', '1-Category/Section/2-path.md');
 });
 
 it('should sort 2 files', async () => {
@@ -464,7 +464,7 @@ it('should sort 2 files', async () => {
     ],
   };
   const processor = new ContentedProcessor(config);
-  const files = await processor.build(':2:path-1.md', ':1:Category/Section/:2:path.md');
+  const files = await processor.build('2-path-1.md', '1-Category/Section/2-path.md');
   expect(files.pipelines.Markdown[0]).toMatchObject({
     path: '/category/section/path',
   });

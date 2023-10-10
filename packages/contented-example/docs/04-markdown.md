@@ -330,3 +330,21 @@ const b = 2;
 
 ::::
 ````
+
+## Images
+
+### Local Images
+
+![local image](local.png)
+
+```markdown
+![local image](local.png)
+```
+
+### Remote Images
+
+![@levaintech](https://github.com/levaintech.png)
+
+```markdown
+![@levaintech](https://github.com/levaintech.png)
+```

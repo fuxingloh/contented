@@ -23,6 +23,7 @@ import {
   remarkFrontmatterResolve,
   remarkFrontmatterValidate,
 } from './plugins/RemarkFrontmatter.js';
+import { remarkImage } from './plugins/RemarkImage.js';
 import { remarkLink } from './plugins/RemarkLink.js';
 
 export interface UnifiedOptions {
@@ -42,6 +43,7 @@ export function initProcessor(processor: Processor, options?: UnifiedOptions): P
     .use(remarkFrontmatter)
     .use(remarkParse)
     .use(remarkLink)
+    .use(remarkImage)
     .use(remarkDirective)
     .use(remarkDirectiveRehypeCodeblockHeader)
     .use(remarkDirectiveRehypeCodeblockGroup)
@@ -95,6 +97,7 @@ export {
   remarkFrontmatterResolve,
   remarkFrontmatterValidate,
   remarkGfm,
+  remarkImage,
   remarkLink,
   remarkParse,
   remarkRehype,

@@ -15,7 +15,7 @@ export interface Pipeline {
    * Built in processor: 'md'
    * Otherwise it will `import(processor)` module with default exporting ContentedPipeline
    */
-  processor: 'md' | (new (rootPath: string, pipeline: Pipeline) => ContentedPipeline);
+  processor: 'md' | (new (rootPath: string, pipeline: Pipeline, outPath: string) => ContentedPipeline);
   fields?: {
     [name: string]: PipelineField;
   };
@@ -30,6 +30,7 @@ export abstract class ContentedPipeline {
   public constructor(
     public readonly rootPath: string,
     public readonly pipeline: Pipeline,
+    public readonly outPath: string,
   ) {
     pipeline.fields = {
       title: { type: 'string' },

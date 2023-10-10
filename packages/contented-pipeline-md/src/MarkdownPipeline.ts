@@ -64,7 +64,7 @@ export class MarkdownPipeline extends ContentedPipeline {
    */
   static withProcessor(
     processor: (processor: Processor) => void,
-  ): new (rootPath: string, pipeline: Pipeline) => ContentedPipeline {
+  ): new (rootPath: string, pipeline: Pipeline, outPath: string) => ContentedPipeline {
     class WithProcessor extends MarkdownPipeline {
       async init(): Promise<void> {
         processor(this.processor);

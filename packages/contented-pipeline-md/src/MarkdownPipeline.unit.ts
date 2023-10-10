@@ -4,13 +4,18 @@ import { MarkdownPipeline } from './MarkdownPipeline';
 import { rehypeStringify, remarkParse, remarkRehype } from './UnifiedProcessor';
 
 const rootPath = join(__dirname, '../fixtures');
+const outPath = join(rootPath, 'dist');
 
 describe('Without Config', () => {
-  const pipeline = new MarkdownPipeline(__dirname, {
-    type: 'Markdown',
-    pattern: '/See.Nothing.md',
-    processor: 'md',
-  });
+  const pipeline = new MarkdownPipeline(
+    rootPath,
+    {
+      type: 'Markdown',
+      pattern: '/See.Nothing.md',
+      processor: 'md',
+    },
+    outPath,
+  );
 
   beforeAll(async () => {
     await pipeline.init();
@@ -100,11 +105,15 @@ describe('Without Config', () => {
 describe('Custom Pipeline', () => {
   const pipeline = new (MarkdownPipeline.withProcessor((processor) => {
     processor.use(remarkParse).use(remarkRehype).use(rehypeStringify);
-  }))(__dirname, {
-    type: 'Markdown',
-    pattern: '/See.Nothing.md',
-    processor: 'md',
-  });
+  }))(
+    rootPath,
+    {
+      type: 'Markdown',
+      pattern: '/See.Nothing.md',
+      processor: 'md',
+    },
+    outPath,
+  );
 
   beforeAll(async () => {
     await pipeline.init();

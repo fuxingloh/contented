@@ -3,12 +3,17 @@ import { join } from 'node:path';
 import { MarkdownPipeline } from '../MarkdownPipeline';
 
 const rootPath = join(__dirname, '../../fixtures');
+const outPath = join(rootPath, 'dist');
 
-const pipeline = new MarkdownPipeline(__dirname, {
-  type: 'Markdown',
-  pattern: ['/20-Heading/*.md', '/01-RemarkLinked.md', '/RemarkLink.md'],
-  processor: 'md',
-});
+const pipeline = new MarkdownPipeline(
+  rootPath,
+  {
+    type: 'Markdown',
+    pattern: ['/20-Heading/*.md', '/01-RemarkLinked.md', '/RemarkLink.md'],
+    processor: 'md',
+  },
+  outPath,
+);
 
 beforeAll(async () => {
   await pipeline.init();

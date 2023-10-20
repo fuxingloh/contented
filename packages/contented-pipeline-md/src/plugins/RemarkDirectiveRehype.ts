@@ -1,7 +1,7 @@
 import { h } from 'hastscript';
+import type { Node } from 'mdast';
 import type { Directives } from 'mdast-util-directive';
 import type { Plugin } from 'unified';
-import type { Node } from 'unist';
 import type { MapFunction } from 'unist-util-map';
 import { map } from 'unist-util-map';
 
@@ -26,7 +26,7 @@ function isTagAllowed(tagName: string): boolean {
   }
 }
 
-const mapDirectiveNode: MapFunction = (node) => {
+const mapDirectiveNode: MapFunction<Node> = (node: Node) => {
   if (isDirectiveNode(node)) {
     const { tagName, properties } = h(node.name, node.attributes ?? {});
 

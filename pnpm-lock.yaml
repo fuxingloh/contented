@@ -20,6 +20,9 @@ importers:
 
   packages/contented:
     dependencies:
+      '@contentedjs/contented-pipeline':
+        specifier: workspace:*
+        version: link:../contented-pipeline
       '@contentedjs/contented-processor':
         specifier: workspace:*
         version: link:../contented-processor

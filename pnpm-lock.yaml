@@ -75,8 +75,8 @@ importers:
         specifier: ^2.4.6
         version: 2.4.6(prettier@3.0.3)
       prettier-plugin-tailwindcss:
-        specifier: ^0.4.1
-        version: 0.4.1(prettier@3.0.3)
+        specifier: ^0.5.6
+        version: 0.5.6(prettier@3.0.3)
       ts-jest:
         specifier: 29.1.1
         version: 29.1.1(@babel/core@7.23.2)(esbuild@0.19.5)(jest@29.7.0)(typescript@5.2.2)
@@ -6629,16 +6629,16 @@ packages:
       synckit: 0.8.5
     dev: true
 
-  /prettier-plugin-tailwindcss@0.4.1(prettier@3.0.3):
-    resolution: {integrity: sha512-hwn2EiJmv8M+AW4YDkbjJ6HlZCTzLyz1QlySn9sMuKV/Px0fjwldlB7tol8GzdgqtkdPtzT3iJ4UzdnYXP25Ag==}
-    engines: {node: '>=12.17.0'}
+  /prettier-plugin-tailwindcss@0.5.6(prettier@3.0.3):
+    resolution: {integrity: sha512-2Xgb+GQlkPAUCFi3sV+NOYcSI5XgduvDBL2Zt/hwJudeKXkyvRS65c38SB0yb9UB40+1rL83I6m0RtlOQ8eHdg==}
+    engines: {node: '>=14.21.3'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
       '@prettier/plugin-pug': '*'
       '@shopify/prettier-plugin-liquid': '*'
       '@shufo/prettier-plugin-blade': '*'
       '@trivago/prettier-plugin-sort-imports': '*'
-      prettier: ^2.2 || ^3.0
+      prettier: ^3.0
       prettier-plugin-astro: '*'
       prettier-plugin-css-order: '*'
       prettier-plugin-import-sort: '*'

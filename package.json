@@ -26,7 +26,7 @@
     "@typescript-eslint/parser": "^6.7.0",
     "@workspace/jest-preset": "workspace:*",
     "@workspace/tsconfig": "workspace:*",
-    "esbuild": "^0.19.4",
+    "esbuild": "^0.19.5",
     "esbuild-jest": "^0.5.0",
     "eslint": "^8.49.0",
     "eslint-config-airbnb-base": "^15.0.0",

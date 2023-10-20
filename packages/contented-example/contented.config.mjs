@@ -1,5 +1,4 @@
 import { MarkdownPipeline } from '@contentedjs/contented-pipeline-md';
-import { JestMarkdownPipeline } from '@contentedjs/contented-pipeline-jest-md';
 
 /** @type {import('@contentedjs/contented').ContentedConfig} */
 const config = {
@@ -63,20 +62,10 @@ const config = {
       {
         type: 'Lorem',
         dir: 'packages/contented-example',
-        pattern: ['contented-example-lorem/**/*.md'],
+        pattern: ['lorem/**/*.md'],
         processor: MarkdownPipeline,
         transform: (file) => {
-          file.path = file.path.replaceAll(/^\/contented-example-lorem\/?/g, '/');
-          file.sections = file.sections.slice(1);
-          return file;
-        },
-      },
-      {
-        type: 'Contented',
-        dir: 'packages/contented-example',
-        pattern: 'jest/**/*.md.[tj]s',
-        processor: JestMarkdownPipeline,
-        transform: (file) => {
+          file.path = file.path.replaceAll(/^\/lorem\/?/g, '/');
           file.sections = file.sections.slice(1);
           return file;
         },

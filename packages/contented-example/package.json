@@ -28,7 +28,6 @@
   },
   "devDependencies": {
     "@contentedjs/contented": "workspace:*",
-    "@contentedjs/contented-pipeline-jest-md": "workspace:*",
     "@contentedjs/contented-pipeline-md": "workspace:*"
   }
 }

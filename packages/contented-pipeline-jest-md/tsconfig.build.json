@@ -1,8 +1,0 @@
-{
-  "extends": "@workspace/tsconfig",
-  "compilerOptions": {
-    "outDir": "dist"
-  },
-  "include": ["src"],
-  "exclude": ["**/*.unit.ts"]
-}

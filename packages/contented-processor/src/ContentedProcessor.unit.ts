@@ -1,7 +1,6 @@
-import 'jest-extended';
-
 import { FileContent, FileIndex } from '@contentedjs/contented-pipeline';
 import { MarkdownPipeline } from '@contentedjs/contented-pipeline-md';
+import { describe, expect, it } from '@jest/globals';
 
 import { Config, ContentedProcessor } from './ContentedProcessor';
 

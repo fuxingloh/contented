@@ -14,73 +14,77 @@ permissions:
   contents: read
 
 jobs:
-  Build:
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.6.0
 
       - uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
         with:
           node-version-file: '.nvmrc'
-          cache: 'npm'
 
-      - run: npm ci
-      - run: npm run build
+      - run: corepack enable pnpm
+      - run: pnpm install --frozen-lockfile
 
-  Test:
+      - run: pnpm build
+
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.6.0
 
       - uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
         with:
           node-version-file: '.nvmrc'
-          cache: 'npm'
 
-      - run: npm ci
-      - run: npm run test -- -- --maxWorkers=100% --coverage
+      - run: corepack enable pnpm
+      - run: pnpm install --frozen-lockfile
 
-      - uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3.1.4
-        with:
-          fail_ci_if_error: true
+      - run: pnpm run test
 
-  Generate:
+  generate:
+    name: Generate
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.6.0
 
       - uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
         with:
           node-version-file: '.nvmrc'
-          cache: 'npm'
 
-      - run: npm ci
-      - run: npx turbo run generate
+      - run: corepack enable pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm turbo run generate
 
   lint_prettier:
     name: Lint (prettier)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.6.0
 
       - uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
         with:
           node-version-file: '.nvmrc'
-          cache: npm
 
-      - run: npm ci
-      - run: npx --no-install prettier --check .
+      - run: corepack enable pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm prettier --check .
 
   lint_eslint:
     name: Lint (eslint)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.6.0
 
       - uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
         with:
           node-version-file: '.nvmrc'
-          cache: npm
 
-      - run: npm ci
-      - run: npx --no-install turbo run lint
+      - run: corepack enable pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm turbo run lint

@@ -39,10 +39,10 @@
     }
   },
   "jest": {
-    "preset": "@contentedjs/jest-preset"
+    "preset": "@workspace/jest-preset"
   },
   "dependencies": {
-    "@contentedjs/contented-pipeline": "0.0.0",
+    "@contentedjs/contented-pipeline": "workspace:*",
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@sindresorhus/slugify": "^2.2.1",
     "hast-util-to-string": "^2.0.0",
@@ -69,10 +69,10 @@
     "vfile": "^5.3.7"
   },
   "devDependencies": {
-    "@contentedjs/jest-preset": "0.0.0",
     "@types/hast": "^2.3.6",
     "@types/js-yaml": "^4.0.6",
     "@types/lodash": "^4.14.199",
+    "@workspace/jest-preset": "workspace:*",
     "typescript": "4.9.5"
   }
 }

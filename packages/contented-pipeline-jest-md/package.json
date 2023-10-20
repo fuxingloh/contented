@@ -36,18 +36,18 @@
     ]
   },
   "jest": {
-    "preset": "@contentedjs/jest-preset"
+    "preset": "@workspace/jest-preset"
   },
   "dependencies": {
     "@babel/parser": "^7.23.0",
     "@babel/types": "^7.23.0",
-    "@contentedjs/contented-pipeline-md": "0.0.0",
+    "@contentedjs/contented-pipeline-md": "workspace:*",
     "strip-indent": "^4.0.0",
     "unified": "^10.1.2",
     "vfile": "^5.3.7"
   },
   "devDependencies": {
-    "@contentedjs/jest-preset": "0.0.0",
+    "@workspace/jest-preset": "workspace:*",
     "typescript": "4.9.5"
   }
 }

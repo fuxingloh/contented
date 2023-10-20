@@ -39,14 +39,14 @@
     }
   },
   "jest": {
-    "preset": "@contentedjs/jest-preset"
+    "preset": "@workspace/jest-preset"
   },
   "dependencies": {
     "@sindresorhus/slugify": "^2.2.1"
   },
   "devDependencies": {
-    "@contentedjs/jest-preset": "0.0.0",
     "@types/unist": "^2.0.8",
+    "@workspace/jest-preset": "workspace:*",
     "typescript": "4.9.5"
   }
 }

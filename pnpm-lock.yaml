@@ -87,6 +87,15 @@ importers:
         specifier: 5.2.2
         version: 5.2.2
 
+  example:
+    devDependencies:
+      '@contentedjs/contented':
+        specifier: workspace:*
+        version: link:../packages/contented
+      '@contentedjs/contented-pipeline-md':
+        specifier: workspace:*
+        version: link:../packages/contented-pipeline-md
+
   packages/contented:
     dependencies:
       '@contentedjs/contented-pipeline':
@@ -117,15 +126,6 @@ importers:
       '@workspace/jest-preset':
         specifier: workspace:*
         version: link:../jest-preset
-
-  packages/contented-example:
-    devDependencies:
-      '@contentedjs/contented':
-        specifier: workspace:*
-        version: link:../contented
-      '@contentedjs/contented-pipeline-md':
-        specifier: workspace:*
-        version: link:../contented-pipeline-md
 
   packages/contented-pipeline:
     dependencies:

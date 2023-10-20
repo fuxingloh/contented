@@ -1,5 +1,3 @@
-import { MarkdownPipeline } from '@contentedjs/contented-pipeline-md';
-
 /** @type {import('@contentedjs/contented').ContentedConfig} */
 const config = {
   preview: {
@@ -10,7 +8,7 @@ const config = {
     },
   },
   processor: {
-    rootDir: '../../',
+    rootDir: '../',
     pipelines: [
       {
         type: 'Contented',
@@ -31,7 +29,7 @@ const config = {
       },
       {
         type: 'Contented',
-        dir: 'packages/contented-example/docs',
+        dir: 'example/docs',
         pattern: '**/*.md',
         processor: 'md',
         fields: {
@@ -61,14 +59,9 @@ const config = {
       },
       {
         type: 'Lorem',
-        dir: 'packages/contented-example',
-        pattern: ['lorem/**/*.md'],
-        processor: MarkdownPipeline,
-        transform: (file) => {
-          file.path = file.path.replaceAll(/^\/lorem\/?/g, '/');
-          file.sections = file.sections.slice(1);
-          return file;
-        },
+        dir: 'example/lorem',
+        pattern: ['**/*.md'],
+        processor: 'md',
       },
     ],
   },

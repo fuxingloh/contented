@@ -32,7 +32,7 @@
       "project": "./tsconfig.json"
     },
     "extends": [
-      "@stickyjs"
+      "@workspace"
     ]
   },
   "jest": {
@@ -47,7 +47,6 @@
     "vfile": "^5.3.7"
   },
   "devDependencies": {
-    "@workspace/jest-preset": "workspace:*",
-    "typescript": "4.9.5"
+    "@workspace/jest-preset": "workspace:*"
   }
 }

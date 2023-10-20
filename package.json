@@ -19,11 +19,28 @@
   "lint-staged": {
     "*": "prettier --write --ignore-unknown"
   },
-  "prettier": "@stickyjs/prettier",
   "devDependencies": {
-    "@stickyjs/eslint-config": "1.3.4",
-    "@stickyjs/prettier": "1.3.4",
-    "turbo": "^1.10.16"
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/jest-preset": "workspace:*",
+    "@workspace/tsconfig": "workspace:*",
+    "eslint": "^8.49.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-check-file": "^2.6.2",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-no-only-tests": "^3.1.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
+    "prettier-plugin-packagejson": "^2.4.5",
+    "prettier-plugin-tailwindcss": "^0.4.1",
+    "turbo": "^1.10.16",
+    "typescript": "5.2.2"
   },
   "packageManager": "pnpm@8.9.2",
   "engines": {

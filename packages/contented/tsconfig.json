@@ -1,8 +1,5 @@
 {
-  "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./dist"
-  },
-  "extends": "../../tsconfig.json",
-  "include": ["src"]
+  "extends": "@workspace/tsconfig",
+  "include": ["./src"],
+  "exclude": ["**/*.unit.ts"]
 }

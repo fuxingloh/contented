@@ -18,7 +18,7 @@
     "cli.js"
   ],
   "scripts": {
-    "build": "tsc -b ./tsconfig.build.json && node build-preview.js",
+    "build": "tsc --outDir dist && node build-preview.js",
     "clean": "rm -rf dist",
     "lint": "eslint src"
   },
@@ -36,7 +36,7 @@
       "project": "./tsconfig.json"
     },
     "extends": [
-      "@stickyjs"
+      "@workspace"
     ]
   },
   "dependencies": {
@@ -45,8 +45,7 @@
     "@parcel/watcher": "^2.2.0",
     "clipanion": "3.2.1",
     "debounce": "^1.2.1",
-    "ignore-walk": "^6.0.3",
-    "typescript": "4.9.5"
+    "ignore-walk": "^6.0.3"
   },
   "devDependencies": {
     "@types/debounce": "^1.2.2",

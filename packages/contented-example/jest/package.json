@@ -21,7 +21,7 @@
       "project": "./tsconfig.json"
     },
     "extends": [
-      "@stickyjs"
+      "@workspace"
     ]
   },
   "jest": {

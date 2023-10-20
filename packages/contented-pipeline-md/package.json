@@ -32,7 +32,7 @@
       "project": "./tsconfig.json"
     },
     "extends": [
-      "@stickyjs"
+      "@workspace"
     ],
     "rules": {
       "no-param-reassign": "off"
@@ -75,7 +75,6 @@
     "@types/hast": "^2.3.6",
     "@types/js-yaml": "^4.0.6",
     "@types/lodash": "^4.14.199",
-    "@workspace/jest-preset": "workspace:*",
-    "typescript": "4.9.5"
+    "@workspace/jest-preset": "workspace:*"
   }
 }

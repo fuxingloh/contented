@@ -16,10 +16,6 @@
     {
       "matchPackageNames": ["^@types/.+$"],
       "enabled": false
-    },
-    {
-      "matchPackagePatterns": ["^@stickyjs/"],
-      "groupName": "@levaintech/sticky"
     }
   ]
 }

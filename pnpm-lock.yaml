@@ -15,10 +15,10 @@ importers:
         specifier: ^18.18.6
         version: 18.18.6
       '@typescript-eslint/eslint-plugin':
-        specifier: ^6.7.0
+        specifier: ^6.8.0
         version: 6.8.0(@typescript-eslint/parser@6.8.0)(eslint@8.51.0)(typescript@5.2.2)
       '@typescript-eslint/parser':
-        specifier: ^6.7.0
+        specifier: ^6.8.0
         version: 6.8.0(eslint@8.51.0)(typescript@5.2.2)
       '@workspace/jest-preset':
         specifier: workspace:*

@@ -1,5 +1,5 @@
 import { h } from 'hastscript';
-import type { Directive as DirectiveNode } from 'mdast-util-directive';
+import type { Directives as DirectiveNode } from 'mdast-util-directive';
 import type { Plugin } from 'unified';
 import type { Node } from 'unist';
 import type { MapFunction } from 'unist-util-map';

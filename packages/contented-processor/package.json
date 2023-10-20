@@ -48,6 +48,7 @@
     "minimatch": "^5.1.6"
   },
   "devDependencies": {
+    "@types/minimatch": "^5.1.2",
     "@types/node": "^18.16.16",
     "@workspace/jest-preset": "workspace:*",
     "typescript": "4.9.5"

@@ -49,6 +49,8 @@
     "hastscript": "^7.2.0",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
+    "mdast-util-directive": "^3.0.0",
+    "mdast-util-to-string": "^4.0.0",
     "minimatch": "^5.1.6",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-external-links": "^2.1.0",

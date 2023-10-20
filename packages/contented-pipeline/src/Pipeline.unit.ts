@@ -1,5 +1,7 @@
 import { join } from 'node:path';
 
+import { expect, it } from '@jest/globals';
+
 import { ContentedPipeline } from './Pipeline';
 import { FileContent } from './PipelineFile';
 

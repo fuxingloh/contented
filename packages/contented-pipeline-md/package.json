@@ -46,7 +46,6 @@
     "hastscript": "^7.2.0",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
-    "mdast": "^3.0.0",
     "mdast-util-directive": "^3.0.0",
     "mdast-util-to-string": "^4.0.0",
     "minimatch": "^5.1.6",
@@ -72,6 +71,7 @@
     "@types/hast": "^2.3.6",
     "@types/js-yaml": "^4.0.6",
     "@types/lodash": "^4.14.199",
+    "@types/mdast": "^4.0.2",
     "@workspace/jest-preset": "workspace:*"
   }
 }

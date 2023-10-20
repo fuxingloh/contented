@@ -1,7 +1,8 @@
-const preset = require('@stickyjs/jest/jest-preset');
-
 module.exports = {
-  ...preset,
+  moduleFileExtensions: ['ts', 'js', 'json'],
+  testRegex: '.*\\.(unit|i9n|e2e)\\.ts$',
+  preset: 'ts-jest',
+  reporters: ['default', 'github-actions'],
   moduleNameMapper: {
     '(.+)\\.js': '$1',
   },

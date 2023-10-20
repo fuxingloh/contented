@@ -22,8 +22,8 @@
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@types/node": "^18.18.6",
-    "@typescript-eslint/eslint-plugin": "^6.7.0",
-    "@typescript-eslint/parser": "^6.7.0",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
     "@workspace/jest-preset": "workspace:*",
     "@workspace/tsconfig": "workspace:*",
     "esbuild": "^0.19.4",

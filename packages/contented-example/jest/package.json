@@ -19,10 +19,7 @@
   "eslintConfig": {
     "parserOptions": {
       "project": "./tsconfig.json"
-    },
-    "extends": [
-      "@workspace"
-    ]
+    }
   },
   "jest": {
     "preset": "@workspace/jest-preset",

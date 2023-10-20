@@ -1,7 +1,7 @@
 module.exports = {
   plugins: ['simple-import-sort', 'check-file', 'unused-imports', 'no-only-tests'],
   extends: ['airbnb-base', 'airbnb-typescript/base', 'prettier'],
-  ignorePatterns: ['dist'],
+  ignorePatterns: ['dist', 'node_modules'],
   rules: {
     'class-methods-use-this': 'off',
     'max-classes-per-file': 'off',
@@ -104,7 +104,7 @@ module.exports = {
       /**
        * Enforce PascalCase for filenames, ignoring common files like `index.ts`, `cli.ts`, `main.ts`.
        */
-      files: ['src/**/{index,cli,main}.ts'],
+      files: ['**/{index,cli}.ts'],
       rules: {
         'check-file/filename-naming-convention': ['off'],
       },

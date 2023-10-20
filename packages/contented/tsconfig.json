@@ -1,5 +1,3 @@
 {
-  "extends": "@workspace/tsconfig",
-  "include": ["./src"],
-  "exclude": ["**/*.unit.ts"]
+  "extends": "@workspace/tsconfig"
 }

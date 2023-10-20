@@ -13,9 +13,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc -b ./tsconfig.build.json",
+    "build": "tsc --project tsconfig.build.json",
     "clean": "rm -rf dist",
-    "lint": "eslint src",
+    "lint": "eslint .",
     "test": "jest"
   },
   "lint-staged": {
@@ -31,9 +31,6 @@
     "parserOptions": {
       "project": "./tsconfig.json"
     },
-    "extends": [
-      "@workspace"
-    ],
     "rules": {
       "no-param-reassign": "off"
     }

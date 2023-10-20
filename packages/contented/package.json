@@ -18,7 +18,7 @@
     "cli.js"
   ],
   "scripts": {
-    "build": "tsc --outDir dist && node build-preview.js",
+    "build": "tsc --project tsconfig.build.json && node build-preview.js",
     "clean": "rm -rf dist",
     "lint": "eslint src"
   },
@@ -34,10 +34,7 @@
   "eslintConfig": {
     "parserOptions": {
       "project": "./tsconfig.json"
-    },
-    "extends": [
-      "@workspace"
-    ]
+    }
   },
   "dependencies": {
     "@contentedjs/contented-pipeline": "workspace:*",

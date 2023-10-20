@@ -1,6 +1,5 @@
 {
   "name": "@workspace/jest-preset",
-  "version": "0.0.0",
   "private": true,
   "dependencies": {
     "@stickyjs/jest": "1.3.4",

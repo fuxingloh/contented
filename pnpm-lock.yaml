@@ -14,9 +14,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^6.7.0
         version: 6.8.0(eslint@8.51.0)(typescript@5.2.2)
-      '@workspace/eslint-config':
-        specifier: workspace:*
-        version: link:packages/eslint-config
       '@workspace/jest-preset':
         specifier: workspace:*
         version: link:packages/jest-preset

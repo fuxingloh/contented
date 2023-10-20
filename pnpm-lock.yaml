@@ -123,18 +123,9 @@ importers:
       '@contentedjs/contented':
         specifier: workspace:*
         version: link:../contented
-      '@contentedjs/contented-pipeline-jest-md':
-        specifier: workspace:*
-        version: link:../contented-pipeline-jest-md
       '@contentedjs/contented-pipeline-md':
         specifier: workspace:*
         version: link:../contented-pipeline-md
-
-  packages/contented-example/contented-example-lorem:
-    devDependencies:
-      '@contentedjs/contented':
-        specifier: workspace:*
-        version: link:../../contented
 
   packages/contented-pipeline:
     dependencies:
@@ -145,31 +136,6 @@ importers:
       '@types/unist':
         specifier: ^2.0.8
         version: 2.0.9
-      '@workspace/jest-preset':
-        specifier: workspace:*
-        version: link:../jest-preset
-
-  packages/contented-pipeline-jest-md:
-    dependencies:
-      '@babel/parser':
-        specifier: ^7.23.0
-        version: 7.23.0
-      '@babel/types':
-        specifier: ^7.23.0
-        version: 7.23.0
-      '@contentedjs/contented-pipeline-md':
-        specifier: workspace:*
-        version: link:../contented-pipeline-md
-      strip-indent:
-        specifier: ^4.0.0
-        version: 4.0.0
-      unified:
-        specifier: ^10.1.2
-        version: 10.1.2
-      vfile:
-        specifier: ^5.3.7
-        version: 5.3.7
-    devDependencies:
       '@workspace/jest-preset':
         specifier: workspace:*
         version: link:../jest-preset
@@ -6097,11 +6063,6 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /min-indent@1.0.1:
-    resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
-    engines: {node: '>=4'}
-    dev: false
-
   /minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
@@ -7417,13 +7378,6 @@ packages:
     resolution: {integrity: sha512-dOESqjYr96iWYylGObzd39EuNTa5VJxyvVAEm5Jnh7KGo75V43Hk1odPQkNDyXNmUR6k+gEiDVXnjB8HJ3crXw==}
     engines: {node: '>=12'}
     dev: true
-
-  /strip-indent@4.0.0:
-    resolution: {integrity: sha512-mnVSV2l+Zv6BLpSD/8V87CW/y9EmmbYzGCIavsnsI6/nwn26DwffM/yztm30Z/I2DY9wdS3vXVCMnHDgZaVNoA==}
-    engines: {node: '>=12'}
-    dependencies:
-      min-indent: 1.0.1
-    dev: false
 
   /strip-json-comments@3.1.1:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}

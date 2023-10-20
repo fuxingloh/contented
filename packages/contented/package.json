@@ -20,7 +20,7 @@
   "scripts": {
     "build": "tsc --project tsconfig.build.json && node build-preview.js",
     "clean": "rm -rf dist",
-    "lint": "eslint src"
+    "lint": "eslint ."
   },
   "lint-staged": {
     "*": [

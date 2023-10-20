@@ -15,7 +15,7 @@
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
     "clean": "rm -rf dist",
-    "lint": "eslint src",
+    "lint": "eslint .",
     "test": "jest"
   },
   "lint-staged": {

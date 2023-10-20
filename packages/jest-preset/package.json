@@ -1,10 +1,7 @@
 {
-  "name": "@contentedjs/jest-preset",
+  "name": "@workspace/jest-preset",
   "version": "0.0.0",
   "private": true,
-  "files": [
-    "jest-preset.js"
-  ],
   "lint-staged": {
     "*": [
       "prettier --write --ignore-unknown"

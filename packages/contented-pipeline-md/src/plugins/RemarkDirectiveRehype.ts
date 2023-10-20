@@ -1,19 +1,13 @@
 import { h } from 'hastscript';
-import type { Directive as DirectiveNode } from 'mdast-util-directive';
-import type { Plugin } from 'unified';
-import type { Node } from 'unist';
-import type { MapFunction } from 'unist-util-map';
-import { map } from 'unist-util-map';
+import { Node } from 'mdast';
+import { Directives } from 'mdast-util-directive';
+import { Plugin } from 'unified';
+import { map, MapFunction } from 'unist-util-map';
 
-const isDirectiveNode = (node: Node): node is DirectiveNode => {
+const isDirectiveNode = (node: Node): node is Directives => {
   const { type } = node;
   return type === 'textDirective' || type === 'leafDirective' || type === 'containerDirective';
 };
-
-function parseHastProperties(node: DirectiveNode): { tagName: string; properties: Record<string, string> } {
-  // @ts-ignore
-  return h(node.name, node.attributes);
-}
 
 function isTagAllowed(tagName: string): boolean {
   switch (tagName) {
@@ -31,9 +25,9 @@ function isTagAllowed(tagName: string): boolean {
   }
 }
 
-const mapDirectiveNode: MapFunction = (node) => {
+const mapDirectiveNode: MapFunction<Node> = (node: Node) => {
   if (isDirectiveNode(node)) {
-    const { tagName, properties } = parseHastProperties(node);
+    const { tagName, properties } = h(node.name, node.attributes ?? {});
 
     if (!isTagAllowed(tagName)) {
       return node;

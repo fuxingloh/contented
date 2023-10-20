@@ -26,9 +26,9 @@ module.exports = {
               marginTop: theme('spacing.10'),
               marginBottom: theme('spacing.2'),
             },
-          }
-        }
-      })
+          },
+        },
+      }),
     },
   },
   plugins: [require('@tailwindcss/typography')],

@@ -39,17 +39,18 @@
     }
   },
   "jest": {
-    "preset": "@contentedjs/jest-preset"
+    "preset": "@workspace/jest-preset"
   },
   "dependencies": {
     "@babel/generator": "^7.23.0",
-    "@contentedjs/contented-pipeline": "0.0.0",
-    "@contentedjs/contented-pipeline-md": "0.0.0",
+    "@contentedjs/contented-pipeline": "workspace:*",
+    "@contentedjs/contented-pipeline-md": "workspace:*",
     "minimatch": "^5.1.6"
   },
   "devDependencies": {
-    "@contentedjs/jest-preset": "0.0.0",
+    "@types/minimatch": "^5.1.2",
     "@types/node": "^18.16.16",
+    "@workspace/jest-preset": "workspace:*",
     "typescript": "4.9.5"
   }
 }

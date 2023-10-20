@@ -27,7 +27,8 @@
     ]
   },
   "devDependencies": {
-    "@contentedjs/contented": "0.0.0",
-    "@contentedjs/contented-pipeline-jest-md": "0.0.0"
+    "@contentedjs/contented": "workspace:*",
+    "@contentedjs/contented-pipeline-jest-md": "workspace:*",
+    "@contentedjs/contented-pipeline-md": "workspace:*"
   }
 }

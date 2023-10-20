@@ -1,13 +1,8 @@
 .husky
 .idea
-.next
-out
-*.d.ts
-*.d.ts.map
-*.js
-*.js.map
-tsconfig.tsbuildinfo
-package-lock.json
+.vscode
 .contented
+node_modules
 dist
-coverage
+package-lock.json
+pnpm-lock.yaml

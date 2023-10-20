@@ -25,10 +25,10 @@
     ]
   },
   "jest": {
-    "preset": "@contentedjs/jest-preset",
+    "preset": "@workspace/jest-preset",
     "testRegex": ".*\\.md\\.[jt]s$"
   },
   "devDependencies": {
-    "@contentedjs/jest-preset": "0.0.0"
+    "@workspace/jest-preset": "workspace:*"
   }
 }

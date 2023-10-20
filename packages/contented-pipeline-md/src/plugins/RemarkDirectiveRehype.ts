@@ -1,9 +1,8 @@
 import { h } from 'hastscript';
-import type { Node } from 'mdast';
-import type { Directives } from 'mdast-util-directive';
-import type { Plugin } from 'unified';
-import type { MapFunction } from 'unist-util-map';
-import { map } from 'unist-util-map';
+import { Node } from 'mdast';
+import { Directives } from 'mdast-util-directive';
+import { Plugin } from 'unified';
+import { map, MapFunction } from 'unist-util-map';
 
 const isDirectiveNode = (node: Node): node is Directives => {
   const { type } = node;

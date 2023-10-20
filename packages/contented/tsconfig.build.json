@@ -1,4 +1,8 @@
 {
-  "exclude": ["**/*.unit.ts"],
-  "extends": "./tsconfig.json"
+  "extends": "@workspace/tsconfig",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include": ["src"],
+  "exclude": ["**/*.unit.ts"]
 }

@@ -13,7 +13,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc -b ./tsconfig.build.json",
+    "build": "tsc --project tsconfig.build.json",
     "clean": "rm -rf dist",
     "lint": "eslint src",
     "test": "jest"
@@ -31,9 +31,6 @@
     "parserOptions": {
       "project": "./tsconfig.json"
     },
-    "extends": [
-      "@stickyjs"
-    ],
     "rules": {
       "no-param-reassign": "off"
     }
@@ -50,7 +47,6 @@
   "devDependencies": {
     "@types/minimatch": "^5.1.2",
     "@types/node": "^18.16.16",
-    "@workspace/jest-preset": "workspace:*",
-    "typescript": "4.9.5"
+    "@workspace/jest-preset": "workspace:*"
   }
 }

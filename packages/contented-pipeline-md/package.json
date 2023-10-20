@@ -69,7 +69,7 @@
   },
   "devDependencies": {
     "@types/hast": "^2.3.6",
-    "@types/js-yaml": "^4.0.6",
+    "@types/js-yaml": "^4.0.8",
     "@types/lodash": "^4.14.200",
     "@types/mdast": "^4.0.2",
     "@workspace/jest-preset": "workspace:*"

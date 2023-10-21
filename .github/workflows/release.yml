@@ -43,7 +43,7 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm -r exec npm version ${{ needs.Version.outputs.result }} --git-tag-version=false
+      - run: pnpm -r exec pnpm version ${{ needs.Version.outputs.result }} --git-tag-version=false
 
       - run: pnpm build
 

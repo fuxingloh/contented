@@ -15,7 +15,7 @@
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
     "clean": "rm -rf dist",
-    "lint": "eslint src",
+    "lint": "eslint .",
     "test": "jest"
   },
   "lint-staged": {
@@ -72,6 +72,7 @@
     "@types/js-yaml": "^4.0.8",
     "@types/lodash": "^4.14.200",
     "@types/mdast": "^4.0.2",
-    "@workspace/jest-preset": "workspace:*"
+    "@workspace/jest-preset": "workspace:*",
+    "@workspace/tsconfig": "workspace:*"
   }
 }

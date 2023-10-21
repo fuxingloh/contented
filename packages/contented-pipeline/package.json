@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "@types/unist": "^2.0.9",
-    "@workspace/jest-preset": "workspace:*"
+    "@workspace/jest-preset": "workspace:*",
+    "@workspace/tsconfig": "workspace:*"
   }
 }

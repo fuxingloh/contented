@@ -20,12 +20,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^6.8.0
         version: 6.8.0(eslint@8.51.0)(typescript@5.2.2)
-      '@workspace/jest-preset':
-        specifier: workspace:*
-        version: link:packages/jest-preset
-      '@workspace/tsconfig':
-        specifier: workspace:*
-        version: link:packages/tsconfig
       esbuild:
         specifier: ^0.19.5
         version: 0.19.5
@@ -126,6 +120,9 @@ importers:
       '@workspace/jest-preset':
         specifier: workspace:*
         version: link:../jest-preset
+      '@workspace/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
 
   packages/contented-pipeline:
     dependencies:
@@ -139,6 +136,9 @@ importers:
       '@workspace/jest-preset':
         specifier: workspace:*
         version: link:../jest-preset
+      '@workspace/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
 
   packages/contented-pipeline-md:
     dependencies:
@@ -239,6 +239,9 @@ importers:
       '@workspace/jest-preset':
         specifier: workspace:*
         version: link:../jest-preset
+      '@workspace/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
 
   packages/contented-preview:
     dependencies:
@@ -300,6 +303,9 @@ importers:
       '@workspace/jest-preset':
         specifier: workspace:*
         version: link:../jest-preset
+      '@workspace/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
 
   packages/jest-preset: {}
 
@@ -4040,16 +4046,6 @@ packages:
       vfile: 5.3.7
       vfile-location: 4.1.0
       web-namespaces: 2.0.1
-    dev: false
-
-  /hast-util-has-property@2.0.1:
-    resolution: {integrity: sha512-X2+RwZIMTMKpXUzlotatPzWj8bspCymtXH3cfG3iQKV+wPF53Vgaqxi/eLqGck0wKq1kS9nvoB1wchbCPEL8sg==}
-    dev: false
-
-  /hast-util-heading-rank@2.1.1:
-    resolution: {integrity: sha512-iAuRp+ESgJoRFJbSyaqsfvJDY6zzmFoEnL1gtz1+U8gKtGGj1p0CVlysuUAUjq95qlZESHINLThwJzNGmgGZxA==}
-    dependencies:
-      '@types/hast': 2.3.7
     dev: false
 
   /hast-util-heading-rank@3.0.0:

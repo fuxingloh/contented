@@ -48,6 +48,7 @@
     "@types/babel__generator": "^7.6.6",
     "@types/minimatch": "^5.1.2",
     "@types/node": "^18.16.16",
-    "@workspace/jest-preset": "workspace:*"
+    "@workspace/jest-preset": "workspace:*",
+    "@workspace/tsconfig": "workspace:*"
   }
 }

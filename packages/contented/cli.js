@@ -1,3 +1,3 @@
 #! /usr/bin/env node
-// eslint-disable-next-line import/extensions
+/* eslint-disable */
 import './dist/cli.js';

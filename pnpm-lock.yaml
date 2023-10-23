@@ -225,7 +225,7 @@ importers:
         version: 5.3.7
     devDependencies:
       '@types/hast':
-        specifier: ^2.3.6
+        specifier: ^2.3.7
         version: 2.3.7
       '@types/js-yaml':
         specifier: ^4.0.8

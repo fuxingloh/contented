@@ -221,8 +221,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       vfile:
-        specifier: ^5.3.7
-        version: 5.3.7
+        specifier: ^6.0.1
+        version: 6.0.1
     devDependencies:
       '@types/hast':
         specifier: ^2.3.7

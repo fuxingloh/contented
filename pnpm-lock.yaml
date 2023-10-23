@@ -152,8 +152,8 @@ importers:
         specifier: ^2.2.1
         version: 2.2.1
       hast-util-to-string:
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^3.0.0
+        version: 3.0.0
       hastscript:
         specifier: ^8.0.0
         version: 8.0.0
@@ -4120,12 +4120,6 @@ packages:
       space-separated-tokens: 2.0.2
       web-namespaces: 2.0.1
       zwitch: 2.0.4
-    dev: false
-
-  /hast-util-to-string@2.0.0:
-    resolution: {integrity: sha512-02AQ3vLhuH3FisaMM+i/9sm4OXGSq1UhOOCpTLLQtHdL3tZt7qil69r8M8iDkZYyC0HCFylcYoP+8IO7ddta1A==}
-    dependencies:
-      '@types/hast': 2.3.7
     dev: false
 
   /hast-util-to-string@3.0.0:

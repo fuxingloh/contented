@@ -206,7 +206,7 @@ importers:
         specifier: ^10.1.0
         version: 10.1.0
       shiki:
-        specifier: ^0.14.4
+        specifier: ^0.14.5
         version: 0.14.5
       to-vfile:
         specifier: ^7.2.4

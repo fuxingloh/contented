@@ -112,7 +112,7 @@ importers:
         version: 6.0.3
     devDependencies:
       '@types/debounce':
-        specifier: ^1.2.2
+        specifier: ^1.2.3
         version: 1.2.3
       '@types/ignore-walk':
         specifier: ^4.0.2

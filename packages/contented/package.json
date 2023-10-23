@@ -45,7 +45,7 @@
     "ignore-walk": "^6.0.3"
   },
   "devDependencies": {
-    "@types/debounce": "^1.2.2",
+    "@types/debounce": "^1.2.3",
     "@types/ignore-walk": "^4.0.2",
     "@workspace/jest-preset": "workspace:*",
     "@workspace/tsconfig": "workspace:*"

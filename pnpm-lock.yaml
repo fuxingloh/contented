@@ -209,8 +209,8 @@ importers:
         specifier: ^0.14.5
         version: 0.14.5
       to-vfile:
-        specifier: ^7.2.4
-        version: 7.2.4
+        specifier: ^8.0.0
+        version: 8.0.0
       unified:
         specifier: ^10.1.2
         version: 10.1.2
@@ -7621,11 +7621,10 @@ packages:
       safe-regex: 1.1.0
     dev: true
 
-  /to-vfile@7.2.4:
-    resolution: {integrity: sha512-2eQ+rJ2qGbyw3senPI0qjuM7aut8IYXK6AEoOWb+fJx/mQYzviTckm1wDjq91QYHAPBTYzmdJXxMFA6Mk14mdw==}
+  /to-vfile@8.0.0:
+    resolution: {integrity: sha512-IcmH1xB5576MJc9qcfEC/m/nQCFt3fzMHz45sSlgJyTWjRbKW1HAkJpuf3DgE57YzIlZcwcBZA5ENQbBo4aLkg==}
     dependencies:
-      is-buffer: 2.0.5
-      vfile: 5.3.7
+      vfile: 6.0.1
     dev: false
 
   /trim-lines@3.0.1:

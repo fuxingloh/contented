@@ -62,7 +62,7 @@
     "remark-rehype": "^10.1.0",
     "shiki": "^0.14.5",
     "to-vfile": "^7.2.4",
-    "unified": "^10.1.2",
+    "unified": "^11.0.4",
     "unist-util-map": "^4.0.0",
     "unist-util-visit": "^5.0.0",
     "vfile": "^5.3.7"

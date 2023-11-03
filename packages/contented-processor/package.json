@@ -42,7 +42,7 @@
     "@babel/generator": "^7.23.0",
     "@contentedjs/contented-pipeline": "workspace:*",
     "@contentedjs/contented-pipeline-md": "workspace:*",
-    "minimatch": "^5.1.6"
+    "minimatch": "^9.0.3"
   },
   "devDependencies": {
     "@types/babel__generator": "^7.6.6",

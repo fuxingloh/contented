@@ -4,7 +4,7 @@ module.exports = {
   preset: 'ts-jest',
   reporters: ['default', 'github-actions'],
   moduleNameMapper: {
-    '(.+)\\.js': '$1',
+    '(\\..+)\\.js': '$1',
   },
   transform: {
     '^.+\\.ts$': 'ts-jest',

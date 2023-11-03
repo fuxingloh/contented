@@ -42,7 +42,6 @@
     "@sindresorhus/slugify": "^2.2.1"
   },
   "devDependencies": {
-    "@types/unist": "^2.0.9",
     "@workspace/jest-preset": "workspace:*",
     "@workspace/tsconfig": "workspace:*"
   }

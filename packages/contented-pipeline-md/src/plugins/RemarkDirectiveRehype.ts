@@ -1,7 +1,7 @@
 import { h } from 'hastscript';
-import { Node } from 'mdast';
+import { Node, Parent } from 'mdast';
 import { Directives } from 'mdast-util-directive';
-import { Plugin } from 'unified';
+import { Transformer } from 'unified';
 import { map, MapFunction } from 'unist-util-map';
 
 const isDirectiveNode = (node: Node): node is Directives => {
@@ -47,6 +47,6 @@ const mapDirectiveNode: MapFunction<Node> = (node: Node) => {
   return node;
 };
 
-export function remarkDirectiveRehype(): Plugin {
-  return (nodeTree) => map(nodeTree, mapDirectiveNode);
+export function remarkDirectiveRehype(): Transformer<Parent> {
+  return (nodeTree: any) => map(nodeTree, mapDirectiveNode);
 }

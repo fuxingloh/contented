@@ -112,8 +112,8 @@ importers:
         version: 6.0.3
     devDependencies:
       '@types/debounce':
-        specifier: ^1.2.3
-        version: 1.2.3
+        specifier: ^1.2.4
+        version: 1.2.4
       '@types/ignore-walk':
         specifier: ^4.0.2
         version: 4.0.2
@@ -1555,8 +1555,8 @@ packages:
     resolution: {integrity: sha512-kbdRXTmUgNfw5OTE3KZnFQn6XdIc4QGroN5UixgdrXATmYsdlPQS6pEut9tVlIojtzuFD4txs/L+Rq41AHtLpg==}
     dev: false
 
-  /@types/debounce@1.2.3:
-    resolution: {integrity: sha512-97mx7gWt4e+kd0wPa1pNEvE4tYGhgBVa4ExWOLcfFohAjF9wERfJ+3qrn7I1e76oHupOvRs4UyYe9xzy0i4TUw==}
+  /@types/debounce@1.2.4:
+    resolution: {integrity: sha512-jBqiORIzKDOToaF63Fm//haOCHuwQuLa2202RK4MozpA6lh93eCBc+/8+wZn5OzjJt3ySdc+74SXWXB55Ewtyw==}
     dev: true
 
   /@types/debug@4.1.10:

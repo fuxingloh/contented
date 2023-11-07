@@ -289,8 +289,8 @@ importers:
         version: 5.1.6
     devDependencies:
       '@types/babel__generator':
-        specifier: ^7.6.6
-        version: 7.6.6
+        specifier: ^7.6.7
+        version: 7.6.7
       '@types/minimatch':
         specifier: ^5.1.2
         version: 5.1.2
@@ -1517,13 +1517,13 @@ packages:
     dependencies:
       '@babel/parser': 7.23.0
       '@babel/types': 7.23.0
-      '@types/babel__generator': 7.6.6
+      '@types/babel__generator': 7.6.7
       '@types/babel__template': 7.4.3
       '@types/babel__traverse': 7.20.3
     dev: true
 
-  /@types/babel__generator@7.6.6:
-    resolution: {integrity: sha512-66BXMKb/sUWbMdBNdMvajU7i/44RkrA3z/Yt1c7R5xejt8qh84iU54yUWCtm0QwGJlDcf/gg4zd/x4mpLAlb/w==}
+  /@types/babel__generator@7.6.7:
+    resolution: {integrity: sha512-6Sfsq+EaaLrw4RmdFWE9Onp63TOUue71AWb4Gpa6JxzgTYtimbM086WnYTy2U67AofR++QKCo08ZP6pwx8YFHQ==}
     dependencies:
       '@babel/types': 7.23.0
     dev: true

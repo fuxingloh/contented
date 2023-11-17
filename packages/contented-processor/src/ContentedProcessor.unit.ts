@@ -418,8 +418,24 @@ describe('validation', () => {
       ],
     };
     expect(() => new ContentedProcessor(config)).toThrow(
-      'Due to codegen, pipeline.type must be a string with allowed characters within the range of [a-zA-Z].',
+      'Due to codegen, pipeline.type must be a string with allowed characters within the range of ^[a-zA-Z_$][\\w$]*$.',
     );
+  });
+
+  it('should allow type.name with _', async () => {
+    const config: Config = {
+      rootDir: './fixtures',
+      outDir: './.contented',
+      pipelines: [
+        {
+          type: '_type',
+          pattern: '**/*.md',
+          processor: 'md',
+        },
+      ],
+    };
+
+    expect(() => new ContentedProcessor(config)).not.toThrow();
   });
 });
 

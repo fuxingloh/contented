@@ -39,9 +39,9 @@ export class ContentedProcessor {
     config.outDir = config.outDir ?? './.contented';
     config.pipelines.forEach((pipeline) => {
       pipeline.type = pipeline.type ?? 'Docs';
-      if (pipeline.type.match(/[^a-zA-Z]/g)) {
+      if (!pipeline.type.match(/^[a-zA-Z_$][\w$]*$/)) {
         throw new Error(
-          'Due to codegen, pipeline.type must be a string with allowed characters within the range of [a-zA-Z].',
+          'Due to codegen, pipeline.type must be a string with allowed characters within the range of ^[a-zA-Z_$][\\w$]*$.',
         );
       }
 

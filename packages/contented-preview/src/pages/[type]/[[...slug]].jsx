@@ -103,8 +103,8 @@ export default function IndexPage({ content, sections }) {
             'hidden lg:block': !isOpen,
           })}
         >
-          <div className="absolute bottom-0 right-0 top-0 hidden w-px dark:block lg:bg-slate-800" />
-          <div className="absolute inset-y-0 right-0 w-[50vw] dark:hidden lg:bg-slate-50" />
+          <div className="absolute bottom-0 right-0 top-0 hidden w-px lg:bg-slate-800 dark:block" />
+          <div className="absolute inset-y-0 right-0 w-[50vw] lg:bg-slate-50 dark:hidden" />
           <div className="sticky top-[3.25rem] -ml-0.5 h-[calc(100vh-3.25rem)] overflow-y-auto py-12">
             <ContentNavigation sections={sections} className="w-64 pr-8 xl:w-72 xl:pr-16" />
           </div>

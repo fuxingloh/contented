@@ -12,7 +12,7 @@ export default function Header() {
   const pipelines = Object.entries(Pipelines);
 
   return (
-    <header className="sticky top-0 z-10 h-[3.25rem] border-b border-slate-200/60 bg-slate-50 print:hidden dark:border-slate-300/10 dark:bg-slate-950">
+    <header className="sticky top-0 z-10 h-[3.25rem] border-b border-slate-200/60 bg-slate-50 dark:border-slate-300/10 dark:bg-slate-950 print:hidden">
       <nav className="max-w-8xl mx-auto h-full px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex h-full w-full items-center justify-between">
           <div className="flex">

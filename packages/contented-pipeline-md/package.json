@@ -59,7 +59,7 @@
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.0",
     "remark-parse": "^11.0.0",
-    "remark-rehype": "^11.0.0",
+    "remark-rehype": "^11.1.0",
     "shiki": "^0.14.7",
     "to-vfile": "^8.0.0",
     "unified": "^11.0.4",

@@ -39,7 +39,7 @@
   "dependencies": {
     "@contentedjs/contented-pipeline": "workspace:*",
     "@contentedjs/contented-processor": "workspace:*",
-    "@parcel/watcher": "^2.2.0",
+    "@parcel/watcher": "^2.4.0",
     "clipanion": "3.2.1",
     "debounce": "^1.2.1",
     "ignore-walk": "^6.0.4"

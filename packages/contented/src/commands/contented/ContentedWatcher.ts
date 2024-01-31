@@ -1,4 +1,5 @@
 import { join, relative } from 'node:path';
+import * as process from 'node:process';
 
 import { FileContent } from '@contentedjs/contented-pipeline';
 import { ContentedProcessorResult } from '@contentedjs/contented-processor';
@@ -73,8 +74,7 @@ export class ContentedWatcher extends ContentedWalker {
     const file = relative(this.processor.rootPath, path);
     const contents = await this.processor.process(file);
     contents.forEach((content) => {
-      // eslint-disable-next-line no-console
-      console.log(`Processed "${file}" as "${content?.path}"`);
+      this.context.stdout.write(`Processed "${file}" as "${content?.path}"\n`);
     });
     return contents;
   }

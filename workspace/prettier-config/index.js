@@ -6,4 +6,4 @@ const config = {
   plugins: [import('prettier-plugin-tailwindcss'), import('prettier-plugin-packagejson')],
 };
 
-export default config;
+module.exports = config;

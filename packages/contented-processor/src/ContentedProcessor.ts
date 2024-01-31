@@ -1,4 +1,5 @@
 import { join } from 'node:path';
+import * as process from 'node:process';
 
 import { ContentedPipeline, FileContent, FileIndex, Pipeline } from '@contentedjs/contented-pipeline';
 import { MarkdownPipeline } from '@contentedjs/contented-pipeline-md';

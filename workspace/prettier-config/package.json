@@ -1,0 +1,9 @@
+{
+  "name": "@workspace/prettier-config",
+  "private": true,
+  "main": "./index.js",
+  "dependencies": {
+    "prettier-plugin-packagejson": "^2.4.10",
+    "prettier-plugin-tailwindcss": "^0.5.11"
+  }
+}

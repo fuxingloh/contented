@@ -1,6 +1,7 @@
 import { spawn, spawnSync } from 'node:child_process';
 import { cpSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
+import * as process from 'node:process';
 import { fileURLToPath } from 'node:url';
 
 import { PreviewConfig } from '../../index.js';

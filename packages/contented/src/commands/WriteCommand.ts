@@ -15,7 +15,7 @@ export class WriteCommand extends BaseCommand {
     const config = await this.loadConfig();
     const processor = new ContentedProcessor(config.processor);
 
-    const watcher = new ContentedWatcher(processor);
+    const watcher = new ContentedWatcher(this.context, processor);
     await watcher.watch();
 
     const preview = new ContentedPreview(config.preview);

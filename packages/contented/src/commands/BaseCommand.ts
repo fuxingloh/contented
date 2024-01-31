@@ -1,5 +1,6 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
+import * as process from 'node:process';
 
 import { Command } from 'clipanion';
 
@@ -20,8 +21,7 @@ export abstract class BaseCommand extends Command {
       configPath = join(process.cwd(), 'contented.config.js');
     }
 
-    // eslint-disable-next-line no-console
-    console.log(`Loading config from: ${configPath}`);
+    this.context.stdout.write(`Loading config from: ${configPath}\n`);
     const config = await import(configPath);
     return config.default;
   }

@@ -19,11 +19,11 @@ export class GenerateCommand extends BaseCommand {
     config.processor.outDir = config.processor.outDir ?? '.contented';
 
     const processor = new ContentedProcessor(config.processor);
-    const walker = new ContentedWalker(processor);
+    const walker = new ContentedWalker(this.context, processor);
     await walker.walk();
 
     if (this.watch) {
-      const watcher = new ContentedWatcher(processor);
+      const watcher = new ContentedWatcher(this.context, processor);
       await watcher.watch();
     }
 

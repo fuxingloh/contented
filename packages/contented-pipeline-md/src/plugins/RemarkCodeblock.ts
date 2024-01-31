@@ -3,14 +3,12 @@ import { ContainerDirective } from 'mdast-util-directive';
 import { Transformer } from 'unified';
 import { visit } from 'unist-util-visit';
 
-function visitCodeblockHeader(node: ContainerDirective): void {
+function visitCodeblockHeader(node: ContainerDirective & any): void {
   if (node.name !== 'codeblock-header') return;
 
-  // @ts-ignore
   node.type = 'element';
   node.children = [
     {
-      // @ts-ignore
       type: 'element',
       children: [
         {
@@ -64,7 +62,7 @@ export function remarkDirectiveRehypeCodeblockHeader(): Transformer<Parent> {
   return (nodeTree: any) => visit(nodeTree, 'containerDirective', visitCodeblockHeader);
 }
 
-function visitCodeblockGroup(node: ContainerDirective): void {
+function visitCodeblockGroup(node: ContainerDirective & any): void {
   if (node.name !== 'codeblock-group') return;
 
   const types: Record<string, string>[] = node.children
@@ -73,11 +71,9 @@ function visitCodeblockGroup(node: ContainerDirective): void {
 
   if (types.length === 0) return;
 
-  // @ts-ignore
   node.type = 'element';
   node.children = [
     {
-      // @ts-ignore
       type: 'element',
       children: [
         {
@@ -96,7 +92,6 @@ function visitCodeblockGroup(node: ContainerDirective): void {
           },
         },
         {
-          // @ts-ignore
           type: 'element',
           children: [
             {
@@ -118,9 +113,7 @@ function visitCodeblockGroup(node: ContainerDirective): void {
               type: 'paragraph',
               children: [
                 {
-                  // @ts-ignore
                   type: 'element',
-                  // @ts-ignore
                   children: types.map((type) => ({
                     type: 'paragraph',
                     children: [

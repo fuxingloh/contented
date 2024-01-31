@@ -1,3 +1,5 @@
+import * as process from 'node:process';
+
 import { Config as ProcessorConfig } from '@contentedjs/contented-processor';
 
 import { BuildCommand } from './commands/BuildCommand.js';

@@ -58,8 +58,8 @@ const config = {
         },
       },
       {
-        type: 'Lorem',
-        dir: 'example/lorem',
+        type: 'Pipeline',
+        dir: 'example/pipeline',
         pattern: ['**/*.md'],
         processor: 'md',
       },

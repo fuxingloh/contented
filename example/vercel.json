@@ -3,5 +3,11 @@
   "installCommand": "pnpm install",
   "buildCommand": "pnpm turbo run generate",
   "outputDirectory": ".contented/.preview/out/",
-  "rewrites": [{ "source": "/", "destination": "/contented/about" }]
+  "rewrites": [
+    { "source": "/", "destination": "/contented/about.html" },
+    {
+      "source": "/:path*",
+      "destination": "/:path*.html"
+    }
+  ]
 }

@@ -1,8 +1,5 @@
 # Contributing Guidelines
 
-> Taken
-> from [levaintech/.github/CONTRIBUTING.md](https://github.com/levaintech/.github/edit/main/CONTRIBUTING.md)
-
 Thank you for your interest in contributing to our project. Whether it's a bug report, new feature, correction, or
 additional documentation, we greatly value feedback and contributions from our community.
 
@@ -11,8 +8,8 @@ information to effectively respond to your bug report or contribution.
 
 ## Security issue notifications
 
-If you discover a potential security issue in this project we ask that you notify Levain OSS Team via our
-email [oss@levain.tech](mailto:oss@levain.tech). Please do **not** create a public GitHub issue.
+If you discover a potential security issue in this project, we ask that you notify us privately.
+Please do **not** create a public GitHub issue.
 
 ## Reporting Bugs/Feature Requests
 

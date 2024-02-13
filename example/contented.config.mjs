@@ -1,10 +1,10 @@
 /** @type {import('@contentedjs/contented').ContentedConfig} */
 const config = {
   preview: {
-    url: 'https://contented.dev',
+    url: 'https://contented.fuxing.dev',
     name: 'Contented',
     github: {
-      url: 'https://github.com/levaintech/contented',
+      url: 'https://github.com/fuxingloh/contented',
     },
   },
   processor: {
@@ -18,7 +18,7 @@ const config = {
           editOnGitHubLink: {
             type: 'string',
             resolve: () => {
-              return `https://github.com/levaintech/contented/edit/main/README.md`;
+              return `https://github.com/fuxingloh/contented/edit/main/README.md`;
             },
           },
         },
@@ -45,7 +45,7 @@ const config = {
           editOnGitHubLink: {
             type: 'string',
             resolve: (_, { file }) => {
-              return `https://github.com/levaintech/contented/edit/main/packages/contented-example/docs/${file.data.contented.filePath}`;
+              return `https://github.com/fuxingloh/contented/edit/main/packages/contented-example/docs/${file.data.contented.filePath}`;
             },
           },
         },

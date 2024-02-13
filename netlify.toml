@@ -1,3 +1,0 @@
-[build]
-publish = "example/.contented/.preview/out/"
-command = "turbo run generate --filter=example --force"

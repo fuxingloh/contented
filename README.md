@@ -1,38 +1,43 @@
 # Contented
 
-[Contented](https://contented.dev) is a prose bundler for your documentation with pipeline driven
-authoring-oriented workflow to encourage developers authoring within its contextual Git repository.
+[Contented](https://contented.fuxing.dev) is a prose bundler for your documentation with pipeline driven authoring-oriented workflow to encourage developers authoring within its contextual Git repository.
 
-With a headless design of 1 config file `contented.config.mjs`, developers can start writing
-their [markdown content](./04-markdown.md) and preview it on their localhost `contented generate --watch`.
+With a headless design of 1 config file `contented.config.mjs`,
+developers can start writing their [markdown content](./04-markdown.md)
+and preview it on their localhost `contented generate --watch`.
 Choosing convention over configuration reduces HTML/UI clutter, allowing developers to focus on authoring.
 
-Authored content can be continuously delivered (CD) into a hosted static site (e.g., GitHub Pages/Netlify/Vercel) for
-preview `contented generate`. As code drift, so does documentation; this allows each pull request to have an
-accompanying sharable preview of the documentation. With CD, it effectively shift-left your documentation workflow and
-checks it is compilable and presentable.
+Authored content can be continuously delivered (CD) into a hosted static site
+(e.g., GitHub Pages/Netlify/Vercel) for preview `contented generate`.
+As code drift, so does documentation;
+this allows each pull request to have an accompanying sharable preview of the documentation.
+With CD, it effectively shift-left your documentation workflow and checks it is compilable and presentable.
 
-By encouraging authoring next to the source (in the same git repo), developers can contextually document changes as they
-develop. All domain-specific changes will go into the `main` branch with one Git Pull Request.
+By encouraging authoring next to the source (in the same git repo),
+developers can contextually document changes as they develop.
+All domain-specific changes will go into the `main` branch with one Git Pull Request.
 
-With `contented build`, you can compile your prose into sources `index.js` and `*.json`. That output
-into `./dist` to `npm publish` them into any registry of your choice, for you can
-easily `npm i @your-scope/your-npm-package` and use the processed content on any of your downstream sites. Easily
-pulling up-to-date content and prose from individual domain-specific repositories and re-presented. Think microservices,
-but for your prose!
+With `contented build`, you can compile your prose into sources `index.js` and `*.json`.
+That output into `./dist` to `npm publish` them into any registry of your choice,
+for you can easily `npm i @your-scope/your-npm-package` and use the processed content on any of your downstream sites.
+Easily pulling up-to-date content and prose from individual domain-specific repositories and re-presented.
+Think microservices, but for your prose!
 
 ## Motivation
 
-If you don’t make it easy to get something done (authoring), nobody will go out of their way to get it done perfectly
-every time. Turn it into a GitOps workflow and give people the necessary tools and power to get it done perfectly every
-single time — everyone will get it done, as now there is no other way else to get it done. An efficient workflow
-naturally satisfies.
+If you don’t make it easy to get something done (authoring),
+nobody will go out of their way to get it done perfectly every time.
+Turn it into a GitOps workflow
+and give people the necessary tools and power to get it done perfectly every single time —
+everyone will get it done, as now there is no other way else to get it done.
+An efficient workflow naturally satisfies.
 
 ### Just Another SSG?
 
-**This is not a static site generator.** This is a prose processor workflow with a built-in static site generator.
-The outcome we're trying to achieve is
-this [@contentedjs/contented-example/dist](https://www.jsdelivr.com/package/npm/@contentedjs/contented-example)
+**This is not a static site generator.**
+This is a prose processor workflow with a built-in static site generator.
+The outcome
+we're trying to achieve is this [@contentedjs/contented-example/dist](https://www.jsdelivr.com/package/npm/@contentedjs/contented-example)
 
 > [See Contented Limitations](./09-Others/02-limitations.md)
 
@@ -89,10 +94,10 @@ repo/
 /** @type {import('@contentedjs/contented').ContentedConfig} */
 export default {
   preview: {
-    url: 'https://contented.dev',
+    url: 'https://contented.fuxing.dev',
     name: 'Contented',
     github: {
-      url: 'https://github.com/levaintech/contented',
+      url: 'https://github.com/fuxingloh/contented',
     },
   },
   processor: {
@@ -128,6 +133,6 @@ export default {
 ### Examples
 
 - [developer.levain.tech](https://developer.levain.tech) Website Built with Contented
-- [levaintech/contented/packages/contented-example](https://github.com/levaintech/contented/tree/main/packages/contented-example)
+- [fuxingloh/contented/packages/contented-example](https://github.com/fuxingloh/contented/tree/main/packages/contented-example)
 - [levaintech/sticky/packages/docs](https://github.com/levaintech/sticky/tree/main/packages/docs)
 - [fuxingloh/jellyfishsdk-docs](https://github.com/fuxingloh/jellyfishsdk-docs)

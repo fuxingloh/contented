@@ -97,6 +97,6 @@ contented generate
 
 ```shell
 github open pr
-github click Netlify Preview
+github click Vercel Preview
 github lgtm
 ```

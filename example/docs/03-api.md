@@ -31,10 +31,10 @@ configure your `package.json` with these fields:
 /** @type {import('@contentedjs/contented').ContentedConfig} */
 const config = {
   preview: {
-    url: 'https://contented.dev',
+    url: 'https://contented.fuxing.dev',
     name: 'Contented',
     github: {
-      url: 'https://github.com/levaintech/contented',
+      url: 'https://github.com/fuxingloh/contented',
     },
   },
   processor: {
@@ -145,10 +145,10 @@ export interface Pipeline {
 /** @type {import('@contentedjs/contented').ContentedConfig} */
 module.exports = {
   preview: {
-    url: 'https://contented.dev',
+    url: 'https://contented.fuxing.dev',
     name: 'Contented',
     github: {
-      url: 'https://github.com/levaintech/contented',
+      url: 'https://github.com/fuxingloh/contented',
     },
   },
   processor: {

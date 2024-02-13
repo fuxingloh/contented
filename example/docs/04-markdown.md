@@ -93,7 +93,7 @@ For example:
 /** @type {import('@contentedjs/contented').ContentedConfig} */
 const config = {
   preview: {
-    url: 'https://preview.contented.dev',
+    url: 'https://preview.contented.fuxing.dev',
     name: 'Preview Contented',
   },
   processor: {
@@ -127,10 +127,10 @@ Pipeline Processed:                 -> /[path] (note docs/example-docs/ is remov
 /docs/example-docs/page-2           -> /page-2
 /docs/example-docs/folder/page-3    -> /folder/page-3
 
-Preview:                            -> https://preview.contented.dev/[type]/[path]
-/page-1                             -> https://preview.contented.dev/example/page-1
-/page-2                             -> https://preview.contented.dev/example/page-2
-/folder/page-3                      -> https://preview.contented.dev/example/folder/page-3
+Preview:                            -> https://preview.contented.fuxing.dev/[type]/[path]
+/page-1                             -> https://preview.contented.fuxing.dev/example/page-1
+/page-2                             -> https://preview.contented.fuxing.dev/example/page-2
+/folder/page-3                      -> https://preview.contented.fuxing.dev/example/folder/page-3
 
 Another Site:                       -> https://developer-docs.com/product-example/docs/[path]
 /page-1                             -> https://developer-docs.com/product-example/docs/page-1

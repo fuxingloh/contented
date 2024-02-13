@@ -52,8 +52,8 @@ export class ContentedPreview {
 
 function generateEnvData(preview: PreviewConfig): string {
   return [
-    `CONTENTED_PREVIEW_SITE_URL=${preview.url ?? 'https://contented.dev'}`,
+    `CONTENTED_PREVIEW_SITE_URL=${preview.url ?? 'https://contented.fuxing.dev'}`,
     `CONTENTED_PREVIEW_SITE_NAME=${preview?.name ?? 'Contented'}`,
-    `CONTENTED_PREVIEW_GITHUB_URL=${preview?.github?.url ?? 'https://github.com/levaintech/contented'}`,
+    `CONTENTED_PREVIEW_GITHUB_URL=${preview?.github?.url ?? 'https://github.com/fuxingloh/contented'}`,
   ].join('\n');
 }

@@ -7,7 +7,7 @@
     "format": "prettier --write .",
     "generate": "turbo run generate",
     "lint": "turbo run lint -- --fix",
-    "prepare": "husky install",
+    "prepare": "husky",
     "test": "turbo run test",
     "watch": "turbo run watch",
     "write": "turbo run write"

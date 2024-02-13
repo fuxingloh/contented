@@ -2,5 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "pnpm install",
   "buildCommand": "pnpm turbo run generate",
-  "outputDirectory": ".contented/.preview/out/"
+  "outputDirectory": ".contented/.preview/out/",
+  "rewrites": [{ "source": "/", "destination": "/contented/about" }]
 }

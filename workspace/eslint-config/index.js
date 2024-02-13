@@ -1,21 +1,11 @@
-module.exports = [
+const tseslint = require('typescript-eslint');
+
+module.exports = tseslint.config(
   {
     ignores: ['**/*.js', '**/*.d.ts', '**/*.d.ts.map'],
   },
   require('@eslint/js').configs.recommended,
-  {
-    files: ['**/*.{ts,tsx}'],
-    plugins: {
-      '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
-    },
-    rules: require('@typescript-eslint/eslint-plugin').configs.recommended.rules,
-    languageOptions: {
-      parser: require('@typescript-eslint/parser'),
-      globals: {
-        __dirname: true,
-      },
-    },
-  },
+  ...tseslint.configs.recommended,
   {
     plugins: {
       'simple-import-sort': require('eslint-plugin-simple-import-sort'),
@@ -43,4 +33,4 @@ module.exports = [
     },
   },
   require('eslint-config-prettier'),
-];
+);

@@ -92,7 +92,7 @@ export default {
     url: 'https://contented.dev',
     name: 'Contented',
     github: {
-      url: 'https://github.com/levaintech/contented',
+      url: 'https://github.com/fuxingloh/contented',
     },
   },
   processor: {
@@ -128,6 +128,6 @@ export default {
 ### Examples
 
 - [developer.levain.tech](https://developer.levain.tech) Website Built with Contented
-- [levaintech/contented/packages/contented-example](https://github.com/levaintech/contented/tree/main/packages/contented-example)
+- [fuxingloh/contented/packages/contented-example](https://github.com/fuxingloh/contented/tree/main/packages/contented-example)
 - [levaintech/sticky/packages/docs](https://github.com/levaintech/sticky/tree/main/packages/docs)
 - [fuxingloh/jellyfishsdk-docs](https://github.com/fuxingloh/jellyfishsdk-docs)

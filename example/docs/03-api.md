@@ -34,7 +34,7 @@ const config = {
     url: 'https://contented.dev',
     name: 'Contented',
     github: {
-      url: 'https://github.com/levaintech/contented',
+      url: 'https://github.com/fuxingloh/contented',
     },
   },
   processor: {
@@ -148,7 +148,7 @@ module.exports = {
     url: 'https://contented.dev',
     name: 'Contented',
     github: {
-      url: 'https://github.com/levaintech/contented',
+      url: 'https://github.com/fuxingloh/contented',
     },
   },
   processor: {

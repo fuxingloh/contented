@@ -1,10 +1,11 @@
 import * as process from 'node:process';
 
 import { Config as ProcessorConfig } from '@contentedjs/contented-processor';
+import { Cli } from 'clipanion';
 
+import { BaseCommand } from './commands/BaseCommand';
 import { BuildCommand } from './commands/BuildCommand.js';
 import { GenerateCommand } from './commands/GenerateCommand.js';
-import { WatchCommand } from './commands/WatchCommand.js';
 import { WriteCommand } from './commands/WriteCommand.js';
 
 export * from '@contentedjs/contented-processor';
@@ -33,21 +34,18 @@ export default {
    * await contented.build()
    */
   async build({ watch = process.env.NODE_ENV === 'development' } = {}): Promise<void> {
-    if (watch) {
-      await new WatchCommand().execute();
-    } else {
-      await new BuildCommand().execute();
-    }
+    const build = new BuildCommand();
+    build.context = Cli.defaultContext;
+    build.watch = watch;
+    await build.execute();
   },
   /**
    * import contented from '@contentedjs/contented';
    * await contented.preview()
    */
   async preview({ watch = process.env.NODE_ENV === 'development' } = {}): Promise<void> {
-    if (watch) {
-      await new WriteCommand().execute();
-    } else {
-      await new GenerateCommand().execute();
-    }
+    const command: BaseCommand = watch ? new WriteCommand() : new GenerateCommand();
+    command.context = Cli.defaultContext;
+    await command.execute();
   },
 };

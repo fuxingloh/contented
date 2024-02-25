@@ -16,6 +16,10 @@
     {
       "matchPackageNames": ["^@types/.+$"],
       "enabled": false
+    },
+    {
+      "matchPackagePatterns": ["^@eslint/", "^eslint$"],
+      "groupName": "@eslint"
     }
   ]
 }

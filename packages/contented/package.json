@@ -42,7 +42,7 @@
     "@parcel/watcher": "^2.4.1",
     "clipanion": "3.2.1",
     "debounce": "^2.0.0",
-    "ignore-walk": "^6.0.4"
+    "ignore-walk": "^6.0.5"
   },
   "devDependencies": {
     "@types/debounce": "^1.2.4",

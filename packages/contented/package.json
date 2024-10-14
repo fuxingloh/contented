@@ -41,7 +41,7 @@
     "@contentedjs/contented-processor": "workspace:*",
     "@parcel/watcher": "^2.4.1",
     "clipanion": "3.2.1",
-    "debounce": "^2.0.0",
+    "debounce": "^2.2.0",
     "ignore-walk": "^6.0.5"
   },
   "devDependencies": {
